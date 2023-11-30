@@ -1,0 +1,75 @@
+.addCat {
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.422);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    &_inner {
+        width: 400px;
+        border-radius: 10px;
+        padding: 30px 30px;
+        background-color: #fff;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &_topHead {
+        text-align: center;
+        color: #262A69;
+        font-weight: 600;
+        font-size: 25px;
+    }
+
+
+    &_inputWrap {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 45px;
+
+        label {
+            color: #262A69;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        input {
+            border: 1px solid #262A69;
+            outline: none;
+            background-color: transparent;
+            padding: 11px 30px;
+            font-weight: bold;
+        }
+
+        input::placeholder {
+            color: #757575;
+            font-weight: 600;
+        }
+    }
+
+
+    &_btn {
+        padding: 14px 0;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        background-image: linear-gradient(to right, #3985FC, #ED624F);
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 35px;
+        transition: 0.3s ease-in-out;
+    }
+
+    &_btn:hover {
+        background-image: linear-gradient(to right, #153261, #682a22);
+    }
+}

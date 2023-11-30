@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CategoryTable = () =>
+const CategoryTable = ({setModal}) =>
 {
 
     const header = ['No.', 'Name', '']
@@ -43,7 +43,7 @@ const CategoryTable = () =>
                                 <td>{item?.no}</td>
                                 <td>{item?.name}</td>
                                
-                                <td className='eventTable_rightRow'><button className='eventTable_detail'>View Details</button></td>
+                                <td className='eventTable_rightRow'><button className='eventTable_detail' onClick={() => setModal('edit')}>Edit Category</button></td>
                             </tr >
                         );
                     })}
