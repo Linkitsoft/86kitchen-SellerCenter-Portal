@@ -1,0 +1,107 @@
+.eventsSection {
+    width: 100%;
+    background-color: #FFFFFF;
+    // max-height: 700px;
+    max-height: calc(100vh - 347px);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 20px 20px;
+    overflow: auto;
+
+    .swiper-pagination-fraction,
+    .swiper-pagination-custom,
+    .swiper-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-bullets.swiper-pagination-horizontal {
+        bottom: var(--swiper-pagination-bottom, 8px);
+        top: var(--swiper-pagination-top, auto);
+        left: 0;
+        width: 100%;
+        display: none;
+    }
+
+    .swiper-slide {
+        width: auto !important;
+    }
+
+
+    &_swiperWrap {
+        padding: 10px 10px;
+        cursor: pointer;
+    }
+
+    &_option {
+        padding: 10px 2px;
+        background-color: #E6E7EF;
+        text-align: center;
+        border-radius: 20px;
+        cursor: pointer;
+
+
+        p {
+            color: #3a85fb;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 0 14px;
+        }
+    }
+
+
+    &_optionSelect {
+        padding: 10px 2px;
+        background-image: linear-gradient(to right, #3985FC, #ED624F);
+        text-align: center;
+        border-radius: 20px;
+        cursor: pointer;
+
+
+        p {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 0 14px;
+        }
+    }
+
+    &_scroller {
+        height: 600px;
+        overflow-y: scroll;
+        margin-top: 20px;
+    }
+
+    &_cards {
+        // display: flex;
+        // flex-wrap: wrap;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        grid-gap: 10px;
+        margin-top: 20px;
+    }
+
+
+    &_cardGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+
+    @media (max-width: 1000px) {
+        &_cardGrid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+
+    @media (max-width: 600px) {
+        &_cardGrid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+
+}
