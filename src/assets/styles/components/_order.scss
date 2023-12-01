@@ -1,12 +1,14 @@
 .order {
     background: #fff;
     padding: 10px 20px;
-    max-height: calc(100vh - 396px);
+    max-height: calc(100vh - 403px);
     overflow: auto;
-    border-radius: 8px;
+    border-radius: 0 0 8px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     grid-gap: 40px;
+    box-shadow: 0 0 14px rgb(45 44 44 / 21%);
+
 
     &_single {
         border-bottom: 1px solid gray;

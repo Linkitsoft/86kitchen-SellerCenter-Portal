@@ -33,15 +33,17 @@
 
     &_number {
         font-weight: 500;
-        font-size: 22px;
-        color: #000000;
+        font-size: 18px;
+        color: #1b1b1b;
+        font-family: 'custom-semibold';
+
     }
 
     &_text {
-        font-size: 23px;
+        font-size: 20px;
         text-align: right;
         color: #278CFF;
-        font-weight: 700;
+        font-family: 'custom-semibold';
     }
 
     &_pic {

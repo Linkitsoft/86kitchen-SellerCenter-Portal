@@ -12,17 +12,8 @@
         justify-content: space-between;
         align-items: center;
 
-        button {
-            border: 1px solid #272B6B;
-            color: #272B6B;
-            padding: 5px 25px;
-            border-radius: 5px;
-            background: transparent;
-        }
-
-        button:hover {
-            color: #fff;
-            background: #272B6B;
+        img {
+            width: 100px;
         }
     }
 
@@ -103,6 +94,7 @@
         font-size: 26px;
         font-weight: 700;
         margin: 20px 0;
+        font-family: 'custom-bold';
     }
 
     &_content {

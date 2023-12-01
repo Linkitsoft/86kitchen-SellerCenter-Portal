@@ -85,6 +85,14 @@ const MyRoutes = () =>
         });
     });
 
+    const VerifyAccount = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/VerifyAccount")), 1300);
+        });
+    });
+
 
 
     return (
@@ -115,7 +123,7 @@ const MyRoutes = () =>
                             <Route path="/reviews" element={<Review />} ></Route>
                             <Route path="/categories" element={<Categories />} ></Route>
                             <Route path="/profile" element={<Profile />} ></Route>
-
+                            <Route path="/verifyAccount" element={<VerifyAccount />} ></Route>
                         </Route>
                         <Route path="*" element={token ? (<Navigate to="/dashboard" replace />) : (<Navigate to="/login" replace />)}></Route>
                     </Routes>
