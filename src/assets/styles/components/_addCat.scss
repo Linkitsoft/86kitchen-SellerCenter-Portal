@@ -28,6 +28,24 @@
         font-size: 25px;
     }
 
+    &_thanks  {
+        text-align: center;
+    }
+
+    &_tick {
+        width: 70px;
+        margin-bottom: 30px;
+    }
+
+    &_text {
+        font-size: 13px;
+        margin: 20px 0;
+    }
+
+    &_msg {
+        font-family: 'custom-bold';
+        font-size: 15px;
+    }
 
     &_inputWrap {
         display: flex;
@@ -53,6 +71,22 @@
             color: #757575;
             font-weight: 600;
         }
+    }
+
+
+    &_ok {
+        padding: 5px 50px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background: #3582F4;
+        color: white;
+        font-size: 15px;
+        transition: 0.3s ease-in-out;
+    }
+
+    &_ok:hover {
+        background: #1b4481;
     }
 
 

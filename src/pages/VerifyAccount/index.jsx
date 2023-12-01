@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import Sidebar from '../../components/Sidebar'
 import logo from "../../assets/images/Admin-20 (89).png"
 import star from "../../assets/images/Admin-20 (20).png"
+import Thankyou from '../../components/Modals/Thankyou'
 
 const VerifyAccount = () =>
 {
     const [banner, setBanner] = useState(null);
     const [profile, setProfile] = useState(null);
+    const [modal, setModal] = useState("");
 
     console.log("profile", profile)
     const handleFileChange = (event, type) =>
@@ -14,18 +16,22 @@ const VerifyAccount = () =>
         console.log("type", type)
         const file = event.target.files[0];
 
-        if (file) {
+        if (file)
+        {
             const reader = new FileReader();
-            reader.onloadend = () => {
+            reader.onloadend = () =>
+            {
                 // Capture the type in a closure to ensure it's correct when onloadend executes
                 const fileType = type;
-    
-                if (fileType === 'banner') {
+
+                if (fileType === 'banner')
+                {
                     setBanner({
                         file: file,
                         previewURL: reader.result,
                     });
-                } else if (fileType === 'profile') {
+                } else if (fileType === 'profile')
+                {
                     setProfile({
                         file: file,
                         previewURL: reader.result,
@@ -33,10 +39,13 @@ const VerifyAccount = () =>
                 }
             };
             reader.readAsDataURL(file);
-        } else {
-            if (type === 'banner') {
+        } else
+        {
+            if (type === 'banner')
+            {
                 setBanner(null);
-            } else if (type === 'profile') {
+            } else if (type === 'profile')
+            {
                 setProfile(null);
             }
         }
@@ -45,6 +54,7 @@ const VerifyAccount = () =>
     return (
         <div>
             <div className="mainLayout">
+                {modal === 'verify' && <Thankyou setModal={setModal} />}
                 <div className="mainLayout_parent">
                     <Sidebar index={"-1"} />
                     <div className="verify">
@@ -161,30 +171,32 @@ const VerifyAccount = () =>
                                 </div>
                                 <div className="verify_left">
                                     <p className="verify_subhead">Scanned copy of legal person ’s ID card</p>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>Address 1</p>
-                                            <input type='text' placeholder='Enter address' />
+                                    <p className="verify_info">(You can scan pictures or photos, just make sure they are clearly visible)</p>
+                                    <div className="">
+                                        <div className="verify_multi">
+                                            <div className="verify_uploadSec">
+                                                {!banner &&
+                                                    <label htmlFor="bannerInput">
+                                                        <img className="verify_mini" src={star} alt='' />
+                                                    </label>}
+                                                <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
+                                                {banner && <img className="verify_file" src={banner?.previewURL} alt='' />}
+                                                {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
+                                                <p style={{ margin: "25px" }}>Front of ID card</p>
+                                            </div>
+                                            <div className="verify_uploadSec">
+                                                {!banner &&
+                                                    <label htmlFor="bannerInput">
+                                                        <img className="verify_mini" src={star} alt='' />
+                                                    </label>}
+                                                <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
+                                                {banner && <img className="verify_file" src={banner?.previewURL} alt='' />}
+                                                {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
+                                                <p style={{ margin: "25px" }}>Back of ID Card</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p>Address 2 (optional)</p>
-                                            <input type='text' placeholder='Enter address' />
-                                        </div>
-                                    </div>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>City</p>
-                                            <input type='text' placeholder='Enter city name' />
-                                        </div>
-                                        <div>
-                                            <p>State</p>
-                                            <input type='text' placeholder='Enter state' />
-                                        </div>
-                                    </div>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>Zip Code</p>
-                                            <input type='number' placeholder='Enter zip code' />
+                                        <div className="verify_submit">
+                                            <button onClick={() => setModal('verify')}>SUBMIT</button>
                                         </div>
                                     </div>
                                 </div>
