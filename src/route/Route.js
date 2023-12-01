@@ -93,6 +93,14 @@ const MyRoutes = () =>
         });
     });
 
+    const OrderDetails = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/OrderDetails")), 1300);
+        });
+    });
+
 
 
     return (
@@ -124,6 +132,7 @@ const MyRoutes = () =>
                             <Route path="/categories" element={<Categories />} ></Route>
                             <Route path="/profile" element={<Profile />} ></Route>
                             <Route path="/verifyAccount" element={<VerifyAccount />} ></Route>
+                            <Route path="/orderDetails" element={<OrderDetails />} ></Route>
                         </Route>
                         <Route path="*" element={token ? (<Navigate to="/dashboard" replace />) : (<Navigate to="/login" replace />)}></Route>
                     </Routes>

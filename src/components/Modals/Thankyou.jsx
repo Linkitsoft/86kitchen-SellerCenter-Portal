@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import Clickoutside from '../Clickoutside/Clickoutside';
-import { toast } from 'react-toastify';
 import tick from "../../assets/images/Admin-20 (50).png"
 
 const Thankyou = ({ setModal }) =>

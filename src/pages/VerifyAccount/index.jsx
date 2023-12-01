@@ -8,6 +8,8 @@ const VerifyAccount = () =>
 {
     const [banner, setBanner] = useState(null);
     const [profile, setProfile] = useState(null);
+    const [front, setFront] = useState(null);
+    const [back, setBack] = useState(null);
     const [modal, setModal] = useState("");
 
     console.log("profile", profile)
@@ -21,7 +23,6 @@ const VerifyAccount = () =>
             const reader = new FileReader();
             reader.onloadend = () =>
             {
-                // Capture the type in a closure to ensure it's correct when onloadend executes
                 const fileType = type;
 
                 if (fileType === 'banner')
@@ -36,6 +37,18 @@ const VerifyAccount = () =>
                         file: file,
                         previewURL: reader.result,
                     });
+                } else if (fileType === 'front')
+                {
+                    setFront({
+                        file: file,
+                        previewURL: reader.result,
+                    });
+                } else if (fileType === 'back')
+                {
+                    setBack({
+                        file: file,
+                        previewURL: reader.result,
+                    });
                 }
             };
             reader.readAsDataURL(file);
@@ -47,6 +60,13 @@ const VerifyAccount = () =>
             } else if (type === 'profile')
             {
                 setProfile(null);
+
+            } else if (type === 'front')
+            {
+                setFront(null);
+            } else if (type === 'back')
+            {
+                setBack(null);
             }
         }
     };
@@ -175,23 +195,23 @@ const VerifyAccount = () =>
                                     <div className="">
                                         <div className="verify_multi">
                                             <div className="verify_uploadSec">
-                                                {!banner &&
-                                                    <label htmlFor="bannerInput">
+                                                {!front &&
+                                                    <label htmlFor="frontInput">
                                                         <img className="verify_mini" src={star} alt='' />
                                                     </label>}
-                                                <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
-                                                {banner && <img className="verify_file" src={banner?.previewURL} alt='' />}
-                                                {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
+                                                <input type="file" id="frontInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'front')} />
+                                                {front && <img className="verify_file" src={front?.previewURL} alt='' />}
+                                                {front && <i className="fa-solid fa-trash" onClick={() => setFront(null)}></i>}
                                                 <p style={{ margin: "25px" }}>Front of ID card</p>
                                             </div>
                                             <div className="verify_uploadSec">
-                                                {!banner &&
-                                                    <label htmlFor="bannerInput">
+                                                {!back &&
+                                                    <label htmlFor="backInput">
                                                         <img className="verify_mini" src={star} alt='' />
                                                     </label>}
-                                                <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
-                                                {banner && <img className="verify_file" src={banner?.previewURL} alt='' />}
-                                                {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
+                                                <input type="file" id="backInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'back')} />
+                                                {back && <img className="verify_file" src={back?.previewURL} alt='' />}
+                                                {back && <i className="fa-solid fa-trash" onClick={() => setBack(null)}></i>}
                                                 <p style={{ margin: "25px" }}>Back of ID Card</p>
                                             </div>
                                         </div>

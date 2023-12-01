@@ -20,7 +20,7 @@ const Queries = () =>
                     <Sidebar index={"5"} />
                     <div className="dashboard">
                         <div className="dashboard_header">
-                            <p className='dashboard_title'>Orders</p>
+                            <p className='dashboard_title'>Queries</p>
                             <div className='dashboard_tabs'>
                                 <button onClick={() => setIndex(1)} className={colorClass(1)}>All 9</button>
                                 <button onClick={() => setIndex(2)} className={colorClass(2)}>Today's 5</button>

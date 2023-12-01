@@ -2,14 +2,16 @@ import React from 'react'
 import loc from "../../assets/images/Admin-20 (90).png"
 import card1 from "../../assets/images/Admin-20 (22).png"
 import arrow from "../../assets/images/Admin-20 (30).png"
+import { useNavigate } from 'react-router-dom'
 
 const OrdersCard = () =>
 {
+    const navigate = useNavigate()
     return (
         <div className='order_single'>
             <div className="order_cardTop">
                 <p>09/11/2023 - 08:53 PM</p>
-                <button>View Details</button>
+                <button onClick={() => navigate('/orderDetails')}>View Details</button>
             </div>
             <div className="order_content">
                 <img className="order_img" src={card1} alt='' />
@@ -27,7 +29,7 @@ const OrdersCard = () =>
                     <button>Production</button>
                     <button>Completed</button>
                 </div>
-                <img src={arrow} alt='' />
+                <img onClick={() => navigate('/orderDetails')} src={arrow} alt='' />
             </div>
         </div>
     )

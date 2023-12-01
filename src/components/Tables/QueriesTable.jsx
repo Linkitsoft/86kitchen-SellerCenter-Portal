@@ -3,103 +3,55 @@ import React from 'react'
 const QueriesTable = () =>
 {
 
-    const header = ['No.', 'Name', 'Email', 'Gender', 'Team Name', 'Phone No', 'Actions']
+    const header = ['Invoice No', 'Service Name', 'Name', 'Message', 'Date', 'Total Amount', 'Actions']
     const data = [
         {
             no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
+            service: "Limited Time Offers",
+            name: "John",
+            msg: "Hi i am samantha i like your services Yellow Storm Triple",
+            date: "09 / 11 / 2023 - 08:53 PM",
+            amount: "$520"
         },
         {
             no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
+            service: "Limited Time Offers",
+            name: "John",
+            msg: "Hi i am samantha i like your services Yellow Storm Triple",
+            date: "09 / 11 / 2023 - 08:53 PM",
+            amount: "$520"
         },
         {
             no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
+            service: "Limited Time Offers",
+            name: "John",
+            msg: "Hi i am samantha i like your services Yellow Storm Triple",
+            date: "09 / 11 / 2023 - 08:53 PM",
+            amount: "$520"
         },
         {
             no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
+            service: "Limited Time Offers",
+            name: "John",
+            msg: "Hi i am samantha i like your services Yellow Storm Triple",
+            date: "09 / 11 / 2023 - 08:53 PM",
+            amount: "$520"
         },
         {
             no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
+            service: "Limited Time Offers",
+            name: "John",
+            msg: "Hi i am samantha i like your services Yellow Storm Triple",
+            date: "09 / 11 / 2023 - 08:53 PM",
+            amount: "$520"
         },
         {
             no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
-        },
-        {
-            no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
-        },
-        {
-            no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
-        },
-        {
-            no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
-        },
-        {
-            no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
-        },
-        {
-            no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
-        },
-        {
-            no: "1",
-            name: "Amenda John",
-            email: "amenda@gmail.com",
-            gender: "Male",
-            team: "Wildcat",
-            phone: "+60 022 2666"
+            service: "Limited Time Offers",
+            name: "John",
+            msg: "Hi i am samantha i like your services Yellow Storm Triple",
+            date: "09 / 11 / 2023 - 08:53 PM",
+            amount: "$520"
         },
     ]
 
@@ -116,11 +68,11 @@ const QueriesTable = () =>
                         return (
                             <tr>
                                 <td>{item?.no}</td>
+                                <td>{item?.service}</td>
                                 <td>{item?.name}</td>
-                                <td>{item?.email}</td>
-                                <td>{item?.gender}</td>
-                                <td>{item?.team}</td>
-                                <td>{item?.phone}</td>
+                                <td>{item?.msg}</td>
+                                <td>{item?.date}</td>
+                                <td>{item?.amount}</td>
                                 <td><button className='eventTable_view'>View Details</button></td>
                             </tr >
                         );

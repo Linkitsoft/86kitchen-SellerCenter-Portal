@@ -60,14 +60,15 @@ p {
   }
 }
 
+// Typo
+@import './typography';
 
-// Pages
 // @import "./pages/login";
 @import "./pages/dashboard";
 @import "./pages/setPassword";
 @import "./pages/profile";
 @import "./pages/verify";
-@import './typography';
+@import "./pages/od";
 
 
 
