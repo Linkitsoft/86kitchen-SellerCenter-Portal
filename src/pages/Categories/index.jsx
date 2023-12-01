@@ -17,7 +17,7 @@ const Categories = () =>
                     <div className="dashboard">
                         <div className="dashboard_header">
                             <p className='dashboard_title'>Service Categories</p>
-                            <button onClick={() => setModal('add')}>+ Create Category</button>
+                            <button className="dashboard_btn" onClick={() => setModal('add')}>+ Create Category</button>
                         </div>
                         <div className="dashboard_queries">
                             <CategoryTable setModal={setModal}/>
