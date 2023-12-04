@@ -108,6 +108,10 @@
         font-size: 15px;
         margin: 10px 0;
     }
+    &_btn:hover {
+        background-image: linear-gradient(to right, #193b72 , #632821);
+
+    }   
 
     &_chatHead {
         background: #3788FF;

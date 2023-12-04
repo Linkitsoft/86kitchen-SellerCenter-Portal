@@ -51,6 +51,11 @@
 
         img {
             width: 13px;
+            cursor: pointer;
+        }
+
+        img:hover {
+            filter: brightness(10%);
         }
     }
 

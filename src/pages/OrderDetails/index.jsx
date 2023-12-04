@@ -39,7 +39,7 @@ const OrderDetails = () =>
                                 <p className="od_desc">Hi i am samantha i like your services Yellow
                                     Storm Triple Typhoon 20 Mbps - Month cost
                                     $50, Ont time cost $100</p>
-                                <button className="od_btn">Generate Sales</button>
+                                <button className="od_btn" onClick={() => navigate('/generateSales')}>Generate Sales</button>
                             </div>
                             <div className="od_right">
                                 <div className="od_chatHead">

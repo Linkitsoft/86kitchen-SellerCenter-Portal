@@ -109,6 +109,22 @@ const MyRoutes = () =>
         });
     });
 
+    const EditService = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/EditService")), 1300);
+        });
+    });
+
+    const GenerateSales = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/GenerateSales")), 1300);
+        });
+    });
+
 
 
     return (
@@ -142,6 +158,8 @@ const MyRoutes = () =>
                             <Route path="/verifyAccount" element={<VerifyAccount />} ></Route>
                             <Route path="/orderDetails" element={<OrderDetails />} ></Route>
                             <Route path="/addService" element={<AddService />} ></Route>
+                            <Route path="/editService" element={<EditService />} ></Route>
+                            <Route path="/generateSales" element={<GenerateSales />} ></Route>
                         </Route>
                         <Route path="*" element={token ? (<Navigate to="/dashboard" replace />) : (<Navigate to="/login" replace />)}></Route>
                     </Routes>

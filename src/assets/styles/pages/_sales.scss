@@ -1,0 +1,65 @@
+.sales {
+    width: 100%;
+    margin-top: 80px;
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: 0 20px;
+
+    &_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 40px;
+            margin-right: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 14px rgb(45 44 44 / 21%);
+            border-radius: 50%;
+        }
+
+        div {
+            padding: 16px 0;
+
+        }
+    }
+
+    &_title {
+        color: #000000;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 20px 0;
+        font-family: 'custom-bold';
+    }
+
+    &_text {
+        font-size: 12px;
+        color: gray;
+    }
+
+    &_loc {
+        color: #CA4E00;
+        font-size: 13px;
+
+        img {
+            width: 12px;
+            margin: 0 3px !important;
+            cursor: default;
+        }
+    }
+
+  
+    &_btn{
+        border: none;
+        background-image: linear-gradient(to right, #3985FC, #ED624F);
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-size: 15px;
+        margin: 10px 0;
+    }
+    &_btn:hover {
+        background-image: linear-gradient(to right, #193b72 , #632821);
+
+    }   
+}

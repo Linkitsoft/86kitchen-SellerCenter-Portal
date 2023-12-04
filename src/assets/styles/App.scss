@@ -69,7 +69,8 @@ p {
 @import "./pages/profile";
 @import "./pages/verify";
 @import "./pages/od";
-@import "./pages/addServ.scss";
+@import "./pages/addServ";
+@import "./pages/sales";
 
 
 
@@ -83,6 +84,7 @@ p {
 @import "./components/order";
 @import "./components/eventTable";
 @import "./components/addCat";
+@import "./components/viewService";
 
 
 // Loader

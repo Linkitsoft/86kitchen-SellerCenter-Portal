@@ -55,6 +55,11 @@
             color: rgb(104, 104, 104);
             font-size: 12px;
         }
+
+        button:hover {
+            background: rgb(58, 58, 58);
+            color: #fff;
+        }
     }
 
     &_content {
