@@ -31,6 +31,7 @@ const SalesTable = ({setModal}) =>
 
     return (
         <div className='salesTable'>
+            <div className="salesTable_content">
             <table id="table-to-xls">
                 <tbody>
                     <tr>
@@ -52,6 +53,8 @@ const SalesTable = ({setModal}) =>
                     })}
                 </tbody>
             </table>
+            </div>
+           
         </div >
     )
 }

@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Sidebar from '../../components/Sidebar'
-import Thankyou from '../../components/Modals/Thankyou'
 import backImg from "../../assets/images/Admin-20 (29).png"
 import loc from "../../assets/images/Admin-20 (90).png"
 import { useNavigate } from 'react-router-dom'
@@ -8,13 +7,11 @@ import SalesTable from '../../components/Tables/SalesTable'
 
 const GenerateSales = () =>
 {
-    const [modal, setModal] = useState("");
     const navigate = useNavigate()
 
     return (
         <div>
             <div className="mainLayout">
-                {modal === 'verify' && <Thankyou setModal={setModal} />}
                 <div className="mainLayout_parent">
                     <Sidebar index={"-1"} />
                     <div className="sales">
@@ -35,6 +32,14 @@ const GenerateSales = () =>
                             </select>
                         </div>
                         <SalesTable />
+                        <div className="sales_bottom">
+                            <p className="">Total Tax</p>
+                            <p className="">$100</p>
+                        </div>
+                        <div className="sales_total">
+                            <p>Total Amount: <span>$550</span></p>
+                            <button className="sales_btn">Initiate Sale</button>
+                        </div>
                     </div>
                 </div>
             </div>

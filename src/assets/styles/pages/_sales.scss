@@ -73,15 +73,52 @@
 
     }
 
+    &_bottom {
+        border-top: 2px solid #3686FF;
+        border-bottom: 2px solid #3686FF;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px;
+    }
+
+    &_bottom>p:first-child {
+        font-family: "custom-semibold";
+        color: #353535;
+    }
+
+    &_bottom>p:nth-child(2) {
+        font-weight: 600;
+        font-family: "custom-semibold";
+        color: #3686FF;;
+    }
+
+    &_total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0;
+        
+        p{
+            font-family: "custom-semibold";
+            color: #353535;
+            font-size: 20px;
+        }
+
+        span {
+            color: #3686FF;
+        }
+
+    }
   
     &_btn{
         border: none;
         background-image: linear-gradient(to right, #3985FC, #ED624F);
         color: #fff;
-        padding: 10px 15px;
+        padding: 10px 45px;
         border-radius: 6px;
         font-size: 15px;
-        margin: 10px 0;
+        margin-top: 40px;
     }
     &_btn:hover {
         background-image: linear-gradient(to right, #193b72 , #632821);

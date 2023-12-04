@@ -1,13 +1,15 @@
 .salesTable {
     border-radius: 15px;
     position: relative;
-    overflow-x: auto;
-    overflow-y: auto;
     // max-height: calc(100vh - 372px);
-    width: 100%;
     color: #313567;
     margin-top: 20px;
     margin-bottom: 49.7344px;
+
+    &_content {
+        width: 100%;
+        overflow: auto;
+    }
 
     &_noDataFound {
         display: flex;
@@ -34,6 +36,9 @@
         white-space: nowrap;
         border-bottom: 2px solid #3582F4;
         border-top: 2px solid #3582F4;
+        font-size: 15px !important;
+        color: #353535;
+        font-family: 'custom-bold';
     }
 
     th,
