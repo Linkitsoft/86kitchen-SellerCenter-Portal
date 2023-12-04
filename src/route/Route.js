@@ -125,6 +125,22 @@ const MyRoutes = () =>
         });
     });
 
+    const Home = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/Home")), 1300);
+        });
+    });
+
+    const Verification = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/Verification")), 1300);
+        });
+    });
+
 
 
     return (
@@ -145,7 +161,7 @@ const MyRoutes = () =>
             <BrowserRouter>
                 <Suspense fallback={<p>Loading...</p>}>
                     <Routes>
-                        {token ? <Route path="/dashboard" element={<Dashboard />}></Route> : <Route path="/login" element={<Login />}></Route>}
+                        {token ? <Route path="/dashboard" element={<Dashboard />}></Route> : <Route path="/home" element={<Home />}></Route>}
                         <Route element={<AdminPrivate token={token} />}>
                             <Route path="/dashboard" element={<Dashboard />}></Route>
                             <Route path="/services" element={<Services />} ></Route>
@@ -161,7 +177,11 @@ const MyRoutes = () =>
                             <Route path="/editService" element={<EditService />} ></Route>
                             <Route path="/generateSales" element={<GenerateSales />} ></Route>
                         </Route>
-                        <Route path="*" element={token ? (<Navigate to="/dashboard" replace />) : (<Navigate to="/login" replace />)}></Route>
+                        <Route path="*" element={token ? (<Navigate to="/dashboard" replace />) : (<Navigate to="/home" replace />)}></Route>
+                        <Route path="/home" element={<Home />} ></Route>
+                        {!token && <Route path="/verification" element={<Verification />} ></Route>}
+                        {!token && <Route path="/login" element={<Login />} ></Route>}
+                        {!token && <Route path="/signup" element={<Login />} ></Route>}
                     </Routes>
                 </Suspense>
             </BrowserRouter>

@@ -63,7 +63,7 @@ p {
 // Typo
 @import './typography';
 
-// @import "./pages/login";
+@import "./pages/login";
 @import "./pages/dashboard";
 @import "./pages/setPassword";
 @import "./pages/profile";
@@ -86,6 +86,10 @@ p {
 @import "./components/salesTable";
 @import "./components/addCat";
 @import "./components/viewService";
+@import "./components/topbar";
+@import "./components/hero";
+@import "./components/success";
+@import "./components/verification";
 
 
 // Loader
