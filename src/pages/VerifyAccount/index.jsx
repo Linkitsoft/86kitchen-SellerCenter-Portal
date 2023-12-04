@@ -168,7 +168,7 @@ const VerifyAccount = () =>
                                             {profile && <i className="fa-solid fa-trash" onClick={() => setProfile(null)}></i>}
                                         </div>
                                     </div>
-                                    <div className="verify_form">
+                                    <div className="verify_form" style={{marginTop: "30px"}}>
                                         <div>
                                             <p>Business Name</p>
                                             <input type='text' placeholder='Enter business name' />

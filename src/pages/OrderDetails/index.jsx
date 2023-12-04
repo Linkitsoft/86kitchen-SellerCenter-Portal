@@ -22,7 +22,7 @@ const OrderDetails = () =>
         <div>
             <div className="mainLayout">
                 <div className="mainLayout_parent">
-                    <Sidebar index={"-1"} />
+                    <Sidebar index={"4"} />
                     <div className="od">
                         <div className="od_header">
                             <p className="od_title"><img src={back} alt='' onClick={() => navigate(-1)}/>Samentha John - Invoice No: 001 </p>

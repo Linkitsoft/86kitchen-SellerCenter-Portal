@@ -13,7 +13,7 @@ const GenerateSales = () =>
         <div>
             <div className="mainLayout">
                 <div className="mainLayout_parent">
-                    <Sidebar index={"-1"} />
+                    <Sidebar index={"4"} />
                     <div className="sales">
                         <div className="sales_header">
                             <p className="sales_title"><img src={backImg} alt='' onClick={() => navigate(-1)} />Generate Sales</p>

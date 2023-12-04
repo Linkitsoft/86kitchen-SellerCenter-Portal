@@ -15,12 +15,18 @@
         img {
             width: 100px;
         }
+        
         button {
             border: 1px solid #272B6B;
             color: #272B6B;
             padding: 5px 25px;
             border-radius: 5px;
             background: transparent;
+        }
+
+        button:hover {
+            background: rgb(58, 58, 58);
+            color: #fff;
         }
     }
 

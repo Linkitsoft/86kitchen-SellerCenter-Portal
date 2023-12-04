@@ -54,6 +54,25 @@
 
 }
 
+@media (max-width: 1400px) {
+
+    .dashboardTopCards {
+
+        &_pic {
+            img {
+                width: 43px;
+            }
+        }
+
+        &_number {
+            font-size: 16px;
+        }
+        &_text {
+            font-size: 16px;
+        }
+    }
+}
+
 @media (max-width: 1000px) {
     .dashboardTopCards {
         grid-template-columns: 1fr;

@@ -209,7 +209,7 @@ const Sidebar = ({ index }) =>
                             <img src={circleImg} alt="eventInfo" />
                             <div className="sideBar_eventText">
                                 <p className="channelName">StormFiber</p>
-                                <p className="icNo"><i className="fa star"></i>4.8</p>
+                                <p className="icNo"><i className="fa-solid fa-star"></i>4.8</p>
                             </div>
                         </div>
 

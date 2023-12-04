@@ -74,9 +74,13 @@
     }
 
     &_upload {
+        position: absolute;
+        left: 34px;
+        top: 119px;
+    }
+
+    &_left {
         position: relative;
-        right: -36px;
-        top: -35px;
     }
 
     &_uploadSec {
@@ -183,5 +187,15 @@
             background-image: linear-gradient(to right, #193b72 , #632821);
 
         }   
+    }
+}
+
+@media (max-width: 600px){
+
+    .verify {
+        
+        &_top {
+            grid-template-columns: 1fr;
+        }
     }
 }

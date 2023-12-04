@@ -71,6 +71,9 @@
         font-weight: 400;
         background-image: linear-gradient(to right, #3985FC, #ED624F);
     }
+    &_detail:hover {
+        background-image: linear-gradient(to right, #193b72, #632821);
+    }
 
     &_location {
         color: #ff3131;

@@ -42,8 +42,16 @@
         p {
             color: #3a85fb;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
             padding: 0 14px;
+        }
+    }
+
+    &_option:hover {
+        background-image: linear-gradient(to right, #3985FC, #ED624F);
+       
+        p {
+            color: #E6E7EF;
         }
     }
 
