@@ -1,66 +1,63 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../../assets/images/Admin-20 (75).png";
-
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const Login = () =>
 {
 
     const [eyeIcon, setEyeIcon] = useState(false);
-    const [inputValues, setInputValues] = useState({})
     const navigate = useNavigate()
 
-    // handle value change
-    const handleValueChange = (e) =>
-    {
-        setInputValues({ ...inputValues, [e?.target?.name]: e?.target?.value })
-    }
-    // handle login
-    const handleLogin = () =>
+    const initialValues = {
+        email: '',
+        password: '',
+    };
+
+    const validationSchema = Yup.object({
+        email: Yup.string().email('Invalid email address').required('Email is required'),
+        password: Yup.string().required('Password is required'),
+    });
+
+    const onSubmit = (values) =>
     {
         navigate("/verification")
     };
 
-    const handleKey = (e) =>
-    {
-        if (e?.key === "Enter")
-        {
-            handleLogin()
-        }
-    }
     return (
         <div className="login">
             <div className="login_box">
                 <div className="login_topHead">
-                    <img src={logoImg} alt="logo"  onClick={() => navigate('/home')}/>
+                    <img src={logoImg} alt="logo" onClick={() => navigate('/home')} />
                     <p className="head">Seller Center</p>
                 </div>
                 <div className="login_inputSection">
-                    <div className="login_inputWrapper">
-                        <label>Email</label>
-                        <input onChange={(e) => handleValueChange(e)} type="text" name="email" placeholder="Enter your email" />
-                    </div>
-                    <div className="login_inputWrapper">
-                        <label>Password</label>
-                        <input
-                            onChange={(e) => handleValueChange(e)}
-                            onKeyDown={(e) => handleKey(e)}
-                            name="password"
-                            type={eyeIcon === false ? "password" : "text"}
-                            placeholder="Password"
-                        />
-                        <i
-                            onClick={() => setEyeIcon(!eyeIcon)}
-                            className={
-                                eyeIcon === false
-                                    ? "fa-regular showEye fa-eye-slash"
-                                    : "fa-regular showEye fa-eye"
-                            }
-                        ></i>
-                    </div>
-                    <div className="login_loginBtn">
-                        <button onClick={handleLogin}>Sign In</button>
-                    </div>
+                    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                        <Form>
+                            <div className="login_inputWrapper">
+                                <label htmlFor="email">Email:</label>
+                                <Field type="text" id="email" name="email" />
+                                <ErrorMessage className="login_err" name="email" component="div" />
+                            </div>
+                            <div className="login_inputWrapper">
+                                <label htmlFor="password">Password</label>
+                                <Field type="password" id="password" name="password" />
+                                <i
+                                    onClick={() => setEyeIcon(!eyeIcon)}
+                                    className={
+                                        eyeIcon === false
+                                            ? "fa-regular showEye fa-eye-slash"
+                                            : "fa-regular showEye fa-eye"
+                                    }
+                                ></i>
+                                <ErrorMessage className="login_err" name="password" component="div" />
+                            </div>
+                            <div className="login_loginBtn">
+                                <button type="submit">Sign In</button>
+                            </div>
+                        </Form>
+                    </Formik>
                 </div>
             </div>
         </div>

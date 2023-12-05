@@ -184,6 +184,11 @@
         }
     }
 
+    &_err {
+        color: #ff0018;
+        font-weight: 700;
+    }
+
    
     @media (max-width: 500px) {
         &_box {
