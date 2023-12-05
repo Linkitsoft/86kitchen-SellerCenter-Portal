@@ -225,3 +225,21 @@
     }
 
 }
+
+@media (max-width: 600px) {
+
+    .od {
+    
+        &_main {
+            grid-template-columns: 1fr
+        }
+        
+        &_header {
+            flex-wrap: wrap;
+        }
+
+        &_title {
+            font-size: 17px;
+        }
+    }
+}

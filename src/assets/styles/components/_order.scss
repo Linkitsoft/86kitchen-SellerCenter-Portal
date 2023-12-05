@@ -4,16 +4,19 @@
     max-height: calc(100vh - 403px);
     overflow: auto;
     border-radius: 0 0 8px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    grid-gap: 40px;
     box-shadow: 0 0 14px rgb(45 44 44 / 21%);
 
+    &_page {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        grid-column-gap: 40px;
+    }
 
     &_single {
         border-bottom: 1px solid gray;
         margin: 10px 0;
     }
+
     &_tab {
         display: flex;
         border-bottom: 1px solid #b1b1b1;
@@ -128,6 +131,57 @@
         .selected {
             background: #3985FC;
             color: #fff;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+
+    .order {
+        padding: 5px;
+
+        &_tab {
+            p {
+                font-size: 14px;
+            }
+            .selected {
+                font-size: 14px;
+
+            }
+        }
+        &_content {
+            gap: 10px;
+        }
+        &_img {
+            width: 80px;
+        }
+
+        &_head {
+            font-size: 14px;
+        }
+        &_desc {
+            font-size: 10px;
+
+        }
+        &_loc {
+            font-size: 10px;
+        }
+        &_bottom {
+
+            p {
+                font-size: 13px;
+            }
+            button {
+                font-size: 11px;
+                padding: 5px;
+            }
+        }
+        &_cardTop button {
+            padding: 5px;
+            font-size: 10px;
+        }
+        &_page {
+            grid-template-columns: 1fr
         }
     }
 }

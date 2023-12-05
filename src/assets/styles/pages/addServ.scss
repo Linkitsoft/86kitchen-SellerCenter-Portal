@@ -216,3 +216,14 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    .addServ {
+        &_form {
+            flex-direction: column;
+        }
+        &_service {
+            height: 100%;
+        }
+    }
+}

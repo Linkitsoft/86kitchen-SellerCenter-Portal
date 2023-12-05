@@ -27,7 +27,7 @@ const Orders = () =>
                             </div>
                         </div>
 
-                        <div className="order" style={{ maxHeight: "calc(100vh - 200px)" }}>
+                        <div className="order order_page" style={{ maxHeight: "calc(100vh - 200px)" }}>
                             <OrdersCard />
                             <OrdersCard />
                             <OrdersCard />
