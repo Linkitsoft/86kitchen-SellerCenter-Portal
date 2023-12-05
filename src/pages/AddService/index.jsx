@@ -46,7 +46,7 @@ const AddService = () =>
             <div className="mainLayout">
                 {modal === 'verify' && <Thankyou setModal={setModal} />}
                 <div className="mainLayout_parent">
-                    <Sidebar index={"-1"} />
+                    <Sidebar index={"2b"} />
                     <div className="verify">
                         <div className="addServ_header">
                             <p className="addServ_title"><img src={backImg} alt='' onClick={() => navigate(-1)}/>Add Services</p>

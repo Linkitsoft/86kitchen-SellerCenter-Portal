@@ -83,6 +83,12 @@
         position: relative;
     }
 
+    &_err {
+        color: #ff0018;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
     &_uploadSec {
         background-color: #D7E7FF;
         text-align: center;

@@ -63,13 +63,14 @@
             border: 1px solid #262A69;
             outline: none;
             background-color: transparent;
-            padding: 11px 30px;
+            padding: 11px 15px;
             font-weight: bold;
         }
 
         input::placeholder {
             color: #757575;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 12px;
         }
     }
 
@@ -91,16 +92,18 @@
 
 
     &_btn {
-        padding: 14px 0;
+        padding: 7px 0;
         border-radius: 10px;
         outline: none;
         border: none;
         background-image: linear-gradient(to right, #3985FC, #ED624F);
         color: white;
         font-size: 20px;
-        font-weight: 600;
+        font-weight: 500;
         margin-top: 35px;
         transition: 0.3s ease-in-out;
+        width: 100%;
+    
     }
 
     &_btn:hover {

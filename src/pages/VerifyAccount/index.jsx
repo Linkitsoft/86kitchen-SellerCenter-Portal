@@ -3,6 +3,8 @@ import Sidebar from '../../components/Sidebar'
 import logo from "../../assets/images/Admin-20 (89).png"
 import star from "../../assets/images/Admin-20 (20).png"
 import Thankyou from '../../components/Modals/Thankyou'
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const VerifyAccount = () =>
 {
@@ -12,7 +14,50 @@ const VerifyAccount = () =>
     const [back, setBack] = useState(null);
     const [modal, setModal] = useState("");
 
-    console.log("profile", profile)
+    const initialValues = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        address1: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        banner: '',
+        logoInput: profile,
+        businessName: '',
+        taxId: '',
+        businessPhone: '',
+        front: '',
+        back: '',
+    };
+
+    const validationSchema = Yup.object({
+
+        // personal details
+        firstName: Yup.string().required('First Name is required'),
+        lastName: Yup.string().required('Last Name is required'),
+        email: Yup.string().email('Invalid email address').required('Email is required'),
+        password: Yup.string().required('Password is required'),
+        confirmPassword: Yup.string().required('Confirm Password is required'),
+        // BUssiness location
+        address1: Yup.string().required('Address 1 is required'),
+        city: Yup.string().required('City is required'),
+        state: Yup.string().required('State is required'),
+        zipCode: Yup.string().required('Zip Code is required'),
+        // Bussiness Details
+        banner: Yup.string().required('Banner Image is required'),
+        logoInput: Yup.string().required('Profile Image is required'),
+        businessName: Yup.string().required('Business Name is required'),
+        taxId: Yup.string().required('Tax ID is required'),
+        businessPhone: Yup.string().required('Business Phone Number is required'),
+        front: Yup.mixed().required('Front ID image is required'),
+        back: Yup.mixed().required('Back ID image is required'),
+
+    });
+
+
     const handleFileChange = (event, type) =>
     {
         console.log("type", type)
@@ -71,6 +116,14 @@ const VerifyAccount = () =>
         }
     };
 
+    
+
+    const onSubmit = (values) =>
+    {
+        console.log("value", values)
+        setModal('verify')
+    };
+
     return (
         <div>
             <div className="mainLayout">
@@ -83,144 +136,169 @@ const VerifyAccount = () =>
                             <img width={150} src={logo} alt='' />
                         </div>
                         <div className="container">
-                            <div className="verify_top">
-                                <div className="verify_left">
-                                    <p className="verify_subhead">Personal Details</p>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>First Name</p>
-                                            <input type='text' placeholder='Enter first name' />
-                                        </div>
-                                        <div>
-                                            <p>Last Name</p>
-                                            <input type='text' placeholder='Enter last name' />
-                                        </div>
-                                    </div>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>Email</p>
-                                            <input type='text' placeholder='Enter email' />
-                                        </div>
-                                        <div>
-                                            <p>Password</p>
-                                            <input type='password' placeholder='Enter password' />
-                                        </div>
-                                    </div>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>Confirm Password</p>
-                                            <input type='password' placeholder='Enter confirm password' />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="verify_left">
-                                    <p className="verify_subhead">Business Location</p>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>Address 1</p>
-                                            <input type='text' placeholder='Enter address' />
-                                        </div>
-                                        <div>
-                                            <p>Address 2 (optional)</p>
-                                            <input type='text' placeholder='Enter address' />
-                                        </div>
-                                    </div>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>City</p>
-                                            <input type='text' placeholder='Enter city name' />
-                                        </div>
-                                        <div>
-                                            <p>State</p>
-                                            <input type='text' placeholder='Enter state' />
-                                        </div>
-                                    </div>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>Zip Code</p>
-                                            <input type='number' placeholder='Enter zip code' />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="verify_top">
-                                <div className="verify_left">
-                                    <p className="verify_subhead">Business Details</p>
-                                    <div>
-                                        <div className="verify_uploadSec">
-                                            {!banner &&
-                                                <label htmlFor="bannerInput">
-                                                    <img className="verify_mini" src={star} alt='' />
-                                                </label>}
-                                            <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
-                                            {banner && <img className="verify_file" src={banner?.previewURL} alt='' />}
-                                            {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
-                                        </div>
-                                    </div>
-                                    <div className="verify_upload">
-                                        <div className="verify_roundSec">
-                                            {!profile &&
-                                                <label htmlFor="logoInput">
-                                                    <img className="verify_miniR" src={star} alt='' />
-                                                </label>}
-                                            <input type="file" id="logoInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'profile')} />
-                                            {profile && <img className="verify_fileR" src={profile?.previewURL} alt='' />}
-                                            {profile && <i className="fa-solid fa-trash" onClick={() => setProfile(null)}></i>}
-                                        </div>
-                                    </div>
-                                    <div className="verify_form" style={{marginTop: "30px"}}>
-                                        <div>
-                                            <p>Business Name</p>
-                                            <input type='text' placeholder='Enter business name' />
-                                        </div>
-                                        <div>
-                                            <p>Tax ID</p>
-                                            <input type='text' placeholder='Enter tax ID' />
-                                        </div>
-                                    </div>
-                                    <div className="verify_form">
-                                        <div>
-                                            <p>Business Phone Number</p>
-                                            <input type='number' placeholder='Enter business phone number' />
-                                        </div>
-                                        <div>
-                                            <p>Business URL (Optional)</p>
-                                            <input type='password' placeholder='Enter business URL' />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="verify_left">
-                                    <p className="verify_subhead">Scanned copy of legal person ’s ID card</p>
-                                    <p className="verify_info">(You can scan pictures or photos, just make sure they are clearly visible)</p>
-                                    <div className="">
-                                        <div className="verify_multi">
-                                            <div className="verify_uploadSec">
-                                                {!front &&
-                                                    <label htmlFor="frontInput">
-                                                        <img className="verify_mini" src={star} alt='' />
-                                                    </label>}
-                                                <input type="file" id="frontInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'front')} />
-                                                {front && <img className="verify_file" src={front?.previewURL} alt='' />}
-                                                {front && <i className="fa-solid fa-trash" onClick={() => setFront(null)}></i>}
-                                                <p style={{ margin: "25px" }}>Front of ID card</p>
+                            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                                <Form>
+                                    <div className="verify_top">
+                                        <div className="verify_left">
+                                            <p className="verify_subhead">Personal Details</p>
+                                            <div className="verify_form">
+                                                <div>
+                                                    <p htmlFor="firstName">First Name</p>
+                                                    <Field placeholder="First Name" type="text" id="firstName" name="firstName" />
+                                                    <ErrorMessage className="verify_err" name="firstName" component="div" />
+                                                </div>
+                                                <div>
+                                                    <p htmlFor="lastName">Last Name</p>
+                                                    <Field placeholder="Last Name" type="text" id="lastName" name="lastName" />
+                                                    <ErrorMessage className="verify_err" name="lastName" component="div" />
+                                                </div>
                                             </div>
-                                            <div className="verify_uploadSec">
-                                                {!back &&
-                                                    <label htmlFor="backInput">
-                                                        <img className="verify_mini" src={star} alt='' />
-                                                    </label>}
-                                                <input type="file" id="backInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'back')} />
-                                                {back && <img className="verify_file" src={back?.previewURL} alt='' />}
-                                                {back && <i className="fa-solid fa-trash" onClick={() => setBack(null)}></i>}
-                                                <p style={{ margin: "25px" }}>Back of ID Card</p>
+                                            <div className="verify_form">
+                                                <div>
+                                                    <p htmlFor="email">Email</p>
+                                                    <Field placeholder="Email" type="text" id="email" name="email" />
+                                                    <ErrorMessage className="verify_err" name="email" component="div" />
+                                                </div>
+                                                <div>
+                                                    <p htmlFor="password">Password</p>
+                                                    <Field placeholder="Password" type="password" id="password" name="password" />
+                                                    <ErrorMessage className="verify_err" name="password" component="div" />
+                                                </div>
+                                            </div>
+                                            <div className="verify_form">
+                                                <div>
+                                                    <p htmlFor="confirmPassword">Confirm Password</p>
+                                                    <Field placeholder="Confirm Password" type="password" id="confirmPassword" name="confirmPassword" />
+                                                    <ErrorMessage className="verify_err" name="confirmPassword" component="div" />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="verify_submit">
-                                            <button onClick={() => setModal('verify')}>SUBMIT</button>
+                                        <div className="verify_left">
+                                            <p className="verify_subhead">Business Location</p>
+                                            <div className="verify_form">
+                                                <div>
+                                                    <p htmlFor="address1">Address 1</p>
+                                                    <Field placeholder="Address 1" type="text" id="address1" name="address1" />
+                                                    <ErrorMessage className="verify_err" name="address1" component="div" />
+                                                </div>
+                                                <div>
+                                                    <p>Address 2 (optional)</p>
+                                                    <input type='text' placeholder='Enter address' />
+                                                </div>
+                                            </div>
+                                            <div className="verify_form">
+                                                <div>
+                                                    <p htmlFor="city">City</p>
+                                                    <Field placeholder="City" type="text" id="city" name="city" />
+                                                    <ErrorMessage className="verify_err" name="city" component="div" />
+                                                </div>
+                                                <div>
+                                                    <p htmlFor="state">State</p>
+                                                    <Field placeholder="State" type="text" id="state" name="state" />
+                                                    <ErrorMessage className="verify_err" name="state" component="div" />
+                                                </div>
+                                            </div>
+                                            <div className="verify_form">
+                                                <div>
+                                                    <p htmlFor="zipCode">Zip Code</p>
+                                                    <Field placeholder="Zip Code" type="text" id="zipCode" name="zipCode" />
+                                                    <ErrorMessage className="verify_err" name="zipCode" component="div" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                    <div className="verify_top">
+                                        <div className="verify_left">
+                                            <p className="verify_subhead">Business Details</p>
+                                            <div>
+                                                <div className="verify_uploadSec">
+                                                    {!banner && (
+                                                        <label htmlFor="banner">
+                                                            <img className="verify_mini" src={star} alt='' />
+                                                        </label>
+                                                    )}
+                                                    <input
+                                                        type="file"
+                                                        id="banner"
+                                                        name="banner"
+                                                        style={{ display: 'none' }}
+                                                        onChange={(e) => handleFileChange(e, 'banner')}
+                                                    />
+                                                    {banner && <img className="verify_file" src={banner?.previewURL} alt='' />}
+                                                    {banner && (
+                                                        <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="verify_upload">
+                                                <div className="verify_roundSec">
+                                                    {!profile &&
+                                                        <label htmlFor="logoInput">
+                                                            <img className="verify_miniR" src={star} alt='' />
+                                                        </label>}
+                                                    <input type="file" id="logoInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'profile')} />
+                                                    {profile && <img className="verify_fileR" src={profile?.previewURL} alt='' />}
+                                                    {profile && <i className="fa-solid fa-trash" onClick={() => setProfile(null)}></i>}
+                                                </div>
+                                            </div>
+                                            {/* <div className="my-4">
+                                                <ErrorMessage className="verify_err" name="banner" component="div" />
+                                                <ErrorMessage className="verify_err" name="logoInput" component="div" />
+                                            </div> */}
+
+                                            <div className="verify_form" style={{ marginTop: "30px" }}>
+                                                <div>
+                                                    <p htmlFor="businessName">Business Name</p>
+                                                    <Field placeholder="Business Name" type="text" id="businessName" name="businessName" />
+                                                    <ErrorMessage className="verify_err" name="businessName" component="div" />
+                                                </div>
+                                                <div>
+                                                    <p htmlFor="taxId">Tax ID</p>
+                                                    <Field placeholder="Tax ID" type="text" id="taxId" name="taxId" />
+                                                    <ErrorMessage className="verify_err" name="taxId" component="div" />
+                                                </div>
+                                            </div>
+                                            <div className="verify_form">
+                                                <div>
+                                                    <p>Business URL (Optional)</p>
+                                                    <input type='text' placeholder='Enter business URL' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="verify_left">
+                                            <p className="verify_subhead">Scanned copy of legal person ’s ID card</p>
+                                            <p className="verify_info">(You can scan pictures or photos, just make sure they are clearly visible)</p>
+                                            <div className="">
+                                                <div className="verify_multi">
+                                                    <div className="verify_uploadSec">
+                                                        {!front &&
+                                                            <label htmlFor="front">
+                                                                <img className="verify_mini" src={star} alt='' />
+                                                            </label>}
+                                                        <input name="front" type="file" id="front" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'front')} />
+                                                        {front && <img className="verify_file" src={front?.previewURL} alt='' />}
+                                                        {front && <i className="fa-solid fa-trash" onClick={() => setFront(null)}></i>}
+                                                        <p style={{ margin: "25px" }}>Front of ID card</p>
+                                                    </div>
+                                                    <div className="verify_uploadSec">
+                                                        {!back &&
+                                                            <label htmlFor="back">
+                                                                <img className="verify_mini" src={star} alt='' />
+                                                            </label>}
+                                                        <input name="back" type="file" id="back" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'back')} />
+                                                        {back && <img className="verify_file" src={back?.previewURL} alt='' />}
+                                                        {back && <i className="fa-solid fa-trash" onClick={() => setBack(null)}></i>}
+                                                        <p style={{ margin: "25px" }}>Back of ID Card</p>
+                                                    </div>
+                                                </div>                                               
+                                                <div className="verify_submit">
+                                                    <button type='submit'>SUBMIT</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Form>
+                            </Formik>
                         </div>
                     </div>
                 </div>
