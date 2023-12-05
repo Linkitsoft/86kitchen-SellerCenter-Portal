@@ -22,7 +22,7 @@ const Login = () =>
 
     const onSubmit = (values) =>
     {
-        navigate("/verification")
+        navigate("/verification", { state: { fromLogin: true } })
     };
 
     return (

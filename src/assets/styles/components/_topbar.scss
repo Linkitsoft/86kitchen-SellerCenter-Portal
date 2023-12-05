@@ -104,6 +104,14 @@
         }
         &_left, &_right {
             gap: 5px;
+
+            a {
+                font-size: 14px;
+            }
+        }
+
+        &_left {
+            padding: 5px 10px;
         }
     }
 }

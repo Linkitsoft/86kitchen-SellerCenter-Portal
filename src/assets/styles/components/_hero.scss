@@ -220,7 +220,7 @@
 
     &_sell {
         border: none;
-        background-image: linear-gradient(to right, #5CC5FF, #3985FC, #3985FC,  #ED624F 90%);
+        background-image: linear-gradient(to right, #5CC5FF, #3985FC, #3985FC, #ED624F 90%);
         color: #fff;
         padding: 20px 45px;
         border-radius: 10px;
@@ -229,7 +229,7 @@
         text-align: center;
         font-weight: 700;
         font-family: 'custom-bold';
-        
+
     }
 
 }
@@ -238,6 +238,42 @@
     .hero {
         &_all {
             width: 100%;
+        }
+    }
+}
+
+@media (max-width: 772px) {
+
+    .hero {
+
+        &_review {
+            grid-template-columns: 1fr;
+        }
+
+        &_sell {
+            padding: 20px;
+            font-size: 20px;
+        }
+    }
+}
+
+@media (max-width: 620px) {
+
+    .hero {
+
+        &_stars {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        &_text {
+            font-size: 15px;
+        }
+
+        &_content {
+            
+            video {
+                width: 46%;
+            }
         }
     }
 }

@@ -1,14 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import backImg from "../../assets/images/Admin-20 (29).png"
 import girlImg from "../../assets/images/Admin-20 (74).png"
 import OTPInput from "otp-input-react";
 import Success from '../../components/Modals/Success';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Verification = () =>
 {
     const [OTP, setOTP] = useState("");
     const [modal, setModal] = useState("")
-    
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() =>
+    {
+        if (!location?.state?.fromLogin)
+        {
+            navigate('/login')
+        }
+        // eslint-disable-next-line
+    }, [])
+
     const handleLogin = () =>
     {
         window.localStorage.setItem("token", true)
@@ -19,7 +32,7 @@ const Verification = () =>
             {modal === "verify" && <Success handleLogin={handleLogin} setModal={setModal} />}
             <div className='verification_topHead'>
                 <div>
-                    <img className='shadow' src={backImg} alt="backImg"/>
+                    <img className='shadow' src={backImg} alt="backImg" onClick={() => navigate(-1)} />
                     <p>2-Step Verification</p>
                 </div>
             </div>
