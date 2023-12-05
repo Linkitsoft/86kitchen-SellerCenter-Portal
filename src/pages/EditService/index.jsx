@@ -4,6 +4,9 @@ import star from "../../assets/images/Admin-20 (20).png"
 import Thankyou from '../../components/Modals/Thankyou'
 import backImg from "../../assets/images/Admin-20 (29).png"
 import { useNavigate } from 'react-router-dom'
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { toast } from 'react-toastify'
 
 const EditService = () =>
 {
@@ -37,64 +40,97 @@ const EditService = () =>
             if (type === 'banner')
             {
                 setBanner(null);
-            } 
+            }
         }
     };
+
+
+    const initialValues = {
+        name: '',
+        category: '',
+        price: '',
+        item: '',
+        description: '',
+    };
+
+    const validationSchema = Yup.object({
+        name: Yup.string().required('Category Name is required'),
+        category: Yup.string().required('Service category is required'),
+        price: Yup.string().required('Total Price is required'),
+        item: Yup.string().required('Choose Recommended Items is required'),
+        description: Yup.string().required('Description is required'),
+    });
+
+    const onSubmit = (values) =>
+    {
+        toast.success("Service updated successfully")
+    };
+
 
     return (
         <div>
             <div className="mainLayout">
                 {modal === 'verify' && <Thankyou setModal={setModal} />}
                 <div className="mainLayout_parent">
-                    <Sidebar index={"-1"} />
+                    <Sidebar index={"2b"} />
                     <div className="verify">
-                        <div className="addServ_header">
-                            <p className="addServ_title"><img src={backImg} alt='' onClick={() => navigate(-1)}/>Edit Service</p>
-                        </div>
-                        <div className="addServ_service">
-                            <div className="addServ_serviceMain">
-                                <p className="addServ_subhead">Service Image</p>
-                                <div>
-                                    <div className="addServ_uploadSec">
-                                        {!banner &&
-                                            <label htmlFor="bannerInput">
-                                                <img className="addServ_mini" src={star} alt='' />
-                                            </label>}
-                                        <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
-                                        {banner && <img className="addServ_file" src={banner?.previewURL} alt='' />}
-                                        {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
-                                    </div>
+                        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                            <Form>
+                                <div className="addServ_header">
+                                    <p className="addServ_title"><img src={backImg} alt='' onClick={() => navigate(-1)} />Edit Services</p>
                                 </div>
-                                <div className="addServ_form">
-                                    <div>
-                                        <p>Service Name</p>
-                                        <input type='text' placeholder='Enter business name' />
-                                    </div>
-                                    <div>
-                                        <p>Service Category</p>
-                                        <input type='text' placeholder='Enter tax ID' />
-                                    </div>
-                                    <div>
-                                        <p>Total Price</p>
-                                        <input type='number' placeholder='Enter total price' />
-                                    </div>
-                                </div>
-                                <div className="addServ_form">
-                                    <div>
-                                        <p>Choose Recommended Items</p>
-                                        <input type='text' placeholder='Choose recommended items' />
-                                    </div>
-                                    <div>
-                                        <p>Service Description</p>
-                                        <input type='text' placeholder='Service description' />
-                                    </div>
-                                </div>
-                                <div className="addServ_submit">
-                                    <button>Update</button>
+                                <div className="addServ_service">
+                                    <div className="addServ_serviceMain">
+                                        <p className="addServ_subhead">Service Image</p>
+                                        <div>
+                                            <div className="addServ_uploadSec">
+                                                {!banner &&
+                                                    <label htmlFor="bannerInput">
+                                                        <img className="addServ_mini" src={star} alt='' />
+                                                    </label>}
+                                                <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
+                                                {banner && <img className="addServ_file" src={banner?.previewURL} alt='' />}
+                                                {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
+                                            </div>
+                                        </div>
+                                        <div className="addServ_form">
+                                            <div>
+                                                <p htmlFor="name">Service Name</p>
+                                                <Field placeholder='Service name' type="text" id="name" name="name" />
+                                                <ErrorMessage className="verify_err" name="name" component="div" />
+                                            </div>
+                                            <div>
+                                                <p htmlFor="category">Service Category</p>
+                                                <Field placeholder='Enter service category' type="text" id="category" name="category" />
+                                                <ErrorMessage className="verify_err" name="category" component="div" />
+                                            </div>
+                                            <div>
+                                                <p htmlFor="name">Total Price</p>
+                                                <Field type='number' placeholder='Enter total price' id="price" name="price" />
+                                                <ErrorMessage className="verify_err" name="price" component="div" />
+                                            </div>
+                                        </div>
+                                        <div className="addServ_form">
+                                            <div>
+                                                <p htmlFor="name">Choose Recommended Items</p>
+                                                <Field type='text' placeholder='Choose recommended items' id="item" name="item" />
+                                                <ErrorMessage className="verify_err" name="item" component="div" />
+                                            </div>
+                                            <div>
+                                                <p htmlFor="description">Service Description</p>
+                                                <Field type='text' placeholder='Service description' id="description" name="description" />
+                                                <ErrorMessage className="verify_err" name="description" component="div" />
+                                            </div>
+                                        </div>
+                                        <div className="addServ_submit">
+                                            <button type='submit'>Update</button>
 
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </Form>
+                        </Formik>
+
                     </div>
                 </div>
             </div>

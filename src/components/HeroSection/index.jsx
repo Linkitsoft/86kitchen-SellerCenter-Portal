@@ -127,6 +127,10 @@ const HeroSection = () =>
                         </div>
                     </div>
                 </div>
+                <div className="hero_sell">
+                    Let’s Start selling services with 86 Kitch’n <br/>
+                    marketplace today
+                </div>
             </div>
         </div>
     )

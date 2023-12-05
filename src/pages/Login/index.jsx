@@ -42,7 +42,7 @@ const Login = () =>
                             </div>
                             <div className="login_inputWrapper">
                                 <label htmlFor="password">Password</label>
-                                <Field type="password" id="password" name="password" />
+                                <Field type={eyeIcon === false ? "password" : "text"} id="password" name="password" />
                                 <i
                                     onClick={() => setEyeIcon(!eyeIcon)}
                                     className={
