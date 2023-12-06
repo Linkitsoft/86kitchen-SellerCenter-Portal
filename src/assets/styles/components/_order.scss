@@ -20,7 +20,8 @@
     &_tab {
         display: flex;
         border-bottom: 1px solid #b1b1b1;
-
+        gap: 10px;
+        
         p {
             width: 100%;
             text-align: center;
@@ -29,6 +30,10 @@
             padding: 0 5px;
             cursor: pointer;
             padding-bottom: 6px;
+        }
+        p:hover {
+            color: #3985FC;
+            border-bottom: 1px solid #3985FC;
         }
 
         .selected {
@@ -119,6 +124,9 @@
             width: 20px;
             cursor: pointer;
         }
+        img:hover {
+            filter: brightness(10%);
+        }
 
         button {
             background: #DEDDDE;
@@ -126,6 +134,7 @@
             border: none;
             color: rgb(139, 139, 139);
             font-size: 12px;
+            cursor: default;
         }
 
         .selected {

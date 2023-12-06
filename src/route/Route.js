@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { lazy } from "react";
 import AdminPrivate from './adminPrivateRoute';
 import { ToastContainer } from 'react-toastify';
+import Loader from '../components/Loader';
 // import Loader from '../components/Loader';
 
 const MyRoutes = () =>
@@ -17,7 +18,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Dashboard")), 1300);
+            setTimeout(() => resolve(import("../pages/Dashboard")), 1500);
         });
     });
 
@@ -25,7 +26,15 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Login")), 1300);
+            setTimeout(() => resolve(import("../pages/Login")), 1500);
+        });
+    });
+
+    const Signup = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/Signup")), 1500);
         });
     });
 
@@ -33,7 +42,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Services")), 1300);
+            setTimeout(() => resolve(import("../pages/Services")), 1500);
         });
     });
 
@@ -41,7 +50,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Orders")), 1300);
+            setTimeout(() => resolve(import("../pages/Orders")), 1500);
         });
     });
 
@@ -49,7 +58,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/ChangePassword")), 1300);
+            setTimeout(() => resolve(import("../pages/ChangePassword")), 1500);
         });
     });
 
@@ -57,7 +66,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Queries")), 1300);
+            setTimeout(() => resolve(import("../pages/Queries")), 1500);
         });
     });
 
@@ -65,7 +74,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Reviews")), 1300);
+            setTimeout(() => resolve(import("../pages/Reviews")), 1500);
         });
     });
 
@@ -73,7 +82,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Categories")), 1300);
+            setTimeout(() => resolve(import("../pages/Categories")), 1500);
         });
     });
 
@@ -81,7 +90,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Profile")), 1300);
+            setTimeout(() => resolve(import("../pages/Profile")), 1500);
         });
     });
 
@@ -89,7 +98,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/VerifyAccount")), 1300);
+            setTimeout(() => resolve(import("../pages/VerifyAccount")), 1500);
         });
     });
 
@@ -97,7 +106,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/OrderDetails")), 1300);
+            setTimeout(() => resolve(import("../pages/OrderDetails")), 1500);
         });
     });
 
@@ -105,7 +114,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/AddService")), 1300);
+            setTimeout(() => resolve(import("../pages/AddService")), 1500);
         });
     });
 
@@ -113,7 +122,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/EditService")), 1300);
+            setTimeout(() => resolve(import("../pages/EditService")), 1500);
         });
     });
 
@@ -121,7 +130,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/GenerateSales")), 1300);
+            setTimeout(() => resolve(import("../pages/GenerateSales")), 1500);
         });
     });
 
@@ -129,7 +138,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Home")), 1300);
+            setTimeout(() => resolve(import("../pages/Home")), 1500);
         });
     });
 
@@ -137,7 +146,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Verification")), 1300);
+            setTimeout(() => resolve(import("../pages/Verification")), 1500);
         });
     });
 
@@ -159,7 +168,7 @@ const MyRoutes = () =>
             />
 
             <BrowserRouter>
-                <Suspense fallback={<p>Loading...</p>}>
+                <Suspense fallback={<Loader />}>
                     <Routes>
                         {token ? <Route path="/dashboard" element={<Dashboard />}></Route> : <Route path="/home" element={<Home />}></Route>}
                         <Route element={<AdminPrivate token={token} />}>
@@ -181,7 +190,7 @@ const MyRoutes = () =>
                         <Route path="/home" element={<Home />} ></Route>
                         {!token && <Route path="/verification" element={<Verification />} ></Route>}
                         {!token && <Route path="/login" element={<Login />} ></Route>}
-                        {!token && <Route path="/signup" element={<Login />} ></Route>}
+                        {!token && <Route path="/signup" element={<Signup />} ></Route>}
                     </Routes>
                 </Suspense>
             </BrowserRouter>

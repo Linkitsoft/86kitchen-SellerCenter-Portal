@@ -189,6 +189,25 @@
         font-weight: 700;
     }
 
+    &_signup {
+        text-align: center;
+        color: #EBEAEA;
+        font-family: 'custom-semibold';
+        margin-top: 20px;
+        font-size: 14px;
+
+        span {
+            color: #97C1FF;
+            font-family: 'custom-semibold';
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        span:hover {
+            color: rgb(102, 132, 177);
+        }
+    }
+
    
     @media (max-width: 500px) {
         &_box {

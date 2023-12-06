@@ -17,7 +17,7 @@ const Topbar = () =>
                         />
                     </div>
                     <div className="topbar_right">
-                        <Link>Sign Up</Link>
+                        <Link to='/signup'>Sign Up</Link>
                         <Link to='/login'>Sign In</Link>
                     </div>
                 </div>

@@ -1,7 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const QueriesTable = () =>
 {
+    const navigate = useNavigate()
 
     const header = ['Invoice No', 'Service Name', 'Name', 'Message', 'Date', 'Total Amount', 'Actions']
     const data = [
@@ -73,7 +75,7 @@ const QueriesTable = () =>
                                 <td>{item?.msg}</td>
                                 <td>{item?.date}</td>
                                 <td>{item?.amount}</td>
-                                <td><button className='eventTable_view'>View Details</button></td>
+                                <td><button className='eventTable_view' onClick={() => navigate('/orderDetails')}>View Details</button></td>
                             </tr >
                         );
                     })}
