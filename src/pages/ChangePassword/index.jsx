@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import lockIcon from "../../assets/images/Admin-20 (21).png"
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import Sidebar from '../../components/Sidebar';
+import { passwordValidation } from '../../validationSchema';
 
 const ChangePassword = () =>
 {
@@ -15,10 +15,7 @@ const ChangePassword = () =>
         confirmPassword: '',
     };
 
-    const validationSchema = Yup.object({
-        password: Yup.string().required('Password is required'),
-        confirmPassword: Yup.string().required('Confirm password is required').oneOf([Yup.ref('password'), null], 'Passwords must match'),
-    });
+
 
     const onSubmit = (values) =>
     {
@@ -31,7 +28,7 @@ const ChangePassword = () =>
                 <Sidebar index={"7"} />
                 <div className="dashboard">
                     <p className="dashboard_title">Change Password</p>
-                    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={passwordValidation}>
                         <Form>
                             <div className='setPassword'>
                                 <div className='setPassword_wrap'>

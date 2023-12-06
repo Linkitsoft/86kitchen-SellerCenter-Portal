@@ -5,8 +5,8 @@ import Thankyou from '../../components/Modals/Thankyou'
 import backImg from "../../assets/images/Admin-20 (29).png"
 import { useNavigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import { toast } from 'react-toastify'
+import { serviceValidation } from '../../validationSchema'
 
 const AddService = () =>
 {
@@ -53,13 +53,13 @@ const AddService = () =>
         description: '',
     };
 
-    const validationSchema = Yup.object({
-        name: Yup.string().required('Category Name is required'),
-        category: Yup.string().required('Service category is required'),
-        price: Yup.string().required('Total Price is required'),
-        item: Yup.string().required('Choose Recommended Items is required'),
-        description: Yup.string().required('Description is required'),
-    });
+    // const validationSchema = Yup.object({
+    //     name: Yup.string().required('Category Name is required'),
+    //     category: Yup.string().required('Service category is required'),
+    //     price: Yup.string().required('Total Price is required'),
+    //     item: Yup.string().required('Choose Recommended Items is required'),
+    //     description: Yup.string().required('Description is required'),
+    // });
 
     const onSubmit = (values) =>
     {
@@ -74,7 +74,7 @@ const AddService = () =>
                 <div className="mainLayout_parent">
                     <Sidebar index={"2b"} />
                     <div className="verify">
-                        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={serviceValidation}>
                             <Form>
                                 <div className="addServ_header">
                                     <p className="addServ_title"><img src={backImg} alt='' onClick={() => navigate(-1)} />Add Services</p>

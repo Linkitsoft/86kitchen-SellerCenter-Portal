@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../../assets/images/Admin-20 (75).png";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { signupValidation } from "../../validationSchema";
 
 const Signup = () =>
 {
@@ -16,13 +16,6 @@ const Signup = () =>
         email: '',
         password: '',
     };
-
-    const validationSchema = Yup.object({
-        email: Yup.string().email('Invalid email address').required('Email is required'),
-        password: Yup.string().required('Password is required'),
-        confirmPassword: Yup.string().required('Confirm password is required').oneOf([Yup.ref('password'), null], 'Passwords must match'),
-    });
-
     const onSubmit = (values) =>
     {
         navigate("/login")
@@ -36,7 +29,7 @@ const Signup = () =>
                     <p className="head">Seller Center</p>
                 </div>
                 <div className="login_inputSection">
-                    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={signupValidation}>
                         <Form>
                             <div className="login_inputWrapper">
                                 <label htmlFor="email">Email:</label>

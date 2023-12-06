@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import Clickoutside from '../Clickoutside/Clickoutside';
 import { toast } from 'react-toastify';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { categoryValidation } from '../../validationSchema';
 
 const AddCategory = ({ setModal }) =>
 {
@@ -13,11 +13,6 @@ const AddCategory = ({ setModal }) =>
     const initialValues = {
         name: '',
     };
-
-    const validationSchema = Yup.object({
-        name: Yup.string().required('Category Name is required'),
-    });
-
 
     const onSubmit = (values) =>
     {
@@ -35,7 +30,7 @@ const AddCategory = ({ setModal }) =>
         <div ref={Ref} className='addCat'>
             <div ref={Ref2} className='addCat_inner'>
                 <p className='addCat_topHead'>Create Category</p>
-                <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={categoryValidation}>
                     <Form>
                         <div className='addCat_inputWrap'>
                             <label htmlFor="name">Category Name</label>

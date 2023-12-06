@@ -4,7 +4,7 @@ import logo from "../../assets/images/Admin-20 (89).png"
 import star from "../../assets/images/Admin-20 (20).png"
 import Thankyou from '../../components/Modals/Thankyou'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { verifyValidation } from '../../validationSchema'
 
 const VerifyAccount = () =>
 {
@@ -32,31 +32,6 @@ const VerifyAccount = () =>
         front: '',
         back: '',
     };
-
-    const validationSchema = Yup.object({
-
-        // personal details
-        firstName: Yup.string().required('First Name is required'),
-        lastName: Yup.string().required('Last Name is required'),
-        email: Yup.string().email('Invalid email address').required('Email is required'),
-        password: Yup.string().required('Password is required'),
-        confirmPassword: Yup.string().required('Confirm Password is required'),
-        // BUssiness location
-        address1: Yup.string().required('Address 1 is required'),
-        city: Yup.string().required('City is required'),
-        state: Yup.string().required('State is required'),
-        zipCode: Yup.string().required('Zip Code is required'),
-        // Bussiness Details
-        banner: Yup.string().required('Banner Image is required'),
-        logoInput: Yup.string().required('Profile Image is required'),
-        businessName: Yup.string().required('Business Name is required'),
-        taxId: Yup.string().required('Tax ID is required'),
-        businessPhone: Yup.string().required('Business Phone Number is required'),
-        front: Yup.mixed().required('Front ID image is required'),
-        back: Yup.mixed().required('Back ID image is required'),
-
-    });
-
 
     const handleFileChange = (event, type) =>
     {
@@ -136,7 +111,7 @@ const VerifyAccount = () =>
                             <img width={150} src={logo} alt='' />
                         </div>
                         <div className="container">
-                            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={verifyValidation}>
                                 <Form>
                                     <div className="verify_top">
                                         <div className="verify_left">
