@@ -18,7 +18,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Dashboard")), 1500);
+            setTimeout(() => resolve(import("../pages/Dashboard")), 800);
         });
     });
 
@@ -26,7 +26,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Login")), 1500);
+            setTimeout(() => resolve(import("../pages/Login")), 800);
         });
     });
 
@@ -34,7 +34,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Signup")), 1500);
+            setTimeout(() => resolve(import("../pages/Signup")), 800);
         });
     });
 
@@ -42,7 +42,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Services")), 1500);
+            setTimeout(() => resolve(import("../pages/Services")), 800);
         });
     });
 
@@ -50,7 +50,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Orders")), 1500);
+            setTimeout(() => resolve(import("../pages/Orders")), 800);
         });
     });
 
@@ -58,7 +58,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/ChangePassword")), 1500);
+            setTimeout(() => resolve(import("../pages/ChangePassword")), 800);
         });
     });
 
@@ -66,7 +66,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Queries")), 1500);
+            setTimeout(() => resolve(import("../pages/Queries")), 800);
         });
     });
 
@@ -74,23 +74,23 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Reviews")), 1500);
+            setTimeout(() => resolve(import("../pages/Reviews")), 800);
         });
     });
 
-    const Categories = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
-            setTimeout(() => resolve(import("../pages/Categories")), 1500);
-        });
-    });
+    // const Categories = lazy(() =>
+    // {
+    //     return new Promise((resolve) =>
+    //     {
+    //         setTimeout(() => resolve(import("../pages/Categories")), 800);
+    //     });
+    // });
 
     const Profile = lazy(() =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Profile")), 1500);
+            setTimeout(() => resolve(import("../pages/Profile")), 800);
         });
     });
 
@@ -98,7 +98,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/VerifyAccount")), 1500);
+            setTimeout(() => resolve(import("../pages/VerifyAccount")), 800);
         });
     });
 
@@ -106,7 +106,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/OrderDetails")), 1500);
+            setTimeout(() => resolve(import("../pages/OrderDetails")), 800);
         });
     });
 
@@ -114,7 +114,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/AddService")), 1500);
+            setTimeout(() => resolve(import("../pages/AddService")), 800);
         });
     });
 
@@ -122,7 +122,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/EditService")), 1500);
+            setTimeout(() => resolve(import("../pages/EditService")), 800);
         });
     });
 
@@ -130,7 +130,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/GenerateSales")), 1500);
+            setTimeout(() => resolve(import("../pages/GenerateSales")), 800);
         });
     });
 
@@ -138,7 +138,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Home")), 1500);
+            setTimeout(() => resolve(import("../pages/Home")), 800);
         });
     });
 
@@ -146,7 +146,7 @@ const MyRoutes = () =>
     {
         return new Promise((resolve) =>
         {
-            setTimeout(() => resolve(import("../pages/Verification")), 1500);
+            setTimeout(() => resolve(import("../pages/Verification")), 800);
         });
     });
 
@@ -178,7 +178,7 @@ const MyRoutes = () =>
                             <Route path="/changePassword" element={<ChangePassword />} ></Route>
                             <Route path="/queries" element={<Queries />} ></Route>
                             <Route path="/reviews" element={<Review />} ></Route>
-                            <Route path="/categories" element={<Categories />} ></Route>
+                            {/* <Route path="/categories" element={<Categories />} ></Route> */}
                             <Route path="/profile" element={<Profile />} ></Route>
                             <Route path="/verifyAccount" element={<VerifyAccount />} ></Route>
                             <Route path="/orderDetails" element={<OrderDetails />} ></Route>

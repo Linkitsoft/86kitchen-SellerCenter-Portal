@@ -39,20 +39,20 @@ const Sidebar = ({ index }) =>
             name: "Services",
             light: service,
             dark: servicel,
-            url: "/",
-            index: "2",
-            subMenu: [
-                {
-                    name: "Categories",
-                    url: "/categories",
-                    index: "2a",
-                },
-                {
-                    name: "Services",
-                    url: "/services",
-                    index: "2b",
-                },
-            ]
+            url: "/services",
+            index: "2b",
+            // subMenu: [
+            //     {
+            //         name: "Categories",
+            //         url: "/categories",
+            //         index: "2a",
+            //     },
+            //     {
+            //         name: "Services",
+            //         url: "/services",
+            //         index: "2b",
+            //     },
+            // ]
         },
 
         {
@@ -146,10 +146,10 @@ const Sidebar = ({ index }) =>
 
     const handleRouteClick = (item) =>
     {
-        if (item.subMenu)
+        if (item?.subMenu)
         {
-            setEvent(item.index !== event ? item.index : null);
-            disptach(toggleSidebar({ event: item.index !== event ? item.index : null }));
+            setEvent(item?.index !== event ? item?.index : null);
+            disptach(toggleSidebar({ event: item?.index !== event ? item?.index : null }));
         } else
         {
             navigate(item?.url);
@@ -223,11 +223,11 @@ const Sidebar = ({ index }) =>
                                         <li onClick={() => handleRouteClick(item)} className={index === item?.index ? "sideBar_title sideBar_active" : "sideBar_title"}>
                                             <img alt="logo" src={index === item?.index ? item?.light : item?.dark} />
                                             {item?.name}
-                                            {item.subMenu && (
-                                                <i className={event === item.index ? "fas fa-chevron-down" : "fas fa-chevron-right"}></i>
+                                            {item?.subMenu && (
+                                                <i className={event === item?.index ? "fas fa-chevron-down" : "fas fa-chevron-right"}></i>
                                             )}
                                         </li>
-                                        {event === item.index && (
+                                        {event === item?.index && (
                                             <div className="sideBar_list sideBar_active">
                                                 <ul>
                                                     {item?.subMenu?.map((res) => (

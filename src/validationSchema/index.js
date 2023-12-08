@@ -24,7 +24,7 @@ export const verifyValidation = Yup.object({
     lastName: Yup.string().required('Last Name is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().required('Password is required'),
-    confirmPassword: Yup.string().required('Confirm Password is required'),
+    confirmPassword: Yup.string().required('Confirm password is required').oneOf([Yup.ref('password'), null], 'Passwords must match'),
     // BUssiness location
     address1: Yup.string().required('Address 1 is required'),
     city: Yup.string().required('City is required'),
