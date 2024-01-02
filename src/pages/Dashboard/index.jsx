@@ -14,7 +14,7 @@ const Dashboard = () =>
 {
     const data = [
         {
-            text: "Total Category",
+            text: "Total Users",
             number: 19,
             pic: starImg,
         },

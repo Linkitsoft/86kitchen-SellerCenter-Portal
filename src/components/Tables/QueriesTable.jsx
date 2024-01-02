@@ -1,63 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { queryData } from '../../util/queryData'
 
 const QueriesTable = () =>
 {
     const navigate = useNavigate()
 
     const header = ['Invoice No', 'Service Name', 'Name', 'Message', 'Date', 'Total Amount', 'Actions']
-    const data = [
-        {
-            no: "1",
-            service: "Limited Time Offers",
-            name: "John",
-            msg: "Hi i am samantha i like your services Yellow Storm Triple",
-            date: "09 / 11 / 2023 - 08:53 PM",
-            amount: "$520"
-        },
-        {
-            no: "1",
-            service: "Limited Time Offers",
-            name: "John",
-            msg: "Hi i am samantha i like your services Yellow Storm Triple",
-            date: "09 / 11 / 2023 - 08:53 PM",
-            amount: "$520"
-        },
-        {
-            no: "1",
-            service: "Limited Time Offers",
-            name: "John",
-            msg: "Hi i am samantha i like your services Yellow Storm Triple",
-            date: "09 / 11 / 2023 - 08:53 PM",
-            amount: "$520"
-        },
-        {
-            no: "1",
-            service: "Limited Time Offers",
-            name: "John",
-            msg: "Hi i am samantha i like your services Yellow Storm Triple",
-            date: "09 / 11 / 2023 - 08:53 PM",
-            amount: "$520"
-        },
-        {
-            no: "1",
-            service: "Limited Time Offers",
-            name: "John",
-            msg: "Hi i am samantha i like your services Yellow Storm Triple",
-            date: "09 / 11 / 2023 - 08:53 PM",
-            amount: "$520"
-        },
-        {
-            no: "1",
-            service: "Limited Time Offers",
-            name: "John",
-            msg: "Hi i am samantha i like your services Yellow Storm Triple",
-            date: "09 / 11 / 2023 - 08:53 PM",
-            amount: "$520"
-        },
-    ]
-
-
+   
     return (
         <div className='eventTable'>
             <table id="table-to-xls">
@@ -65,7 +15,7 @@ const QueriesTable = () =>
                     <tr>
                         {header?.map((item) => <th>{item}</th>)}
                     </tr>
-                    {data?.map((item) =>
+                    {queryData?.map((item) =>
                     {
                         return (
                             <tr>

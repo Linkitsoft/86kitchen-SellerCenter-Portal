@@ -1,33 +1,10 @@
 import React from 'react'
+import { salesData } from '../../util/salesData';
 
 const SalesTable = ({setModal}) =>
 {
 
     const header = ['No.', 'Name', 'Amount']
-    const data = [
-        {
-            no: "1",
-            name: "Internet Connection",
-        },
-        {
-            no: "2",
-            name: "800 MB",
-        },
-        {
-            no: "3",
-            name: "Mega Discount",
-        },
-        {
-            no: "4",
-            name: "Cha100 % Fiber Optic Networkess",
-        },
-        {
-            no: "5",
-            name: "1 GB Connections",
-        },
-
-    ]
-
 
     return (
         <div className='salesTable'>
@@ -37,7 +14,7 @@ const SalesTable = ({setModal}) =>
                     <tr>
                         {header?.map((item) => <th className={item === 'Amount' && "salesTable_rightRow"}>{item}</th>)}
                     </tr>
-                    {data?.map((item) =>
+                    {salesData?.map((item) =>
                     {
                         return (
                             <tr>
