@@ -25,7 +25,7 @@ const Login = () =>
             <div className="login_box">
                 <div className="login_topHead">
                     <img src={logoImg} alt="logo" onClick={() => navigate('/home')} />
-                    <p className="head">Seller Center</p>
+                    <p className="head">Partner Center</p>
                 </div>
                 <div className="login_inputSection">
                     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={loginValidation}>

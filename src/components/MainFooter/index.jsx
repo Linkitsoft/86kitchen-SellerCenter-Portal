@@ -13,7 +13,8 @@ const MainFooter = () =>
                             <p>About</p>
                             <p>Press</p>
                             <p>Blog</p>
-                            <p>Vendor</p>
+                            <p>Partner Center</p>
+                            <p>Affiliate Center</p>
                         </div>
                     </div>
                     <div className="">

@@ -197,7 +197,7 @@ const Sidebar = ({ index }) =>
                     />
                 </div>
                 <div className="navBar_right">
-                    <p className="navBar_text">Let’s verify your acoount at 86 kitch’n seller center</p>
+                    <p className="navBar_text">Let’s verify your account at 86 kitch’n partner center</p>
                     <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
                 </div>
             </div>

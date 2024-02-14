@@ -25,7 +25,7 @@ const HeroSection = () =>
             <div className="hero_top">
                 <div className="container">
                     <div className="hero_content">
-                        <p className="hero_text">Learn About <br /> 86 Kitch’n Seller Center</p>
+                        <p className="hero_text">Learn About <br /> 86 Kitch’n Partner Center</p>
                         <video src={sample}></video>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ const HeroSection = () =>
                         <img src={leftPat} alt='' />
                     </div>
                     <div className="hero_all">
-                        <div className="hero_headmini">What Kind of Seller in 86 Kitch’n</div>
+                        <div className="hero_headmini">What Kind of Partner in 86 Kitch’n</div>
                         <div className="hero_stars">
                             <div className="hero_single">
                                 <img src={wifi1} alt='' />

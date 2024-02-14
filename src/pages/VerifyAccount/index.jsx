@@ -107,7 +107,7 @@ const VerifyAccount = () =>
                     <Sidebar index={"-1"} />
                     <div className="verify">
                         <div className="verify_header">
-                            <p className="verify_title">Let’s verify your account at 86 kitch’n seller center</p>
+                            <p className="verify_title">Let’s verify your account at 86 kitch’n partner center</p>
                             <img width={150} src={logo} alt='' />
                         </div>
                         <div className="container">
