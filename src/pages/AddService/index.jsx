@@ -66,7 +66,6 @@ const AddService = () =>
         toast.success("Service added successfully")
     };
 
-
     return (
         <div>
             <div className="mainLayout">
@@ -92,6 +91,7 @@ const AddService = () =>
                                                 {banner && <img className="addServ_file" src={banner?.previewURL} alt='' />}
                                                 {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
                                             </div>
+                                            {!banner && <div className="verify_err" style={{ textAlign: 'center' }}>Image is required</div>}
                                         </div>
                                         <div className="addServ_form">
                                             <div>
@@ -101,7 +101,11 @@ const AddService = () =>
                                             </div>
                                             <div>
                                                 <p htmlFor="category">Service Category</p>
-                                                <Field placeholder='Enter service category' type="text" id="category" name="category" />
+                                                <Field as="select" id="category" name="category">
+                                                    <option value="Fiber" selected hidden>Select Service Category</option>
+                                                    <option value="Fiber">Storm Fiber</option>
+                                                    <option value="Optical">Optical</option>
+                                                </Field>
                                                 <ErrorMessage className="verify_err" name="category" component="div" />
                                             </div>
                                             <div>
@@ -113,7 +117,11 @@ const AddService = () =>
                                         <div className="addServ_form">
                                             <div>
                                                 <p htmlFor="name">Choose Recommended Items</p>
-                                                <Field type='text' placeholder='Choose recommended items' id="item" name="item" />
+                                                <Field as='select' placeholder='Choose recommended items' id="item" name="item">
+                                                <option value="Fiber" selected hidden>Select Recommended Items</option>
+                                                <option value="Fiber">Item 1</option>
+                                                <option value="Optical">Item 2</option>
+                                                </Field>
                                                 <ErrorMessage className="verify_err" name="item" component="div" />
                                             </div>
                                             <div>

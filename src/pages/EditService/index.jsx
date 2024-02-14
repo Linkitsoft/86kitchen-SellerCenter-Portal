@@ -93,7 +93,11 @@ const EditService = () =>
                                             </div>
                                             <div>
                                                 <p htmlFor="category">Service Category</p>
-                                                <Field placeholder='Enter service category' type="text" id="category" name="category" />
+                                                <Field as="select" id="category" name="category">
+                                                    <option value="Fiber" selected hidden>Select Service Category</option>
+                                                    <option value="Fiber">Storm Fiber</option>
+                                                    <option value="Optical">Optical</option>
+                                                </Field>
                                                 <ErrorMessage className="verify_err" name="category" component="div" />
                                             </div>
                                             <div>
