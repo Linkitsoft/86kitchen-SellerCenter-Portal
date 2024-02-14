@@ -3,18 +3,21 @@ import { useNavigate } from "react-router-dom";
 import logoImg from "../../assets/images/Admin-20 (75).png";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { signupValidation } from "../../validationSchema";
+import Recaptcha from "../../components/Recaptcha";
 
 const Signup = () =>
 {
 
     const [eyeIcon, setEyeIcon] = useState(false);
     const [eyeIcon2, setEyeIcon2] = useState(false);
+    const [captchaValue, setCaptchaValue] = useState(null);
 
     const navigate = useNavigate()
 
     const initialValues = {
         email: '',
         password: '',
+        confirmPassword: ''
     };
     const onSubmit = (values) =>
     {
@@ -62,9 +65,13 @@ const Signup = () =>
                                 ></i>
                                 <ErrorMessage className="login_err" name="confirmPassword" component="div" />
                             </div>
-                            <div className="login_loginBtn">
-                                <button type="submit">Sign Up</button>
+                            <div className="login_inputWrapper">
+                                <Recaptcha captchaValue={captchaValue} setCaptchaValue={setCaptchaValue} />
                             </div>
+                            {captchaValue &&
+                                <div className="login_loginBtn">
+                                    <button type="submit">Sign Up</button>
+                                </div>}
                             <p className="login_signup">Already have an account? <span onClick={() => navigate("/login")}>Sign In</span></p>
                         </Form>
                     </Formik>

@@ -1,24 +1,24 @@
 * {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
 }
 
 
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 8px;
+    width: 3px;
+    height: 8px;
 }
 
 
 :-webkit-scrollbar {
-  width: 3px;
+    width: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c4c3c2;
-  border-radius: 6px;
+    background: #c4c3c2;
+    border-radius: 6px;
 }
 
 
@@ -26,39 +26,76 @@
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 p {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .mainLayout {
-  display: flex;
-  height: 100vh;
-  overflow: auto;
-  display: flex;
-  width: 100%;
-  background: #F0F0F0;
-
-  &_parent {
+    display: flex;
+    height: 100vh;
+    overflow: auto;
     display: flex;
     width: 100%;
-    position: relative;
-  }
+    background: #F0F0F0;
+
+    &_parent {
+        display: flex;
+        width: 100%;
+        position: relative;
+    }
 }
 
 
 .background {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-  &_content {
-    flex: 1;
-  }
+    &_content {
+        flex: 1;
+    }
 }
+
+.custom-recaptcha {
+    text-align: center;
+    margin: 15px auto;
+
+    // div {
+    //     width: 100% !important;
+    // }
+}
+
+// .rc-anchor-normal {
+//     width: 100% !important;
+// }
+
+// .rc-anchor .rc-anchor-normal .rc-anchor-light {
+//     width: 100% !important;
+
+// }
+
+// #rc-anchor-container {
+//     width: 100% !important;
+// }
+
+// div#rc-anchor-container {
+//     width: 100% !important;
+// }
+
+// iframe {
+//     width: 100% !important;
+
+//     div {
+//         width: 100% !important;
+//     }
+// }
+// .rc-anchor-alert {
+//     display: none
+// }
 
 // Typo
 @import './typography';
