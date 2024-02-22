@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from "../../assets/images/Admin-20 (89).png"
+import { webUrls } from '../../util/webUrls'
 
 const MainFooter = () =>
 {
@@ -7,7 +8,7 @@ const MainFooter = () =>
         <div className="mainFooter">
             <div className="container">
                 <div className="mainFooter_top">
-                    <div className="">
+                    <div>
                         <p className="mainFooter_head">86kitch’n </p>
                         <div className="mainFooter_item">
                             <p>About</p>
@@ -17,7 +18,7 @@ const MainFooter = () =>
                             <p>Affiliate Center</p>
                         </div>
                     </div>
-                    <div className="">
+                    <div>
                         <p className="mainFooter_head">Services </p>
                         <div className="mainFooter_subtwo">
                             <div className="mainFooter_item">
@@ -33,13 +34,21 @@ const MainFooter = () =>
                             </div>
                         </div>
                     </div>
-                    <div className="">
+                    <div>
                         <p className="mainFooter_head">Support </p>
                         <div className="mainFooter_item">
                             <p>Help</p>
                             <p>Safety</p>
                             <p>Terms of use</p>
                             <p>Privacy Policy</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p className="mainFooter_head">Links</p>
+                        <div className="mainFooter_item">
+                            <p> <a target='_blank' rel='noreferrer' href={webUrls.marketPlace}>Marketplace </a></p>
+                            <p> <a target='_blank' rel='noreferrer' href={webUrls.superAdmin}>Super Admin </a></p>
+                            <p> <a target='_blank' rel='noreferrer' href={webUrls.affiliate}>Affiliate Center </a></p>
                         </div>
                     </div>
                 </div>

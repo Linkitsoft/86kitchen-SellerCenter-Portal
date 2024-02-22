@@ -51,6 +51,18 @@
 
         p {
             margin: 5px 0;
+            cursor: pointer;
+        }
+
+        a:hover,
+        p:hover {
+            color: #B91C1C;
+        }
+
+        a {
+            text-decoration: none;
+            color: #b9b9b9;
+
         }
     }
 }
@@ -64,10 +76,20 @@
         &_head {
             font-size: 12px;
         }
+
         &_item {
             p {
                 font-size: 11px;
             }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    .mainFooter {
+
+        &_top {
+            flex-wrap: wrap;
         }
     }
 }
