@@ -1,27 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../../assets/images/Admin-20 (75).png";
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { loginValidation } from "../../validationSchema";
-import Recaptcha from "../../components/Recaptcha";
+import LoginForm from "../../components/Forms/LoginForm";
 
 const Login = () =>
 {
-
-    const [eyeIcon, setEyeIcon] = useState(false);
-    const [captchaValue, setCaptchaValue] = useState(null);
-
     const navigate = useNavigate()
-
-    const initialValues = {
-        email: '',
-        password: '',
-    };
-
-    const onSubmit = (values) =>
-    {
-        navigate("/verification", { state: { fromLogin: true } })
-    };
 
     return (
         <div className="login">
@@ -31,36 +15,7 @@ const Login = () =>
                     <p className="head">Partner Center</p>
                 </div>
                 <div className="login_inputSection">
-                    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={loginValidation}>
-                        <Form>
-                            <div className="login_inputWrapper">
-                                <label htmlFor="email">Email:</label>
-                                <Field type="text" id="email" name="email" />
-                                <ErrorMessage className="login_err" name="email" component="div" />
-                            </div>
-                            <div className="login_inputWrapper">
-                                <label htmlFor="password">Password</label>
-                                <Field type={eyeIcon === false ? "password" : "text"} id="password" name="password" />
-                                <i
-                                    onClick={() => setEyeIcon(!eyeIcon)}
-                                    className={
-                                        eyeIcon === false
-                                            ? "fa-regular showEye fa-eye-slash"
-                                            : "fa-regular showEye fa-eye"
-                                    }
-                                ></i>
-                                <ErrorMessage className="login_err" name="password" component="div" />
-                            </div>
-                            <div className="login_inputWrapper">
-                                <Recaptcha captchaValue={captchaValue} setCaptchaValue={setCaptchaValue} />
-                            </div>
-                            {captchaValue &&
-                                <div className="login_loginBtn">
-                                    <button type="submit">Sign In</button>
-                                </div>}
-                            <p className="login_signup">Don’t have an account? <span onClick={() => navigate("/signup")}>Sign up</span></p>
-                        </Form>
-                    </Formik>
+                    <LoginForm />
                 </div>
             </div>
         </div>
