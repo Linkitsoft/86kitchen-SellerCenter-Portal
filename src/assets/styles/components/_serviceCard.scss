@@ -1,6 +1,11 @@
 .serviceCard {
     box-shadow: 0 0 3px rgb(0 0 0 / 20%);
     position: relative;
+    transition: 0.3s ease-in 100ms;
+    background-color: white;
+    z-index: 99;
+    padding: 5px;
+    cursor: pointer;
 
     &_img {
         width: 100%;
@@ -64,4 +69,8 @@
         font-size: 13px;
         margin: 10px 0;
     }
+}
+
+.serviceCard:hover {
+    transform: scale(1.1);
 }

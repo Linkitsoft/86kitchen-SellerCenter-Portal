@@ -4,15 +4,19 @@ import { Pagination } from 'swiper/modules';
 import ServiceCard from '../ServiceCard';
 import { eventData } from '../../util/eventData';
 import { cardData } from '../../util/cardData';
+import ViewService from '../Modals/ViewService';
 
 // import { sportData } from '../../utils/sportData'
 
 const MainServiceSection = ({ fullView }) =>
 {
     const [clickIndex, setClickIndex] = useState("All")
+    const [modal, setModal] = useState('')
 
     return (
-        <div className='eventsSection' style={{maxHeight: fullView ? "calc(100vh - 227px)" : "calc(100vh - 347px)"}}>
+        <div className='eventsSection' style={{ maxHeight: fullView ? "calc(100vh - 227px)" : "calc(100vh - 347px)" }}>
+            {modal === 'view' && <ViewService setModal={setModal} />}
+
             <div className='eventsSection_swiperWrap'>
                 <Swiper
                     slidesPerView={'auto'}
@@ -42,14 +46,15 @@ const MainServiceSection = ({ fullView }) =>
             </div>
             <div className="eventsSection_cards">
                 {
-                    cardData.map((item, index) => {
+                    cardData.map((item, index) =>
+                    {
                         return (
-                            <ServiceCard key={index} item={item}/>
+                            <ServiceCard key={index} item={item} setModal={setModal} />
                         )
                     })
                 }
             </div>
-           
+
         </div>
     )
 }
