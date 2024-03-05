@@ -47,7 +47,7 @@ const MainFooter = () =>
                         <p className="mainFooter_head">Links</p>
                         <div className="mainFooter_item">
                             <p> <a target='_blank' rel='noreferrer' href={webUrls.marketPlace}>Marketplace </a></p>
-                            <p> <a target='_blank' rel='noreferrer' href={webUrls.superAdmin}>Super Admin </a></p>
+                            {/* <p> <a target='_blank' rel='noreferrer' href={webUrls.superAdmin}>Super Admin </a></p> */}
                             <p> <a target='_blank' rel='noreferrer' href={webUrls.affiliate}>Affiliate Center </a></p>
                         </div>
                     </div>

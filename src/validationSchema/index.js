@@ -31,13 +31,14 @@ export const verifyValidation = Yup.object({
     state: Yup.string().required('State is required'),
     zipCode: Yup.string().required('Zip Code is required'),
     // Bussiness Details
-    banner: Yup.string().required('Banner Image is required'),
-    logoInput: Yup.string().required('Profile Image is required'),
     businessName: Yup.string().required('Business Name is required'),
     taxId: Yup.string().required('Tax ID is required'),
-    businessPhone: Yup.string().required('Business Phone Number is required'),
-    front: Yup.mixed().required('Front ID image is required'),
-    back: Yup.mixed().required('Back ID image is required'),
+    // businessPhone: Yup.string().required('Business Phone Number is required'),
+
+    // front: Yup.mixed().required('Front ID image is required'),
+    // back: Yup.mixed().required('Back ID image is required'),
+    // banner: Yup.string().required('Banner Image is required'),
+    // logoInput: Yup.string().required('Profile Image is required'),
 
 });
 
