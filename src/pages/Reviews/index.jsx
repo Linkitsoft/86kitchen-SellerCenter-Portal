@@ -1,25 +1,10 @@
 import React from 'react'
-import ReviewCard from '../../components/ReviewCard'
+import ReviewsContent from '../../components/PagesContent/ReviewsContent'
 
 const Reviews = () =>
 {
-
     return (
-        <div className="dashboard">
-            <p className='dashboard_title'>Reviews</p>
-            <div className="dashboard_review">
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-                <ReviewCard />
-            </div>
-        </div>
+       <ReviewsContent />
     )
 }
 
