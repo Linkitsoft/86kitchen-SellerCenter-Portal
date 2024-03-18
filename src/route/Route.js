@@ -5,6 +5,7 @@ import { lazy } from "react";
 import AdminPrivate from './adminPrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import Loader from '../components/Loader';
+import Mainlayout from '../Layouts/Mainlayout';
 // import Loader from '../components/Loader';
 
 const MyRoutes = () =>
@@ -170,21 +171,22 @@ const MyRoutes = () =>
             <BrowserRouter>
                 <Suspense fallback={<Loader />}>
                     <Routes>
-                        {token ? <Route path="/dashboard" element={<Dashboard />}></Route> : <Route path="/home" element={<Home />}></Route>}
+                        {token ? <Route element={<Mainlayout />}><Route path="/dashboard" element={<Dashboard />}></Route></Route> : <Route path="/home" element={<Home />}></Route>}
                         <Route element={<AdminPrivate token={token} />}>
-                            <Route path="/dashboard" element={<Dashboard />}></Route>
-                            <Route path="/services" element={<Services />} ></Route>
-                            <Route path="/orders" element={<Orders />} ></Route>
-                            <Route path="/changePassword" element={<ChangePassword />} ></Route>
-                            <Route path="/queries" element={<Queries />} ></Route>
-                            <Route path="/reviews" element={<Review />} ></Route>
-                            {/* <Route path="/categories" element={<Categories />} ></Route> */}
-                            <Route path="/profile" element={<Profile />} ></Route>
-                            <Route path="/verifyAccount" element={<VerifyAccount />} ></Route>
-                            <Route path="/orderDetails" element={<OrderDetails />} ></Route>
-                            <Route path="/addService" element={<AddService />} ></Route>
-                            <Route path="/editService" element={<EditService />} ></Route>
-                            <Route path="/generateSales" element={<GenerateSales />} ></Route>
+                            <Route element={<Mainlayout />}>
+                                <Route path="/dashboard" element={<Dashboard />}></Route>
+                                <Route path="/services" element={<Services />} ></Route>
+                                <Route path="/orders" element={<Orders />} ></Route>
+                                <Route path="/changePassword" element={<ChangePassword />} ></Route>
+                                <Route path="/queries" element={<Queries />} ></Route>
+                                <Route path="/reviews" element={<Review />} ></Route>
+                                <Route path="/profile" element={<Profile />} ></Route>
+                                <Route path="/verifyAccount" element={<VerifyAccount />} ></Route>
+                                <Route path="/orderDetails" element={<OrderDetails />} ></Route>
+                                <Route path="/addService" element={<AddService />} ></Route>
+                                <Route path="/editService" element={<EditService />} ></Route>
+                                <Route path="/generateSales" element={<GenerateSales />} ></Route>
+                            </Route>
                         </Route>
                         <Route path="*" element={token ? (<Navigate to="/dashboard" replace />) : (<Navigate to="/home" replace />)}></Route>
                         <Route path="/home" element={<Home />} ></Route>

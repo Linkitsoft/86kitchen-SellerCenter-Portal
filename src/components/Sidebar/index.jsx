@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import logoImg from "../../assets/images/Admin-20 (75).png";
 import circleImg from "../../assets/images/Admin-20 (86).png";
 import home from "../../assets/images/Admin-20 (2).png";
@@ -27,6 +27,8 @@ const Sidebar = ({ index }) =>
 {
     const [open, setOpen] = useState(true);
     const [showSidebar, setShowSidebar] = useState(false);
+    const location = useLocation();
+    console.log("loca", location)
     const [list] = useState([
         {
             name: "Dashboard",
@@ -34,6 +36,7 @@ const Sidebar = ({ index }) =>
             dark: homel,
             url: "/dashboard",
             index: "1",
+            parentRoute: null
         },
         {
             name: "Services",
@@ -41,6 +44,7 @@ const Sidebar = ({ index }) =>
             dark: servicel,
             url: "/services",
             index: "2b",
+            parentRoute: ['/addService', '/editService'],
             // subMenu: [
             //     {
             //         name: "Categories",
@@ -61,6 +65,7 @@ const Sidebar = ({ index }) =>
             dark: revl,
             url: "/reviews",
             index: "3",
+            parentRoute: null
         },
 
         {
@@ -69,6 +74,7 @@ const Sidebar = ({ index }) =>
             dark: orderl,
             url: "/orders",
             index: "4",
+            parentRoute: ['/orderDetails', '/generateSales']
         },
 
         {
@@ -77,6 +83,7 @@ const Sidebar = ({ index }) =>
             dark: qsl,
             url: "/queries",
             index: "5",
+            parentRoute: null
         },
 
         {
@@ -85,6 +92,7 @@ const Sidebar = ({ index }) =>
             dark: profl,
             url: "/profile",
             index: "6",
+            parentRoute: null
         },
         {
             name: "Change Password",
@@ -92,6 +100,7 @@ const Sidebar = ({ index }) =>
             dark: passl,
             url: "/changePassword",
             index: "7",
+            parentRoute: null
         },
     ])
     const disptach = useDispatch()
@@ -220,8 +229,8 @@ const Sidebar = ({ index }) =>
                             {
                                 return (
                                     <>
-                                        <li onClick={() => handleRouteClick(item)} className={index === item?.index ? "sideBar_title sideBar_active" : "sideBar_title"}>
-                                            <img alt="logo" src={index === item?.index ? item?.light : item?.dark} />
+                                        <li onClick={() => handleRouteClick(item)} className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active" : "sideBar_title"}>
+                                            <img alt="logo" src={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname))  ? item?.light : item?.dark} />
                                             {item?.name}
                                             {item?.subMenu && (
                                                 <i className={event === item?.index ? "fas fa-chevron-down" : "fas fa-chevron-right"}></i>
@@ -233,7 +242,7 @@ const Sidebar = ({ index }) =>
                                                     {item?.subMenu?.map((res) => (
                                                         <li
                                                             key={res.index}
-                                                            className={index === res.index ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}
+                                                            className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}
                                                             onClick={() => handleSubMenu(res)}>
                                                             {res.name}
                                                         </li>
