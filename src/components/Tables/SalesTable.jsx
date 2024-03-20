@@ -12,12 +12,12 @@ const SalesTable = ({setModal}) =>
             <table id="table-to-xls">
                 <tbody>
                     <tr>
-                        {header?.map((item) => <th className={item === 'Amount' && "salesTable_rightRow"}>{item}</th>)}
+                        {header?.map((item, index) => <th key={index} className={item === 'Amount' && "salesTable_rightRow"}>{item}</th>)}
                     </tr>
-                    {salesData?.map((item) =>
+                    {salesData?.map((item, index) =>
                     {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td>{item?.no}</td>
                                 <td>
                                     <p className="salesTable_title">Limited Time Offers</p>

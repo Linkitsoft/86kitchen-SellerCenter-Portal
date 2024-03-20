@@ -34,12 +34,12 @@ const CategoryTable = ({setModal}) =>
             <table id="table-to-xls">
                 <tbody>
                     <tr>
-                        {header?.map((item) => <th className={item === '' && "eventTable_rightRow"}>{item}</th>)}
+                        {header?.map((item, index) => <th key={index} className={item === '' && "eventTable_rightRow"}>{item}</th>)}
                     </tr>
-                    {data?.map((item) =>
+                    {data?.map((item, index) =>
                     {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td>{item?.no}</td>
                                 <td>{item?.name}</td>
                                

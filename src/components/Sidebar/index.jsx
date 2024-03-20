@@ -228,8 +228,8 @@ const Sidebar = ({ index }) =>
                             {list?.map(item =>
                             {
                                 return (
-                                    <>
-                                        <li onClick={() => handleRouteClick(item)} className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active" : "sideBar_title"}>
+                                    <div key={item?.index}>
+                                        <li key={item?.index} onClick={() => handleRouteClick(item)} className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active" : "sideBar_title"}>
                                             <img alt="logo" src={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname))  ? item?.light : item?.dark} />
                                             {item?.name}
                                             {item?.subMenu && (
@@ -250,7 +250,7 @@ const Sidebar = ({ index }) =>
                                                 </ul>
                                             </div>
                                         )}
-                                    </>
+                                    </div>
                                 )
                             })}
 

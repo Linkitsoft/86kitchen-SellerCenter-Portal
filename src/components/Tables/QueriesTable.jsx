@@ -13,12 +13,12 @@ const QueriesTable = () =>
             <table id="table-to-xls">
                 <tbody>
                     <tr>
-                        {header?.map((item) => <th>{item}</th>)}
+                        {header?.map((item, index) => <th key={index}>{item}</th>)}
                     </tr>
-                    {queryData?.map((item) =>
+                    {queryData?.map((item, index) =>
                     {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td>{item?.no}</td>
                                 <td>{item?.service}</td>
                                 <td>{item?.name}</td>

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
 import ServiceCard from '../ServiceCard';
 import { eventData } from '../../util/eventData';
 import { cardData } from '../../util/cardData';
 import ViewService from '../Modals/ViewService';
+import ServiceSwiper from '../Swipers/ServiceSwiper';
 
 // import { sportData } from '../../utils/sportData'
 
@@ -18,41 +17,10 @@ const MainServiceSection = ({ fullView }) =>
             {modal === 'view' && <ViewService setModal={setModal} />}
 
             <div className='eventsSection_swiperWrap'>
-                <Swiper
-                    slidesPerView={'auto'}
-                    spaceBetween={30}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    modules={[Pagination]}
-                    className="mySwiper"
-                >
-                    <SwiperSlide>
-                        <div onClick={() => setClickIndex("All")} className={clickIndex === "All" ? "eventsSection_optionSelect" : 'eventsSection_option'}>
-                            <p>All</p>
-                        </div>
-                    </SwiperSlide>
-                    {eventData?.map((item, index) =>
-                    {
-                        return (
-                            <SwiperSlide>
-                                <div onClick={() => { setClickIndex(index) }} className={clickIndex === index ? "eventsSection_optionSelect" : 'eventsSection_option'}>
-                                    <p>{item?.name}</p>
-                                </div>
-                            </SwiperSlide>
-                        )
-                    })}
-                </Swiper>
+               <ServiceSwiper clickIndex={clickIndex} setClickIndex={setClickIndex} eventData={eventData}/>
             </div>
             <div className="eventsSection_cards">
-                {
-                    cardData.map((item, index) =>
-                    {
-                        return (
-                            <ServiceCard key={index} item={item} setModal={setModal} />
-                        )
-                    })
-                }
+                {cardData.map((item, index) => <ServiceCard key={index} item={item} setModal={setModal} />)}
             </div>
 
         </div>
