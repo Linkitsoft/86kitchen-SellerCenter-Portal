@@ -2,13 +2,14 @@ import React, { useEffect, useRef } from 'react'
 import Clickoutside from '../Clickoutside/Clickoutside';
 import bg from "../../assets/images/Admin-20 (22).png"
 import { useNavigate } from 'react-router-dom';
-
+import RoleAccess from '../RoleAccess';
+import useUserRole from '../../hooks/useUserRole';
 const ViewService = ({ setModal }) =>
 {
     const Ref = useRef();
     const Ref2 = useRef();
     const navigate = useNavigate()
-    
+    const roles = useUserRole()
     useEffect(() =>
     {
         Clickoutside(Ref, Ref2, setModal)
@@ -30,7 +31,10 @@ const ViewService = ({ setModal }) =>
                     <p>Total Orders:</p>
                     <p>50</p>
                 </div>
-                <button onClick={() => navigate('/editService')} className='viewService_btn'>Edit</button>
+                <RoleAccess role={roles.create}>
+                    <button onClick={() => navigate('/editService')} className='viewService_btn'>Edit</button>
+
+                </RoleAccess>
             </div>
         </div>
     )

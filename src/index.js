@@ -5,15 +5,18 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 import { Provider } from "react-redux";
 import ErrorBoundary from './components/ErrorBoundary'
+import { UserProvider } from './context/userContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <ErrorBoundary>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </ErrorBoundary>
+        <UserProvider>
+            <ErrorBoundary>
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            </ErrorBoundary>
+        </UserProvider>
     </React.StrictMode>
 );
 

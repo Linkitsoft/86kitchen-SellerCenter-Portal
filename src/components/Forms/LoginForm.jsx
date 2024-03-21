@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { loginValidation } from "../../validationSchema";
 import Recaptcha from "../../components/Recaptcha";
+import { useUser } from "../../context/userContext";
 
 const LoginForm = () =>
 {
@@ -10,6 +11,7 @@ const LoginForm = () =>
     const [captchaValue, setCaptchaValue] = useState(null);
 
     const navigate = useNavigate()
+    const { setUser } = useUser()
 
     const initialValues = {
         email: '',
@@ -18,6 +20,13 @@ const LoginForm = () =>
 
     const onSubmit = (values) =>
     {
+        if (values.email === 'superadmin@gmail.com')
+        {
+            setUser("admin")
+        } else
+        {
+            setUser("user")
+        }
         navigate("/verification", { state: { fromLogin: true } })
     };
 

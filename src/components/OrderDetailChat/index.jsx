@@ -1,16 +1,20 @@
-import React, {useEffect, useRef} from 'react'
+import React, { useEffect, useRef } from 'react'
 import att from "../../assets/images/Admin-20 (27).png"
 import sample from "../../assets/images/Admin-20 (24).png"
 import sample1 from "../../assets/images/Admin-20 (34).png"
 import send from "../../assets/images/vdd-01.png"
+import RoleAccess from '../RoleAccess'
+import useUserRole from '../../hooks/useUserRole'
 
 const OrderDetailChat = () =>
 {
     const chatInnerRef = useRef(null);
-
-    useEffect(() => {
+    const roles = useUserRole()
+    
+    useEffect(() =>
+    {
         chatInnerRef.current.scrollTop = chatInnerRef.current.scrollHeight;
-      }, []); 
+    }, []);
 
     return (
         <div className="od_right">
@@ -101,13 +105,15 @@ const OrderDetailChat = () =>
                     <p>12:12</p>
                 </div>
             </div>
-            <div className="od_chatBottom">
-                <input type='text' placeholder='Type message..' />
-                <div className="od_chatSend">
-                    <img style={{ width: "20px" }} src={att} alt='' />
-                    <img src={send} alt='' />
+            <RoleAccess role={roles?.create}>
+                <div className="od_chatBottom">
+                    <input type='text' placeholder='Type message..' />
+                    <div className="od_chatSend">
+                        <img style={{ width: "20px" }} src={att} alt='' />
+                        <img src={send} alt='' />
+                    </div>
                 </div>
-            </div>
+            </RoleAccess>
         </div>
     )
 }

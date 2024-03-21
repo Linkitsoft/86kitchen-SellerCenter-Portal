@@ -6,14 +6,13 @@ import AdminPrivate from './adminPrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import Loader from '../components/Loader';
 import Mainlayout from '../Layouts/Mainlayout';
+import useUserRole from '../hooks/useUserRole';
 // import Loader from '../components/Loader';
 
 const MyRoutes = () =>
 {
     const token = localStorage?.getItem("token");
-
-
-
+    const roles = useUserRole()
 
     const Dashboard = lazy(() =>
     {
@@ -152,7 +151,59 @@ const MyRoutes = () =>
     });
 
 
-
+    const allRoutes = [
+        {
+            path: 'dashboard',
+            element: <Dashboard />
+        },
+        {
+            path: 'services',
+            element: <Services />
+        },
+        {
+            path: 'orders',
+            element: <Orders />
+        },
+        {
+            path: 'changePassword',
+            element: <ChangePassword />
+        },
+        {
+            path: 'queries',
+            element: <Queries />
+        },
+        {
+            path: 'reviews',
+            element: <Review />
+        },
+        {
+            path: 'profile',
+            element: <Profile />
+        },
+        {
+            path: 'verifyAccount',
+            element: <VerifyAccount />
+        },
+        {
+            path: 'orderDetails',
+            element: <OrderDetails />
+        },
+        {
+            path: 'addService',
+            element: <AddService />
+        },
+        {
+            path: 'editService',
+            element: <EditService />
+        },
+        {
+            path: 'generateSales',
+            element: <GenerateSales />
+        }
+    ];
+    const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));
+    console.log("filteredRoutes", filteredRoutes)
+    console.log("roles", roles)
     return (
         <>
             <ToastContainer
@@ -174,7 +225,10 @@ const MyRoutes = () =>
                         {token ? <Route element={<Mainlayout />}><Route path="/dashboard" element={<Dashboard />}></Route></Route> : <Route path="/home" element={<Home />}></Route>}
                         <Route element={<AdminPrivate token={token} />}>
                             <Route element={<Mainlayout />}>
-                                <Route path="/dashboard" element={<Dashboard />}></Route>
+                                {filteredRoutes.map((item) => (
+                                    <Route key={item.path} path={`/${ item.path }`} element={item.element} />
+                                ))}
+                                {/* <Route path="/dashboard" element={<Dashboard />}></Route>
                                 <Route path="/services" element={<Services />} ></Route>
                                 <Route path="/orders" element={<Orders />} ></Route>
                                 <Route path="/changePassword" element={<ChangePassword />} ></Route>
@@ -185,7 +239,7 @@ const MyRoutes = () =>
                                 <Route path="/orderDetails" element={<OrderDetails />} ></Route>
                                 <Route path="/addService" element={<AddService />} ></Route>
                                 <Route path="/editService" element={<EditService />} ></Route>
-                                <Route path="/generateSales" element={<GenerateSales />} ></Route>
+                                <Route path="/generateSales" element={<GenerateSales />} ></Route> */}
                             </Route>
                         </Route>
                         <Route path="*" element={token ? (<Navigate to="/dashboard" replace />) : (<Navigate to="/home" replace />)}></Route>

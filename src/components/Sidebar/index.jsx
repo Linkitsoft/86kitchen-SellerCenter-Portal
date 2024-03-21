@@ -22,13 +22,15 @@ import passl from "../../assets/images/Admin-20 (13).png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../../redux/reducers/info";
+import RoleAccess from "../RoleAccess";
+import useUserRole from "../../hooks/useUserRole";
 
 const Sidebar = ({ index }) =>
 {
     const [open, setOpen] = useState(true);
     const [showSidebar, setShowSidebar] = useState(false);
     const location = useLocation();
-    console.log("loca", location)
+    const roles = useUserRole()
     const [list] = useState([
         {
             name: "Dashboard",
@@ -36,7 +38,8 @@ const Sidebar = ({ index }) =>
             dark: homel,
             url: "/dashboard",
             index: "1",
-            parentRoute: null
+            parentRoute: null,
+            id: "dashboard"
         },
         {
             name: "Services",
@@ -45,6 +48,7 @@ const Sidebar = ({ index }) =>
             url: "/services",
             index: "2b",
             parentRoute: ['/addService', '/editService'],
+            id: "services"
             // subMenu: [
             //     {
             //         name: "Categories",
@@ -65,7 +69,9 @@ const Sidebar = ({ index }) =>
             dark: revl,
             url: "/reviews",
             index: "3",
-            parentRoute: null
+            parentRoute: null,
+            id: "reviews"
+
         },
 
         {
@@ -74,7 +80,8 @@ const Sidebar = ({ index }) =>
             dark: orderl,
             url: "/orders",
             index: "4",
-            parentRoute: ['/orderDetails', '/generateSales']
+            parentRoute: ['/orderDetails', '/generateSales'],
+            id: 'orders'
         },
 
         {
@@ -83,7 +90,8 @@ const Sidebar = ({ index }) =>
             dark: qsl,
             url: "/queries",
             index: "5",
-            parentRoute: null
+            parentRoute: null,
+            id: "queries"
         },
 
         {
@@ -92,7 +100,8 @@ const Sidebar = ({ index }) =>
             dark: profl,
             url: "/profile",
             index: "6",
-            parentRoute: null
+            parentRoute: null,
+            id: "profile"
         },
         {
             name: "Change Password",
@@ -100,7 +109,8 @@ const Sidebar = ({ index }) =>
             dark: passl,
             url: "/changePassword",
             index: "7",
-            parentRoute: null
+            parentRoute: null,
+            id: "changePassword"
         },
     ])
     const disptach = useDispatch()
@@ -205,10 +215,12 @@ const Sidebar = ({ index }) =>
                         onClick={() => handleRoute("")}
                     />
                 </div>
-                <div className="navBar_right">
-                    <p className="navBar_text">Let’s verify your account at 86 kitch’n partner center</p>
-                    <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
-                </div>
+                <RoleAccess role={roles.create}>
+                    <div className="navBar_right">
+                        <p className="navBar_text">Let’s verify your account at 86 kitch’n partner center</p>
+                        <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
+                    </div>
+                </RoleAccess>
             </div>
             {
                 showSidebar &&
@@ -229,23 +241,27 @@ const Sidebar = ({ index }) =>
                             {
                                 return (
                                     <div key={item?.index}>
-                                        <li key={item?.index} onClick={() => handleRouteClick(item)} className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active" : "sideBar_title"}>
-                                            <img alt="logo" src={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname))  ? item?.light : item?.dark} />
-                                            {item?.name}
-                                            {item?.subMenu && (
-                                                <i className={event === item?.index ? "fas fa-chevron-down" : "fas fa-chevron-right"}></i>
-                                            )}
-                                        </li>
+                                        <RoleAccess role={!roles?.hide?.includes(item?.id)}>
+                                            <li key={item?.index} onClick={() => handleRouteClick(item)} className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active" : "sideBar_title"}>
+                                                <img alt="logo" src={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? item?.light : item?.dark} />
+                                                {item?.name}
+                                                {item?.subMenu && (
+                                                    <i className={event === item?.index ? "fas fa-chevron-down" : "fas fa-chevron-right"}></i>
+                                                )}
+                                            </li>
+                                        </RoleAccess>
                                         {event === item?.index && (
                                             <div className="sideBar_list sideBar_active">
                                                 <ul>
                                                     {item?.subMenu?.map((res) => (
-                                                        <li
-                                                            key={res.index}
-                                                            className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}
-                                                            onClick={() => handleSubMenu(res)}>
-                                                            {res.name}
-                                                        </li>
+                                                        <RoleAccess role={!roles?.hide?.includes(res?.id)}>
+                                                            <li
+                                                                key={res.index}
+                                                                className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}
+                                                                onClick={() => handleSubMenu(res)}>
+                                                                {res.name}
+                                                            </li>
+                                                        </RoleAccess>
                                                     ))}
                                                 </ul>
                                             </div>
