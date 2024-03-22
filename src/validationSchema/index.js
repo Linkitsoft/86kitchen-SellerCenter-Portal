@@ -10,6 +10,7 @@ export const serviceValidation = Yup.object({
     price: Yup.string().required('Total Price is required'),
     item: Yup.string().required('Choose Recommended Items is required'),
     description: Yup.string().required('Description is required'),
+    commision: Yup.string().required('Commision is required'),
 });
 
 export const passwordValidation = Yup.object({

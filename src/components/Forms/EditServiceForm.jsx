@@ -48,6 +48,7 @@ const EditServiceForm = () =>
         price: '',
         item: '',
         description: '',
+        commision: null,
     };
 
     const onSubmit = (values) =>
@@ -100,7 +101,11 @@ const EditServiceForm = () =>
                         <div className="addServ_form">
                             <div>
                                 <p htmlFor="name">Choose Recommended Items</p>
-                                <Field type='text' placeholder='Choose recommended items' id="item" name="item" />
+                                <Field as='select' placeholder='Choose recommended items' id="item" name="item">
+                                    <option value="Fiber" selected hidden>Select Recommended Items</option>
+                                    <option value="Fiber">Item 1</option>
+                                    <option value="Optical">Item 2</option>
+                                </Field>
                                 <ErrorMessage className="verify_err" name="item" component="div" />
                             </div>
                             <div>
@@ -108,16 +113,19 @@ const EditServiceForm = () =>
                                 <Field type='text' placeholder='Service description' id="description" name="description" />
                                 <ErrorMessage className="verify_err" name="description" component="div" />
                             </div>
+                            <div>
+                                <p htmlFor="commision">Commision</p>
+                                <Field type='number' placeholder='Enter Commision' id="commision" name="commision" />
+                                <ErrorMessage className="verify_err" name="commision" component="div" />
+                            </div>
                         </div>
                         <div className="addServ_submit">
                             <button type='submit'>Update</button>
-
                         </div>
                     </div>
                 </div>
             </Form>
         </Formik>
-
     )
 }
 

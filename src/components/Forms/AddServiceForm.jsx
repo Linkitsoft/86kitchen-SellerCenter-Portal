@@ -48,6 +48,7 @@ const AddServiceForm = () =>
         price: '',
         item: '',
         description: '',
+        commision: null,
     };
 
     // const validationSchema = Yup.object({
@@ -118,6 +119,11 @@ const AddServiceForm = () =>
                                 <p htmlFor="description">Service Description</p>
                                 <Field type='text' placeholder='Service description' id="description" name="description" />
                                 <ErrorMessage className="verify_err" name="description" component="div" />
+                            </div>
+                            <div>
+                                <p htmlFor="commision">Commision</p>
+                                <Field type='number' placeholder='Enter Commision' id="commision" name="commision" />
+                                <ErrorMessage className="verify_err" name="commision" component="div" />
                             </div>
                         </div>
                         <div className="addServ_submit">

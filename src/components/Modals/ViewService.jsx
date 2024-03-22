@@ -27,13 +27,16 @@ const ViewService = ({ setModal }) =>
                     <p>Total Cost:</p>
                     <p>$150</p>
                 </div>
+                <div className='viewService_cost'>
+                    <p>Commission:</p>
+                    <p>15%</p>
+                </div>
                 <div className='viewService_order'>
                     <p>Total Orders:</p>
                     <p>50</p>
                 </div>
                 <RoleAccess role={roles.create}>
                     <button onClick={() => navigate('/editService')} className='viewService_btn'>Edit</button>
-
                 </RoleAccess>
             </div>
         </div>
