@@ -1,8 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-function AdminPrivate({ token }) {
+function PrivateRoute({ token })
+{
     return token ? <Outlet /> : <Navigate to="/login" />;
 }
-  
 
-export default AdminPrivate;
+
+export default PrivateRoute;

@@ -1,7 +1,7 @@
 import React from 'react'
 import MainServiceSection from '../MainServiceSection'
 import { useNavigate } from 'react-router-dom'
-import RoleAccess from '../RoleAccess'
+import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole'
 
 const ServicesContent = () =>

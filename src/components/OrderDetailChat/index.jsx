@@ -3,7 +3,7 @@ import att from "../../assets/images/Admin-20 (27).png"
 import sample from "../../assets/images/Admin-20 (24).png"
 import sample1 from "../../assets/images/Admin-20 (34).png"
 import send from "../../assets/images/vdd-01.png"
-import RoleAccess from '../RoleAccess'
+import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole'
 
 const OrderDetailChat = () =>

@@ -2,10 +2,10 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Suspense } from "react";
 import { lazy } from "react";
-import AdminPrivate from './adminPrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import Loader from '../components/Loader';
 import Mainlayout from '../Layouts/MainLayout';
+import PrivateRoute from '../hoc/PrivateRoute';
 
 const MyRoutes = () =>
 {
@@ -278,7 +278,7 @@ const MyRoutes = () =>
                 <Suspense fallback={<Loader />}>
                     <Routes>
                         {token ? <Route element={<Mainlayout />}><Route path="/dashboard" element={<Dashboard />}></Route></Route> : <Route path="/home" element={<Home />}></Route>}
-                        <Route element={<AdminPrivate token={token} />}>
+                        <Route element={<PrivateRoute token={token} />}>
                             <Route element={<Mainlayout />}>
                                 {allRoutes.map((item) => (
                                     <Route key={item.path} path={`/${ item.path }`} element={item.element} />

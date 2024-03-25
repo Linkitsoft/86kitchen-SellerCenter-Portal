@@ -2,7 +2,7 @@ import React from 'react'
 import arrow from "../../assets/images/Admin-20 (25).png"
 import user from "../../assets/images/Admin-20 (86).png"
 import loc from "../../assets/images/Admin-20 (90).png"
-import RoleAccess from '../RoleAccess'
+import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole'
 
 const ProfileContent = () =>

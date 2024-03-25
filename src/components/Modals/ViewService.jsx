@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import Clickoutside from '../Clickoutside/Clickoutside';
 import bg from "../../assets/images/Admin-20 (22).png"
 import { useNavigate } from 'react-router-dom';
-import RoleAccess from '../RoleAccess';
+import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole';
 const ViewService = ({ setModal }) =>
 {

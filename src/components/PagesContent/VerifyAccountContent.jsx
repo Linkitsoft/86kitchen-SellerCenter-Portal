@@ -2,20 +2,14 @@ import React, { useState } from 'react'
 import logo from "../../assets/images/Admin-20 (89).png"
 import Thankyou from '../../components/Modals/Thankyou'
 import AccountVerificationForm from '../../components/Forms/AccountVerificationForm'
-import useHidePage from '../../hooks/useHidePage'
-import Loader from '../Loader';
+import HidePage from '../../hoc/HidePage'
 
 const VerifyAccountContent = () =>
 {
     const [modal, setModal] = useState("");
-    const { shouldRender } = useHidePage();
-
-     if (!shouldRender) {
-        return <Loader />;
-    }
 
     return (
-        <>
+        <HidePage>
             {modal === 'verify' && <Thankyou setModal={setModal} />}
             <div className="verify">
                 <div className="verify_header">
@@ -26,7 +20,7 @@ const VerifyAccountContent = () =>
                     <AccountVerificationForm setModal={setModal} />
                 </div>
             </div>
-        </>
+        </HidePage>
     )
 }
 

@@ -22,7 +22,7 @@ import logout from "../../assets/images/Admin-20 (12).png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../../redux/reducers/info";
-import RoleAccess from "../../components/RoleAccess";
+import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from "../../hooks/useUserRole";
 import { list } from "./list";
 

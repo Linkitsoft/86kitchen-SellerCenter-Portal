@@ -1,25 +1,19 @@
 import React, { useState } from 'react'
 import Thankyou from '../Modals/Thankyou'
 import EditServiceForm from '../Forms/EditServiceForm'
-import useHidePage from '../../hooks/useHidePage';
-import Loader from '../Loader';
+import HidePage from '../../hoc/HidePage';
 
 const EditServiceContent = () =>
 {
     const [modal, setModal] = useState("");
-    const { shouldRender } = useHidePage();
-
-     if (!shouldRender) {
-        return <Loader />;
-    }
 
     return (
-        <>
+        <HidePage>
             {modal === 'verify' && <Thankyou setModal={setModal} />}
             <div className="verify">
                 <EditServiceForm />
             </div>
-        </>
+        </HidePage>
     )
 }
 
