@@ -1,5 +1,5 @@
 import React from 'react'
-import Topbar from '../../components/Topbar'
+import Topbar from '../../Layouts/Topbar'
 import HeroSection from '../../components/HeroSection'
 import MainFooter from '../../Layouts/MainFooter'
 
