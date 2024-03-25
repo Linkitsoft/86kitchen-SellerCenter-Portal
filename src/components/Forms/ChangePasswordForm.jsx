@@ -1,17 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
 import lockIcon from "../../assets/images/Admin-20 (21).png"
-import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
 import { passwordValidation } from '../../validationSchema';
+import PasswordInputField from '../InputField/PasswordField';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const ChangePasswordForm = () =>
 {
-    const [eyeIcon, setEyeIcon] = useState(false);
-    const [eyeIcon2, setEyeIcon2] = useState(false);
+    const { control, handleSubmit, register, trigger, formState: { errors } } = useForm({
+        defaultValues: {
+            password: '',
+            confirmPassword: '',
+        },
+        mode: 'onBlur',
+        resolver: yupResolver(passwordValidation)
+    })
 
-    const initialValues = {
-        password: '',
-        confirmPassword: '',
+    const handleBlur = async (fieldName) =>
+    {
+        try
+        {
+            await trigger(fieldName);
+        } catch (error)
+        {
+            console.error(error);
+        }
     };
 
     const onSubmit = (values) =>
@@ -19,49 +33,39 @@ const ChangePasswordForm = () =>
         toast.success("Password updated succesfully")
     };
     return (
-        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={passwordValidation}>
-            <Form>
-                <div className='setPassword'>
-                    <div className='setPassword_wrap'>
-                        <label className='setPassword_label' htmlFor="password">New Password</label>
-                        <div className='setPassword_inputSec'>
-                            <img src={lockIcon} alt="lockIcon" className='lockIcon' />
-                            <Field placeholder='password' type={eyeIcon === false ? "password" : "text"} id="password" name="password" />
-                            <ErrorMessage className="verify_err" name="password" component="div" />
-                            <i
-                                onClick={() => setEyeIcon(!eyeIcon)}
-                                className={
-                                    eyeIcon === false
-                                        ? "fa-regular showEye fa-eye-slash"
-                                        : "fa-regular showEye fa-eye"
-                                }
-                            ></i>
-
-                        </div>
-
-                        <br />
-                        <label className='setPassword_label' htmlFor="confirmPassword">Confirm Password</label>
-
-                        <div className='setPassword_inputSec'>
-                            <img src={lockIcon} alt="lockIcon" className='lockIcon' />
-                            <Field placeholder='Confirm Password' type={eyeIcon2 === false ? "password" : "text"} id="confirmPassword" name="confirmPassword" />
-                            <ErrorMessage className="verify_err" name="confirmPassword" component="div" />
-                            <i
-                                onClick={() => setEyeIcon2(!eyeIcon2)}
-                                className={
-                                    eyeIcon2 === false
-                                        ? "fa-regular showEye fa-eye-slash"
-                                        : "fa-regular showEye fa-eye"
-                                }
-                            ></i>
-                        </div>
-                        <div className='setPassword_update'>
-                            <button type='submit'>Update</button>
-                        </div>
-                    </div>
+        <div className='setPassword'>
+            <div className='setPassword_wrap'>
+                <label className='setPassword_label' htmlFor="password">New Password</label>
+                <div className='setPassword_inputSec'>
+                    <img src={lockIcon} alt="lockIcon" className='lockIcon' />
+                    <PasswordInputField
+                        label='New Password'
+                        placeholder='Enter New Password'
+                        name='password'
+                        errors={errors?.password}
+                        control={control}
+                        handleBlur={handleBlur}
+                        register={register} />
                 </div>
-            </Form>
-        </Formik>
+                <br />
+                <label className='setPassword_label' htmlFor="confirmPassword">Confirm Password</label>
+
+                <div className='setPassword_inputSec'>
+                    <img src={lockIcon} alt="lockIcon" className='lockIcon' />
+                    <PasswordInputField
+                        label='Confirm Password'
+                        placeholder='Enter Confirm Password'
+                        name='confirmPassword'
+                        errors={errors?.confirmPassword}
+                        control={control}
+                        handleBlur={handleBlur}
+                        register={register} />
+                </div>
+                <div className='setPassword_update'>
+                    <button onClick={handleSubmit(onSubmit)}>Update</button>
+                </div>
+            </div>
+        </div>
     )
 }
 

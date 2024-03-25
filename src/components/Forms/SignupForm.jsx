@@ -1,70 +1,87 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { signupValidation } from "../../validationSchema";
 import Recaptcha from "../../components/Recaptcha";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import PasswordInputField from "../InputField/PasswordField";
+import InputField from "../InputField/InputField";
 
 const SignupForm = () =>
 {
-    const [eyeIcon, setEyeIcon] = useState(false);
-    const [eyeIcon2, setEyeIcon2] = useState(false);
     const [captchaValue, setCaptchaValue] = useState(null);
 
     const navigate = useNavigate()
+    const { control, handleSubmit, register, trigger, formState: { errors } } = useForm
+        ({
+            defaultValues: {
+                email: '',
+                password: '',
+                confirmPassword: ''
+            },
+            mode: 'onBlur',
+            resolver: yupResolver(signupValidation)
+        })
 
-    const initialValues = {
-        email: '',
-        password: '',
-        confirmPassword: ''
+    const handleBlur = async (fieldName) =>
+    {
+        try
+        {
+            await trigger(fieldName);
+        } catch (error)
+        {
+            console.error(error);
+        }
     };
+
     const onSubmit = (values) =>
     {
         navigate("/login")
     };
     return (
-        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={signupValidation}>
-            <Form>
-                <div className="login_inputWrapper">
-                    <label htmlFor="email">Email:</label>
-                    <Field type="text" id="email" name="email" />
-                    <ErrorMessage className="login_err" name="email" component="div" />
-                </div>
-                <div className="login_inputWrapper">
-                    <label htmlFor="password">Password</label>
-                    <Field type={eyeIcon === false ? "password" : "text"} id="password" name="password" />
-                    <i
-                        onClick={() => setEyeIcon(!eyeIcon)}
-                        className={
-                            eyeIcon === false
-                                ? "fa-regular showEye fa-eye-slash"
-                                : "fa-regular showEye fa-eye"
-                        }
-                    ></i>
-                    <ErrorMessage className="login_err" name="password" component="div" />
-                </div>
-                <div className="login_inputWrapper">
-                    <label htmlFor="confirmPassword">Confirm Password</label>
-                    <Field type={eyeIcon2 === false ? "password" : "text"} id="confirmPassword" name="confirmPassword" />
-                    <i
-                        onClick={() => setEyeIcon2(!eyeIcon2)}
-                        className={
-                            eyeIcon2 === false
-                                ? "fa-regular showEye fa-eye-slash"
-                                : "fa-regular showEye fa-eye"
-                        }
-                    ></i>
-                    <ErrorMessage className="login_err" name="confirmPassword" component="div" />
-                </div>
-                <div className="login_inputWrapper">
-                    <Recaptcha captchaValue={captchaValue} setCaptchaValue={setCaptchaValue} />
-                </div>
-                {captchaValue &&
-                    <div className="login_loginBtn">
-                        <button type="submit">Sign Up</button>
-                    </div>}
-                <p className="login_signup">Already have an account? <span onClick={() => navigate("/login")}>Sign In</span></p>
-            </Form>
-        </Formik>
+        <>
+            <div className="login_inputWrapper">
+                <InputField
+                    label='Email'
+                    placeholder='Enter Email'
+                    name='email'
+                    errors={errors?.email}
+                    control={control}
+                    handleBlur={handleBlur}
+                    isLabel
+                    register={register} />
+            </div>
+            <div className="login_inputWrapper">
+                <label htmlFor="password">Password</label>
+                <PasswordInputField
+                    label='Password'
+                    placeholder='Password'
+                    name='password'
+                    errors={errors?.password}
+                    control={control}
+                    handleBlur={handleBlur}
+                    register={register} />
+            </div>
+            <div className="login_inputWrapper">
+                <label htmlFor="password">Confirm Password</label>
+                <PasswordInputField
+                    label='Confirm Password'
+                    placeholder='Confirm Password'
+                    name='confirmPassword'
+                    errors={errors?.confirmPassword}
+                    control={control}
+                    handleBlur={handleBlur}
+                    register={register} />
+            </div>
+            <div className="login_inputWrapper">
+                <Recaptcha captchaValue={captchaValue} setCaptchaValue={setCaptchaValue} />
+            </div>
+            {captchaValue &&
+                <div className="login_loginBtn">
+                    <button onClick={handleSubmit(onSubmit)}>Sign Up</button>
+                </div>}
+            <p className="login_signup">Already have an account? <span onClick={() => navigate("/login")}>Sign In</span></p>
+        </>
     )
 }
 

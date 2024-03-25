@@ -1,10 +1,10 @@
 import React from 'react'
 
-const InputField = ({ label, control, name, register, handleBlur, errors }) =>
+const InputField = ({ label, control, name, register, handleBlur, errors, isLabel }) =>
 {
     return (
         <div>
-            <p>{label}</p>
+            {isLabel ? <label>{label}</label> : <p>{label}</p>}
             <input
                 control={control}
                 {...register(name)}
