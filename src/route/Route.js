@@ -6,11 +6,12 @@ import { ToastContainer } from 'react-toastify';
 import Loader from '../components/Loader';
 import Mainlayout from '../Layouts/MainLayout';
 import PrivateRoute from '../hoc/PrivateRoute';
+import useUserRole from '../hooks/useUserRole';
 
 const MyRoutes = () =>
 {
     const token = localStorage?.getItem("token");
-
+    const roles = useUserRole()
     const Dashboard = lazy(() =>
     {
         return new Promise((resolve) =>
@@ -186,7 +187,6 @@ const MyRoutes = () =>
     //         setTimeout(() => resolve(import("../pages/AddAdminUsers")), 800);
     //     });
     // });
-
     const allRoutes = [
         {
             path: 'dashboard',
@@ -257,7 +257,7 @@ const MyRoutes = () =>
         //     element: <AllAdminUsers />
         // },
     ];
-    // const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));
+    const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));
 
     return (
         <>
@@ -280,7 +280,7 @@ const MyRoutes = () =>
                         {token ? <Route element={<Mainlayout />}><Route path="/dashboard" element={<Dashboard />}></Route></Route> : <Route path="/home" element={<Home />}></Route>}
                         <Route element={<PrivateRoute token={token} />}>
                             <Route element={<Mainlayout />}>
-                                {allRoutes.map((item) => (
+                                {filteredRoutes.map((item) => (
                                     <Route key={item.path} path={`/${ item.path }`} element={item.element} />
                                 ))}
                                 {/* <Route path="/dashboard" element={<Dashboard />}></Route>

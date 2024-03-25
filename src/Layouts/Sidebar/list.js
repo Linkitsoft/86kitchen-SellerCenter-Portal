@@ -97,7 +97,7 @@ export const list = [
         light: prof,
         dark: profl,
         url: "/observantUsers",
-        index: "8",
+        index: "9",
         parentRoute: null,
         id: "observantUsers",
         subMenu: [

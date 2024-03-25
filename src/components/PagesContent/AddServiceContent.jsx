@@ -1,6 +1,5 @@
 import React from 'react'
 import AddServiceForm from '../Forms/AddServiceForm'
-import HidePage from '../../hoc/HidePage';
 
 const AddServiceContent = () =>
 {
@@ -12,11 +11,9 @@ const AddServiceContent = () =>
     // }
 
     return (
-        <HidePage>
             <div className="verify">
                 <AddServiceForm />
             </div>
-        </HidePage>
     )
 }
 
