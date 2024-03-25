@@ -114,5 +114,27 @@ export const list = [
             },
         ]
     },
+    {
+        name: "Admin Users",
+        light: prof,
+        dark: profl,
+        url: "/adminUsers",
+        index: "9",
+        parentRoute: null,
+        id: "adminUsers",
+        subMenu: [
+            {
+                name: "All admin users",
+                url: "/allAdminUsers",
+                id: "allAdminUsers",
+            },
+            {
+                name: "Add admin user",
+                url: "/addAdminUsers",
+                index: "5b",
+                id: "addAdminUsers",
+            },
+        ]
+    },
 
 ]

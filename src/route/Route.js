@@ -171,6 +171,21 @@ const MyRoutes = () =>
         });
     });
 
+    const AllAdminUsers = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/AllAdminUsers")), 800);
+        });
+    });
+
+    const AddAdminUsers = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/AddAdminUsers")), 800);
+        });
+    });
 
     const allRoutes = [
         {
@@ -232,6 +247,14 @@ const MyRoutes = () =>
         {
             path: 'allObservantUsers',
             element: <AllObservantUsers />
+        },
+        {
+            path: 'addAdminUsers',
+            element: <AddAdminUsers />
+        },
+        {
+            path: 'allAdminUsers',
+            element: <AllAdminUsers />
         },
     ];
     // const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));

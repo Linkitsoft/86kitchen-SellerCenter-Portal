@@ -1,10 +1,10 @@
 import React from 'react'
 import { usersData } from '../../util/usersData'
 
-const ObservantUsersTable = () =>
+const AdminUsersTable = () =>
 {
     const header = ['No', 'Name', 'Email', 'Phone No', 'Enable/Disable']
-   
+
     return (
         <div className='eventTable'>
             <table id="table-to-xls">
@@ -39,4 +39,4 @@ const ObservantUsersTable = () =>
     )
 }
 
-export default ObservantUsersTable
+export default AdminUsersTable
