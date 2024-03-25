@@ -163,6 +163,14 @@ const MyRoutes = () =>
         });
     });
 
+    const AllObservantUsers = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/AllObservantUsers")), 800);
+        });
+    });
+
 
     const allRoutes = [
         {
@@ -220,7 +228,11 @@ const MyRoutes = () =>
         {
             path: 'addObservantUsers',
             element: <AddObservantUsers />
-        }
+        },
+        {
+            path: 'allObservantUsers',
+            element: <AllObservantUsers />
+        },
     ];
     // const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));
 

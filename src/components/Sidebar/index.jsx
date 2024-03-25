@@ -2,158 +2,37 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logoImg from "../../assets/images/Admin-20 (75).png";
 import circleImg from "../../assets/images/Admin-20 (86).png";
-import home from "../../assets/images/Admin-20 (2).png";
-import service from "../../assets/images/Admin-20 (3).png";
-import rev from "../../assets/images/Admin-20 (4).png";
-import order from "../../assets/images/Admin-20 (5).png";
-import qs from "../../assets/images/Admin-20 (6).png";
-import prof from "../../assets/images/Admin-20 (7).png";
-import pass from "../../assets/images/Admin-20 (8).png";
 import logout from "../../assets/images/Admin-20 (12).png";
-//light
-import homel from "../../assets/images/Admin-20 (19).png";
-import servicel from "../../assets/images/Admin-20 (18).png";
-import revl from "../../assets/images/Admin-20 (17).png";
-import orderl from "../../assets/images/Admin-20 (16).png";
-import qsl from "../../assets/images/Admin-20 (15).png";
-import profl from "../../assets/images/Admin-20 (14).png";
-import passl from "../../assets/images/Admin-20 (13).png";
+// import home from "../../assets/images/Admin-20 (2).png";
+// import service from "../../assets/images/Admin-20 (3).png";
+// import rev from "../../assets/images/Admin-20 (4).png";
+// import order from "../../assets/images/Admin-20 (5).png";
+// import qs from "../../assets/images/Admin-20 (6).png";
+// import prof from "../../assets/images/Admin-20 (7).png";
+// import pass from "../../assets/images/Admin-20 (8).png";
+// //light
+// import homel from "../../assets/images/Admin-20 (19).png";
+// import servicel from "../../assets/images/Admin-20 (18).png";
+// import revl from "../../assets/images/Admin-20 (17).png";
+// import orderl from "../../assets/images/Admin-20 (16).png";
+// import qsl from "../../assets/images/Admin-20 (15).png";
+// import profl from "../../assets/images/Admin-20 (14).png";
+// import passl from "../../assets/images/Admin-20 (13).png";
 
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from "../../redux/reducers/info";
 import RoleAccess from "../RoleAccess";
 import useUserRole from "../../hooks/useUserRole";
+import { list } from "./list";
 
-const Sidebar = ({ index }) =>
+const Sidebar = () =>
 {
     const [open, setOpen] = useState(true);
     const [showSidebar, setShowSidebar] = useState(false);
     const location = useLocation();
     const roles = useUserRole()
-    const [list] = useState([
-        {
-            name: "Dashboard",
-            light: home,
-            dark: homel,
-            url: "/dashboard",
-            index: "1",
-            parentRoute: null,
-            id: "dashboard"
-        },
-        {
-            name: "Services",
-            light: service,
-            dark: servicel,
-            url: "/services",
-            index: "2b",
-            parentRoute: ['/addService', '/editService'],
-            id: "services"
-            // subMenu: [
-            //     {
-            //         name: "Categories",
-            //         url: "/categories",
-            //         index: "2a",
-            //     },
-            //     {
-            //         name: "Services",
-            //         url: "/services",
-            //         index: "2b",
-            //     },
-            // ]
-        },
-
-        {
-            name: "Reviews",
-            light: rev,
-            dark: revl,
-            url: "/reviews",
-            index: "3",
-            parentRoute: null,
-            id: "reviews"
-
-        },
-
-        {
-            name: "Orders",
-            light: order,
-            dark: orderl,
-            url: "/orders",
-            index: "4",
-            parentRoute: ['/orderDetails', '/generateSales'],
-            id: 'orders'
-        },
-
-        {
-            name: "Queries",
-            light: qs,
-            dark: qsl,
-            url: "/queries",
-            index: "5",
-            parentRoute: null,
-            id: "queries"
-        },
-
-        {
-            name: "Profile",
-            light: prof,
-            dark: profl,
-            url: "/profile",
-            index: "6",
-            parentRoute: null,
-            id: "profile"
-        },
-        {
-            name: "Change Password",
-            light: pass,
-            dark: passl,
-            url: "/changePassword",
-            index: "7",
-            parentRoute: null,
-            id: "changePassword"
-        },
-        {
-            name: "Logs",
-            light: pass,
-            dark: passl,
-            url: "/logs",
-            index: "8",
-            parentRoute: null,
-            id: "logs"
-        },
-        {
-            name: "Observant Users",
-            light: pass,
-            dark: passl,
-            url: "/observantUsers",
-            index: "8",
-            parentRoute: null,
-            id: "observantUsers"
-        },
-        {
-            name: "Observant Users",
-            light: pass,
-            dark: passl,
-            url: "/observantUsers",
-            index: "8",
-            parentRoute: null,
-            id: "observantUsers",
-            subMenu: [
-                {
-                    name: "All Observants users",
-                    url: "/allObservantsUsers",
-                    id: "allObservantsUsers",
-                },
-                {
-                    name: "Add observant user",
-                    url: "/addObservantUsers",
-                    index: "5b",
-                    id: "addObservantUsers",
-                },
-            ]
-        },
-
-    ])
+  
     const disptach = useDispatch()
     const { sidebarState } = useSelector((state) => state.tooltipInfo);
     const [event, setEvent] = useState(sidebarState)
@@ -274,9 +153,7 @@ const Sidebar = ({ index }) =>
                                 <p className="icNo"><i className="fa-solid fa-star"></i>4.8</p>
                             </div>
                         </div>
-
                         <br />
-
                         <ul>
                             {list?.map(item =>
                             {
