@@ -5,7 +5,7 @@ export const categoryValidation = Yup.object({
 });
 
 export const serviceValidation = Yup.object({
-    name: Yup.string().required('Category Name is required'),
+    name: Yup.string().required('Service Name is required'),
     category: Yup.string().required('Service category is required'),
     price: Yup.string().required('Total Price is required'),
     item: Yup.string().required('Choose Recommended Items is required'),
