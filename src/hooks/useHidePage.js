@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useUserRole from './useUserRole';
-import { replace } from 'formik';
 
 const useHidePage = () =>
 {
@@ -17,7 +16,7 @@ const useHidePage = () =>
             if (roles.hide && roles?.hide?.includes(pathname?.substring(1)))
             {
                 setShouldRender(false);
-                navigate(-1, replace);
+                navigate(-1);
             } else
             {
                 setShouldRender(true);
