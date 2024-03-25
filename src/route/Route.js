@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { lazy } from "react";
 import AdminPrivate from './adminPrivateRoute';
 import { ToastContainer } from 'react-toastify';
-import Loader from '../Layouts/Loader';
+import Loader from '../components/Loader';
 import Mainlayout from '../Layouts/MainLayout';
 
 const MyRoutes = () =>

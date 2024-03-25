@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Thankyou from '../Modals/Thankyou'
 import EditServiceForm from '../Forms/EditServiceForm'
 import useHidePage from '../../hooks/useHidePage';
-import Loader from '../../Layouts/Loader';
+import Loader from '../Loader';
 
 const EditServiceContent = () =>
 {
