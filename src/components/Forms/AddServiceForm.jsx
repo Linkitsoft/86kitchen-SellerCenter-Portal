@@ -111,7 +111,7 @@ const AddServiceForm = () =>
                                 register={register}
                                 options={[{ label: "Fiber", value: "Storm Fiber" }]}
                             />
-                         <InputField
+                            <InputField
                                 label='Total Price'
                                 placeholder='Enter total price'
                                 name='price'

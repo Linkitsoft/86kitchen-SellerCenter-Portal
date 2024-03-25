@@ -147,6 +147,22 @@ const MyRoutes = () =>
         });
     });
 
+    const Logs = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/Logs")), 800);
+        });
+    });
+
+    const AddObservantUsers = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/AddObservantUsers")), 800);
+        });
+    });
+
 
     const allRoutes = [
         {
@@ -196,6 +212,14 @@ const MyRoutes = () =>
         {
             path: 'generateSales',
             element: <GenerateSales />
+        },
+        {
+            path: 'logs',
+            element: <Logs />
+        },
+        {
+            path: 'addObservantUsers',
+            element: <AddObservantUsers />
         }
     ];
     // const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));

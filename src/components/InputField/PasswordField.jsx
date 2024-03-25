@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const PasswordInputField = ({ label, control, name, register, handleBlur, errors }) =>
+const PasswordInputField = ({ label, control, name, register, handleBlur, errors, hide }) =>
 {
     const [eyeIcon, setEyeIcon] = useState(false);
 
@@ -25,14 +25,14 @@ const PasswordInputField = ({ label, control, name, register, handleBlur, errors
                 placeholder={label}
             />
             {errors ? <div className="verify_err">{errors?.message}</div> : null}
-            <i
+          {!hide && <i
                 onClick={() => setEyeIcon(!eyeIcon)}
                 className={
                     eyeIcon === false
                         ? "fa-regular showEye fa-eye-slash"
                         : "fa-regular showEye fa-eye"
                 }
-            ></i>
+            ></i>}
         </div>
     )
 }

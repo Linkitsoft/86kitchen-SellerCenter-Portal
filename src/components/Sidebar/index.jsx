@@ -112,6 +112,47 @@ const Sidebar = ({ index }) =>
             parentRoute: null,
             id: "changePassword"
         },
+        {
+            name: "Logs",
+            light: pass,
+            dark: passl,
+            url: "/logs",
+            index: "8",
+            parentRoute: null,
+            id: "logs"
+        },
+        {
+            name: "Observant Users",
+            light: pass,
+            dark: passl,
+            url: "/observantUsers",
+            index: "8",
+            parentRoute: null,
+            id: "observantUsers"
+        },
+        {
+            name: "Observant Users",
+            light: pass,
+            dark: passl,
+            url: "/observantUsers",
+            index: "8",
+            parentRoute: null,
+            id: "observantUsers",
+            subMenu: [
+                {
+                    name: "All Observants users",
+                    url: "/allObservantsUsers",
+                    id: "allObservantsUsers",
+                },
+                {
+                    name: "Add observant user",
+                    url: "/addObservantUsers",
+                    index: "5b",
+                    id: "addObservantUsers",
+                },
+            ]
+        },
+
     ])
     const disptach = useDispatch()
     const { sidebarState } = useSelector((state) => state.tooltipInfo);
@@ -257,7 +298,7 @@ const Sidebar = ({ index }) =>
                                                         <RoleAccess role={!roles?.hide?.includes(res?.id)}>
                                                             <li
                                                                 key={res.index}
-                                                                className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}
+                                                                className={(location?.pathname === res?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}
                                                                 onClick={() => handleSubMenu(res)}>
                                                                 {res.name}
                                                             </li>

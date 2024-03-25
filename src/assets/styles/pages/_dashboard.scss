@@ -29,6 +29,16 @@
             color: #fff;
         }
     }
+    &_backImg {
+        width: 40px;
+        cursor: pointer;
+        border-radius: 50%;
+        margin: 0 4px;
+    }
+
+    &_backImg:hover {
+        filter: brightness(92%);
+    }
 
     &_tabs {
         display: flex;
