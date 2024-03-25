@@ -1,12 +1,10 @@
 import React from 'react'
-import AddServiceForm from '../../components/Forms/AddServiceForm'
+import AddServiceContent from '../../components/PagesContent/AddServiceContent'
 
 const AddService = () =>
 {
     return (
-        <div className="verify">
-            <AddServiceForm />
-        </div>
+        <AddServiceContent/>
     )
 }
 

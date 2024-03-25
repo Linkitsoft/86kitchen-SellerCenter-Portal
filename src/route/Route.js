@@ -6,13 +6,10 @@ import AdminPrivate from './adminPrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import Loader from '../components/Loader';
 import Mainlayout from '../Layouts/Mainlayout';
-import useUserRole from '../hooks/useUserRole';
-// import Loader from '../components/Loader';
 
 const MyRoutes = () =>
 {
     const token = localStorage?.getItem("token");
-    const roles = useUserRole()
 
     const Dashboard = lazy(() =>
     {
@@ -201,9 +198,8 @@ const MyRoutes = () =>
             element: <GenerateSales />
         }
     ];
-    const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));
-    console.log("filteredRoutes", filteredRoutes)
-    console.log("roles", roles)
+    // const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));
+
     return (
         <>
             <ToastContainer
@@ -225,7 +221,7 @@ const MyRoutes = () =>
                         {token ? <Route element={<Mainlayout />}><Route path="/dashboard" element={<Dashboard />}></Route></Route> : <Route path="/home" element={<Home />}></Route>}
                         <Route element={<AdminPrivate token={token} />}>
                             <Route element={<Mainlayout />}>
-                                {filteredRoutes.map((item) => (
+                                {allRoutes.map((item) => (
                                     <Route key={item.path} path={`/${ item.path }`} element={item.element} />
                                 ))}
                                 {/* <Route path="/dashboard" element={<Dashboard />}></Route>

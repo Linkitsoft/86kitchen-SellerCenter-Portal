@@ -2,10 +2,17 @@ import React, { useState } from 'react'
 import logo from "../../assets/images/Admin-20 (89).png"
 import Thankyou from '../../components/Modals/Thankyou'
 import AccountVerificationForm from '../../components/Forms/AccountVerificationForm'
+import useHidePage from '../../hooks/useHidePage'
+import Loader from '../Loader'
 
 const VerifyAccountContent = () =>
 {
     const [modal, setModal] = useState("");
+    const { shouldRender } = useHidePage();
+
+     if (!shouldRender) {
+        return <Loader />;
+    }
 
     return (
         <>
