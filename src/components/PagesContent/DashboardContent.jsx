@@ -3,7 +3,7 @@ import DashboardTopCards from '../../components/DashboardTopCards'
 import MainServiceSection from '../../components/MainServiceSection'
 import OrdersTab from '../../components/OrdersTab'
 import OrdersCard from '../../components/OrdersCard'
-import { dashboardData } from '../../util/dashboardData'
+import { dashboardData } from '../../utils/dashboardData'
 
 const DashboardContent = () =>
 {

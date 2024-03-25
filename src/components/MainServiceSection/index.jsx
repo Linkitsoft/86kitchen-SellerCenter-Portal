@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ServiceCard from '../ServiceCard';
-import { eventData } from '../../util/eventData';
-import { cardData } from '../../util/cardData';
+import { eventData } from '../../utils/eventData';
+import { cardData } from '../../utils/cardData';
 import ViewService from '../Modals/ViewService';
 import ServiceSwiper from '../Swipers/ServiceSwiper';
 

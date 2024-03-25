@@ -1,5 +1,5 @@
 import React from 'react'
-import { usersData } from '../../util/usersData'
+import { usersData } from '../../utils/usersData'
 
 const ObservantUsersTable = () =>
 {

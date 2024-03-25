@@ -1,5 +1,5 @@
 import React from 'react'
-import { logsData } from '../../util/logsData';
+import { logsData } from '../../utils/logsData';
 
 const LogsTable = () =>
 {

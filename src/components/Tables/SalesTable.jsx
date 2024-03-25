@@ -1,5 +1,5 @@
 import React from 'react'
-import { salesData } from '../../util/salesData';
+import { salesData } from '../../utils/salesData';
 
 const SalesTable = ({setModal}) =>
 {

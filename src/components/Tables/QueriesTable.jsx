@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { queryData } from '../../util/queryData'
+import { queryData } from '../../utils/queryData'
 
 const QueriesTable = () =>
 {

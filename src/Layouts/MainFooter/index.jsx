@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from "../../assets/images/Admin-20 (89).png"
-import { webUrls } from '../../util/webUrls'
+import { webUrls } from '../../utils/webUrls'
 
 const MainFooter = () =>
 {
