@@ -3,7 +3,7 @@ import logo from "../../assets/images/Admin-20 (89).png"
 import Thankyou from '../../components/Modals/Thankyou'
 import AccountVerificationForm from '../../components/Forms/AccountVerificationForm'
 import useHidePage from '../../hooks/useHidePage'
-import Loader from '../Loader'
+import Loader from '../../Layouts/Loader'
 
 const VerifyAccountContent = () =>
 {

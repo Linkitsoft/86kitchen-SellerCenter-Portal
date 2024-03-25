@@ -1,7 +1,7 @@
 import React from 'react'
 import Topbar from '../../components/Topbar'
 import HeroSection from '../../components/HeroSection'
-import MainFooter from '../../components/MainFooter'
+import MainFooter from '../../Layouts/MainFooter'
 
 const Home = () => {
   return (

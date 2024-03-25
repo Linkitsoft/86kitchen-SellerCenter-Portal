@@ -4,8 +4,8 @@ import { Suspense } from "react";
 import { lazy } from "react";
 import AdminPrivate from './adminPrivateRoute';
 import { ToastContainer } from 'react-toastify';
-import Loader from '../components/Loader';
-import Mainlayout from '../Layouts/Mainlayout';
+import Loader from '../Layouts/Loader';
+import Mainlayout from '../Layouts/MainLayout';
 
 const MyRoutes = () =>
 {
@@ -171,21 +171,21 @@ const MyRoutes = () =>
         });
     });
 
-    const AllAdminUsers = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
-            setTimeout(() => resolve(import("../pages/AllAdminUsers")), 800);
-        });
-    });
+    // const AllAdminUsers = lazy(() =>
+    // {
+    //     return new Promise((resolve) =>
+    //     {
+    //         setTimeout(() => resolve(import("../pages/AllAdminUsers")), 800);
+    //     });
+    // });
 
-    const AddAdminUsers = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
-            setTimeout(() => resolve(import("../pages/AddAdminUsers")), 800);
-        });
-    });
+    // const AddAdminUsers = lazy(() =>
+    // {
+    //     return new Promise((resolve) =>
+    //     {
+    //         setTimeout(() => resolve(import("../pages/AddAdminUsers")), 800);
+    //     });
+    // });
 
     const allRoutes = [
         {
@@ -248,14 +248,14 @@ const MyRoutes = () =>
             path: 'allObservantUsers',
             element: <AllObservantUsers />
         },
-        {
-            path: 'addAdminUsers',
-            element: <AddAdminUsers />
-        },
-        {
-            path: 'allAdminUsers',
-            element: <AllAdminUsers />
-        },
+        // {
+        //     path: 'addAdminUsers',
+        //     element: <AddAdminUsers />
+        // },
+        // {
+        //     path: 'allAdminUsers',
+        //     element: <AllAdminUsers />
+        // },
     ];
     // const filteredRoutes = allRoutes.filter(item => !roles?.hide?.includes(item?.path));
 

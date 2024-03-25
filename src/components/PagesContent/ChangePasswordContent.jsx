@@ -1,6 +1,6 @@
 import React from 'react'
 import ChangePasswordForm from '../Forms/ChangePasswordForm'
-import Loader from '../Loader';
+import Loader from '../../Layouts/Loader';
 import useHidePage from '../../hooks/useHidePage';
 
 const ChangePasswordContent = () =>

@@ -1,7 +1,7 @@
 import React from 'react'
 import AddServiceForm from '../Forms/AddServiceForm'
 import useHidePage from '../../hooks/useHidePage'
-import Loader from '../Loader'
+import Loader from '../../Layouts/Loader';
 
 const AddServiceContent = () =>
 {
