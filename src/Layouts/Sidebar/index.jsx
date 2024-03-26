@@ -25,40 +25,42 @@ import { toggleSidebar } from "../../redux/reducers/info";
 import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from "../../hooks/useUserRole";
 import { list } from "./list";
+import { useUser } from "../../context/userContext";
+import { useSidebarClickOutside } from "../../hooks/useSidebarClickOutside";
 
 const Sidebar = () =>
 {
+    const { sidebarState } = useSelector((state) => state.tooltipInfo);
     const [open, setOpen] = useState(true);
     const [showSidebar, setShowSidebar] = useState(false);
+    const [event, setEvent] = useState(sidebarState)
     const location = useLocation();
     const roles = useUserRole()
-  
+    const { userType } = useUser()
     const disptach = useDispatch()
-    const { sidebarState } = useSelector((state) => state.tooltipInfo);
-    const [event, setEvent] = useState(sidebarState)
     const navigate = useNavigate();
     const componentRef = useRef();
     const componentRef2 = useRef();
 
-    useEffect(() =>
-    {
-        document.addEventListener("click", handleClick);
-        return () => document.removeEventListener("click", handleClick);
-        // eslint-disable-next-line
-    }, []);
+    // useEffect(() =>
+    // {
+    //     document.addEventListener("click", handleClick);
+    //     return () => document.removeEventListener("click", handleClick);
+    //     // eslint-disable-next-line
+    // }, []);
 
-    function handleClick(e)
-    {
-        if (window.innerWidth <= 700)
-        {
-            const toggleRef = componentRef.current;
-            const outsideRef = componentRef2.current;
-            if (!outsideRef?.contains(e.target) && !toggleRef?.contains(e.target))
-            {
-                setOpen(false);
-            }
-        }
-    }
+    // function handleClick(e)
+    // {
+    //     if (window.innerWidth <= 700)
+    //     {
+    //         const toggleRef = componentRef.current;
+    //         const outsideRef = componentRef2.current;
+    //         if (!outsideRef?.contains(e.target) && !toggleRef?.contains(e.target))
+    //         {
+    //             setOpen(false);
+    //         }
+    //     }
+    // }
 
     const handleRoute = (route) =>
     {
@@ -119,7 +121,10 @@ const Sidebar = () =>
         // eslint-disable-next-lin
     }, []);
 
-
+    useSidebarClickOutside(componentRef, componentRef2, () =>
+    {
+        setOpen(false);
+    });
     return (
         <>
             <div className="navBar" ref={componentRef}>
@@ -141,6 +146,8 @@ const Sidebar = () =>
                         <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
                     </div>
                 </RoleAccess>
+                {userType === 'user' && <p className="navBar_type">Observant User</p>}
+
             </div>
             {
                 showSidebar &&

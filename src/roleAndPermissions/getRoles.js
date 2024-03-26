@@ -14,7 +14,14 @@ export const getRoles = (userType) =>
     } else if (userType === 'user')
     {
         roles.create = false;
-        roles.hide = ['addService', 'verifyAccount', 'changePassword', 'editService']
+        roles.hide = ['addService',
+            'verifyAccount',
+            'changePassword',
+            'editService',
+            'observantUsers',
+            'allObservantUsers',
+            'addObservantUsers',
+            'logs']
     }
 
     return roles;

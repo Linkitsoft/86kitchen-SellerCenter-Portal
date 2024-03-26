@@ -11,7 +11,7 @@
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1;
     position: fixed;
     padding: 8px 0;
 
@@ -41,6 +41,14 @@
     &_heading {
         // background-color: #E8E9AD;
         padding: 18px 40px;
+        font-size: 20px;
+        // height: 100%;
+        color: #fff;
+        font-weight: 500;
+    }
+    &_type {
+        // background-color: #E8E9AD;
+        padding: 10px;
         font-size: 20px;
         // height: 100%;
         color: #fff;
