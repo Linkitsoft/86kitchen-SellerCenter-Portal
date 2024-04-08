@@ -3,13 +3,13 @@ import star from "../../assets/images/Admin-20 (20).png"
 import backImg from "../../assets/images/Admin-20 (29).png"
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { serviceValidation } from '../../validationSchema'
+import { editServiceValidation } from '../../validationSchema'
 import InputField from '../InputField/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'; // Import yupResolver from @hookform/resolvers/yup
 import DropdownField from '../InputField/DropdownField';
 
-const EditServiceForm = () =>
+const EditServiceForm = ({setModal}) =>
 {
     const navigate = useNavigate()
     const [banner, setBanner] = useState(null);
@@ -20,10 +20,10 @@ const EditServiceForm = () =>
             price: '',
             item: '',
             description: '',
-            commision: null,
+            commission: null,
         },
         mode: 'onBlur',
-        resolver: yupResolver(serviceValidation)
+        resolver: yupResolver(editServiceValidation)
     })
     const handleFileChange = (event, type) =>
     {
@@ -75,6 +75,7 @@ const EditServiceForm = () =>
             <>
                 <div className="addServ_header">
                     <p className="addServ_title"><img src={backImg} alt='' onClick={() => navigate(-1)} />Edit Service</p>
+                    <button onClick={() => setModal('commission')}>Change Commison</button>
                 </div>
                 <div className="addServ_service">
                     <div className="addServ_serviceMain">
@@ -142,13 +143,15 @@ const EditServiceForm = () =>
                                 register={register}
                             />
                             <InputField
-                                label='Commision'
-                                placeholder='Commision'
-                                name='commision'
-                                errors={errors?.commision}
+                                label='commission'
+                                placeholder='Commission'
+                                name='commission'
+                                errors={errors?.commission}
                                 control={control}
                                 handleBlur={handleBlur}
                                 register={register}
+                                disabled
+                                value={20}
                             />
                         </div>
                         <div className="addServ_submit">

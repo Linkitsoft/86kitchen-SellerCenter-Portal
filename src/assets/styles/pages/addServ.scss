@@ -20,6 +20,19 @@
             box-shadow: 0 0 14px rgb(45 44 44 / 21%);
             border-radius: 50%;
         }
+
+        button {
+            border: 1px solid #272B6B;
+            color: #272B6B;
+            padding: 5px 25px;
+            border-radius: 5px;
+            background: transparent;
+        }
+
+        button:hover {
+            background: rgb(58, 58, 58);
+            color: #fff;
+        }
     }
 
     &_title {

@@ -20,7 +20,7 @@ const AddServiceForm = () =>
             price: '',
             item: '',
             description: '',
-            commision: null,
+            commission: null,
         },
         mode: 'onBlur',
         resolver: yupResolver(serviceValidation)
@@ -142,10 +142,10 @@ const AddServiceForm = () =>
                                 register={register}
                             />
                             <InputField
-                                label='Commision'
-                                placeholder='Commision'
-                                name='commision'
-                                errors={errors?.commision}
+                                label='commission'
+                                placeholder='commission'
+                                name='commission'
+                                errors={errors?.commission}
                                 control={control}
                                 handleBlur={handleBlur}
                                 register={register}

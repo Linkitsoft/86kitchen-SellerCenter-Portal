@@ -65,6 +65,7 @@
             background-color: transparent;
             padding: 11px 15px;
             font-weight: bold;
+            width: 100%;
         }
 
         input::placeholder {
@@ -74,6 +75,12 @@
         }
     }
 
+    &_err {
+        color: #F79465;
+        font-weight: 600;
+        font-size: 12px;
+        margin: 20px 0;
+    }
 
     &_ok {
         padding: 5px 50px;

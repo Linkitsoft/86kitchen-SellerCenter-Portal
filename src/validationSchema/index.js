@@ -10,7 +10,19 @@ export const serviceValidation = Yup.object({
     price: Yup.string().required('Total Price is required'),
     item: Yup.string().required('Choose Recommended Items is required'),
     description: Yup.string().required('Description is required'),
-    commision: Yup.string().required('Commision is required'),
+    commission: Yup.string().required('commission is required'),
+});
+
+export const editServiceValidation = Yup.object({
+    name: Yup.string().required('Service Name is required'),
+    category: Yup.string().required('Service category is required'),
+    price: Yup.string().required('Total Price is required'),
+    item: Yup.string().required('Choose Recommended Items is required'),
+    description: Yup.string().required('Description is required'),
+});
+
+export const editCommissionValidation = Yup.object({
+    commission: Yup.string().required('commission is required'),
 });
 
 export const passwordValidation = Yup.object({
