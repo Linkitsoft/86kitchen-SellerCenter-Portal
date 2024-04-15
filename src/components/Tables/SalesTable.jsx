@@ -4,7 +4,7 @@ import { salesData } from '../../utils/salesData';
 const SalesTable = ({setModal}) =>
 {
 
-    const header = ['No.', 'Name', 'Amount']
+    const header = ['No.', 'Name', 'Amount', 'Commission']
 
     return (
         <div className='salesTable'>
@@ -12,7 +12,7 @@ const SalesTable = ({setModal}) =>
             <table id="table-to-xls">
                 <tbody>
                     <tr>
-                        {header?.map((item, index) => <th key={index} className={item === 'Amount' && "salesTable_rightRow"}>{item}</th>)}
+                        {header?.map((item, index) => <th key={index} className={(item === 'Amount' || item === 'Commission') && "salesTable_rightRow"}>{item}</th>)}
                     </tr>
                     {salesData?.map((item, index) =>
                     {
@@ -25,6 +25,7 @@ const SalesTable = ({setModal}) =>
                                 </td>
                                
                                 <td className='salesTable_rightRow salesTable_title'>$150</td>
+                                <td className='salesTable_rightRow salesTable_title'>$10</td>
                             </tr >
                         );
                     })}

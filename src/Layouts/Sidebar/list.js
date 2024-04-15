@@ -25,6 +25,28 @@ export const list = [
         id: "dashboard"
     },
     {
+        name: "Observant Users",
+        light: prof,
+        dark: profl,
+        url: "/observantUsers",
+        index: "9",
+        parentRoute: null,
+        id: "observantUsers",
+        subMenu: [
+            {
+                name: "All Observants users",
+                url: "/allObservantUsers",
+                id: "allObservantUsers",
+            },
+            {
+                name: "Add observant user",
+                url: "/addObservantUsers",
+                index: "5b",
+                id: "addObservantUsers",
+            },
+        ]
+    },
+    {
         name: "Services",
         light: service,
         dark: servicel,
@@ -33,7 +55,6 @@ export const list = [
         parentRoute: ['/addService', '/editService'],
         id: "services"
     },
-
     {
         name: "Reviews",
         light: rev,
@@ -44,7 +65,6 @@ export const list = [
         id: "reviews"
 
     },
-
     {
         name: "Orders",
         light: order,
@@ -54,7 +74,15 @@ export const list = [
         parentRoute: ['/orderDetails', '/generateSales'],
         id: 'orders'
     },
-
+    {
+        name: "Sales & Commission",
+        light: service,
+        dark: servicel,
+        url: "/commission",
+        index: "10",
+        parentRoute: null,
+        id: "commission"
+    },
     {
         name: "Queries",
         light: qs,
@@ -64,7 +92,6 @@ export const list = [
         parentRoute: null,
         id: "queries"
     },
-
     {
         name: "Profile",
         light: prof,
@@ -91,28 +118,6 @@ export const list = [
         index: "8",
         parentRoute: null,
         id: "logs"
-    },
-    {
-        name: "Observant Users",
-        light: prof,
-        dark: profl,
-        url: "/observantUsers",
-        index: "9",
-        parentRoute: null,
-        id: "observantUsers",
-        subMenu: [
-            {
-                name: "All Observants users",
-                url: "/allObservantUsers",
-                id: "allObservantUsers",
-            },
-            {
-                name: "Add observant user",
-                url: "/addObservantUsers",
-                index: "5b",
-                id: "addObservantUsers",
-            },
-        ]
     },
     // {
     //     name: "Admin Users",

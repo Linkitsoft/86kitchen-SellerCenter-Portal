@@ -172,6 +172,14 @@ const MyRoutes = () =>
         });
     });
 
+    const Commission = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/Commission")), 800);
+        });
+    });
+
     // const AllAdminUsers = lazy(() =>
     // {
     //     return new Promise((resolve) =>
@@ -247,6 +255,10 @@ const MyRoutes = () =>
         {
             path: 'allObservantUsers',
             element: <AllObservantUsers />
+        },
+        {
+            path: 'commission',
+            element: <Commission />
         },
         // {
         //     path: 'addAdminUsers',
