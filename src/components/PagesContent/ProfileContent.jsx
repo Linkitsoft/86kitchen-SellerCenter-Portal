@@ -2,12 +2,12 @@ import React from 'react'
 import arrow from "../../assets/images/Admin-20 (25).png"
 import user from "../../assets/images/Admin-20 (86).png"
 import loc from "../../assets/images/Admin-20 (90).png"
-import RoleAccess from '../../hoc/RoleAccess';
-import useUserRole from '../../hooks/useUserRole'
+// import RoleAccess from '../../hoc/RoleAccess';
+// import useUserRole from '../../hooks/useUserRole'
 
 const ProfileContent = () =>
 {
-    const roles = useUserRole()
+    // const roles = useUserRole()
     function generateStars(num)
     {
         const starsArray = Array.from({ length: num }, (_, index) => (
@@ -52,9 +52,9 @@ const ProfileContent = () =>
                         suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
                         modi minima sunt esse temporibus sint culpa</p>
                 </div>
-                <RoleAccess role={roles.create}>
+                {/* <RoleAccess role={roles.create}>
                     <button className="profile_btn">Edit Details</button>
-                </RoleAccess>
+                </RoleAccess> */}
             </div>
         </div>
     )

@@ -31,6 +31,7 @@ const ViewService = ({ setModal }) =>
                     <p>Commission:</p>
                     <p>15%</p>
                 </div>
+                <p className='viewService_err'>Your request to change the commission by 25% is currently pending approval from the super admin</p>
                 <div className='viewService_order'>
                     <p>Total Orders:</p>
                     <p>50</p>

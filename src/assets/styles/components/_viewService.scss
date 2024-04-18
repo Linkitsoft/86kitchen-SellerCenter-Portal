@@ -19,6 +19,8 @@
         position: relative;
         display: flex;
         flex-direction: column;
+        height: calc(100vh - 140px);
+        overflow: auto;
     }
 
     &_img {
@@ -86,7 +88,12 @@
         font-family: "custom-semibold";
     }
 
-
+    &_err {
+        color: #FF0018;
+        font-weight: 600;
+        font-size: 12px;
+        margin: 10px 0;
+    }
 
     &_btn {
         padding: 14px 0;
