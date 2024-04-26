@@ -115,6 +115,7 @@ const AddServiceForm = () =>
                                 label='Total Price'
                                 placeholder='Enter total price'
                                 name='price'
+                                type='number'
                                 errors={errors?.price}
                                 control={control}
                                 handleBlur={handleBlur}
@@ -142,8 +143,9 @@ const AddServiceForm = () =>
                                 register={register}
                             />
                             <InputField
-                                label='commission'
-                                placeholder='commission'
+                                label='Commission'
+                                placeholder='Commission'
+                                type='number'
                                 name='commission'
                                 errors={errors?.commission}
                                 control={control}

@@ -88,7 +88,6 @@ const handleFileChange = (event, type) =>
 
 const onSubmit = (values) =>
 {
-    console.log("value", values)
     setModal('verify')
 };
 

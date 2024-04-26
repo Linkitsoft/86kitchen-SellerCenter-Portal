@@ -88,15 +88,15 @@
             margin-bottom: 5px;
             width: 100%;
             outline: none;
+            font-size: 12px;
         }
 
         input::placeholder {
             font-size: 10px;
         }
-
+        
         input:focus {
             border: 1px solid #1c4685;
-
         }
 
     }

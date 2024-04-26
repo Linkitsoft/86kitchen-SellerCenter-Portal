@@ -25,7 +25,7 @@ const ChangeCommission = ({ setModal }) =>
     }, []);
 
 
-    const onSubmit = (values) =>
+    const onSubmit = () =>
     {
         setModal('')
     };
@@ -57,10 +57,8 @@ const ChangeCommission = ({ setModal }) =>
                         name="commission"
                     />
                 </div>
-                <p className='addCat_err'>Note:
-                    Please note that any changes to commission rates will require approval from the administrator before updating in the system.</p>
+                <p className='addCat_err'>Please note that any changes to commission rates will require approval from the administrator before updating in the system.</p>
                 <button  onClick={handleSubmit(onSubmit)} className='addCat_btn'>Submit</button>
-
             </div>
         </div>
     )

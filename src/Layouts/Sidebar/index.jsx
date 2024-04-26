@@ -179,7 +179,7 @@ const Sidebar = () =>
                                             <div className="sideBar_list sideBar_active">
                                                 <ul>
                                                     {item?.subMenu?.map((res) => (
-                                                        <RoleAccess role={!roles?.hide?.includes(res?.id)}>
+                                                        <RoleAccess key={res.index} role={!roles?.hide?.includes(res?.id)}>
                                                             <li
                                                                 key={res.index}
                                                                 className={(location?.pathname === res?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}

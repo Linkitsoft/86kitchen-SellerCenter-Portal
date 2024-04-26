@@ -1,8 +1,7 @@
 import React from 'react'
 
-const InputField = ({ label, control, name, register, handleBlur, errors, isLabel, disabled, value }) =>
+const InputField = ({ label, control, name, register, handleBlur, errors, isLabel, disabled, value, type }) =>
 {
-    console.log("value", value)
     return (
         <div>
             {isLabel ? <label>{label}</label> : <p>{label}</p>}
@@ -10,7 +9,7 @@ const InputField = ({ label, control, name, register, handleBlur, errors, isLabe
                 control={control}
                 {...register(name)}
                 onBlur={() => handleBlur(name)}
-                type="text"
+                type={type === 'number' ? 'number' : 'text'}
                 name={name}
                 placeholder={label}
                 disabled={disabled}

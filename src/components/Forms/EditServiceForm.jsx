@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'; // Import yupResolver from @hookform/resolvers/yup
 import DropdownField from '../InputField/DropdownField';
 
-const EditServiceForm = ({setModal}) =>
+const EditServiceForm = ({ setModal }) =>
 {
     const navigate = useNavigate()
     const [banner, setBanner] = useState(null);
@@ -17,7 +17,7 @@ const EditServiceForm = ({setModal}) =>
         defaultValues: {
             name: '',
             category: '',
-            price: '',
+            price: null,
             item: '',
             description: '',
             commission: null,
@@ -66,7 +66,7 @@ const EditServiceForm = ({setModal}) =>
         }
     };
 
-    const onSubmit = (values) =>
+    const onSubmit = () =>
     {
         toast.success("Service added successfully")
     };
@@ -112,10 +112,11 @@ const EditServiceForm = ({setModal}) =>
                                 register={register}
                                 options={[{ label: "Fiber", value: "Storm Fiber" }]}
                             />
-                         <InputField
+                            <InputField
                                 label='Total Price'
                                 placeholder='Enter total price'
                                 name='price'
+                                type='number'
                                 errors={errors?.price}
                                 control={control}
                                 handleBlur={handleBlur}
@@ -143,9 +144,10 @@ const EditServiceForm = ({setModal}) =>
                                 register={register}
                             />
                             <InputField
-                                label='commission'
+                                label='Commission'
                                 placeholder='Commission'
                                 name='commission'
+                                type='number'
                                 errors={errors?.commission}
                                 control={control}
                                 handleBlur={handleBlur}
