@@ -5,9 +5,9 @@ import tickImg from "../assets/images/Admin-20 (85).png"
 
 export const dashboardData = [
     {
-        text: "Total Users",
-        number: 19,
-        pic: starImg,
+        text: "Today’s Queries",
+        number: 5,
+        pic: tickImg,
     },
     {
         text: "Total Services",
@@ -20,8 +20,8 @@ export const dashboardData = [
         pic: qImg,
     },
     {
-        text: "Today’s Queries",
-        number: 5,
-        pic: tickImg,
+        text: "Total Sales",
+        number: "$1977.00",
+        pic: qImg,
     },
 ];
