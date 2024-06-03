@@ -1,0 +1,276 @@
+.createCampaign {
+    // height: 760px;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 24px;
+    padding: 20px;
+    overflow: scroll;
+    margin-top: 80px;
+
+    &_title {
+        color: #000000;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 20px 0;
+        font-family: 'custom-bold';
+    }
+
+    &_compaignBtn {
+        display: flex;
+        justify-content: end;
+        width: 80%;
+        padding: 0 40px;
+        margin-top: 50px;
+
+        button {
+            width: 100%;
+            padding: 15px 0px;
+            background: #FFFFFF;
+            font-weight: 600;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            color: #272B6B;
+            font-size: 22px;
+            text-align: center;
+            transition: 0.3ms ease-in;
+        }
+
+        button:hover {
+            // background: #EBEAEA;
+        }
+    }
+
+
+    &_error {
+        width: 100%;
+        text-align: left;
+        color: #EE2C2C;
+        font-family: semibold-font;
+        font-size: 14px;
+    }
+    &_lableSec {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 35px;
+    }
+    &_addService {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        label {
+            text-align: left;
+            color: #636363;
+            font-family: regular-font;
+            font-weight: 500;
+        }
+    }
+    &_space {
+        padding: 0px 40px;
+        width: 80%;
+    }
+    &_uploader {
+        height: 180px;
+        width: 300px;
+        background-color: #D7E7FF;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .fullImg {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .uploadImg {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        input {
+            width: 80px;
+            height: 60px;
+            position: absolute;
+            top: 60px;
+            opacity: 0;
+        }
+        .fa-trash {
+            background-color: red;
+            padding: 8px;
+            border-radius: 20px;
+            color: white;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+    }
+    .generateBtn {
+        width: 150px;
+        padding: 10px;
+        border: none;
+        background: #3686FF;
+        color: #fff;
+        border-radius: 6px;
+        font-size: 15px;
+        position: relative;
+    }
+    &_grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        margin-top: 10px;
+        gap: 10px;
+        div {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+        }
+        input {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 130px;
+            color: #494949;
+            font-weight: 500;
+            font-family: medium-font;
+            border-radius: 6px;
+            outline: none;
+            border: 1px solid #636363;
+            width: 100%;
+            font-size: 13px;
+        }
+        input:focus {
+            border: 2px solid #0068EF;
+        }
+        select {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 130px;
+            color: #494949;
+            font-weight: 500;
+            font-family: medium-font;
+            border-radius: 6px;
+            outline: none;
+            border: 1px solid #636363;
+            font-size: 13px;
+        }
+    }
+    &_ref {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        button {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            background: #3686FF;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+    }
+    &_gridFull {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+        textarea {
+            width: 100%;
+            padding: 10px 0;
+            height: 100px;
+            padding-left: 20px;
+            padding-right: 130px;
+            color: #494949;
+            font-weight: 500;
+            font-family: medium-font;
+            border-radius: 6px;
+            outline: none;
+            border: 1px solid #636363;
+            resize: none;
+            font-size: 13px;
+        }
+        textarea:focus {
+            border: 2px solid #0068EF;
+        }
+    }
+    &_create {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        margin-top: 60px;
+        margin-right: 80px;
+        button {
+            background-image: linear-gradient(to right, var(--blue), var(--orange));
+            padding: 17px 120px;
+            border: none;
+            outline: none;
+            border-radius: 2px;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s ease-in;
+            border-radius: 10px;
+            font-family: regular-font;
+            font-weight: 580;
+            cursor: pointer;
+        }
+        button:hover {
+            background-image: linear-gradient(to right, #2D7AED, #EA4E2E);
+        }
+    }
+    @media (max-width: 1280px) {
+        &_grid {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .createCampaign_create {
+            display: flex;
+            margin-right: 0px;
+            justify-content: center;
+        }
+        .createCampaign_space {
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .createCampaign_lableSec {
+            width: 90%;
+            display: flex;
+            align-items: center;
+        }
+        &_error {
+            text-align: center;
+        }
+    }
+    @media (max-width: 376px) {
+        .createCampaign_grid input {
+            padding-right: 10px;
+        }
+        .createCampaign_grid select {
+            padding-right: 10px;
+        }
+        .createCampaign_gridFull textarea {
+            padding-right: 10px;
+        }
+        .createCampaign_create button {
+            padding: 12px 55px;
+        }
+        .createCampaign_uploader {
+            width: 250px;
+        }
+    }
+}

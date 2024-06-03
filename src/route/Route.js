@@ -7,6 +7,8 @@ import Loader from '../components/Loader';
 import Mainlayout from '../Layouts/MainLayout';
 import PrivateRoute from '../hoc/PrivateRoute';
 import useUserRole from '../hooks/useUserRole';
+import AllCampaigns from '../pages/AllCampaigns';
+import CreateCampaign from '../pages/CreateCampaign';
 
 const MyRoutes = () =>
 {
@@ -49,6 +51,13 @@ const MyRoutes = () =>
         return new Promise((resolve) =>
         {
             setTimeout(() => resolve(import("../pages/Orders")), 800);
+        });
+    });
+    const SalesAnalysis = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/SalesAnalysis")), 800);
         });
     });
 
@@ -209,6 +218,10 @@ const MyRoutes = () =>
             element: <Orders />
         },
         {
+            path: 'sales-analysis',
+            element: <SalesAnalysis />
+        },
+        {
             path: 'changePassword',
             element: <ChangePassword />
         },
@@ -231,6 +244,14 @@ const MyRoutes = () =>
         {
             path: 'orderDetails',
             element: <OrderDetails />
+        },
+        {
+            path: 'allCampaigns',
+            element: <AllCampaigns />
+        },
+        {
+            path: 'createCampaign',
+            element: <CreateCampaign />
         },
         {
             path: 'addService',

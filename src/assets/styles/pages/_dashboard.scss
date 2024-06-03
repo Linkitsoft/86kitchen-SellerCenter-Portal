@@ -128,7 +128,9 @@
         // align-items: center;
         gap: 20px;
     }
-
+    &_areaChart {
+        background: #fff;
+     }
     &_left {
         width: 60%;
     }
@@ -171,6 +173,7 @@
             color: white;
         }
     }
+
 }
 
 @media (max-width: 1400px) {

@@ -75,6 +75,37 @@ export const list = [
         id: 'orders'
     },
     {
+        name: "Sales Analysis",
+        light: rev,
+        dark: revl,
+        url: "/sales-analysis",
+        index: "11",
+        parentRoute: null,
+        id: 'orders'
+    },
+    {
+        name: "Campaigns",
+        light: prof,
+        dark: profl,
+        url: "/campaign ",
+        index: "12",
+        parentRoute: null,
+        id: 'orders',
+        subMenu: [
+            {
+                name: "All Campaigns",
+                url: "/allCampaigns",
+                id: "allCampaigns",
+            },
+            {
+                name: "Create Campaign",
+                url: "/createCampaign",
+                index: "11b",
+                id: "createCampaign",
+            },
+        ]
+    },
+    {
         name: "Sales & Commission",
         light: service,
         dark: servicel,
