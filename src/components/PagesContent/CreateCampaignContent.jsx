@@ -74,7 +74,7 @@ const CreateCampaignContent = () => {
             <p className='createCampaign_title'>Create Compaign</p>
             <div className='createCampaign_addService'>
                 <div className='createCampaign_lableSec'>
-                    <label>Campaign Image</label>
+                    <p style={{}}>Campaign Image</p>
                     <div className='createCampaign_uploader'>
                         {img && <i onClick={() => setImg("")} class="fa-solid fa-trash"></i>}
                         <img className={img ? "fullImg" : "uploadImg"} src={img ? img : uploadImg} alt="uploadImg" />

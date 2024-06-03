@@ -53,7 +53,7 @@ const MainFooter = () =>
                     </div>
                 </div>
                 <div className="mainFooter_bottom">
-                    <p>2023 86Kitch’n</p>
+                    <p>2024 86Kitch’n</p>
                     <img src={logo} alt="" />
                 </div>
             </div>

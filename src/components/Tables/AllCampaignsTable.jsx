@@ -1,7 +1,7 @@
 import React from 'react'
 import { usersData } from '../../utils/usersData';
-import Image from '../../assets/images/Admin-20 (72).png'
-const AllCampaignsTable = () => {
+import Image from '../../assets/images/Marketplace-Assets-40.png'
+const AllCampaignsTable = ({ setModal }) => {
     const header = ['No', 'Image', 'Coupon Code ', 'Title ', 'Type ']
 
     const campaign = [
@@ -9,28 +9,32 @@ const AllCampaignsTable = () => {
             no: "1",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "john",
+            title: "Azx",
+            color: "blue",
             type: "On Top"
         },
         {
             no: "2",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "john",
+            title: "Beron",
+            color: "blue",
             type: "Middle"
         },
         {
             no: "3",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "john",
+            title: "Hanki Beton",
+            color: "red",
             type: "On Top"
         },
         {
             no: "4",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "john",
+            title: "Azx",
+            color: "blue",
             type: "Middle"
         },
 
@@ -46,16 +50,21 @@ const AllCampaignsTable = () => {
                         return (
                             <tr key={index}>
                                 <td>{item?.no}</td>
-                                <td>
+                                <td >
                                     <img
-                                    alt =""
-                                    src={Image}
-                                    className='w-12'
-                                    height={"48px"}
+                                        onClick={() => setModal("view")}
+                                        alt=""
+                                        src={Image}
+                                        className='w-12'
+                                        height={"48px"}
+                                        width={"56px"}
+                                        style={{ borderRadius: "10px", overflow: "hidden", cursor: "pointer" }}
                                     />
                                 </td>
                                 <td>{item?.couponCode}</td>
-                                <td>{item?.title}</td>
+                                <td title={item?.title} style={{ cursor: "pointer", }}>
+                                    {item?.title}
+                                </td>
                                 <td>{item?.type}</td>
                                 {/* <td>
                                     <label className="switch">

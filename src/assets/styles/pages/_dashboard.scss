@@ -29,6 +29,7 @@
             color: #fff;
         }
     }
+
     &_backImg {
         width: 40px;
         cursor: pointer;
@@ -68,7 +69,7 @@
 
     &_queries {
         background: #fff;
-        padding: 0 10px;
+        padding: 0 30px;
         box-shadow: 0 0 3px rgb(0 0 0 / 20%);
         border-radius: 10px;
     }
@@ -128,9 +129,11 @@
         // align-items: center;
         gap: 20px;
     }
+
     &_areaChart {
         background: #fff;
-     }
+    }
+
     &_left {
         width: 60%;
     }
@@ -174,7 +177,9 @@
         }
     }
 
+    
 }
+
 
 @media (max-width: 1400px) {
     .dashboard {
