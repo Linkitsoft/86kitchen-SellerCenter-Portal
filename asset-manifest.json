@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.19a9f492.css",
-    "main.js": "/static/js/main.c7790549.js",
+    "main.css": "/static/css/main.94ff028e.css",
+    "main.js": "/static/js/main.283ddf57.js",
     "static/js/701.f4bc3a51.chunk.js": "/static/js/701.f4bc3a51.chunk.js",
     "static/js/697.2b97a937.chunk.js": "/static/js/697.2b97a937.chunk.js",
     "static/js/514.13f1e139.chunk.js": "/static/js/514.13f1e139.chunk.js",
-    "static/js/631.dabfa256.chunk.js": "/static/js/631.dabfa256.chunk.js",
+    "static/js/631.89542616.chunk.js": "/static/js/631.89542616.chunk.js",
     "static/js/669.5c68712b.chunk.js": "/static/js/669.5c68712b.chunk.js",
     "static/js/853.f3d51190.chunk.js": "/static/js/853.f3d51190.chunk.js",
     "static/js/802.ae197e08.chunk.js": "/static/js/802.ae197e08.chunk.js",
     "static/js/737.a0be1360.chunk.js": "/static/js/737.a0be1360.chunk.js",
     "static/js/880.827c5697.chunk.js": "/static/js/880.827c5697.chunk.js",
     "static/js/275.f3722108.chunk.js": "/static/js/275.f3722108.chunk.js",
-    "static/js/644.1147ab5f.chunk.js": "/static/js/644.1147ab5f.chunk.js",
+    "static/js/644.b4627e55.chunk.js": "/static/js/644.b4627e55.chunk.js",
     "static/js/917.8791c623.chunk.js": "/static/js/917.8791c623.chunk.js",
     "static/js/444.492a3ae9.chunk.js": "/static/js/444.492a3ae9.chunk.js",
-    "static/js/951.2ea31c00.chunk.js": "/static/js/951.2ea31c00.chunk.js",
+    "static/js/951.e2831fe6.chunk.js": "/static/js/951.e2831fe6.chunk.js",
     "static/js/67.337dde2a.chunk.js": "/static/js/67.337dde2a.chunk.js",
-    "static/js/648.c9d80627.chunk.js": "/static/js/648.c9d80627.chunk.js",
+    "static/js/648.c210bb37.chunk.js": "/static/js/648.c210bb37.chunk.js",
     "static/js/821.262fb31d.chunk.js": "/static/js/821.262fb31d.chunk.js",
     "static/js/906.d82cdfe0.chunk.js": "/static/js/906.d82cdfe0.chunk.js",
     "static/js/822.4312b894.chunk.js": "/static/js/822.4312b894.chunk.js",
@@ -26,7 +26,7 @@
     "static/js/27.3bca191d.chunk.js": "/static/js/27.3bca191d.chunk.js",
     "static/js/970.21fa9dcf.chunk.js": "/static/js/970.21fa9dcf.chunk.js",
     "static/js/711.b61deebd.chunk.js": "/static/js/711.b61deebd.chunk.js",
-    "static/js/280.dbcd1ed5.chunk.js": "/static/js/280.dbcd1ed5.chunk.js",
+    "static/js/280.a913b69a.chunk.js": "/static/js/280.a913b69a.chunk.js",
     "static/js/255.a2d43f30.chunk.js": "/static/js/255.a2d43f30.chunk.js",
     "static/media/Admin-20 (72).png": "/static/media/Admin-20 (72).ad44b982affd2a1fa637.png",
     "static/media/Admin-20 (77).png": "/static/media/Admin-20 (77).26b57d4da78b3fc05d0a.png",
@@ -36,6 +36,7 @@
     "static/media/Admin-20 (23).png": "/static/media/Admin-20 (23).f1f5a8cc2a2e9e7e0504.png",
     "static/media/Admin-20 (73).png": "/static/media/Admin-20 (73).db7223d5ed0694fca208.png",
     "static/media/Admin-20 (25).png": "/static/media/Admin-20 (25).5a6a26bb5567a4775afb.png",
+    "static/media/Marketplace-Assets-40.png": "/static/media/Marketplace-Assets-40.812ecda69d4a6c670653.png",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/Montserrat-Bold.ttf": "/static/media/Montserrat-Bold.079ca05d3ded9bc107ab.ttf",
     "static/media/Montserrat-SemiBold.ttf": "/static/media/Montserrat-SemiBold.fa8441f345d83a0bc4ec.ttf",
@@ -51,7 +52,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.19a9f492.css",
-    "static/js/main.c7790549.js"
+    "static/css/main.94ff028e.css",
+    "static/js/main.283ddf57.js"
   ]
 }
