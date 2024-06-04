@@ -146,13 +146,14 @@ const Sidebar = () =>
                         <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
                     </div>
                 </RoleAccess>
-                {userType === 'user' && <p className="navBar_type">Observant User</p>}
+                {/* {userType === 'user' && <p className="navBar_type">Observant User</p>} */}
 
             </div>
             {
                 showSidebar &&
                 <div className={!open ? "sideBar" : "sideBar sideBar_sidebarActive"} ref={componentRef2}>
                     <div className={open ? "sideBar_inner" : "sideBar_innersmall"}>
+                    {userType === 'user' && <p className="navBar_roleInfo">Observant User</p>}
                         <div className="sideBar_eventInfo">
                             <img src={circleImg} alt="eventInfo" />
                             <div className="sideBar_eventText">

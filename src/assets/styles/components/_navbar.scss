@@ -23,6 +23,12 @@
         right: 10px;
     }
 
+    &_roleInfo {
+        color: #fff;
+        font-weight: 600;
+        text-align: center;
+    }
+
     &_left,
     &_right {
         display: flex;
@@ -46,6 +52,7 @@
         color: #fff;
         font-weight: 500;
     }
+
     &_type {
         // background-color: #E8E9AD;
         padding: 10px;
@@ -111,9 +118,12 @@
             border-radius: 5px;
             font-size: 10px;
         }
-        &_left, &_right {
+
+        &_left,
+        &_right {
             gap: 5px;
         }
+
         &_right {
             width: 100%;
             justify-content: center;

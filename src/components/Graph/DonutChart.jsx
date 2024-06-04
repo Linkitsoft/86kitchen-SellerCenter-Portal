@@ -13,7 +13,7 @@ const DonutChart = () => {
             text: ""
         },
         subtitles: [{
-            text: "40%",
+            text: "Sales Analysis",
             verticalAlign: "center",
             fontSize: 24,
             dockInsidePlotArea: true
@@ -21,18 +21,24 @@ const DonutChart = () => {
         data: [{
             type: "doughnut",
             showInLegend: true,
-            indexLabel: "{name}: {y}",
-            yValueFormatString: "#,###''",
+            legendText: "{label}",
+            toolTipContent: "{label}: <strong>${y}</strong>",
+            indexLabel: "${y}",
+            indexLabelPlacement: "inside",
             dataPoints: [
-                { name: "Top 5 products", y: 10, },
-                { name: "Top selling product", y: 31, },
-                { name: "Highest commissioned Product", y: 31, },
-                // { name: "Very Satisfied", y: 40 },
-                // { name: "Satisfied", y: 17 },
-                // { name: "Neutral", y: 7 }
+                { y: 300, label: "Top selling product Storm Fiber" },
+                { y: 400, label: "Highest commissioned Product Samsung" },
             ]
+            // type: "doughnut",
+            // showInLegend: true,
+            // indexLabel: "{name}: {y}",
+            // yValueFormatString: "#,###''",
+            // dataPoints: [
+            //     { name: `Top selling product (${"Storm Fiber"}) Price: $${345} Sales`, y: 45 },
+            //     { name: `Highest commissioned Product (${"Samsung"})  Price: $${45} Sales`, y: 66 },
+            // ]
         }]
-    }
+    };
     return (
         <div className='dashboard_donutChart' id="chart" >
             <CanvasJSChart options={options}

@@ -5,6 +5,7 @@ import InputField from '../InputField/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
+import UploadImg from '../UploadImage';
 
 const AccountVerificationForm = ({ setModal }) => {
     const [banner, setBanner] = useState(null);
@@ -40,46 +41,17 @@ const AccountVerificationForm = ({ setModal }) => {
 
                 if (fileType === 'banner') {
                     console.log(file?.size, "kjkjkjkj")
-                    if (file?.size <= 10 * 1024 * 1024) {
-                        setBanner({
-                            file: file,
-                            previewURL: reader.result,
-                        });
-                    } else {
-                        toast.warning("File size should be less than 10mb")
-                    }
+                    UploadImg(event, setBanner)
 
                 } else if (fileType === 'profile') {
-                    if (file?.size <= 10 * 1024 * 1024) {
-                        setProfile({
-                            file: file,
-                            previewURL: reader.result,
-                        });
-                    } else {
-                        toast.warning("File size should be less than 10mb")
-                    }
+
+                    UploadImg(event, setProfile)
 
 
                 } else if (fileType === 'front') {
-                    if (file?.size <= 10 * 1024 * 1024) {
-                        setFront({
-                            file: file,
-                            previewURL: reader.result,
-                        });
-                    } else {
-                        toast.warning("File size should be less than 10mb")
-                    }
-
-
+                    UploadImg(event, setFront)
                 } else if (fileType === 'back') {
-                    if (file?.size <= 10 * 1024 * 1024) {
-                        setBack({
-                            file: file,
-                            previewURL: reader.result,
-                        });
-                    } else {
-                        toast.warning("File size should be less than 10mb")
-                    }
+                    UploadImg(event, setBack)
                 }
             };
             reader.readAsDataURL(file);
@@ -218,8 +190,24 @@ const AccountVerificationForm = ({ setModal }) => {
             <div className="verify_top">
                 <div className="verify_left">
                     <p className="verify_subhead">Business Details</p>
-                    <p style={{ fontSize: "12px" }}>Recomended resolution banner : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
-                    <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
+                    <div className='verify_leftBoxProfile'>
+                        <div className="verify_upload">
+                            <div className="verify_roundSec">
+                                {!profile &&
+                                    <label htmlFor="logoInput">
+                                        <img className="verify_miniR1" src={star} alt='' />
+                                    </label>}
+                                <input type="file" id="logoInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'profile')} />
+                                {profile && <img className="verify_fileR" src={profile} alt='' />}
+                                {profile && <i className="fa-solid fa-trash verify_deleteIcon " onClick={() => setProfile(null)}></i>}
+                            </div>
+                        </div>
+                        <div>
+                            <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
+                            <p style={{ fontSize: "12px" }}>Recomended resolution banner : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
+                            <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
+                        </div>
+                    </div>
                     <div>
                         <div className="verify_uploadSec">
                             {!banner && (
@@ -234,26 +222,18 @@ const AccountVerificationForm = ({ setModal }) => {
                                 style={{ display: 'none' }}
                                 onChange={(e) => handleFileChange(e, 'banner')}
                             />
-                            {banner && <img className="verify_file" src={banner?.previewURL} alt='' />}
+                            {banner && <img className="verify_file" src={banner} alt='' />}
                             {banner && (
                                 <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>
                             )}
 
                         </div>
+                        <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                         <p style={{ fontSize: "12px" }}>Recomended logo : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                         <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
                     </div>
-                    <div className="verify_upload">
-                        <div className="verify_roundSec">
-                            {!profile &&
-                                <label htmlFor="logoInput">
-                                    <img className="verify_miniR" src={star} alt='' />
-                                </label>}
-                            <input type="file" id="logoInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'profile')} />
-                            {profile && <img className="verify_fileR" src={profile?.previewURL} alt='' />}
-                            {profile && <i className="fa-solid fa-trash" onClick={() => setProfile(null)}></i>}
-                        </div>
-                    </div>
+
+
                     <div className="verify_form" style={{ marginTop: "30px" }}>
                         <InputField
                             label='Business Name'
@@ -292,9 +272,10 @@ const AccountVerificationForm = ({ setModal }) => {
                                         <img className="verify_mini" src={star} alt='' />
                                     </label>}
                                 <input name="front" type="file" id="front" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'front')} />
-                                {front && <img className="verify_file" src={front?.previewURL} alt='' />}
+                                {front && <img className="verify_file" src={front} alt='' />}
                                 {front && <i className="fa-solid fa-trash" onClick={() => setFront(null)}></i>}
                                 <p style={{ margin: "25px 25px 0 25px" }}>Front of ID card</p>
+                                <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                                 <p style={{ textAlign: "center", fontSize: "12px" }}>Recomended resolution ID Card: <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                                 <p style={{ textAlign: "center", fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
                             </div>
@@ -304,9 +285,10 @@ const AccountVerificationForm = ({ setModal }) => {
                                         <img className="verify_mini" src={star} alt='' />
                                     </label>}
                                 <input name="back" type="file" id="back" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'back')} />
-                                {back && <img className="verify_file" src={back?.previewURL} alt='' />}
+                                {back && <img className="verify_file" src={back} alt='' />}
                                 {back && <i className="fa-solid fa-trash" onClick={() => setBack(null)}></i>}
                                 <p style={{ margin: "25px 25px 0 25px" }}>Back of ID Card</p>
+                                <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                                 <p style={{ textAlign: "center", fontSize: "12px" }}>Recomended resolution ID Card: <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                                 <p style={{ textAlign: "center", fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
                             </div>

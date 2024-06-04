@@ -4,6 +4,7 @@ import user from "../../assets/images/Admin-20 (86).png"
 import loc from "../../assets/images/Admin-20 (90).png"
 import uploadImg from "../../assets/images/Admin-20 (20).png"
 import { toast } from 'react-toastify'
+import UploadImg from '../UploadImage'
 // import RoleAccess from '../../hoc/RoleAccess';
 // import useUserRole from '../../hooks/useUserRole'
 
@@ -20,13 +21,14 @@ const ProfileContent = () => {
     }
 
     const handleImg = (e) => {
-        const file = e?.target?.files[0]
-        if (file?.size <= 10 * 1024 * 1024) {
-            setImg(URL.createObjectURL(file))
-            Ref.current.value = null
-        } else {
-            toast.warning("File size should be less than 10mb")
-        }
+        UploadImg(e, setImg)
+        // const file = e?.target?.files[0]
+        // if (file?.size <= 10 * 1024 * 1024) {
+        //     setImg(URL.createObjectURL(file))
+        //     Ref.current.value = null
+        // } else {
+        //     toast.warning("File size should be less than 10mb")
+        // }
     }
 
 
@@ -46,7 +48,8 @@ const ProfileContent = () => {
                         <input type="file" accept="image/*" ref={Ref} onChange={(e) => handleImg(e)} />
                     </div>
                 </div>
-                <p style={{ fontSize: "12px", marginTop: '10px' }}>Recomended resolution banner : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
+                <p style={{ fontSize: "12px", marginTop:'6px' }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
+                <p style={{ fontSize: "12px",  }}>Recomended resolution banner : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                 <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
                 <div className="container">
                     <p className="profile_head">Storm Fiber</p>

@@ -116,7 +116,7 @@
     &_uploadSec {
         background-color: #D7E7FF;
         text-align: center;
-        width: 218px;
+        width: 300px;
         height: 114px;
         position: relative;
         border-radius: 10px;
@@ -134,7 +134,11 @@
             cursor: pointer;
         }
     }
-
+    &_validationBox{
+        width: 300px;
+        margin: 0 auto;
+        padding-top: 8px;
+   }
     &_roundSec {
         background-color: #D7E7FF;
         width: 79px;

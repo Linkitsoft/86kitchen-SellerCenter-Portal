@@ -8,6 +8,7 @@ import uploadImg from "../../assets/images/Admin-20 (20).png"
 import { toast } from 'react-toastify';
 import DropdownField from '../InputField/DropdownField';
 import { useEffect } from 'react';
+import UploadImg from '../UploadImage';
 
 const CreateCampaignContent = () => {
 
@@ -31,13 +32,7 @@ const CreateCampaignContent = () => {
         resolver: yupResolver(campaignValidation),
     });
     const handleImg = (e) => {
-        const file = e?.target?.files[0]
-        if (file?.size <= 10 * 1024 * 1024) {
-            setImg(URL.createObjectURL(file))
-            Ref.current.value = null
-        } else {
-            toast.warning("File size should be less than 10mb")
-        }
+        UploadImg(e,setImg)
 
     }
     const handleCreate = (value) => {
@@ -82,6 +77,7 @@ const CreateCampaignContent = () => {
                     </div>
                     <div>
                         {!img && <p className="createCampaign_error">Image is required</p>}
+                        <p style={{ fontSize: "12px", }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                         <p style={{ fontSize: "12px" }}>Recomended resolution : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                         <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
                     </div>

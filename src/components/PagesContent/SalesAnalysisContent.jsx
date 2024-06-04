@@ -9,40 +9,48 @@ import DashboardTopCards from '../DashboardTopCards'
 import MainServiceSection from '../MainServiceSection'
 import OrdersTab from '../OrdersTab'
 import OrdersCard from '../OrdersCard'
+import SalesAnalysisChart from '../Graph/SalesAnalysisChart '
 function SalesAnalysisContent() {
 
     const [modal, setModal] = useState()
+    const [filterView, setFilterView] = useState("All")
     // const [obj] = useState()
     // const navigate = useNavigate()
     // const roles = useUserRole();
     const data = [
         {
-            text: "Total Sales",
-            number: "$1500.00",
-            pic: customerReq,   
+            text: "This Month Sales",
+            number: "$1977.00",
+            pic: totalVendorImg,
         },
         {
-            text: "Total Products",
-            number: "20",
-            pic: totalCustomersImg,   
+            text: "Last Month Sales",
+            number: "$200.00",
+            pic: totalCustomersImg,
         },
         {
-            text: "Highest Selling Products",
-            number: "Storm Fiber",  
-            pic: totalVendorImg,  
+            text: "Highest Selling Product",
+            number: "Storm Fiber",
+            pic: totalVendorImg,
         },
-        // {
-        //     text: "Least Selling Products",
-        //     number: "5%",   
-        //     pic: totalVendorImg,   
-        // },
         {
-            text: "Least Selling Products",
-            number: "Sony",   
-            pic: totalVendorImg,  
+            text: "Least Selling Product",
+            number: "Sony",
+            pic: totalVendorImg,
         },
     ];
-    
+
+    const salesData = [
+        { name: 'Product A', sales: 1000, commission: "3.4%", price: 45 },
+        { name: 'Product B', sales: 800, commission: "4%", price: 45 },
+        { name: 'Product C', sales: 1200, commission: "6%", price: 45 },
+        { name: 'Product D', sales: 1000, commission: "2.3%", price: 45 },
+        { name: 'Product E', sales: 800, commission: "3%", price: 45 },
+        // Add more data as needed
+    ];
+
+    const month = ["All", "January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"];
 
     return (
         <div className="dashboard">
@@ -50,53 +58,28 @@ function SalesAnalysisContent() {
             <DashboardTopCards data={data} />
             <div className="dashboard_content">
                 <div className="dashboard_left">
-                    <p className='dashboard_title' style={{zIndex:"-50",position:"relative"}}>Sales Analysis</p>
-                    <AreaChart />
+                    <p className='dashboard_title' style={{ zIndex: "-50", position: "relative" }}>Sales Analysis</p>
+                    <SalesAnalysisChart data={salesData} />
                 </div>
-                <div className="dashboard_right">
-                    <p className='dashboard_title' style={{zIndex:"-50",position:"relative"}}>--</p>
+                <div style={{ overflow: "auto" }} className="dashboard_right">
+                    <p className='dashboard_title' style={{ zIndex: "-50", position: "relative" }}>--</p>
                     <DonutChart />
                 </div>
             </div>
+            <div className='dashboard_graphParent' style={{ marginTop: '48px', width: '100%' }}>
+                <div className='dashboard_graphGrid'>
+                    <h2>Sales Overview</h2>
+                    <select onChange={(e) => setFilterView(e?.target?.value)}>
+                        {month?.map((item) => {
+                            return (
+                                <option value={item}>{item}</option>
+                            )
+                        })}
+                    </select>
+                </div>
+                <AreaChart filterView={filterView} data={salesData} />
+            </div>
         </div>
-        // <div>
-        //     <div className="mainLayout">
-        //         <div className="mainLayout_parent">
-        //             {/* {modal === "saleDetail" && <ViewSalesDetail setModal={setModal} />} */}
-        //             {/* <Sidebar index={"11"} /> */}
-        //             <div className="dashboard">
-        //                 <div className='dashboard_topBar'>
-        //                     <div>
-        //                         <p className="dashboard_title">Sales</p>
-        //                     </div>
-        //                     <div></div>
-        //                 </div>
-        //                 {/* <SalesTopCard data={data} /> */}
-        //                 <p style={{ marginTop: "14px" }} className='dashboard_tableHead'>Sales Overview</p>
-        //                 <div className='dashboard_salesGrid'>
-        //                     <div className='child'>
-        //                         <AreaChart />
-        //                     </div>
-        //                     <div style={{ justifyContent: "left" }} className='child'>
-        //                         <DonutChart />
-        //                     </div>
-        //                 </div>
-        //                 {/* <div className='dashboard_topBar'>
-        //                 <div>
-        //                     <p style={{ marginTop: '20px' }} className='dashboard_tableHead'>Sales Data</p>
-        //                 </div>
-        //                 <div>
-        //                     <div className='dashboard_inputWrap'>
-        //                         <i class="fa-solid search fa-magnifying-glass"></i>
-        //                         <input type="text" placeholder='Search Name & Email' />
-        //                     </div>
-        //                 </div>
-        //             </div> */}
-        //             </div>
-        //         </div>
-        //     </div>
-
-        // </div>
     )
 }
 

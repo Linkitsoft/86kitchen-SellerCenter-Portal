@@ -8,9 +8,9 @@ import InputField from '../InputField/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'; // Import yupResolver from @hookform/resolvers/yup
 import DropdownField from '../InputField/DropdownField';
+import UploadImg from '../UploadImage';
 
-const AddServiceForm = () =>
-{
+const AddServiceForm = () => {
     const navigate = useNavigate()
     const [banner, setBanner] = useState(null);
     const { control, handleSubmit, register, trigger, formState: { errors } } = useForm({
@@ -25,49 +25,19 @@ const AddServiceForm = () =>
         mode: 'onBlur',
         resolver: yupResolver(serviceValidation)
     })
-    const handleFileChange = (event, type) =>
-    {
-        const file = event.target.files[0];
-
-        if (file)
-        {
-            const reader = new FileReader();
-            reader.onloadend = () =>
-            {
-                const fileType = type;
-
-                if (fileType === 'banner')
-                {
-                    setBanner({
-                        file: file,
-                        previewURL: reader.result,
-                    });
-                }
-
-            };
-            reader.readAsDataURL(file);
-        } else
-        {
-            if (type === 'banner')
-            {
-                setBanner(null);
-            }
-        }
+    const handleFileChange = (event, type) => {
+        UploadImg(event, setBanner)
     };
 
-    const handleBlur = async (fieldName) =>
-    {
-        try
-        {
+    const handleBlur = async (fieldName) => {
+        try {
             await trigger(fieldName);
-        } catch (error)
-        {
+        } catch (error) {
             console.error(error);
         }
     };
 
-    const onSubmit = (values) =>
-    {
+    const onSubmit = (values) => {
         toast.success("Service added successfully")
     };
     return (
@@ -86,10 +56,15 @@ const AddServiceForm = () =>
                                         <img className="addServ_mini" src={star} alt='' />
                                     </label>}
                                 <input type="file" id="bannerInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'banner')} />
-                                {banner && <img className="addServ_file" src={banner?.previewURL} alt='' />}
+                                {banner && <img className="addServ_file" src={banner} alt='' />}
                                 {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
                             </div>
-                            {!banner && <div className="verify_err" style={{ textAlign: 'center' }}>Image is required</div>}
+                            <div className="addServ_validationBox" >
+                                {!banner && <div className="verify_err" >Image is required</div>}
+                                <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
+                                <p style={{ fontSize: "12px" }}>Recomended resolution banner : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
+                                <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
+                            </div>
                         </div>
                         <div className="addServ_form">
                             <InputField

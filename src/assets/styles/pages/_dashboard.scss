@@ -131,11 +131,35 @@
     }
 
     &_areaChart {
-        background: #fff;
+        // background: #fff;
     }
 
     &_left {
-        width: 60%;
+        overflow: auto;
+        width: calc(60% - 20px);
+        ;
+    }
+
+
+    // &_graphParent {
+    //     overflow: auto;
+    // }
+
+    &_graphGrid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        select {
+            background: transparent;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #3686FF;
+            margin-bottom: 5px;
+            outline: none;
+            font-size: 12px;
+        }
     }
 
     &_right {
@@ -177,7 +201,7 @@
         }
     }
 
-    
+
 }
 
 
