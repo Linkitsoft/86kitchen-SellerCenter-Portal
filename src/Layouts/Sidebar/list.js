@@ -84,7 +84,7 @@ export const list = [
         id: 'orders'
     },
     {
-        name: "Campaigns",
+        name: "Manage Campaigns",
         light: prof,
         dark: profl,
         url: "/campaign ",

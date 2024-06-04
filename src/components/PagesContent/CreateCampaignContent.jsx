@@ -102,7 +102,7 @@ const CreateCampaignContent = () => {
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
-                            options={[{ label: "On Top", value: "On Top" }, { label: "Middle", value: "Middle" }]}
+                            options={[{ label: "Top Section", value: "Top Section" }, { label: "Middle Section", value: "Middle Section" }]}
                         />
                     </div>
 

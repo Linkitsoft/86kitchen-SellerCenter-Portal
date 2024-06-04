@@ -11,7 +11,7 @@ const AllCampaignsTable = ({ setModal }) => {
             couponCode: "234768FGJ",
             title: "Azx",
             color: "blue",
-            type: "On Top"
+            type: "Top Section"
         },
         {
             no: "2",
@@ -19,7 +19,7 @@ const AllCampaignsTable = ({ setModal }) => {
             couponCode: "234768FGJ",
             title: "Beron",
             color: "blue",
-            type: "Middle"
+            type: "Middle Section"
         },
         {
             no: "3",
@@ -27,7 +27,7 @@ const AllCampaignsTable = ({ setModal }) => {
             couponCode: "234768FGJ",
             title: "Hanki Beton",
             color: "red",
-            type: "On Top"
+            type: "Top Section"
         },
         {
             no: "4",
@@ -35,7 +35,7 @@ const AllCampaignsTable = ({ setModal }) => {
             couponCode: "234768FGJ",
             title: "Azx",
             color: "blue",
-            type: "Middle"
+            type: "Middle Section"
         },
 
     ]
