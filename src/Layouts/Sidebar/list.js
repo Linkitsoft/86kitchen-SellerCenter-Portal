@@ -93,7 +93,7 @@ export const list = [
         id: 'orders',
         subMenu: [
             {
-                name: "All Campaigns",
+                name: "Campaigns",
                 url: "/allCampaigns",
                 id: "allCampaigns",
             },

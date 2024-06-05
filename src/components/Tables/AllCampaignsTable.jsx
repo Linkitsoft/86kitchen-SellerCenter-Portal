@@ -1,44 +1,97 @@
-import React from 'react'
-import { usersData } from '../../utils/usersData';
+import React, { useState } from 'react'
 import Image from '../../assets/images/Marketplace-Assets-40.png'
-const AllCampaignsTable = ({ setModal }) => {
-    const header = ['No', 'Image', 'Coupon Code ', 'Title ', 'Type ']
+import { dateFormat } from '../../utils/dateFormat'
+const AllCampaignsTable = ({ setModal, status, setViewModal, setItem }) => {
 
-    const campaign = [
+
+    const header = [
+        'No', 'Created Date', 'Image',
+        'Title ', 'Type ', 'Coupon Code ',
+        'Campaign Day(s)', 'Approval Status', 'Status', "Details"]
+
+    const [campaign, setCampaign] = useState([
         {
             no: "1",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "Azx",
+            title: "Vision Quest",
             color: "blue",
-            type: "Top Section"
+            type: "Top Section",
+            requestedDate: "5/7/2024",
+            acceptedDate: "5/7/2024",
+            rejectedDate: "5/7/2024",
+            startDate: "5/22/2024",
+            endDate: "6/7/2024",
+            timeDuration: "15 Days",
+            acceptReject: "Rejected",
+            status: "-"
+
         },
         {
             no: "2",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "Beron",
+            title: "Echoes of Eternity",
             color: "blue",
-            type: "Middle Section"
+            type: "Middle Section",
+            requestedDate: "4/7/2024",
+            acceptedDate: "5/7/2024",
+            rejectedDate: "5/7/2024",
+            timeDuration: "15 Days",
+            startDate: "4/22/2024",
+            endDate: "5/7/2024",
+            acceptReject: "Accepted",
+            status: "Expired"
         },
         {
             no: "3",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "Hanki Beton",
+            title: "Unity in Motion",
             color: "red",
-            type: "Top Section"
+            type: "Top Section",
+            requestedDate: "5/7/2024",
+            acceptedDate: "5/7/2024",
+            rejectedDate: "5/7/2024",
+            timeDuration: "9 Days",
+            startDate: "6/29/2024",
+            endDate: "7/7/2024",
+            acceptReject: "Accepted",
+            status: "Upcoming"
         },
         {
             no: "4",
             image: "0121221234",
             couponCode: "234768FGJ",
-            title: "Azx",
+            title: "Seeds of Tomorrow",
             color: "blue",
-            type: "Middle Section"
+            type: "Middle Section",
+            requestedDate: "1/6/2024",
+            acceptedDate: "3/6/2024",
+            rejectedDate: "5/7/2024",
+            timeDuration: "7 Days",
+            startDate: "5/22/2024",
+            endDate: "5/28/2024",
+            acceptReject: "Accepted",
+            status: "Ongoing"
         },
 
-    ]
+    ])
+
+    const itemHandler = (item) => {
+        const newItem = {
+            title: item?.title,
+            couponCode: item?.couponCode,
+            startDate: item?.startDate,
+            endDate: item?.endDate,
+            [item?.acceptReject === "Accepted" ? "acceptedDate " : "rejectedDate"]: item?.rejectedDate,
+            campaignsDay: item?.timeDuration
+        };
+
+        setViewModal(true);
+        setItem(newItem);
+    };
+
     return (
         <div className='eventTable'>
             <table id="table-to-xls">
@@ -46,10 +99,11 @@ const AllCampaignsTable = ({ setModal }) => {
                     <tr>
                         {header?.map((item, index) => <th key={index}>{item}</th>)}
                     </tr>
-                    {campaign?.map((item, index) => {
+                    {campaign.filter(res => status === "All" || res.status === status)?.map((item, index) => {
                         return (
                             <tr key={index}>
-                                <td>{item?.no}</td>
+                                <td>{index + 1}</td>
+                                <td>{dateFormat(item?.requestedDate)}</td>
                                 <td >
                                     <img
                                         onClick={() => setModal("view")}
@@ -61,11 +115,16 @@ const AllCampaignsTable = ({ setModal }) => {
                                         style={{ borderRadius: "10px", overflow: "hidden", cursor: "pointer" }}
                                     />
                                 </td>
-                                <td>{item?.couponCode}</td>
                                 <td title={item?.title} style={{ cursor: "pointer", }}>
                                     {item?.title}
                                 </td>
                                 <td>{item?.type}</td>
+                                <td>{item?.couponCode}</td>
+                                {/* <td >{item?.acceptedDate}</td> */}
+                                <td>{item?.timeDuration}</td>
+                                <td style={{ fontWeight: "bold", color: item?.acceptReject == "Rejected" ? 'red' : "green" }}>{item?.acceptReject}</td>
+                                <td style={{ fontWeight: "bold", color: item?.status == "Expired" ? 'red' : (item?.status == "Ongoing" ? "green" : "blue") }}>
+                                    {item?.status}</td>
                                 {/* <td>
                                     <label className="switch">
                                         <input
@@ -76,6 +135,9 @@ const AllCampaignsTable = ({ setModal }) => {
                                         <span className="slider round"></span>
                                     </label>
                                 </td> */}
+                                <td className='eventTable_viewBtn'>
+                                    <button className='generateBtn' onClick={() => itemHandler(item)}>View</button>
+                                </td>
                             </tr >
                         );
                     })}

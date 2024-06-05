@@ -8,7 +8,23 @@
     color: #313567;
     margin-top: 20px;
     margin-bottom: 49.7344px;
+&_viewBtn {
+       
 
+    button {
+        border: none;
+        background-image: linear-gradient(to right, #3985FC, #ED624F);
+        color: #fff;
+        padding: 6px 23px;
+        border-radius: 30px;
+        font-size: 12px;
+    }
+
+    button:hover {
+        background-image: linear-gradient(to right, #193b72, #632821);
+
+    }
+}
     &_noDataFound {
         display: flex;
         justify-content: center;

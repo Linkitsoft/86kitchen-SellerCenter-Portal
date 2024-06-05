@@ -15,7 +15,7 @@ const CreateCampaignContent = () => {
     const [img, setImg] = useState("")
     const Ref = useRef()
     const [coupoun, setCoupoun] = useState(null)
-
+    const today = new Date().toISOString().split('T')[0];
     const {
         control,
         handleSubmit,
@@ -32,7 +32,7 @@ const CreateCampaignContent = () => {
         resolver: yupResolver(campaignValidation),
     });
     const handleImg = (e) => {
-        UploadImg(e,setImg)
+        UploadImg(e, setImg)
 
     }
     const handleCreate = (value) => {
@@ -66,7 +66,7 @@ const CreateCampaignContent = () => {
     }, [])
     return (
         <div className='createCampaign shadow'>
-            <p className='createCampaign_title'>Create Compaign</p>
+            <p className='createCampaign_title'>Create Campaign</p>
             <div className='createCampaign_addService'>
                 <div className='createCampaign_lableSec'>
                     <p style={{}}>Campaign Image</p>
@@ -94,6 +94,7 @@ const CreateCampaignContent = () => {
                             register={register}
                         />
 
+
                         <DropdownField
                             label='Select Type'
                             placeholder='Select Type'
@@ -104,6 +105,28 @@ const CreateCampaignContent = () => {
                             register={register}
                             options={[{ label: "Top Section", value: "Top Section" }, { label: "Middle Section", value: "Middle Section" }]}
                         />
+                        <InputField
+                            label='Start Date'
+                            placeholder='Start Date'
+                            name='startDate'
+                            errors={errors?.startDate}
+                            control={control}
+                            handleBlur={handleBlur}
+                            register={register}
+                            type="date"
+                            min={today}
+                        />
+                        <InputField
+                            label='End Date'
+                            placeholder='End Date'
+                            name='endDate'
+                            errors={errors?.endDate}
+                            control={control}
+                            handleBlur={handleBlur}
+                            register={register}
+                            type="date"
+                            min={today}
+                        />
                     </div>
 
                     <div style={{ position: "relative", }} className='createCampaign_grid'>
@@ -112,7 +135,7 @@ const CreateCampaignContent = () => {
                             <input style={{ width: "100%" }} placeholder="Coupon Code"
                                 className='fieldChild_input' type="number" disabled={true} value={coupoun} name="couponCode" style={{ background: '#c9c9c9' }} />
                         </div>
-                        <div className="fieldChild">
+                        <div className="fieldChild createCampaign_generateIdBtn">
                             <label style={{ opacity: "0" }} className='fieldChild_label'>Coupon</label>
                             <button className='generateBtn' onClick={generateRefId}>Generate ID</button>
                         </div>

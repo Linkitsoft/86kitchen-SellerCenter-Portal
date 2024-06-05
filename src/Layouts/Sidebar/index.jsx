@@ -153,7 +153,9 @@ const Sidebar = () =>
                 showSidebar &&
                 <div className={!open ? "sideBar" : "sideBar sideBar_sidebarActive"} ref={componentRef2}>
                     <div className={open ? "sideBar_inner" : "sideBar_innersmall"}>
-                    {userType === 'user' && <p className="navBar_roleInfo">Observant User</p>}
+                    {userType === 'admin' && <p className="navBar_roleInfo">Partner Center</p>}
+                    {userType === 'user' && <p className="navBar_roleInfo">Partner Center</p>}
+                    {userType === 'user' && <p className="navBar_roleInfo1">Observant User</p>}
                         <div className="sideBar_eventInfo">
                             <img src={circleImg} alt="eventInfo" />
                             <div className="sideBar_eventText">
