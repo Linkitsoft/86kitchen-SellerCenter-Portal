@@ -13,7 +13,7 @@ const SignupForm = () =>
     const [captchaValue, setCaptchaValue] = useState(null);
 
     const navigate = useNavigate()
-    const { control, handleSubmit, register, trigger, formState: { errors } } = useForm
+    const { control, handleSubmit, register, trigger, formState: { errors, isSubmitting } } = useForm
         ({
             defaultValues: {
                 email: '',
@@ -37,7 +37,7 @@ const SignupForm = () =>
 
     const onSubmit = async (value) =>
     {
-        const res = await SignUp({ ...value, status: 1, isSuperAdmin: false })
+        const res = await SignUp({ ...value, status: 0, isSuperAdmin: true })
         if (res?.data?.status === 'success')
         {
             // toast.success("Account request sent to admin")
@@ -84,7 +84,7 @@ const SignupForm = () =>
             </div>
             {captchaValue &&
                 <div className="login_loginBtn">
-                    <button onClick={handleSubmit(onSubmit)}>Sign Up</button>
+                    <button disabled={isSubmitting} onClick={handleSubmit(onSubmit)}>Sign Up</button>
                 </div>}
             <p className="login_signup">Already have an account? <span onClick={() => navigate("/login")}>Sign In</span></p>
         </>

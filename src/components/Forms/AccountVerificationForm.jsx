@@ -6,77 +6,142 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 import UploadImg from '../UploadImage';
+import { useNavigate } from 'react-router-dom';
+import { Verify } from '../../Services/Partner';
 
-const AccountVerificationForm = ({ setModal }) => {
-    const [banner, setBanner] = useState(null);
-    const [profile, setProfile] = useState(null);
-    const [front, setFront] = useState(null);
-    const [back, setBack] = useState(null);
+const AccountVerificationForm = ({ setModal }) =>
+{
+    // const [banner, setBanner] = useState(null);
+    // const [profile, setProfile] = useState(null);
+    // const [front, setFront] = useState(null);
+    // const [back, setBack] = useState(null);
+    const navigate = useNavigate()
+    const [banner, setBanner] = useState("https://images.unsplash.com/photo-1511649475669-e288648b2339?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    const [profile, setProfile] = useState("https://images.unsplash.com/photo-1511649475669-e288648b2339?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    const [front, setFront] = useState("https://www.phclondon.org/img/web/cnic.jpg")
+    const [back, setBack] = useState("https://pakobserver.net/wp-content/uploads/2023/09/n.jpg")
 
     const { control, handleSubmit, register, trigger, formState: { errors } } = useForm({
         defaultValues: {
+            // firstName: '',
+            // lastName: '',
+            // email: '',
+            // password: '',
+            // confirmPassword: '',
+            // address1: '',
+            // city: '',
+            // state: '',
+            // zipCode: '',
+            // businessName: '',
+            // taxId: '',
+
             firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            address1: '',
-            city: '',
-            state: '',
-            zipCode: '',
-            businessName: '',
-            taxId: '',
+            lastName: "",
+            address1: "",
+            city: "",
+            phone: "",
+            state: "",
+            zipCode: "",
+            businessName: "",
+            taxId: "",
+            businessPhone: "",
         },
         mode: 'onBlur',
         resolver: yupResolver(verifyValidation)
     })
     console.log(banner, "nbnb")
-    const handleFileChange = (event, type) => {
+    const handleFileChange = (event, type) =>
+    {
         const file = event.target.files[0];
 
-        if (file) {
+        if (file)
+        {
             const reader = new FileReader();
-            reader.onloadend = () => {
+            reader.onloadend = () =>
+            {
                 const fileType = type;
 
-                if (fileType === 'banner') {
+                if (fileType === 'banner')
+                {
                     console.log(file?.size, "kjkjkjkj")
                     UploadImg(event, setBanner)
 
-                } else if (fileType === 'profile') {
+                } else if (fileType === 'profile')
+                {
 
                     UploadImg(event, setProfile)
 
 
-                } else if (fileType === 'front') {
+                } else if (fileType === 'front')
+                {
                     UploadImg(event, setFront)
-                } else if (fileType === 'back') {
+                } else if (fileType === 'back')
+                {
                     UploadImg(event, setBack)
                 }
             };
             reader.readAsDataURL(file);
-        } else {
-            if (type === 'banner') {
+        } else
+        {
+            if (type === 'banner')
+            {
                 setBanner(null);
-            } else if (type === 'profile') {
+            } else if (type === 'profile')
+            {
                 setProfile(null);
 
-            } else if (type === 'front') {
+            } else if (type === 'front')
+            {
                 setFront(null);
-            } else if (type === 'back') {
+            } else if (type === 'back')
+            {
                 setBack(null);
             }
         }
     };
 
-    const onSubmit = (values) => {
-        setModal('verify')
+    const onSubmit = async (values) =>
+    {
+        if(profile && banner && front && back){
+            const body = {
+                businessLogo: profile,
+                businessImage: banner,
+                resaleCertificate: front,
+                businessLicense: back,
+                ...values,
+                status: 1
+            }
+        
+            const res = await Verify(body)
+            if (res?.data?.status === 'success')
+            {
+                toast.success("Partner Created Successfully")
+                setModal('verify')
+                setTimeout(() =>
+                {
+                    navigate(-1)
+                }, 300)
+            }
+            if (res?.data?.status === 'exists')
+            {
+                toast.error("Email already exists")
+            }
+            if (res?.data?.status === 'fail')
+            {
+                toast.error("Some rror occurred")
+            }
+        } else {
+            toast.warning("Please fill out all fields")
+        }
     };
 
-    const handleBlur = async (fieldName) => {
-        try {
+    const handleBlur = async (fieldName) =>
+    {
+        try
+        {
             await trigger(fieldName);
-        } catch (error) {
+        } catch (error)
+        {
             console.error(error);
         }
     };
@@ -106,7 +171,7 @@ const AccountVerificationForm = ({ setModal }) => {
                         />
                     </div>
                     <div className="verify_form">
-                        <InputField
+                        {/* <InputField
                             label='Email'
                             placeholder='Email'
                             name='email'
@@ -114,8 +179,8 @@ const AccountVerificationForm = ({ setModal }) => {
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
-                        />
-                        <InputField
+                        /> */}
+                        {/* <InputField
                             label='Password'
                             placeholder='Password'
                             name='password'
@@ -123,10 +188,10 @@ const AccountVerificationForm = ({ setModal }) => {
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
-                        />
+                        /> */}
                     </div>
                     <div className="verify_form">
-                        <InputField
+                        {/* <InputField
                             label='Confirm Password'
                             placeholder='Confirm Password'
                             name='confirmPassword'
@@ -134,7 +199,16 @@ const AccountVerificationForm = ({ setModal }) => {
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
-                        />
+                        /> */}
+                        {/* <InputField
+                            label='Email'
+                            placeholder='Email'
+                            name='email'
+                            errors={errors?.email}
+                            control={control}
+                            handleBlur={handleBlur}
+                            register={register}
+                        /> */}
                     </div>
                 </div>
                 <div className="verify_left">
@@ -254,7 +328,22 @@ const AccountVerificationForm = ({ setModal }) => {
                             register={register}
                         />
                     </div>
-                    <div className="verify_form">
+                    {/* <div className="verify_form">
+                        <div>
+                            <p>Business URL (Optional)</p>
+                            <input type='text' placeholder='Enter business URL' />
+                        </div>
+                    </div> */}
+                    <div className="verify_form" style={{ marginTop: "30px" }}>
+                        <InputField
+                            label='Business Phone'
+                            placeholder='Business Phone'
+                            name='businessPhone'
+                            errors={errors?.businessPhone}
+                            control={control}
+                            handleBlur={handleBlur}
+                            register={register}
+                        />
                         <div>
                             <p>Business URL (Optional)</p>
                             <input type='text' placeholder='Enter business URL' />

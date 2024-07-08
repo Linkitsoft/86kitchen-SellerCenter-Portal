@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import QueriesTable from '../../components/Tables/QueriesTable'
+import { GetAllQuery } from '../../Services/Partner'
 
 const QueriesContent = () =>
 {
     const [index, setIndex] = useState(1)
+    const [queryData, setQueryData] = useState([])
+    const [loader, setLoader] = useState(false)
 
     const colorClass = (id) =>
     {
@@ -12,6 +15,30 @@ const QueriesContent = () =>
             return "selected"
         }
     }
+
+
+    const getQueries = async () =>
+    {
+        try
+        {
+            setLoader(true)
+            const res = await GetAllQuery()
+            setQueryData(res?.data?.data)
+        } catch (error)
+        {
+            setLoader(false)
+
+        } finally
+        {
+            setLoader(false)
+
+        }
+    }
+
+    useEffect(() =>
+    {
+        getQueries()
+    }, [])
     return (
         <div className="dashboard">
             <div className="dashboard_header">
@@ -22,7 +49,7 @@ const QueriesContent = () =>
                 </div>
             </div>
             <div className="dashboard_queries">
-                <QueriesTable />
+                <QueriesTable queryData={queryData}/>
             </div>
         </div>
     )

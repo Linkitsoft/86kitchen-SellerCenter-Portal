@@ -6,16 +6,19 @@ import store from './redux/store';
 import { Provider } from "react-redux";
 import ErrorBoundary from './components/ErrorBoundary'
 import { UserProvider } from './context/userContext';
+import { ProfileProvider } from './context/profileContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <UserProvider>
-            <ErrorBoundary>
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            </ErrorBoundary>
+            <ProfileProvider>
+                <ErrorBoundary>
+                    <Provider store={store}>
+                        <App />
+                    </Provider>
+                </ErrorBoundary>
+            </ProfileProvider>
         </UserProvider>
     </React.StrictMode>
 );

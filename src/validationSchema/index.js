@@ -11,19 +11,21 @@ export const campaignValidation = Yup.object({
     title: Yup.string().required('Title is required'),
     type: Yup.string().required('Type is required'),
     startDate: Yup.date()
-        .nullable() 
-        .transform((value, originalValue) => originalValue === '' ? null : value)  
+        .nullable()
+        .transform((value, originalValue) => originalValue === '' ? null : value)
         .required('Start Date is required')
         .min(today, 'Start Date cannot be in the past'),
     endDate: Yup.date()
-        .nullable()  
-        .transform((value, originalValue) => originalValue === '' ? null : value) 
+        .nullable()
+        .transform((value, originalValue) => originalValue === '' ? null : value)
         .required('End Date is required')
-        .test('is-greater', 'End Date should be at least one day after Start Date', function (value) {
+        .test('is-greater', 'End Date should be at least one day after Start Date', function (value)
+        {
             const { startDate } = this.parent;
-            if (startDate) {
+            if (startDate)
+            {
                 const startDateCopy = new Date(startDate);
-                startDateCopy.setDate(startDateCopy.getDate()); 
+                startDateCopy.setDate(startDateCopy.getDate());
                 return new Date(value) >= startDateCopy;
             }
             return true;
@@ -60,9 +62,9 @@ export const verifyValidation = Yup.object({
     // personal details
     firstName: Yup.string().required('First Name is required'),
     lastName: Yup.string().required('Last Name is required'),
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    password: Yup.string().required('Password is required'),
-    confirmPassword: Yup.string().required('Confirm password is required').oneOf([Yup.ref('password'), null], 'Passwords must match'),
+    // email: Yup.string().email('Invalid email address').required('Email is required'),
+    // password: Yup.string().required('Password is required'),
+    // confirmPassword: Yup.string().required('Confirm password is required').oneOf([Yup.ref('password'), null], 'Passwords must match'),
     // BUssiness location
     address1: Yup.string().required('Address 1 is required'),
     city: Yup.string().required('City is required'),
@@ -71,7 +73,7 @@ export const verifyValidation = Yup.object({
     // Bussiness Details
     businessName: Yup.string().required('Business Name is required'),
     taxId: Yup.string().required('Tax ID is required'),
-    // businessPhone: Yup.string().required('Business Phone Number is required'),
+    businessPhone: Yup.string().required('Business Phone Number is required'),
 
     // front: Yup.mixed().required('Front ID image is required'),
     // back: Yup.mixed().required('Back ID image is required'),
@@ -83,6 +85,7 @@ export const verifyValidation = Yup.object({
 export const loginValidation = Yup.object({
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().required('Password is required'),
+    type: Yup.string().required('Type is required'),
 });
 
 export const signupValidation = Yup.object({

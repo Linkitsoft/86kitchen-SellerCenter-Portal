@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { queryData } from '../../utils/queryData'
 
-const QueriesTable = () =>
+const QueriesTable = ({queryData}) =>
 {
     const navigate = useNavigate()
 
@@ -20,11 +20,11 @@ const QueriesTable = () =>
                         return (
                             <tr key={index}>
                                 <td>{item?.no}</td>
-                                <td>{item?.service}</td>
-                                <td>{item?.name}</td>
-                                <td>{item?.msg}</td>
+                                <td>{item?.partnerService?.name}</td>
+                                <td>{item?.marketplaceUser?.firstName} {item?.marketplaceUser?.lastName}</td>
+                                <td>{item?.detail}</td>
                                 <td>{item?.date}</td>
-                                <td>{item?.amount}</td>
+                                <td>${item?.partnerService?.price}</td>
                                 <td><button className='eventTable_view' onClick={() => navigate('/orderDetails')}>View Details</button></td>
                             </tr >
                         );
