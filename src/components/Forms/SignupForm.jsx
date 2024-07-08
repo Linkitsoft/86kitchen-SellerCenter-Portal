@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PasswordInputField from "../InputField/PasswordField";
 import InputField from "../InputField/InputField";
+import { SignUp } from "../../Services/Partner";
 
 const SignupForm = () =>
 {
@@ -34,10 +35,15 @@ const SignupForm = () =>
         }
     };
 
-    const onSubmit = (values) =>
+    const onSubmit = async (value) =>
     {
-        navigate("/login")
-    };
+        const res = await SignUp({ ...value, status: 1, isSuperAdmin: false })
+        if (res?.data?.status === 'success')
+        {
+            // toast.success("Account request sent to admin")
+            navigate("/login")
+        }
+    }
     return (
         <>
             <div className="login_inputWrapper">
