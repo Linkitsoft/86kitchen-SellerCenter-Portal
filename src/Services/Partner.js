@@ -35,3 +35,9 @@ export const GetPartner = async () =>
     const res = instance.post("getPartner")
     return res
 }
+
+export const PartnerChat = async (body) =>
+{
+    const res = instance.post("partnerChat", body)
+    return res
+}

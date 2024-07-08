@@ -3,10 +3,13 @@ import back from "../../assets/images/Admin-20 (29).png"
 import { useNavigate } from 'react-router-dom'
 import OrderDetailChat from '../../components/OrderDetailChat'
 import OrderDetailCards from '../../components/OrderDetailCard'
+import { searchUrl } from '../../utils/searchUrl'
 
 const OrderDetailsContent = () =>
 {
     const navigate = useNavigate()
+    const queryId = searchUrl('queryId')
+    const customerId = searchUrl('customerId')
 
     return (
         <div className="od">
@@ -16,7 +19,7 @@ const OrderDetailsContent = () =>
             </div>
             <div className="od_main">
                 <OrderDetailCards />
-                <OrderDetailChat />
+                <OrderDetailChat customerId={customerId} queryId={queryId}/>
             </div>
         </div>
     )

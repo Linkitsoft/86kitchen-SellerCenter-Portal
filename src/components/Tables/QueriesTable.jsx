@@ -25,7 +25,7 @@ const QueriesTable = ({queryData}) =>
                                 <td>{item?.detail}</td>
                                 <td>{item?.date}</td>
                                 <td>${item?.partnerService?.price}</td>
-                                <td><button className='eventTable_view' onClick={() => navigate('/orderDetails')}>View Details</button></td>
+                                <td><button className='eventTable_view' onClick={() => navigate(`/orderDetails?queryId=${item?.id}&customerId=${item?.marketplaceUser?.id}`)}>View Details</button></td>
                             </tr >
                         );
                     })}

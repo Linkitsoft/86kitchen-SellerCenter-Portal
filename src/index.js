@@ -10,17 +10,15 @@ import { ProfileProvider } from './context/profileContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <UserProvider>
-            <ProfileProvider>
-                <ErrorBoundary>
-                    <Provider store={store}>
-                        <App />
-                    </Provider>
-                </ErrorBoundary>
-            </ProfileProvider>
-        </UserProvider>
-    </React.StrictMode>
+    <UserProvider>
+        <ProfileProvider>
+            <ErrorBoundary>
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            </ErrorBoundary>
+        </ProfileProvider>
+    </UserProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
