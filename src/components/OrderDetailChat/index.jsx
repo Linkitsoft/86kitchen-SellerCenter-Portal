@@ -7,8 +7,9 @@ import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole'
 import UploadImg from '../UploadImage'
 import { io } from "socket.io-client";
-import { PartnerChat } from '../../Services/Partner'
+import { GetChat, PartnerChat } from '../../Services/Partner'
 import { useUserDetails } from '../../context/profileContext'
+import ChatLoader from '../Loader/ChatLoader'
 
 const socket = io("https://kjjp4n4d-8080.inc1.devtunnels.ms/");
 
@@ -18,9 +19,13 @@ const OrderDetailChat = ({ customerId, queryId }) =>
     const roles = useUserRole()
     const [img, setImg] = useState()
     const Ref = useRef()
+    const msgRef = useRef()
+    const messagesEndRef = useRef()
     const [msg, setMsg] = useState("")
     const [messages, setMessages] = useState([]);
-    const { userDetails } = useUserDetails()
+    // const { userDetails } = useUserDetails()
+    const [loader, setLoader] = useState(false)
+    const userId = localStorage.getItem('userId')
     const handleImg = (e) =>
     {
         UploadImg(e, setImg)
@@ -33,21 +38,46 @@ const OrderDetailChat = ({ customerId, queryId }) =>
         // }
     }
 
-    useEffect(() =>
-    {
-        chatInnerRef.current.scrollTop = chatInnerRef.current.scrollHeight;
-    }, []);
+    // useEffect(() =>
+    // {
+    //     chatInnerRef.current.scrollBottom = chatInnerRef.current.scrollHeight;
+    // }, [messages]);
 
     const handleSendMsg = async () =>
     {
+        setLoader(true)
         const body = {
             queryId: queryId,
             receiverId: customerId,
-            chat: msg
+            chat: msgRef.current.value
         }
 
         await PartnerChat(body)
+        msgRef.current.value = null
+        setLoader(false)
     }
+
+    const getAllChats = async () =>
+    {
+
+        const res = await GetChat({ queryId })
+        let temp = res?.data?.data?.map((item) =>
+        {
+            return {
+                ...item,
+                type: userId === item?.senderId ? 'sent' : 'receive'
+            }
+        })
+        setMessages(temp)
+        // setTableBody(res?.data?.data)
+
+    }
+
+    useEffect(() =>
+    {
+        getAllChats()
+    }, [])
+
 
     useEffect(() =>
     {
@@ -59,12 +89,28 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 
         socket.on(queryId, (data) =>
         {
-            setMessages(prevMessages => [...prevMessages, { ...data, type: userDetails?.id === data?.senderId ? 'sent' : 'receive' }]);
+            console.log("DATA", data)
+            setMessages(prevMessages => [...prevMessages, { ...data, type: userId === data?.senderId ? 'sent' : 'receive' }]);
 
         });
         // eslint-disable-next-line
     }, [])
 
+    const handleEnterKey = (e) =>
+    {
+        if (loader) return
+        if (e.key === "Enter")
+        {
+            handleSendMsg()
+        }
+    }
+
+    useEffect(() =>
+    {
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    }, [messages])
+
+    console.log("messages", messages)
     return (
         <div className="od_right">
             <div className="od_chatHead">
@@ -73,14 +119,17 @@ const OrderDetailChat = ({ customerId, queryId }) =>
             </div>
             <p className="od_chatLimit">Limited Time Offer</p>
             <div className="od_chatInner" ref={chatInnerRef}>
-                {
-                    messages?.map((item) => (
-                        <div className="od_chatGet">
+                {messages?.map((item) => (
+                    item?.type === 'sent' ?
+                        <div className='od_chatSend'>
                             <div>{item?.chat}</div>
                             <p>12:12</p>
-                        </div>
-                    ))
-                }
+                        </div> :
+                        <div className='od_chatGet'>
+                            <div>{item?.chat}</div>
+                            <p>12:12</p>
+                        </div>))}
+                <div ref={messagesEndRef}></div>
                 {/* <div className="od_chatGet">
                     <div>Hey There!</div>
                     <p>12:12</p>
@@ -163,14 +212,17 @@ const OrderDetailChat = ({ customerId, queryId }) =>
             </div>
             <RoleAccess role={roles?.create}>
                 <div className="od_chatBottom">
-                    <input onChange={(e) => setMsg(e.target.value)} type='text' placeholder='Type message..' />
+                    <input onKeyDown={handleEnterKey} ref={msgRef} type='text' placeholder='Type message..' />
+                    {loader ?
+                            <ChatLoader /> :
                     <div className="od_chatSend">
                         <img style={{ width: "20px" }} src={att} alt='' />
                         <div className='od_upload'>
                             <input className='uploadInput' type="file" accept="image/*" ref={Ref} onChange={(e) => handleImg(e)} />
                             <img onClick={handleSendMsg} src={send} alt='' style={{ cursor: "pointer" }} />
                         </div>
-                    </div>
+                    </div>}
+
                 </div>
             </RoleAccess>
         </div>

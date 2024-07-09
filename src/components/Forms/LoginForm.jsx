@@ -52,10 +52,12 @@ const LoginForm = () =>
             if(value?.type == 0){
                 setUser("admin")
                 window.localStorage.setItem("token", res?.data?.data?.token)
+                window.localStorage.setItem("userId", res?.data?.data?.id)
                 window.location.reload()
             } else {
                 setUser("user")
                 window.localStorage.setItem("token", res?.data?.data?.token)
+                window.localStorage.setItem("userId", res?.data?.data?.id)
                 window.location.reload()
             }
         }
