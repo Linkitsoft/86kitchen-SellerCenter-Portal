@@ -10,6 +10,7 @@ import { io } from "socket.io-client";
 import { GetChat, PartnerChat } from '../../Services/Partner'
 import { useUserDetails } from '../../context/profileContext'
 import ChatLoader from '../Loader/ChatLoader'
+import { useInView } from "react-intersection-observer";
 
 const socket = io("https://kjjp4n4d-8080.inc1.devtunnels.ms/");
 
@@ -21,9 +22,11 @@ const OrderDetailChat = ({ customerId, queryId }) =>
     const Ref = useRef()
     const msgRef = useRef()
     const messagesEndRef = useRef()
-    const [msg, setMsg] = useState("")
+    const [mainLoader, setMainLoader] = useState(false)
+    const [pageNo, setPageNo] = useState(1);
     const [messages, setMessages] = useState([]);
-    // const { userDetails } = useUserDetails()
+    const { ref, inView } = useInView({});
+
     const [loader, setLoader] = useState(false)
     const userId = localStorage.getItem('userId')
     const handleImg = (e) =>
@@ -59,17 +62,25 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 
     const getAllChats = async () =>
     {
-
-        const res = await GetChat({ queryId })
-        let temp = res?.data?.data?.map((item) =>
+        setMainLoader(true)
+        const res = await GetChat({ queryId, pageNo })
+        if (res.data?.data?.length > 0)
         {
-            return {
-                ...item,
-                type: userId === item?.senderId ? 'sent' : 'receive'
-            }
-        })
-        setMessages(temp)
-        // setTableBody(res?.data?.data)
+            let temp = res?.data?.data?.map((item) =>
+            {
+                return {
+                    ...item,
+                    type: userId === item?.senderId ? 'sent' : 'receive'
+                }
+            })
+            // setData((prevData) => [...prevData, ...res.data]);
+            setMessages((prevData) => [...prevData, ...temp])
+            setMainLoader(false)
+        }
+        else
+        {
+            setMainLoader(false)
+        }
 
     }
 
@@ -107,10 +118,22 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 
     useEffect(() =>
     {
-        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+        !inView && messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
     }, [messages])
 
-    console.log("messages", messages)
+    useEffect(() =>
+    {
+        if (inView && !mainLoader)
+        {
+            const timeoutId = setTimeout(() =>
+            {
+                setPageNo(pageNo + 1);
+            }, 100);
+
+            return () => clearTimeout(timeoutId);
+        }
+    }, [inView]);
+
     return (
         <div className="od_right">
             <div className="od_chatHead">
@@ -119,6 +142,9 @@ const OrderDetailChat = ({ customerId, queryId }) =>
             </div>
             <p className="od_chatLimit">Limited Time Offer</p>
             <div className="od_chatInner" ref={chatInnerRef}>
+                {!mainLoader && <div ref={ref}>
+                    {pageNo >= 1 && <ChatLoader />}
+                </div>}
                 {messages?.map((item) => (
                     item?.type === 'sent' ?
                         <div className='od_chatSend'>
@@ -129,99 +155,21 @@ const OrderDetailChat = ({ customerId, queryId }) =>
                             <div>{item?.chat}</div>
                             <p>12:12</p>
                         </div>))}
+
                 <div ref={messagesEndRef}></div>
-                {/* <div className="od_chatGet">
-                    <div>Hey There!</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatGet">
-                    <div className="od_chatImg">
-                        <img src={sample} alt='' />
-                    </div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatGet">
-                    <div>orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, moles</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatSend">
-                    <div>m! Provident similique accusantium nemo autem. Veritatis
-                        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                        sapiente officiis modi at sunt ex</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatSend">
-                    <div className="od_chatImg">
-                        <img src={sample1} alt='' />
-                    </div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatSend">
-                    <div>Hey There!</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatSend">
-                    <div>orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, moles</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatGet">
-                    <div>m! Provident similique accusantium nemo autem. Veritatis
-                        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                        sapiente officiis modi at sunt ex</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatGet">
-                    <div>Hey There!</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatGet">
-                    <div>orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, moles</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatSend">
-                    <div>m! Provident similique accusantium nemo autem. Veritatis
-                        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                        sapiente officiis modi at sunt ex</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatSend">
-                    <div>Hey There!</div>
-                    <p>12:12</p>
-                </div>
-                <div className="od_chatSend">
-                    <div>orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, moles</div>
-                    <p>12:12</p>
-                </div>
-                {img &&
-                    <div className="od_chatSend">
-                        <div className="od_chatImg">
-                            <img src={img} alt='' />
-                        </div>
-                        <p>12:12</p>
-                    </div>
-                } */}
             </div>
             <RoleAccess role={roles?.create}>
                 <div className="od_chatBottom">
                     <input onKeyDown={handleEnterKey} ref={msgRef} type='text' placeholder='Type message..' />
                     {loader ?
-                            <ChatLoader /> :
-                    <div className="od_chatSend">
-                        <img style={{ width: "20px" }} src={att} alt='' />
-                        <div className='od_upload'>
-                            <input className='uploadInput' type="file" accept="image/*" ref={Ref} onChange={(e) => handleImg(e)} />
-                            <img onClick={handleSendMsg} src={send} alt='' style={{ cursor: "pointer" }} />
-                        </div>
-                    </div>}
+                        <ChatLoader /> :
+                        <div className="od_chatSend">
+                            <img style={{ width: "20px" }} src={att} alt='' />
+                            <div className='od_upload'>
+                                <input className='uploadInput' type="file" accept="image/*" ref={Ref} onChange={(e) => handleImg(e)} />
+                                <img onClick={handleSendMsg} src={send} alt='' style={{ cursor: "pointer" }} />
+                            </div>
+                        </div>}
 
                 </div>
             </RoleAccess>

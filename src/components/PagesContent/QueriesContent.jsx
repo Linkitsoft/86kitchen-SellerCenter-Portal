@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import QueriesTable from '../../components/Tables/QueriesTable'
 import { GetAllQuery } from '../../Services/Partner'
+import Spinner from '../Loader/Spinner'
 
 const QueriesContent = () =>
 {
@@ -48,9 +49,10 @@ const QueriesContent = () =>
                     <button onClick={() => setIndex(2)} className={colorClass(2)}>Today's 5</button>
                 </div>
             </div>
+            {loader ? <Spinner /> :
             <div className="dashboard_queries">
                 <QueriesTable queryData={queryData}/>
-            </div>
+            </div>}
         </div>
     )
 }
