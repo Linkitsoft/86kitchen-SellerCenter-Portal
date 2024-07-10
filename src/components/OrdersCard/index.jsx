@@ -4,7 +4,7 @@ import card1 from "../../assets/images/Admin-20 (22).png"
 import arrow from "../../assets/images/Admin-20 (30).png"
 import { useNavigate } from 'react-router-dom'
 
-const OrdersCard = () =>
+const OrdersCard = ({ item }) =>
 {
     const navigate = useNavigate()
     return (
@@ -16,10 +16,10 @@ const OrdersCard = () =>
             <div className="order_content">
                 <img className="order_img" src={card1} alt='' />
                 <div>
-                    <p className="order_head">Limited Time Offers</p>
-                    <p className="order_desc">Name: Samentha John</p>
+                    <p className="order_head">{item?.orderServices && item?.orderServices[0]?.partnerService?.name}</p>
+                    <p className="order_desc">Name: {item?.marketplaceUser?.firstName} {item?.marketplaceUser?.lastName}</p>
                     <p className="order_desc">Details: Hi i am samantha i like your services Yellow...</p>
-                    <p className="order_loc"><img src={loc} alt='' /> 17230 NE Sacramento...</p>
+                    <p className="order_loc"><img src={loc} alt='' /> {item?.marketplaceUser?.address1}</p>
                 </div>
             </div>
             <div className="order_bottom">

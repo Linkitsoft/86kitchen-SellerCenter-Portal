@@ -61,11 +61,11 @@ const MainServiceSection = ({ fullView }) =>
             <div className='eventsSection_swiperWrap'>
                 <ServiceSwiper setCategoryId={setCategoryId} clickIndex={clickIndex} setClickIndex={setClickIndex} eventData={categories} />
             </div>
-            <div className="eventsSection_cards">
-                {loader ? <Spinner /> :
-                    services?.length > 0 ? services?.map((item, index) => <ServiceCard key={index} item={item} setModal={setModal} />)
+            {loader ? <Spinner /> :
+                <div className="eventsSection_cards">
+                    {services?.length > 0 ? services?.map((item, index) => <ServiceCard key={index} item={item} setModal={setModal} />)
                         : <NoDataFound />}
-            </div>
+                </div>}
 
         </div>
     )

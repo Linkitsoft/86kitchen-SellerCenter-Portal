@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import OrdersCard from '../../components/OrdersCard'
+import { GetOrder } from '../../Services/Partner'
+import SingleOrderSection from '../SingleOrderSection'
 
 const OrdersContent = () =>
 {
@@ -13,6 +15,8 @@ const OrdersContent = () =>
         }
     }
 
+
+
     return (
         <div className="dashboard">
             <div className="dashboard_header">
@@ -24,21 +28,7 @@ const OrdersContent = () =>
                 </div>
             </div>
             <div className="order order_page" style={{ maxHeight: "calc(100vh - 200px)" }}>
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
-                <OrdersCard />
+                <SingleOrderSection />
             </div>
         </div>
     )

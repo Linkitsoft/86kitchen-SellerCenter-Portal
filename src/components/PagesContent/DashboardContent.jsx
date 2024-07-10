@@ -4,6 +4,7 @@ import MainServiceSection from '../../components/MainServiceSection'
 import OrdersTab from '../../components/OrdersTab'
 import OrdersCard from '../../components/OrdersCard'
 import { dashboardData } from '../../utils/dashboardData'
+import SingleOrderSection from '../SingleOrderSection'
 
 const DashboardContent = () =>
 {
@@ -20,9 +21,7 @@ const DashboardContent = () =>
                     <p className='dashboard_title'>Orders</p>
                     <OrdersTab />
                     <div className="order">
-                        <OrdersCard />
-                        <OrdersCard />
-                        <OrdersCard />
+                       <SingleOrderSection />
                     </div>
                 </div>
             </div>

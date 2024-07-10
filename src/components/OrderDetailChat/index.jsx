@@ -147,7 +147,7 @@ const OrderDetailChat = ({ customerId, queryId }) =>
             <p className="od_chatLimit">Limited Time Offer</p>
             <div className="od_chatInner" ref={chatInnerRef}>
                 <div ref={topRef}></div>
-                {messages?.map((item, index) => (
+                {messages?.length > 0 ? messages?.map((item, index) => (
                     item?.type === 'sent' ?
                         <div key={index} className='od_chatSend'>
                             <div>{item?.chat}</div>
@@ -157,7 +157,9 @@ const OrderDetailChat = ({ customerId, queryId }) =>
                             <div>{item?.chat}</div>
                             <p>12:12</p>
                         </div>
-                ))}
+                )) : 
+                <div className='od_nomsg'>No messages found</div>
+                }
                 <div ref={messagesEndRef}></div>
             </div>
             <RoleAccess role={roles?.create}>
