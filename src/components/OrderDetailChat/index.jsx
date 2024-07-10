@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import att from "../../assets/images/Admin-20 (27).png";
-import sample from "../../assets/images/Admin-20 (24).png";
-import sample1 from "../../assets/images/Admin-20 (34).png";
+// import sample from "../../assets/images/Admin-20 (24).png";
+// import sample1 from "../../assets/images/Admin-20 (34).png";
 import send from "../../assets/images/vdd-01.png";
 import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole';
@@ -21,7 +21,6 @@ const OrderDetailChat = ({ customerId, queryId }) =>
     const Ref = useRef();
     const msgRef = useRef();
     const messagesEndRef = useRef();
-    const testingRef = useRef();
     const [mainLoader, setMainLoader] = useState(false);
     const [messages, setMessages] = useState([]);
     const [loader, setLoader] = useState(false);

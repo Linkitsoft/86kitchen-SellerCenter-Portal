@@ -1,7 +1,6 @@
 import React from 'react'
-import { salesData } from '../../utils/salesData';
 
-const SalesTable = ({setModal}) =>
+const SalesTable = ({selectedOptions}) =>
 {
 
     const header = ['No.', 'Name', 'Amount', 'Commission']
@@ -14,17 +13,17 @@ const SalesTable = ({setModal}) =>
                     <tr>
                         {header?.map((item, index) => <th key={index} className={(item === 'Amount' || item === 'Commission') && "salesTable_rightRow"}>{item}</th>)}
                     </tr>
-                    {salesData?.map((item, index) =>
+                    {selectedOptions?.map((item, index) =>
                     {
                         return (
                             <tr key={index}>
-                                <td>{item?.no}</td>
+                                <td>{index + 1}</td>
                                 <td>
-                                    <p className="salesTable_title">Limited Time Offers</p>
-                                    <p>Yellow Storm Triple Typhoon 20 Mbps - Month cost $50, Ont time cost $100</p>
+                                    <p className="salesTable_title">{item?.name}</p>
+                                    <p>{item?.description}</p>
                                 </td>
                                
-                                <td className='salesTable_rightRow salesTable_title'>$150</td>
+                                <td className='salesTable_rightRow salesTable_title'>${item?.price}</td>
                                 <td className='salesTable_rightRow salesTable_title'>$10</td>
                             </tr >
                         );

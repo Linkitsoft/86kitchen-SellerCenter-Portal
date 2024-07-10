@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import backImg from "../../assets/images/Admin-20 (29).png"
 import loc from "../../assets/images/Admin-20 (90).png"
 import { useNavigate } from 'react-router-dom'
 import SalesTable from '../Tables/SalesTable'
+import { newService } from '../../utils/newService'
+import CustomDropdown from '../../utils/CustomDropdown'
 
 const GenerateSalesContent = () =>
 {
     const navigate = useNavigate()
+    const [selectedOptions, setSelectedOptions] = useState([]);
+
+    const handleSelectionChange = (newSelectedOptions) => {
+        setSelectedOptions(newSelectedOptions);
+    };
+
+    const totalPrice = selectedOptions?.reduce((accumulator, currentItem) => {
+        return accumulator + parseInt(currentItem?.price);
+    }, 0);
 
     return (
         <div className="sales">
@@ -19,20 +30,23 @@ const GenerateSalesContent = () =>
                 </div>
             </div>
             <div className="sales_input">
-                <p>Select Service Name</p>
+                {/* <p>Select Service Name</p>
                 <select>
                     <option>Select Services</option>
-                    <option>Internet</option>
-                    <option>Storm Fiber</option>
-                </select>
+                  {newService?.map((item) => (
+                    <option>{item?.name}</option>
+                  ))}
+                </select> */}
+                <CustomDropdown options={newService} onSelectionChange={handleSelectionChange} />
+
             </div>
-            <SalesTable />
+            <SalesTable selectedOptions={selectedOptions}/>
             <div className="sales_bottom">
                 <p className="">Total Tax</p>
-                <p className="">$100</p>
+                <p className="">0</p>
             </div>
             <div className="sales_total">
-                <p>Total Amount: <span>$550</span></p>
+                <p>Total Amount: <span>${totalPrice?.toFixed(2)}</span></p>
                 <button className="sales_btn">Initiate Sale</button>
             </div>
         </div>
