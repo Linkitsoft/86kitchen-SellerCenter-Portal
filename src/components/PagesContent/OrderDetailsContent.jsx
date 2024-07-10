@@ -18,7 +18,7 @@ const OrderDetailsContent = () =>
                 <div className="od_date">Submission date : <span>09 / 11 / 2023 - 08:53 PM</span></div>
             </div>
             <div className="od_main">
-                <OrderDetailCards />
+                <OrderDetailCards queryId={queryId} customerId={customerId}/>
                 <OrderDetailChat customerId={customerId} queryId={queryId}/>
             </div>
         </div>

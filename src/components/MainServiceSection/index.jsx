@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ServiceCard from '../ServiceCard';
 import { eventData } from '../../utils/eventData';
 import { cardData } from '../../utils/cardData';
 import ViewService from '../Modals/ViewService';
 import ServiceSwiper from '../Swipers/ServiceSwiper';
+import { GetAllCategory, GetPartnerServices } from '../../Services/Partner';
+import Spinner from '../Loader/Spinner';
+import NoDataFound from '../NoDataFound/NoDataFound';
 
 // import { sportData } from '../../utils/sportData'
 
@@ -12,15 +15,56 @@ const MainServiceSection = ({ fullView }) =>
     const [clickIndex, setClickIndex] = useState("All")
     const [modal, setModal] = useState('')
 
+    const [categories, setCategories] = useState([])
+    const [services, setServices] = useState([])
+    const [loader, setLoader] = useState(false)
+    const [categoryId, setCategoryId] = useState("")
+
+    const getCategoryData = async () =>
+    {
+        const res = await GetAllCategory()
+        setCategories(res?.data?.data)
+    }
+
+    const getServices = async () =>
+    {
+        try
+        {
+            setLoader(true)
+            const res = await GetPartnerServices({ categoryId })
+            setServices(res?.data?.data)
+        } catch (error)
+        {
+            setLoader(false)
+
+        } finally
+        {
+            setLoader(false)
+
+        }
+    }
+
+    useEffect(() =>
+    {
+        getServices()
+    }, [categoryId])
+
+    useEffect(() =>
+    {
+        getCategoryData()
+    }, [])
+
     return (
         <div className='eventsSection' style={{ maxHeight: fullView ? "calc(100vh - 227px)" : "calc(100vh - 347px)" }}>
             {modal === 'view' && <ViewService setModal={setModal} />}
 
             <div className='eventsSection_swiperWrap'>
-               <ServiceSwiper clickIndex={clickIndex} setClickIndex={setClickIndex} eventData={eventData}/>
+                <ServiceSwiper setCategoryId={setCategoryId} clickIndex={clickIndex} setClickIndex={setClickIndex} eventData={categories} />
             </div>
             <div className="eventsSection_cards">
-                {cardData.map((item, index) => <ServiceCard key={index} item={item} setModal={setModal} />)}
+                {loader ? <Spinner /> :
+                    services?.length > 0 ? services?.map((item, index) => <ServiceCard key={index} item={item} setModal={setModal} />)
+                        : <NoDataFound />}
             </div>
 
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import bg from "../../assets/images/Admin-20 (22).png"
 
-const OrderDetailCards = () =>
+const OrderDetailCards = ({customerId, queryId}) =>
 {
     const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ const OrderDetailCards = () =>
             <p className="od_desc">Hi i am samantha i like your services Yellow
                 Storm Triple Typhoon 20 Mbps - Month cost
                 $50, Ont time cost $100</p>
-            <button className="od_btn" onClick={() => navigate('/generateSales')}>Generate Sales</button>
+            <button className="od_btn" onClick={() => navigate(`/generateSales?queryId=${queryId}&customerId=${customerId}`)}>Generate Sales</button>
         </div>
     )
 }

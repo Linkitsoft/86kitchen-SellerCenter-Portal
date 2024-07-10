@@ -1,27 +1,28 @@
 import React from 'react'
 import user from "../../assets/images/Admin-20 (14).png"
 import arrow from "../../assets/images/Admin-20 (30).png"
+import card5 from "../../assets/images/Admin-20 (26).png"
 
 const ServiceCard = ({item, setModal}) =>
 {
     return (
         <div className='serviceCard' onClick={() => setModal('view')}>
             <div className="">
-                <img className="serviceCard_img" src={item?.image} alt=''/>
+                <img className="serviceCard_img" src={card5} alt=''/>
                 <div className="serviceCard_user">
                     <img src={user} alt=''/>
-                    <p>{item?.users}</p>
+                    <p>{12}</p>
                 </div>
             </div>
             <div className="serviceCard_main">
                 <div className="serviceCard_head">
-                    <p>{item?.title}</p>
+                    <p>{item?.name}</p>
                     <img src={arrow} alt=''/>
                 </div>
-                <p className="serviceCard_desc">{item?.des}</p>
+                <p className="serviceCard_desc">{item?.description}</p>
                 <div className="serviceCard_head">
                     <p className='total'>Total Cost:</p>
-                    <p>{item?.cost}</p>
+                    <p>{item?.price}</p>
                 </div>
 
             </div>

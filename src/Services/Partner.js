@@ -47,3 +47,21 @@ export const GetChat = async (body) =>
     const res = instance.post("getChat", body)
     return res
 }
+
+export const GetAllCategory = async () =>
+{
+    const res = instance.post("getAllCategory")
+    return res
+}
+
+export const GetPartnerServices = async (body) =>
+{
+    const res = instance.post("getPartnerServices", body)
+    return res
+}
+
+export const GenerateOrder = async (body) =>
+{
+    const res = instance.post("generateOrder", body)
+    return res
+}

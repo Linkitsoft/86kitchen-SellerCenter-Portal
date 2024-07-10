@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SalesTable = ({selectedOptions}) =>
+const SalesTable = ({queryId, selectedOptions}) =>
 {
 
     const header = ['No.', 'Name', 'Amount', 'Commission']

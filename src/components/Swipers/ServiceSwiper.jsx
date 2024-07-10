@@ -2,7 +2,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 
-const ServiceSwiper = ({ clickIndex, setClickIndex, eventData }) =>
+const ServiceSwiper = ({ setCategoryId, clickIndex, setClickIndex, eventData }) =>
 {
     return (
         <Swiper
@@ -15,7 +15,7 @@ const ServiceSwiper = ({ clickIndex, setClickIndex, eventData }) =>
             className="mySwiper"
         >
             <SwiperSlide>
-                <div onClick={() => setClickIndex("All")} className={clickIndex === "All" ? "eventsSection_optionSelect" : 'eventsSection_option'}>
+                <div onClick={() => {setCategoryId(''); setClickIndex("All")}} className={clickIndex === "All" ? "eventsSection_optionSelect" : 'eventsSection_option'}>
                     <p>All</p>
                 </div>
             </SwiperSlide>
@@ -23,7 +23,7 @@ const ServiceSwiper = ({ clickIndex, setClickIndex, eventData }) =>
             {
                 return (
                     <SwiperSlide key={index}>
-                        <div onClick={() => { setClickIndex(index) }} className={clickIndex === index ? "eventsSection_optionSelect" : 'eventsSection_option'}>
+                        <div onClick={() => { setCategoryId(item?.id); setClickIndex(index) }} className={clickIndex === index ? "eventsSection_optionSelect" : 'eventsSection_option'}>
                             <p>{item?.name}</p>
                         </div>
                     </SwiperSlide>
