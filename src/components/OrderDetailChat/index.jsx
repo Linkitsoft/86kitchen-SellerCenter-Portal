@@ -21,6 +21,7 @@ const OrderDetailChat = ({ customerId, queryId }) =>
     const Ref = useRef();
     const msgRef = useRef();
     const messagesEndRef = useRef();
+    const testingRef = useRef();
     const [mainLoader, setMainLoader] = useState(false);
     const [messages, setMessages] = useState([]);
     const [loader, setLoader] = useState(false);
@@ -46,6 +47,7 @@ const OrderDetailChat = ({ customerId, queryId }) =>
         };
 
         await PartnerChat(body);
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         msgRef.current.value = null;
         setLoader(false);
     };
@@ -63,7 +65,10 @@ const OrderDetailChat = ({ customerId, queryId }) =>
                     type: userId === item?.senderId ? 'sent' : 'receive'
                 };
             });
-            setMessages((prevData) => [...temp, ...prevData]);
+            setMessages((prevData) => {
+                const sortedMessages = [...temp, ...prevData].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                return sortedMessages;
+            });
             // Adjust scroll position slightly after loading more messages
             if (chatInnerRef.current)
             {
@@ -90,8 +95,8 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 
         socket.on(queryId, (data) =>
         {
-            console.log("DATA", data);
             setMessages(prevMessages => [...prevMessages, { ...data, type: userId === data?.senderId ? 'sent' : 'receive' }]);
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         });
 
         return () =>
@@ -130,6 +135,9 @@ const OrderDetailChat = ({ customerId, queryId }) =>
             return () => clearTimeout(timeoutId);
         }
     }, [topInView, mainLoader, hasMore]);
+
+
+    console.log("messages", messages)
 
     return (
         <div className="od_right">
