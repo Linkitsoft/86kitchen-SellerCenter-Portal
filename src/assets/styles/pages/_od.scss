@@ -4,6 +4,7 @@
     flex: 1 1 auto;
     overflow: auto;
     padding: 0 20px;
+    height: calc(100vh - 110px);
 
     &_header {
         display: flex;
@@ -171,7 +172,7 @@
     &_chatInner {
         padding: 10px;
         // max-height: calc(100vh - 389px);
-        height: 600px;
+        height: calc(100vh - 389px);
         overflow: auto;
     }
 
@@ -243,6 +244,14 @@
 
     }
 
+    &_no {
+        text-align: left;
+        color: #494949;
+        font-size: 16px;
+        padding: 10px 20px;
+        margin-left: 11px;
+    }
+
     &_chatBottom {
         display: flex;
         justify-content: space-between;
@@ -262,6 +271,11 @@
             width: 20px;
             cursor: pointer;
         }
+    }
+
+    &_section {
+        height: calc(100vh - 389px);
+        overflow: auto;
     }
 
     &_chatSend {

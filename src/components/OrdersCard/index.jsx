@@ -7,11 +7,15 @@ import { useNavigate } from 'react-router-dom'
 const OrdersCard = ({ item }) =>
 {
     const navigate = useNavigate()
+
+    const handleNavigate = (item) => {
+        navigate(`/orderDetails?orderId=${item?.id}&queryId=${ item?.queryId }&customerId=${ item?.marketplaceUser?.id }`)
+    }
     return (
         <div className='order_single'>
             <div className="order_cardTop">
                 <p>09/11/2023 - 08:53 PM</p>
-                <button onClick={() => navigate('/orderDetails')}>View Details</button>
+                <button onClick={() => handleNavigate(item)}>View Details</button>
             </div>
             <div className="order_content">
                 <img className="order_img" src={card1} alt='' />
@@ -29,7 +33,7 @@ const OrdersCard = ({ item }) =>
                     <button>Production</button>
                     <button>Completed</button>
                 </div>
-                <img onClick={() => navigate('/orderDetails')} src={arrow} alt='' />
+                <img onClick={() => handleNavigate(item)} src={arrow} alt='' />
             </div>
         </div>
     )

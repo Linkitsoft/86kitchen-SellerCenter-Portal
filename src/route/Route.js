@@ -117,6 +117,14 @@ const MyRoutes = () =>
         });
     });
 
+    const QueryDetails = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/QueryDetails")), 800);
+        });
+    });
+
     const AddService = lazy(() =>
     {
         return new Promise((resolve) =>
@@ -244,6 +252,10 @@ const MyRoutes = () =>
         {
             path: 'orderDetails',
             element: <OrderDetails />
+        },
+        {
+            path: 'queryDetails',
+            element: <QueryDetails />
         },
         {
             path: 'allCampaigns',

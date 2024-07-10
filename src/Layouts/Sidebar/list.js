@@ -120,7 +120,7 @@ export const list = [
         dark: qsl,
         url: "/queries",
         index: "5",
-        parentRoute: null,
+        parentRoute: ['/queryDetails'],
         id: "queries"
     },
     {
