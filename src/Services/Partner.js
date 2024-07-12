@@ -77,3 +77,9 @@ export const GetOrderById = async (body) =>
     const res = instance.post("getOrderById", body)
     return res
 }
+
+export const CreatePartnerService = async (body) =>
+{
+    const res = instance.post("createPartnerService", body)
+    return res
+}

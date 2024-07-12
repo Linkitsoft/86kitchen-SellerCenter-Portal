@@ -55,7 +55,7 @@ const MainServiceSection = ({ fullView }) =>
     }, [])
 
     return (
-        <div className='eventsSection' style={{ maxHeight: fullView ? "calc(100vh - 227px)" : "calc(100vh - 347px)" }}>
+        <div className='eventsSection' style={{ height: fullView ? "calc(100vh - 227px)" : "calc(100vh - 347px)" }}>
             {modal === 'view' && <ViewService setModal={setModal} />}
 
             <div className='eventsSection_swiperWrap'>
@@ -64,7 +64,7 @@ const MainServiceSection = ({ fullView }) =>
             {loader ? <Spinner /> :
                 <div className="eventsSection_cards">
                     {services?.length > 0 ? services?.map((item, index) => <ServiceCard key={index} item={item} setModal={setModal} />)
-                        : <NoDataFound />}
+                        : <div className='eventsSection_noData'><NoDataFound /></div>}
                 </div>}
 
         </div>

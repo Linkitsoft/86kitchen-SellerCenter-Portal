@@ -32,7 +32,7 @@ const SingleOrderSection = () =>
     }, [])
 
     return loader ? <Spinner /> :
-            ordersData?.length > 0 ? ordersData?.map((item) => (
+            ordersData?.length > 0 ? [1,2,3,4,5]?.map((item) => (
                 <OrdersCard item={item} key={item?.id} />
             )): <NoDataFound />}
 

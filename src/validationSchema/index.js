@@ -33,7 +33,7 @@ export const campaignValidation = Yup.object({
 });
 export const serviceValidation = Yup.object({
     name: Yup.string().required('Service Name is required'),
-    category: Yup.string().required('Service category is required'),
+    categoryId: Yup.string().required('Service category is required'),
     price: Yup.string().required('Total Price is required'),
     item: Yup.string().required('Choose Recommended Items is required'),
     description: Yup.string().required('Description is required'),

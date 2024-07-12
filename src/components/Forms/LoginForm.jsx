@@ -112,7 +112,7 @@ const LoginForm = () =>
                         onBlur={() => handleBlur("type")}
                         name={"type"}
                     >
-                        <option disabled selected>Select Type</option>
+                        <option selected hidden value={""}>Select Type</option>
                         <option value={0}>Super Admin</option>
                         <option value={1}>Observant User</option>
                     </select>

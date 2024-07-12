@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DropdownField = ({ label, control, name, register, handleBlur, errors, options, placeholder }) =>
+const DropdownField = ({ label, control, name, register, handleBlur, errors, children, placeholder }) =>
 {
     return (
         <div>
@@ -13,9 +13,10 @@ const DropdownField = ({ label, control, name, register, handleBlur, errors, opt
                 defaultValue=""
             >
                 <option value="" disabled>Select {placeholder}</option>
-                {options.map(item => (
+                {/* {options.map(item => (
                     <option key={item.value} value={item.value}>{item.label}</option>
-                ))}
+                ))} */}
+                {children}
             </select>
             {errors ? <div className="verify_err">{errors?.message}</div> : null}
         </div>

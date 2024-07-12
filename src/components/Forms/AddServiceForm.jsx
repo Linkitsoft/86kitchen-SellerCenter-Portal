@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import star from "../../assets/images/Admin-20 (20).png"
 import backImg from "../../assets/images/Admin-20 (29).png"
 import { useNavigate } from 'react-router-dom'
@@ -9,14 +9,24 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'; // Import yupResolver from @hookform/resolvers/yup
 import DropdownField from '../InputField/DropdownField';
 import UploadImg from '../UploadImage';
+import { CreatePartnerService, GetAllCategory } from '../../Services/Partner'
 
-const AddServiceForm = () => {
+const AddServiceForm = () =>
+{
     const navigate = useNavigate()
-    const [banner, setBanner] = useState(null);
+    const [banner, setBanner] = useState("https://fileinfo.com/img/ss/xl/jpg_44-2.jpg");
+    const [categories, setCategories] = useState([])
+
+    const getCategoryData = async () =>
+    {
+        const res = await GetAllCategory()
+        setCategories(res?.data?.data)
+    }
+
     const { control, handleSubmit, register, trigger, formState: { errors } } = useForm({
         defaultValues: {
             name: '',
-            category: '',
+            categoryId: '',
             price: '',
             item: '',
             description: '',
@@ -25,21 +35,38 @@ const AddServiceForm = () => {
         mode: 'onBlur',
         resolver: yupResolver(serviceValidation)
     })
-    const handleFileChange = (event, type) => {
+    const handleFileChange = (event, type) =>
+    {
         UploadImg(event, setBanner)
     };
 
-    const handleBlur = async (fieldName) => {
-        try {
+    const handleBlur = async (fieldName) =>
+    {
+        try
+        {
             await trigger(fieldName);
-        } catch (error) {
+        } catch (error)
+        {
             console.error(error);
         }
     };
 
-    const onSubmit = (values) => {
-        toast.success("Service added successfully")
-    };
+    const handleCreate = async (value) =>
+    {
+        const res = await CreatePartnerService({ ...value, image: banner, commission: parseFloat(value?.commission), partnerId: "" })
+        if (res?.data?.status === 'success')
+        {
+            toast.success("Service Created Succesfully")
+            setTimeout(() =>
+            {
+                navigate(-1)
+            }, 300)
+        }
+    }
+    useEffect(() =>
+    {
+        getCategoryData()
+    }, [])
     return (
         <>
             <>
@@ -79,13 +106,15 @@ const AddServiceForm = () => {
                             <DropdownField
                                 label='Service Category'
                                 placeholder='Service Category'
-                                name='category'
-                                errors={errors?.category}
+                                name='categoryId'
+                                errors={errors?.categoryId}
                                 control={control}
                                 handleBlur={handleBlur}
                                 register={register}
-                                options={[{ label: "Fiber", value: "Storm Fiber" }]}
-                            />
+                            // options={[{ label: "Fiber", value: "Storm Fiber" }]}
+                            >
+                                {categories?.map((item) => <option value={item?.id} key={item?.id}>{item?.name}</option>)}
+                            </DropdownField>
                             <InputField
                                 label='Total Price'
                                 placeholder='Enter total price'
@@ -106,8 +135,9 @@ const AddServiceForm = () => {
                                 control={control}
                                 handleBlur={handleBlur}
                                 register={register}
-                                options={[{ label: "Fiber", value: "Storm Fiber" }]}
-                            />
+                            >
+                                {categories?.map((item) => <option value={item?.id} key={item?.id}>{item?.name}</option>)}
+                            </DropdownField>
                             <InputField
                                 label='Service Description'
                                 placeholder='Service Description'
@@ -129,7 +159,7 @@ const AddServiceForm = () => {
                             />
                         </div>
                         <div className="addServ_submit">
-                            <button onClick={handleSubmit(onSubmit)}>Add</button>
+                            <button onClick={handleSubmit(handleCreate)}>Add</button>
                         </div>
                     </div>
                 </div>
