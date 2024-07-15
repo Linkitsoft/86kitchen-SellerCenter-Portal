@@ -3,6 +3,7 @@ import loc from "../../assets/images/Admin-20 (90).png"
 import card1 from "../../assets/images/Admin-20 (22).png"
 import arrow from "../../assets/images/Admin-20 (30).png"
 import { useNavigate } from 'react-router-dom'
+import { dateTimeFormat } from '../../utils/dateTimeFormat'
 
 const OrdersCard = ({ item }) =>
 {
@@ -14,7 +15,7 @@ const OrdersCard = ({ item }) =>
     return (
         <div className='order_single'>
             <div className="order_cardTop">
-                <p>09/11/2023 - 08:53 PM</p>
+                <p>{dateTimeFormat(item?.createdAt)}</p>
                 <button onClick={() => handleNavigate(item)}>View Details</button>
             </div>
             <div className="order_content">
