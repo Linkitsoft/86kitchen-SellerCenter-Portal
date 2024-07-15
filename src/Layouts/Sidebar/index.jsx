@@ -27,6 +27,9 @@ import useUserRole from "../../hooks/useUserRole";
 import { list } from "./list";
 import { useUser } from "../../context/userContext";
 import { useSidebarClickOutside } from "../../hooks/useSidebarClickOutside";
+import OnlyVerified from "../../hoc/OnlyVerified";
+import { useUserDetails } from "../../context/profileContext";
+import { verifyList } from "./verifyList";
 
 const Sidebar = () =>
 {
@@ -41,7 +44,9 @@ const Sidebar = () =>
     const navigate = useNavigate();
     const componentRef = useRef();
     const componentRef2 = useRef();
+    const { userDetails } = useUserDetails()
 
+    const renderList = (userDetails?.status === 0 || userDetails?.status === 1) ? verifyList : list
     // useEffect(() =>
     // {
     //     document.addEventListener("click", handleClick);
@@ -140,12 +145,12 @@ const Sidebar = () =>
                         onClick={() => handleRoute("")}
                     />
                 </div>
-                <RoleAccess role={roles.create}>
-                    <div className="navBar_right">
-                        <p className="navBar_text">Let’s verify your account at 86 kitch’n partner center</p>
-                        <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
-                    </div>
-                </RoleAccess>
+               <OnlyVerified>
+                        <div className="navBar_right">
+                            <p className="navBar_text">Let’s verify your account at 86 kitch’n partner center</p>
+                            <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
+                        </div>
+                </OnlyVerified>
                 {/* {userType === 'user' && <p className="navBar_type">Observant User</p>} */}
 
             </div>
@@ -153,9 +158,9 @@ const Sidebar = () =>
                 showSidebar &&
                 <div className={!open ? "sideBar" : "sideBar sideBar_sidebarActive"} ref={componentRef2}>
                     <div className={open ? "sideBar_inner" : "sideBar_innersmall"}>
-                    {userType === 'admin' && <p className="navBar_roleInfo">Partner Center</p>}
-                    {userType === 'user' && <p className="navBar_roleInfo">Partner Center</p>}
-                    {userType === 'user' && <p className="navBar_roleInfo1">Observant User</p>}
+                        {userType === 'admin' && <p className="navBar_roleInfo">Partner Center</p>}
+                        {userType === 'user' && <p className="navBar_roleInfo">Partner Center</p>}
+                        {userType === 'user' && <p className="navBar_roleInfo1">Observant User</p>}
                         <div className="sideBar_eventInfo">
                             <img src={circleImg} alt="eventInfo" />
                             <div className="sideBar_eventText">
@@ -165,7 +170,7 @@ const Sidebar = () =>
                         </div>
                         <br />
                         <ul>
-                            {list?.map(item =>
+                            {renderList?.map(item =>
                             {
                                 return (
                                     <div key={item?.index}>

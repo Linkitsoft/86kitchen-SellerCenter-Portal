@@ -1,4 +1,4 @@
-export const getRoles = (userType) =>
+export const getRoles = (userType, state) =>
 {
     const roles = {
         create: false,
@@ -8,7 +8,7 @@ export const getRoles = (userType) =>
 
     if (userType === 'admin')
     {
-        roles.create = true;
+        roles.create = state;
         roles.hide = []
 
     } else if (userType === 'user')
