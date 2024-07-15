@@ -31,9 +31,11 @@ const SingleOrderSection = () =>
         getOrderData()
     }, [])
 
-    return loader ? <Spinner /> :
-            ordersData?.length > 0 ? ordersData?.map((item) => (
-                <OrdersCard item={item} key={item?.id} />
-            )): <NoDataFound />}
+
+    return loader ? <div className='order_noData'><Spinner /></div> :
+        ordersData?.length > 0 ? ordersData?.map((item) => (
+            <OrdersCard item={item} key={item?.id} />
+        )) : <NoDataFound />
+}
 
 export default SingleOrderSection

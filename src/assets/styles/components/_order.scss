@@ -10,7 +10,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
         grid-column-gap: 40px;
+        position: relative;
+        align-items: self-start;
     }
+
+    &_noData {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 50%);
+    }
+
 
     &_single {
         border-bottom: 1px solid gray;

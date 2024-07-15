@@ -2,7 +2,6 @@ import React from 'react'
 import DashboardTopCards from '../../components/DashboardTopCards'
 import MainServiceSection from '../../components/MainServiceSection'
 import OrdersTab from '../../components/OrdersTab'
-import OrdersCard from '../../components/OrdersCard'
 import { dashboardData } from '../../utils/dashboardData'
 import SingleOrderSection from '../SingleOrderSection'
 
@@ -21,7 +20,9 @@ const DashboardContent = () =>
                     <p className='dashboard_title'>Orders</p>
                     <OrdersTab />
                     <div className="order">
-                       <SingleOrderSection />
+                        <div className="order_page" style={{ height: "calc(100vh - 200px)" }}>
+                            <SingleOrderSection />
+                        </div>
                     </div>
                 </div>
             </div>

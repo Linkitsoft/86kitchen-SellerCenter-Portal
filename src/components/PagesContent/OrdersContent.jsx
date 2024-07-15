@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import OrdersCard from '../../components/OrdersCard'
-import { GetOrder } from '../../Services/Partner'
+import React, { useState } from 'react'
 import SingleOrderSection from '../SingleOrderSection'
 
 const OrdersContent = () =>
@@ -27,7 +25,7 @@ const OrdersContent = () =>
                     <button onClick={() => setIndex(3)} className={colorClass(3)}>Cancelled 15</button>
                 </div>
             </div>
-            <div className="order order_page" style={{ maxHeight: "calc(100vh - 200px)" }}>
+            <div className="order order_page" style={{ height: "calc(100vh - 200px)" }}>
                 <SingleOrderSection />
             </div>
         </div>

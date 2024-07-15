@@ -33,7 +33,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     (response) =>
     {
-        if (response?.data?.message === "Token is not Valid!")
+        if (response?.data?.message === "Token is not Valid!" || response?.data?.message === 'Forbidden. Partner access required.')
         {
             if (!isTokenExpiredModalVisible)
             {
