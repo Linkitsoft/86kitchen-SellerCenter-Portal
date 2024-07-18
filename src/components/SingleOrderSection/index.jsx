@@ -4,7 +4,7 @@ import OrdersCard from '../OrdersCard'
 import Spinner from '../Loader/Spinner'
 import NoDataFound from '../NoDataFound/NoDataFound'
 
-const SingleOrderSection = () =>
+const SingleOrderSection = ({fromOrders}) =>
 {
     const [ordersData, setOrdersData] = useState([])
     const [loader, setLoader] = useState(false)
@@ -35,7 +35,10 @@ const SingleOrderSection = () =>
     return loader ? <div className='order_noData'><Spinner /></div> :
         ordersData?.length > 0 ? ordersData?.map((item) => (
             <OrdersCard item={item} key={item?.id} />
-        )) : <NoDataFound />
+
+        )) : <div className={`order_noData ${fromOrders && 'top'}`}>
+            <NoDataFound />
+        </div>
 }
 
 export default SingleOrderSection

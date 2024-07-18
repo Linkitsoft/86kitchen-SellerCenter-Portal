@@ -5,104 +5,85 @@ import InputField from '../InputField/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
-import UploadImg from '../UploadImage';
 import { useNavigate } from 'react-router-dom';
 import { Verify } from '../../Services/Partner';
+import UploadImg from '../../utils/UploadImg';
 
-const AccountVerificationForm = ({ setModal }) =>
+const AccountVerificationForm = ({ userDetails, setModal }) =>
 {
     // const [banner, setBanner] = useState(null);
     // const [profile, setProfile] = useState(null);
     // const [front, setFront] = useState(null);
     // const [back, setBack] = useState(null);
     const navigate = useNavigate()
-    const [banner, setBanner] = useState("https://images.unsplash.com/photo-1511649475669-e288648b2339?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-    const [profile, setProfile] = useState("https://images.unsplash.com/photo-1511649475669-e288648b2339?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-    const [front, setFront] = useState("https://www.phclondon.org/img/web/cnic.jpg")
-    const [back, setBack] = useState("https://pakobserver.net/wp-content/uploads/2023/09/n.jpg")
+    const [banner, setBanner] = useState(userDetails?.businessImage ? userDetails?.businessImage : "")
+    const [profile, setProfile] = useState(userDetails?.businessLogo ? userDetails?.businessLogo : "")
+    const [front, setFront] = useState(userDetails?.resaleCertificate ? userDetails?.resaleCertificate : "")
+    const [back, setBack] = useState(userDetails?.businessLicense ? userDetails?.businessLicense : "")
+    const [bannerLoad, setBannerLoad] = useState(false)
+    const [profileLoad, setProfileLoad] = useState(false)
+    const [frontLoad, setFrontLoad] = useState(false)
+    const [backLoad, setBackLoad] = useState(false)
+    const isDisabled = userDetails?.status === 1;
+
+    const defaultValues = {
+        firstName: userDetails?.firstName,
+        lastName: userDetails?.lastName,
+        address1: userDetails?.address1,
+        address2: userDetails?.address2,
+        city: userDetails?.city,
+        phone: userDetails?.phone,
+        state: userDetails?.state,
+        zipCode: userDetails?.zipCode,
+        businessName: userDetails?.businessName,
+        taxId: userDetails?.taxId,
+        businessPhone: userDetails?.businessPhone,
+        businessUrl: userDetails?.businessUrl,
+    }
+
+    console.log("defaultValues", defaultValues)
+    const values = {
+        firstName: "",
+        lastName: "",
+        address1: "",
+        address2: "",
+        city: "",
+        phone: "",
+        state: "",
+        zipCode: "",
+        businessName: "",
+        taxId: "",
+        businessPhone: "",
+        businessUrl: "",
+    }
 
     const { control, handleSubmit, register, trigger, formState: { errors } } = useForm({
-        defaultValues: {
-            // firstName: '',
-            // lastName: '',
-            // email: '',
-            // password: '',
-            // confirmPassword: '',
-            // address1: '',
-            // city: '',
-            // state: '',
-            // zipCode: '',
-            // businessName: '',
-            // taxId: '',
-
-            firstName: '',
-            lastName: "",
-            address1: "",
-            city: "",
-            phone: "",
-            state: "",
-            zipCode: "",
-            businessName: "",
-            taxId: "",
-            businessPhone: "",
-        },
+        defaultValues: userDetails?.status === 1 ? defaultValues : values,
         mode: 'onBlur',
         resolver: yupResolver(verifyValidation)
     })
-    console.log(banner, "nbnb")
-    const handleFileChange = (event, type) =>
+
+    const handleFileChange = (event, fileType) =>
     {
-        const file = event.target.files[0];
-
-        if (file)
+        if (fileType === 'banner')
         {
-            const reader = new FileReader();
-            reader.onloadend = () =>
-            {
-                const fileType = type;
-
-                if (fileType === 'banner')
-                {
-                    console.log(file?.size, "kjkjkjkj")
-                    UploadImg(event, setBanner)
-
-                } else if (fileType === 'profile')
-                {
-
-                    UploadImg(event, setProfile)
-
-
-                } else if (fileType === 'front')
-                {
-                    UploadImg(event, setFront)
-                } else if (fileType === 'back')
-                {
-                    UploadImg(event, setBack)
-                }
-            };
-            reader.readAsDataURL(file);
-        } else
+            UploadImg(event, setBanner, setBannerLoad)
+        } else if (fileType === 'profile')
         {
-            if (type === 'banner')
-            {
-                setBanner(null);
-            } else if (type === 'profile')
-            {
-                setProfile(null);
-
-            } else if (type === 'front')
-            {
-                setFront(null);
-            } else if (type === 'back')
-            {
-                setBack(null);
-            }
+            UploadImg(event, setProfile, setProfileLoad)
+        } else if (fileType === 'front')
+        {
+            UploadImg(event, setFront, setFrontLoad)
+        } else if (fileType === 'back')
+        {
+            UploadImg(event, setBack, setBackLoad)
         }
     };
 
     const onSubmit = async (values) =>
     {
-        if(profile && banner && front && back){
+        if (profile && banner && front && back)
+        {
             const body = {
                 businessLogo: profile,
                 businessImage: banner,
@@ -111,7 +92,7 @@ const AccountVerificationForm = ({ setModal }) =>
                 ...values,
                 status: 1
             }
-        
+
             const res = await Verify(body)
             if (res?.data?.status === 'success')
             {
@@ -130,7 +111,8 @@ const AccountVerificationForm = ({ setModal }) =>
             {
                 toast.error("Some rror occurred")
             }
-        } else {
+        } else
+        {
             toast.warning("Please fill out all fields")
         }
     };
@@ -159,6 +141,7 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
                         />
                         <InputField
                             label='Last Name'
@@ -168,6 +151,7 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
                         />
                     </div>
                     <div className="verify_form">
@@ -222,10 +206,18 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
                         />
                         <div>
-                            <p>Address 2 (optional)</p>
-                            <input type='text' placeholder='Enter address' />
+                            <InputField
+                                label='Address 2 (optional)'
+                                placeholder='Address2'
+                                name='address2'
+                                control={control}
+                                handleBlur={handleBlur}
+                                register={register}
+                                disabled={isDisabled}
+                            />
                         </div>
                     </div>
                     <div className="verify_form">
@@ -237,6 +229,8 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
+
                         />
                         <InputField
                             label='State'
@@ -246,6 +240,8 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
+
                         />
                     </div>
                     <div className="verify_form">
@@ -257,6 +253,8 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
+
                         />
                     </div>
                 </div>
@@ -273,10 +271,11 @@ const AccountVerificationForm = ({ setModal }) =>
                                     </label>}
                                 <input type="file" id="logoInput" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'profile')} />
                                 {profile && <img className="verify_fileR" src={profile} alt='' />}
-                                {profile && <i className="fa-solid fa-trash verify_deleteIcon " onClick={() => setProfile(null)}></i>}
+                                {(profile && !isDisabled) && <i className="fa-solid fa-trash verify_deleteIcon " onClick={() => setProfile(null)}></i>}
                             </div>
                         </div>
                         <div>
+                            {profileLoad && <p className='verify_err'>Please wait...</p>}
                             <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                             <p style={{ fontSize: "12px" }}>Recomended resolution banner : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                             <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
@@ -297,11 +296,12 @@ const AccountVerificationForm = ({ setModal }) =>
                                 onChange={(e) => handleFileChange(e, 'banner')}
                             />
                             {banner && <img className="verify_file" src={banner} alt='' />}
-                            {banner && (
+                            {(banner && !isDisabled) && (
                                 <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>
                             )}
 
                         </div>
+                        {bannerLoad && <p className='verify_err'>Please wait...</p>}
                         <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                         <p style={{ fontSize: "12px" }}>Recomended logo : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                         <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
@@ -317,6 +317,8 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
+
                         />
                         <InputField
                             label='Tax Id'
@@ -326,6 +328,8 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
+
                         />
                     </div>
                     {/* <div className="verify_form">
@@ -343,10 +347,20 @@ const AccountVerificationForm = ({ setModal }) =>
                             control={control}
                             handleBlur={handleBlur}
                             register={register}
+                            disabled={isDisabled}
+
                         />
                         <div>
-                            <p>Business URL (Optional)</p>
-                            <input type='text' placeholder='Enter business URL' />
+                            <InputField
+                                label='Business URL (Optional)'
+                                placeholder='Business URL'
+                                name='businessUrl'
+                                control={control}
+                                handleBlur={handleBlur}
+                                register={register}
+                                disabled={isDisabled}
+
+                            />
                         </div>
                     </div>
                 </div>
@@ -362,7 +376,8 @@ const AccountVerificationForm = ({ setModal }) =>
                                     </label>}
                                 <input name="front" type="file" id="front" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'front')} />
                                 {front && <img className="verify_file" src={front} alt='' />}
-                                {front && <i className="fa-solid fa-trash" onClick={() => setFront(null)}></i>}
+                                {(front && !isDisabled) && <i className="fa-solid fa-trash" onClick={() => setFront(null)}></i>}
+                                {frontLoad && <p className='verify_err'>Please wait...</p>}
                                 <p style={{ margin: "25px 25px 0 25px" }}>Front of ID card</p>
                                 <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                                 <p style={{ textAlign: "center", fontSize: "12px" }}>Recomended resolution ID Card: <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
@@ -375,16 +390,18 @@ const AccountVerificationForm = ({ setModal }) =>
                                     </label>}
                                 <input name="back" type="file" id="back" style={{ display: 'none' }} onChange={(e) => handleFileChange(e, 'back')} />
                                 {back && <img className="verify_file" src={back} alt='' />}
-                                {back && <i className="fa-solid fa-trash" onClick={() => setBack(null)}></i>}
+                                {(back && !isDisabled) && <i className="fa-solid fa-trash" onClick={() => setBack(null)}></i>}
+                                {backLoad && <p className='verify_err'>Please wait...</p>}
                                 <p style={{ margin: "25px 25px 0 25px" }}>Back of ID Card</p>
                                 <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                                 <p style={{ textAlign: "center", fontSize: "12px" }}>Recomended resolution ID Card: <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                                 <p style={{ textAlign: "center", fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
                             </div>
                         </div>
-                        <div className="verify_submit" style={{}}>
-                            <button onClick={handleSubmit(onSubmit)}>SUBMIT</button>
-                        </div>
+                        {!isDisabled &&
+                            <div className="verify_submit" style={{}}>
+                                <button onClick={handleSubmit(onSubmit)}>SUBMIT</button>
+                            </div>}
                     </div>
                 </div>
             </div>

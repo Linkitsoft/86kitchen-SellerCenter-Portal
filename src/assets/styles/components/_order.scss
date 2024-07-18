@@ -18,6 +18,10 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%, 50%);
+
+    }
+    .top {
+        top: 43%
     }
 
 
@@ -30,7 +34,7 @@
         display: flex;
         border-bottom: 1px solid #b1b1b1;
         gap: 10px;
-        
+
         p {
             width: 100%;
             text-align: center;
@@ -40,6 +44,7 @@
             cursor: pointer;
             padding-bottom: 6px;
         }
+
         p:hover {
             color: #3985FC;
             border-bottom: 1px solid #3985FC;
@@ -133,6 +138,7 @@
             width: 20px;
             cursor: pointer;
         }
+
         img:hover {
             filter: brightness(10%);
         }
@@ -162,14 +168,17 @@
             p {
                 font-size: 14px;
             }
+
             .selected {
                 font-size: 14px;
 
             }
         }
+
         &_content {
             gap: 10px;
         }
+
         &_img {
             width: 80px;
         }
@@ -177,27 +186,33 @@
         &_head {
             font-size: 14px;
         }
+
         &_desc {
             font-size: 10px;
 
         }
+
         &_loc {
             font-size: 10px;
         }
+
         &_bottom {
 
             p {
                 font-size: 13px;
             }
+
             button {
                 font-size: 11px;
                 padding: 5px;
             }
         }
+
         &_cardTop button {
             padding: 5px;
             font-size: 10px;
         }
+
         &_page {
             grid-template-columns: 1fr
         }

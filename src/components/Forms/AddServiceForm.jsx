@@ -8,14 +8,15 @@ import InputField from '../InputField/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'; // Import yupResolver from @hookform/resolvers/yup
 import DropdownField from '../InputField/DropdownField';
-import UploadImg from '../UploadImage';
 import { CreatePartnerService, GetAllCategory } from '../../Services/Partner'
+import UploadImg from '../../utils/UploadImg'
 
 const AddServiceForm = () =>
 {
     const navigate = useNavigate()
-    const [banner, setBanner] = useState("https://fileinfo.com/img/ss/xl/jpg_44-2.jpg");
+    const [banner, setBanner] = useState("");
     const [categories, setCategories] = useState([])
+    const [loader, setLoader] = useState(false)
 
     const getCategoryData = async () =>
     {
@@ -37,7 +38,7 @@ const AddServiceForm = () =>
     })
     const handleFileChange = (event, type) =>
     {
-        UploadImg(event, setBanner)
+        UploadImg(event, setBanner, setLoader)
     };
 
     const handleBlur = async (fieldName) =>
@@ -53,6 +54,7 @@ const AddServiceForm = () =>
 
     const handleCreate = async (value) =>
     {
+        if(!banner) return toast.warning("Image is required")
         const res = await CreatePartnerService({ ...value, image: banner, commission: parseFloat(value?.commission), partnerId: "" })
         if (res?.data?.status === 'success')
         {
@@ -87,7 +89,7 @@ const AddServiceForm = () =>
                                 {banner && <i className="fa-solid fa-trash" onClick={() => setBanner(null)}></i>}
                             </div>
                             <div className="addServ_validationBox" >
-                                {!banner && <div className="verify_err" >Image is required</div>}
+                                {loader && <div className="verify_err" >Please wait</div>}
                                 <p style={{ fontSize: "12px" }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
                                 <p style={{ fontSize: "12px" }}>Recomended resolution banner : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
                                 <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>

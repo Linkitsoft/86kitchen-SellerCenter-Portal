@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import QueriesTable from '../../components/Tables/QueriesTable'
 import { GetAllQuery } from '../../Services/Partner'
 import Spinner from '../Loader/Spinner'
+import NoDataFound from '../NoDataFound/NoDataFound'
 
 const QueriesContent = () =>
 {
@@ -50,9 +51,12 @@ const QueriesContent = () =>
                 </div>
             </div>
             {loader ? <Spinner /> :
-            <div className="dashboard_queries">
-                <QueriesTable queryData={queryData}/>
-            </div>}
+                <div className="dashboard_queries">
+                    {queryData?.length > 0 ? <QueriesTable queryData={queryData} /> :
+                        <div className="dashboard_noData">
+                            <NoDataFound />
+                        </div>}
+                </div>}
         </div>
     )
 }

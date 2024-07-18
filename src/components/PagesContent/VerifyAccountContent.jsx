@@ -3,21 +3,27 @@ import logo from "../../assets/images/Admin-20 (89).png"
 import Thankyou from '../../components/Modals/Thankyou'
 import AccountVerificationForm from '../../components/Forms/AccountVerificationForm'
 import HidePage from '../../hoc/HidePage'
+import { useUserDetails } from '../../context/profileContext'
 
 const VerifyAccountContent = () =>
 {
     const [modal, setModal] = useState("");
+    const { userDetails } = useUserDetails()
+
+    const isDisabled = userDetails?.status === 1
 
     return (
         <HidePage>
             {modal === 'verify' && <Thankyou setModal={setModal} />}
             <div className="verify">
                 <div className="verify_header">
-                    <p className="verify_title">Let’s verify your account at 86 kitch’n partner center</p>
+                    <p className="verify_title">
+                        {isDisabled ? "Below are your details" : "Let’s verify your account at 86 kitch’n partner center"}
+                    </p>
                     <img width={150} src={logo} alt='' />
                 </div>
                 <div className="container">
-                    <AccountVerificationForm setModal={setModal} />
+                    <AccountVerificationForm userDetails={userDetails} setModal={setModal} />
                 </div>
             </div>
         </HidePage>

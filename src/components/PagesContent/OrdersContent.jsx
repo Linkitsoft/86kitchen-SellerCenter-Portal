@@ -26,7 +26,7 @@ const OrdersContent = () =>
                 </div>
             </div>
             <div className="order order_page" style={{ height: "calc(100vh - 200px)" }}>
-                <SingleOrderSection />
+                <SingleOrderSection fromOrders={true} />
             </div>
         </div>
     )
