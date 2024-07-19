@@ -13,7 +13,7 @@ const UploadImg = async (e, setImageUrl, setImageLoader) =>
         const formData = new FormData()
         formData.append("uploadFor", 'file')
         formData.append('file', file, file.name)
-        await axios.post(`https://kjjp4n4d-8080.inc1.devtunnels.ms/media/uploadMedia`, formData).then(res =>
+        await axios.post(`http://3.142.184.86/media/uploadMedia`, formData).then(res =>
         {
             setImageUrl(res?.data?.data[0]?.uploadedLink)
             setImageLoader(false)

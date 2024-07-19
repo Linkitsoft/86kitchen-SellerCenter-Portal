@@ -11,7 +11,7 @@ import { GetChat, PartnerChat } from '../../Services/Partner';
 import ChatLoader from '../Loader/ChatLoader';
 import { useInView } from "react-intersection-observer";
 
-const socket = io("https://kjjp4n4d-8080.inc1.devtunnels.ms/");
+const socket = io("http://3.142.184.86/");
 
 const OrderDetailChat = ({ customerId, queryId }) =>
 {

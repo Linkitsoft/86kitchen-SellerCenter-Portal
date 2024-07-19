@@ -3,7 +3,7 @@ import axios from "axios";
 
 const instance = axios.create({
     // baseURL: "https://2xk3k86g-8080.euw.devtunnels.ms/api/superAdminRoutes/",
-    baseURL: `https://kjjp4n4d-8081.inc1.devtunnels.ms/api/partner/`,
+    baseURL: `http://3.142.184.86/api/partner/`,
     headers: {
         "Content-Type": "application/json",
         "access-control-allow-origin": "*",
