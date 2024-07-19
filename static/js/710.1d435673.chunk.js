@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpartnercenter=self.webpackChunkpartnercenter||[]).push([[710],{9710:(e,r,t)=>{t.r(r),t.d(r,{default:()=>a});t(7313);var n=t(5197),s=t(6417);const a=()=>(0,s.jsx)(n.Z,{})}}]);
