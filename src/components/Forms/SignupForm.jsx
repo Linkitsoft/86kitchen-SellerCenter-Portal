@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import PasswordInputField from "../InputField/PasswordField";
 import InputField from "../InputField/InputField";
 import { SignUp } from "../../Services/Partner";
+import { toast } from "react-toastify";
 
 const SignupForm = () =>
 {
