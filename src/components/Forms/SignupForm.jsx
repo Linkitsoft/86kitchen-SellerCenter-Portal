@@ -40,7 +40,7 @@ const SignupForm = () =>
         const res = await SignUp({ ...value, status: 0, isSuperAdmin: true })
         if (res?.data?.status === 'success')
         {
-            // toast.success("Account request sent to admin")
+            toast.success("Account created successfully")
             navigate("/login")
         }
     }
