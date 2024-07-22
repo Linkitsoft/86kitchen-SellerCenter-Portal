@@ -1,4 +1,3 @@
-import starImg from "../assets/images/Admin-20 (82).png"
 import userImg from "../assets/images/Admin-20 (83).png"
 import qImg from "../assets/images/Admin-20 (84).png"
 import tickImg from "../assets/images/Admin-20 (85).png"

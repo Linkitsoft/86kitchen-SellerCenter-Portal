@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import bg from "../../assets/images/Admin-20 (22).png"
 import { searchUrl } from '../../utils/searchUrl'
 import { GetOrderById } from '../../Services/Partner'
 
-const OrderDetailCard = ({ customerId, queryId }) =>
+const OrderDetailCard = () =>
 {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const orderId = searchUrl('orderId')
 
     const [orderData, setOrderData] = useState({})
@@ -20,6 +20,7 @@ const OrderDetailCard = ({ customerId, queryId }) =>
     useEffect(() =>
     {
         getorderData()
+        // eslint-disable-next-line
     }, [])
 
     return (

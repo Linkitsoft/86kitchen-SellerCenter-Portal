@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import star from "../../assets/images/Admin-20 (20).png"
+// import star from "../../assets/images/Admin-20 (20).png"
 import InputField from '../InputField/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -41,11 +41,7 @@ const CreateCampaignContent = () => {
             toast.success("Campaign Created Succesfully")
         }
     }
-    const handleUpdate = (value) => {
-        if (img) {
-            toast.success("Campaign Updated Succesfully")
-        }
-    }
+
     const generateRefId = () => {
         // Logic to generate Referral ID
         const generatedId = Math.floor(1000 + Math.random() * 9000);
@@ -132,8 +128,8 @@ const CreateCampaignContent = () => {
                     <div style={{ position: "relative", }} className='createCampaign_grid'>
                         <div className="fieldChild">
                             <label className='fieldChild_label'>Coupon Code</label>
-                            <input style={{ width: "100%" }} placeholder="Coupon Code"
-                                className='fieldChild_input' type="number" disabled={true} value={coupoun} name="couponCode" style={{ background: '#c9c9c9' }} />
+                            <input placeholder="Coupon Code"
+                                className='fieldChild_input' type="number" disabled={true} value={coupoun} name="couponCode" style={{ width: "100%", background: '#c9c9c9' }} />
                         </div>
                         <div className="fieldChild createCampaign_generateIdBtn">
                             <label style={{ opacity: "0" }} className='fieldChild_label'>Coupon</label>

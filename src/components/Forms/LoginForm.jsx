@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginValidation } from "../../validationSchema";
-import Recaptcha from "../../components/Recaptcha";
+// import Recaptcha from "../../components/Recaptcha";
 import { useUser } from "../../context/userContext";
 import PasswordInputField from "../InputField/PasswordField";
 import InputField from "../InputField/InputField";
@@ -9,11 +9,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignIn } from "../../Services/Partner";
 import { toast } from "react-toastify";
-import DropdownField from "../InputField/DropdownField";
 
 const LoginForm = () =>
 {
-    const [captchaValue, setCaptchaValue] = useState(null);
+    // const [captchaValue, setCaptchaValue] = useState(null);
 
     const navigate = useNavigate()
     const { setUser } = useUser()
@@ -49,7 +48,7 @@ const LoginForm = () =>
             return toast.error("Invalid credentials")
         }
         if (res?.data?.status === 'success'){
-            if(value?.type == 0){
+            if(value?.type === 0 || value?.type === '0'){
                 setUser("admin")
                 window.localStorage.setItem("token", res?.data?.data?.token)
                 window.localStorage.setItem("userId", res?.data?.data?.id)

@@ -3,12 +3,12 @@ import ReactApexCharts from 'react-apexcharts';
 
 const SalesAnalysisChart = ({ data }) => {
     const topProducts = data.slice(0, 5);
-    const topSellingProduct = data.reduce((prev, current) =>
-        prev.sales > current.sales ? prev : current
-    );
-    const highestCommissionedProduct = data.reduce((prev, current) =>
-        prev.commission > current.commission ? prev : current
-    );
+    // const topSellingProduct = data.reduce((prev, current) =>
+    //     prev.sales > current.sales ? prev : current
+    // );
+    // const highestCommissionedProduct = data.reduce((prev, current) =>
+    //     prev.commission > current.commission ? prev : current
+    // );
 
     const options = {
 

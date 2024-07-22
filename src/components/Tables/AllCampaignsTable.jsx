@@ -9,7 +9,7 @@ const AllCampaignsTable = ({ setModal, status, setViewModal, setItem }) => {
         'Title ', 'Type ', 'Coupon Code ',
         'Campaign Day(s)', 'Approval Status', 'Status', "Details"]
 
-    const [campaign, setCampaign] = useState([
+    const [campaign] = useState([
         {
             no: "1",
             image: "0121221234",
@@ -122,8 +122,8 @@ const AllCampaignsTable = ({ setModal, status, setViewModal, setItem }) => {
                                 <td>{item?.couponCode}</td>
                                 {/* <td >{item?.acceptedDate}</td> */}
                                 <td>{item?.timeDuration}</td>
-                                <td style={{ fontWeight: "bold", color: item?.acceptReject == "Rejected" ? 'red' : "green" }}>{item?.acceptReject}</td>
-                                <td style={{ fontWeight: "bold", color: item?.status == "Expired" ? 'red' : (item?.status == "Ongoing" ? "green" : "blue") }}>
+                                <td style={{ fontWeight: "bold", color: item?.acceptReject === "Rejected" ? 'red' : "green" }}>{item?.acceptReject}</td>
+                                <td style={{ fontWeight: "bold", color: item?.status === "Expired" ? 'red' : (item?.status === "Ongoing" ? "green" : "blue") }}>
                                     {item?.status}</td>
                                 {/* <td>
                                     <label className="switch">

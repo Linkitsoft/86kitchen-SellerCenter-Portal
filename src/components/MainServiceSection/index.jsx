@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ServiceCard from '../ServiceCard';
-import { eventData } from '../../utils/eventData';
-import { cardData } from '../../utils/cardData';
 import ViewService from '../Modals/ViewService';
 import ServiceSwiper from '../Swipers/ServiceSwiper';
 import { GetAllCategory, GetPartnerServices } from '../../Services/Partner';
@@ -47,6 +45,7 @@ const MainServiceSection = ({ fullView }) =>
     useEffect(() =>
     {
         getServices()
+        // eslint-disable-next-line
     }, [categoryId])
 
     useEffect(() =>

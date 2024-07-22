@@ -145,7 +145,7 @@ const EditServiceForm = ({ setModal }) => {
                                 register={register}
                             />
                             <InputField
-                                label='Commission'
+                                label='Commission (%)'
                                 placeholder='Commission'
                                 name='commission'
                                 type='number'

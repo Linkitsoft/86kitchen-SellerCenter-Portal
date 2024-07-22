@@ -3,7 +3,7 @@ import backImg from "../../assets/images/Admin-20 (29).png"
 import loc from "../../assets/images/Admin-20 (90).png"
 import { useNavigate } from 'react-router-dom'
 import SalesTable from '../Tables/SalesTable'
-import { newService } from '../../utils/newService'
+// import { newService } from '../../utils/newService'
 import CustomDropdown from '../../utils/CustomDropdown'
 import { searchUrl } from '../../utils/searchUrl'
 import { GenerateOrder, GetPartnerServices } from '../../Services/Partner'

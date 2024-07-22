@@ -27,8 +27,8 @@ const ViewCampaignDetail = ({ setModal, item }) => {
                                 <p style={{ fontSize: '14px', fontWeight: "600" }}>{formatKey(key)}</p>
                             </div>
                             <div style={{ textAlign: "right" }}>
-                                <span style={{ fontSize: "12px", fontWeight: '600', color: value == "Rejected" ? "red" : (value == "Accepted" ? "green" : "") }} className='viewCampaignDetail_categoryValue'>
-                                    {key == "startDate" ||key == "endDate" || key == "rejectedDate"? dateFormat(value): value}
+                                <span style={{ fontSize: "12px", fontWeight: '600', color: value === "Rejected" ? "red" : (value === "Accepted" ? "green" : "") }} className='viewCampaignDetail_categoryValue'>
+                                    {key === "startDate" ||key === "endDate" || key === "rejectedDate"? dateFormat(value): value}
                                 </span>
                             </div>
                         </div>

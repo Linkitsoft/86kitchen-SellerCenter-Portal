@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import AllCampaignsTable from '../Tables/AllCampaignsTable'
 import ViewCampaignFullImage from '../Modals/ViewCampaignFullImage '
-import Clickoutside from '../Clickoutside/Clickoutside'
+// import Clickoutside from '../Clickoutside/Clickoutside'
 import ViewCampaignDetail from '../Modals/ViewCampaignDetail'
 
 const AllCampaignsContent = () => {

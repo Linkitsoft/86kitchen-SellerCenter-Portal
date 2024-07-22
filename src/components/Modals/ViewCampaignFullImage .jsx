@@ -6,6 +6,7 @@ const ViewCampaignFullImage = ({ setModal }) => {
     const Ref2 = useRef()
     useEffect(() => {
         Clickoutside(Ref, Ref2, setModal)
+        // eslint-disable-next-line
     }, [])
     return (
         <div ref={Ref} className='viewCampaignFullImage'>

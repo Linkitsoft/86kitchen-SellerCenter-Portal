@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 // import Sidebar from '../../components/Sidebar'
 import totalVendorImg from "../../assets/images/Admin-20 (82).png"
 import totalCustomersImg from "../../assets/images/Admin-20 (83).png"
-import customerReq from "../../assets/images/Admin-20 (84).png"
+// import customerReq from "../../assets/images/Admin-20 (84).png"
 import DonutChart from '../../components/Graph/DonutChart'
 import AreaChart from '../../components/Graph/AreaChart'
 import DashboardTopCards from '../DashboardTopCards'
-import MainServiceSection from '../MainServiceSection'
-import OrdersTab from '../OrdersTab'
-import OrdersCard from '../OrdersCard'
+// import MainServiceSection from '../MainServiceSection'
+// import OrdersTab from '../OrdersTab'
+// import OrdersCard from '../OrdersCard'
 import SalesAnalysisChart from '../Graph/SalesAnalysisChart '
 function SalesAnalysisContent() {
 
-    const [modal, setModal] = useState()
+    // const [modal, setModal] = useState()
     const [filterView, setFilterView] = useState("All")
     // const [obj] = useState()
     // const navigate = useNavigate()

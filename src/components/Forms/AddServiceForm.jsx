@@ -150,7 +150,7 @@ const AddServiceForm = () =>
                                 register={register}
                             />
                             <InputField
-                                label='Commission'
+                                label='Commission (%)'
                                 placeholder='Commission'
                                 type='number'
                                 name='commission'

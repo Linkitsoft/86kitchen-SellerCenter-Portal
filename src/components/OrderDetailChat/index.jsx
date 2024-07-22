@@ -5,7 +5,7 @@ import att from "../../assets/images/Admin-20 (27).png";
 import send from "../../assets/images/vdd-01.png";
 import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole';
-import UploadImg from '../UploadImage';
+// import UploadImg from '../UploadImage';
 import { io } from "socket.io-client";
 import { GetChat, PartnerChat } from '../../Services/Partner';
 import ChatLoader from '../Loader/ChatLoader';
@@ -17,7 +17,7 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 {
     const chatInnerRef = useRef(null);
     const roles = useUserRole();
-    const [img, setImg] = useState();
+    // const [img, setImg] = useState();
     const Ref = useRef();
     const msgRef = useRef();
     const messagesEndRef = useRef();
@@ -32,8 +32,8 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 
     const handleImg = (e) =>
     {
-        UploadImg(e, setImg);
-        Ref.current.value = null;
+        // UploadImg(e, setImg);
+        // Ref.current.value = null;
     };
 
     const handleSendMsg = async () =>
@@ -64,7 +64,8 @@ const OrderDetailChat = ({ customerId, queryId }) =>
                     type: userId === item?.senderId ? 'sent' : 'receive'
                 };
             });
-            setMessages((prevData) => {
+            setMessages((prevData) =>
+            {
                 const sortedMessages = [...temp, ...prevData].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
                 return sortedMessages;
             });
@@ -83,6 +84,7 @@ const OrderDetailChat = ({ customerId, queryId }) =>
     useEffect(() =>
     {
         getAllChats(pageNo);
+        // eslint-disable-next-line
     }, [pageNo]);
 
     useEffect(() =>
@@ -116,10 +118,12 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 
     useEffect(() =>
     {
-        if(initialLoad && messages){
+        if (initialLoad && messages)
+        {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
             setInitialLoad(false)
-        } 
+        }
+        // eslint-disable-next-line
     }, [messages]);
 
     useEffect(() =>
@@ -133,10 +137,9 @@ const OrderDetailChat = ({ customerId, queryId }) =>
 
             return () => clearTimeout(timeoutId);
         }
+
+        // eslint-disable-next-line
     }, [topInView, mainLoader, hasMore]);
-
-
-    console.log("messages", messages)
 
     return (
         <div className="od_right">
@@ -157,8 +160,8 @@ const OrderDetailChat = ({ customerId, queryId }) =>
                             <div>{item?.chat}</div>
                             <p>12:12</p>
                         </div>
-                )) : 
-                <div className='od_nomsg'>No messages found</div>
+                )) :
+                    <div className='od_nomsg'>No messages found</div>
                 }
                 <div ref={messagesEndRef}></div>
             </div>

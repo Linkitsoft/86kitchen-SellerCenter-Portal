@@ -37,7 +37,11 @@ export const serviceValidation = Yup.object({
     price: Yup.string().required('Total Price is required'),
     item: Yup.string().required('Choose Recommended Items is required'),
     description: Yup.string().required('Description is required'),
-    commission: Yup.string().required('commission is required'),
+    commission: Yup.number().transform((value) => Number.isNaN(value) ? null : value)
+        .nullable()
+        .max(100)
+        .test('greater-than-zero', 'commission should be greater than 0', value => value === null || value > 0)
+        .required('commission is required'),
 });
 
 export const editServiceValidation = Yup.object({
@@ -49,7 +53,11 @@ export const editServiceValidation = Yup.object({
 });
 
 export const editCommissionValidation = Yup.object({
-    commission: Yup.string().required('commission is required'),
+    commission: Yup.number().transform((value) => Number.isNaN(value) ? null : value)
+        .nullable()
+        .max(100)
+        .test('greater-than-zero', 'commission should be greater than 0', value => value === null || value > 0)
+        .required('commission is required'),
 });
 
 export const passwordValidation = Yup.object({
