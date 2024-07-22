@@ -4,7 +4,7 @@ import bg from "../../assets/images/Admin-20 (22).png"
 import { useNavigate } from 'react-router-dom';
 import RoleAccess from '../../hoc/RoleAccess';
 import useUserRole from '../../hooks/useUserRole';
-const ViewService = ({ setModal }) =>
+const ViewService = ({ service, setModal }) =>
 {
     const Ref = useRef();
     const Ref2 = useRef();
@@ -21,23 +21,23 @@ const ViewService = ({ setModal }) =>
             <div ref={Ref2} className='viewService_inner'>
                 <p className='viewService_topHead'>Details</p>
                 <img className='viewService_img' src={bg} alt='' />
-                <div className='viewService_head'>Limited Time Offers</div>
-                <p className='viewService_desc'>Yellow Storm Triple Typhoon 20 Mbps - Month cost $50, Ont time cost $100</p>
+                <div className='viewService_head'>{service?.name}</div>
+                <p className='viewService_desc'>{service?.description}</p>
                 <div className='viewService_cost'>
                     <p>Total Cost:</p>
-                    <p>$150</p>
+                    <p>${service?.price}</p>
                 </div>
                 <div className='viewService_cost'>
                     <p>Commission:</p>
-                    <p>15%</p>
+                    <p>{service?.commission ? `${service?.commission}%` : "-"}</p>
                 </div>
                 <p className='viewService_err'>Your request to change the commission by 25% is currently pending approval from the super admin</p>
                 <div className='viewService_order'>
                     <p>Total Orders:</p>
-                    <p>50</p>
+                    <p>-</p>
                 </div>
                 <RoleAccess role={roles.create}>
-                    <button onClick={() => navigate('/editService')} className='viewService_btn'>Edit</button>
+                    <button onClick={() => navigate(`/editService?serviceId=${service?.id}`)} className='viewService_btn'>Edit</button>
                 </RoleAccess>
             </div>
         </div>

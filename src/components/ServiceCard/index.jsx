@@ -3,10 +3,10 @@ import user from "../../assets/images/Admin-20 (14).png"
 import arrow from "../../assets/images/Admin-20 (30).png"
 import card5 from "../../assets/images/Admin-20 (26).png"
 
-const ServiceCard = ({item, setModal}) =>
+const ServiceCard = ({setService, item, setModal}) =>
 {
     return (
-        <div className='serviceCard' onClick={() => setModal('view')}>
+        <div className='serviceCard' onClick={() => {setService(item); setModal('view')}}>
             <div className="">
                 <img className="serviceCard_img" src={card5} alt=''/>
                 <div className="serviceCard_user">

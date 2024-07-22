@@ -12,8 +12,8 @@ const MainServiceSection = ({ fullView }) =>
 {
     const [clickIndex, setClickIndex] = useState("All")
     const [modal, setModal] = useState('')
-
     const [categories, setCategories] = useState([])
+    const [service, setService] = useState({})
     const [services, setServices] = useState([])
     const [loader, setLoader] = useState(false)
     const [categoryId, setCategoryId] = useState("")
@@ -55,14 +55,14 @@ const MainServiceSection = ({ fullView }) =>
 
     return (
         <div className='eventsSection' style={{ height: fullView ? "calc(100vh - 227px)" : "calc(100vh - 347px)" }}>
-            {modal === 'view' && <ViewService setModal={setModal} />}
+            {modal === 'view' && <ViewService service={service} setModal={setModal} />}
 
             <div className='eventsSection_swiperWrap'>
                 <ServiceSwiper setCategoryId={setCategoryId} clickIndex={clickIndex} setClickIndex={setClickIndex} eventData={categories} />
             </div>
             {loader ? <Spinner /> :
                 <div className="eventsSection_cards">
-                    {services?.length > 0 ? services?.map((item, index) => <ServiceCard key={index} item={item} setModal={setModal} />)
+                    {services?.length > 0 ? services?.map((item, index) => <ServiceCard setService={setService} key={index} item={item} setModal={setModal} />)
                         : <div className='eventsSection_noData'><NoDataFound /></div>}
                 </div>}
 
