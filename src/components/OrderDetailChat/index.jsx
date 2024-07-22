@@ -38,6 +38,7 @@ const OrderDetailChat = ({ orderData, customerId, queryId }) =>
 
     const handleSendMsg = async () =>
     {
+        if(!msgRef.current.value) return
         setLoader(true);
         const body = {
             queryId: queryId,
@@ -116,12 +117,13 @@ const OrderDetailChat = ({ orderData, customerId, queryId }) =>
         }
     };
 
+    console.log("initialLoad", initialLoad)
+    console.log("messages", messages)
     useEffect(() =>
     {
         if (initialLoad && messages)
         {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-            setInitialLoad(false)
         }
         // eslint-disable-next-line
     }, [messages]);
@@ -130,6 +132,7 @@ const OrderDetailChat = ({ orderData, customerId, queryId }) =>
     {
         if (topInView && !mainLoader && hasMore)
         {
+            setInitialLoad(false)
             const timeoutId = setTimeout(() =>
             {
                 setPageNo(pageNo + 1);
