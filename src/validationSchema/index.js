@@ -41,12 +41,12 @@ export const serviceValidation = Yup.object({
         .nullable()
         .max(100)
         .test('greater-than-zero', 'commission should be greater than 0', value => value === null || value > 0)
-        .required('commission is required'),
+        .required('Commission is required'),
 });
 
 export const editServiceValidation = Yup.object({
     name: Yup.string().required('Service Name is required'),
-    category: Yup.string().required('Service category is required'),
+    categoryId: Yup.string().required('Service category is required'),
     price: Yup.string().required('Total Price is required'),
     item: Yup.string().required('Choose Recommended Items is required'),
     description: Yup.string().required('Description is required'),
@@ -57,7 +57,7 @@ export const editCommissionValidation = Yup.object({
         .nullable()
         .max(100)
         .test('greater-than-zero', 'commission should be greater than 0', value => value === null || value > 0)
-        .required('commission is required'),
+        .required('Commission is required'),
 });
 
 export const passwordValidation = Yup.object({

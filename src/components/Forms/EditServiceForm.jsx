@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import star from "../../assets/images/Admin-20 (20).png"
 import backImg from "../../assets/images/Admin-20 (29).png"
 import { useNavigate } from 'react-router-dom'
@@ -9,14 +9,19 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'; // Import yupResolver from @hookform/resolvers/yup
 import DropdownField from '../InputField/DropdownField';
 import UploadImg from '../UploadImage'
+import { GetAllCategory } from '../../Services/Partner'
 
-const EditServiceForm = ({ setModal }) => {
+const EditServiceForm = ({ setModal }) =>
+{
     const navigate = useNavigate()
     const [banner, setBanner] = useState(null);
+    const [categories, setCategories] = useState([])
+    const [loader, setLoader] = useState(false)
+
     const { control, handleSubmit, register, trigger, formState: { errors } } = useForm({
         defaultValues: {
             name: '',
-            category: '',
+            categoryId: '',
             price: null,
             item: '',
             description: '',
@@ -25,7 +30,16 @@ const EditServiceForm = ({ setModal }) => {
         mode: 'onBlur',
         resolver: yupResolver(editServiceValidation)
     })
-    const handleFileChange = (event, type) => {
+
+
+    const getCategoryData = async () =>
+    {
+        const res = await GetAllCategory()
+        setCategories(res?.data?.data)
+    }
+
+    const handleFileChange = (event, type) =>
+    {
         UploadImg(event, setBanner)
         // const file = event.target.files[0];
 
@@ -55,17 +69,27 @@ const EditServiceForm = ({ setModal }) => {
         // }
     };
 
-    const handleBlur = async (fieldName) => {
-        try {
+    const handleBlur = async (fieldName) =>
+    {
+        try
+        {
             await trigger(fieldName);
-        } catch (error) {
+        } catch (error)
+        {
             console.error(error);
         }
     };
 
-    const onSubmit = () => {
+    const onSubmit = () =>
+    {
         toast.success("Service added successfully")
     };
+
+    useEffect(() =>
+    {
+        getCategoryData()
+    }, [])
+
     return (
         <>
             <>
@@ -106,13 +130,15 @@ const EditServiceForm = ({ setModal }) => {
                             <DropdownField
                                 label='Service Category'
                                 placeholder='Service Category'
-                                name='category'
-                                errors={errors?.category}
+                                name='categoryId'
+                                errors={errors?.categoryId}
                                 control={control}
                                 handleBlur={handleBlur}
                                 register={register}
-                                options={[{ label: "Fiber", value: "Storm Fiber" }]}
-                            />
+                            // options={[{ label: "Fiber", value: "Storm Fiber" }]}
+                            >
+                                {categories?.map((item) => <option value={item?.id} key={item?.id}>{item?.name}</option>)}
+                            </DropdownField>
                             <InputField
                                 label='Total Price'
                                 placeholder='Enter total price'

@@ -58,11 +58,11 @@ const AddServiceForm = () =>
         const res = await CreatePartnerService({ ...value, image: banner, commission: parseFloat(value?.commission), partnerId: "" })
         if (res?.data?.status === 'success')
         {
-            toast.success("Service Created Succesfully")
+            toast.success("Service Request Sent Succesfully")
             setTimeout(() =>
             {
                 navigate(-1)
-            }, 300)
+            }, 1000)
         }
     }
     useEffect(() =>
