@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 // import { useNavigate } from 'react-router-dom'
 import bg from "../../assets/images/Admin-20 (22).png"
-import { searchUrl } from '../../utils/searchUrl'
-import { GetOrderById } from '../../Services/Partner'
+// import { searchUrl } from '../../utils/searchUrl'
+// import { GetOrderById } from '../../Services/Partner'
 
-const OrderDetailCard = () =>
+const OrderDetailCard = ({orderData}) =>
 {
     // const navigate = useNavigate()
-    const orderId = searchUrl('orderId')
-
-    const [orderData, setOrderData] = useState({})
-
-    const getorderData = async () =>
-    {
-        const res = await GetOrderById({ orderId })
-        setOrderData(res?.data?.data)
-    }
-
-    useEffect(() =>
-    {
-        getorderData()
-        // eslint-disable-next-line
-    }, [])
 
     return (
         <div className="od_left">

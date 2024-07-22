@@ -162,9 +162,9 @@ const Sidebar = () =>
                         {userType === 'user' && <p className="navBar_roleInfo">Partner Center</p>}
                         {userType === 'user' && <p className="navBar_roleInfo1">Observant User</p>}
                         <div className="sideBar_eventInfo">
-                            <img src={circleImg} alt="eventInfo" />
+                            <img src={userDetails?.businessLogo} alt="eventInfo" />
                             <div className="sideBar_eventText">
-                                <p className="channelName">StormFiber</p>
+                                <p className="channelName">{userDetails?.firstName}</p>
                                 <p className="icNo"><i className="fa-solid fa-star"></i>4.8</p>
                             </div>
                         </div>

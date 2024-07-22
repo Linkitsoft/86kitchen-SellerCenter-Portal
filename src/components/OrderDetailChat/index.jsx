@@ -13,7 +13,7 @@ import { useInView } from "react-intersection-observer";
 
 const socket = io("http://3.142.184.86/");
 
-const OrderDetailChat = ({ customerId, queryId }) =>
+const OrderDetailChat = ({ orderData, customerId, queryId }) =>
 {
     const chatInnerRef = useRef(null);
     const roles = useUserRole();
@@ -145,7 +145,7 @@ const OrderDetailChat = ({ customerId, queryId }) =>
         <div className="od_right">
             <div className="od_chatHead">
                 <p>Live Chat</p>
-                <p>StormFiber</p>
+                <p>{orderData?.orderServices?.map((item) => item?.partnerService?.name)?.join(', ')}</p>
             </div>
             <p className="od_chatLimit">Limited Time Offer</p>
             <div className="od_chatInner" ref={chatInnerRef}>
