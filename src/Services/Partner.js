@@ -83,3 +83,9 @@ export const CreatePartnerService = async (body) =>
     const res = instance.post("createPartnerService", body)
     return res
 }
+
+export const GetCommission = async () =>
+{
+    const res = instance.post("getCommission")
+    return res
+}

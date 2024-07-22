@@ -1,9 +1,10 @@
 import React from 'react'
 import { queryData } from '../../utils/queryData'
+import { dateTimeFormat } from '../../utils/dateTimeFormat'
 
-const CommissionSalesTable = () =>
+const CommissionSalesTable = ({commissionData}) =>
 {
-    const header = ['Service Name', 'Name', 'Date', 'Total Amount', 'Commission']
+    const header = ['Service Name', 'Date', 'Total Amount', 'Commission']
 
     return (
         <div className='eventTable'>
@@ -12,15 +13,15 @@ const CommissionSalesTable = () =>
                     <tr>
                         {header?.map((item, index) => <th key={index}>{item}</th>)}
                     </tr>
-                    {queryData?.map((item, index) =>
+                    {commissionData?.map((item, index) =>
                     {
                         return (
                             <tr key={index}>
-                                <td>{item?.service}</td>
-                                <td>{item?.name}</td>
-                                <td>{item?.date}</td>
-                                <td>{item?.amount}</td>
-                                <td>{item?.commission}</td>
+                                <td>{item?.partnerService?.name}</td>
+                                {/* <td>{item?.name}</td> */}
+                                <td>{dateTimeFormat(item?.createdAt)}</td>
+                                <td>{item?.servicePrice ? `$${item?.servicePrice}` : '-'}</td>
+                                <td>{item?.profit ? `$${item?.profit}` : '-'}</td>
                                 {/* <td><button className='eventTable_view' onClick={() => navigate('/orderDetails')}>View Details</button></td> */}
                             </tr >
                         );
