@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logoImg from "../../assets/images/Admin-20 (75).png";
-import circleImg from "../../assets/images/Admin-20 (86).png";
 import logout from "../../assets/images/Admin-20 (12).png";
 // import home from "../../assets/images/Admin-20 (2).png";
 // import service from "../../assets/images/Admin-20 (3).png";
@@ -30,6 +29,7 @@ import { useSidebarClickOutside } from "../../hooks/useSidebarClickOutside";
 import OnlyVerified from "../../hoc/OnlyVerified";
 import { useUserDetails } from "../../context/profileContext";
 import { verifyList } from "./verifyList";
+import PendingVerification from "../../hoc/PendingVerification";
 
 const Sidebar = () =>
 {
@@ -145,13 +145,17 @@ const Sidebar = () =>
                         onClick={() => handleRoute("")}
                     />
                 </div>
-               <OnlyVerified>
-                        <div className="navBar_right">
-                            <p className="navBar_text">Let’s verify your account at 86 kitch’n partner center</p>
-                            <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
-                        </div>
+                <OnlyVerified>
+                    <div className="navBar_right">
+                        <p className="navBar_text">Let’s verify your account at 86 kitch’n partner center</p>
+                        <button className="navBar_verify" onClick={() => navigate('/verifyAccount')}>VERIFY NOW</button>
+                    </div>
                 </OnlyVerified>
-                {/* {userType === 'user' && <p className="navBar_type">Observant User</p>} */}
+                <PendingVerification>
+                    <div className="navBar_right">
+                        <p className="navBar_text">Your request is currently pending approval.</p>
+                    </div>
+                </PendingVerification>
 
             </div>
             {
@@ -161,13 +165,14 @@ const Sidebar = () =>
                         {userType === 'admin' && <p className="navBar_roleInfo">Partner Center</p>}
                         {userType === 'user' && <p className="navBar_roleInfo">Partner Center</p>}
                         {userType === 'user' && <p className="navBar_roleInfo1">Observant User</p>}
-                        <div className="sideBar_eventInfo">
-                            <img src={userDetails?.businessLogo} alt="eventInfo" />
-                            <div className="sideBar_eventText">
-                                <p className="channelName">{userDetails?.firstName}</p>
-                                <p className="icNo"><i className="fa-solid fa-star"></i>4.8</p>
-                            </div>
-                        </div>
+                        {userDetails?.status !== 0 &&
+                            <div className="sideBar_eventInfo">
+                                <img src={userDetails?.businessLogo} alt="eventInfo" />
+                                <div className="sideBar_eventText">
+                                    <p className="channelName">{userDetails?.firstName}</p>
+                                    <p className="icNo"><i className="fa-solid fa-star"></i>4.8</p>
+                                </div>
+                            </div>}
                         <br />
                         <ul>
                             {renderList?.map(item =>

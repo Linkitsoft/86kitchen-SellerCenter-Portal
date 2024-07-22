@@ -4,8 +4,8 @@ const OnlyVerified = ({ children }) =>
 {
     const { userDetails } = useUserDetails()
 
-    if (userDetails?.status === 1 || userDetails?.status === 2) return
-    return children
+    if (userDetails?.status === 0) return children
+    return
 };
 
 export default OnlyVerified;

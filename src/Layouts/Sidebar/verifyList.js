@@ -3,6 +3,8 @@ import pass from "../../assets/images/Admin-20 (8).png";
 //light
 import homel from "../../assets/images/Admin-20 (19).png";
 import passl from "../../assets/images/Admin-20 (13).png";
+import profl from "../../assets/images/Admin-20 (14).png";
+import prof from "../../assets/images/Admin-20 (7).png";
 
 export const verifyList = [
     {
@@ -22,5 +24,14 @@ export const verifyList = [
         index: "7",
         parentRoute: null,
         id: "changePassword"
+    },
+    {
+        name: "Profile",
+        light: prof,
+        dark: profl,
+        url: "/profile",
+        index: "6",
+        parentRoute: null,
+        id: "profile"
     },
 ]

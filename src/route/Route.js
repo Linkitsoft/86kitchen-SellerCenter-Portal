@@ -65,6 +65,14 @@ const MyRoutes = () =>
         });
     });
 
+    const Profile = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/Profile")), 800);
+        });
+    });
+
     const onlyVerify = [{
         path: 'dashboard',
         element: <Dashboard />
@@ -73,9 +81,13 @@ const MyRoutes = () =>
         path: 'changePassword',
         element: <ChangePassword />
     },
+    {
+        path: 'profile',
+        element: <Profile />
+    },
     ]
 
-    const filteredRoutes = userDetails?.status === 0 ? onlyVerify : allRoutes.filter(item => !roles?.hide?.includes(item?.path));
+    const filteredRoutes = (userDetails?.status === 0 || userDetails?.status === 1) ? onlyVerify : allRoutes.filter(item => !roles?.hide?.includes(item?.path));
 
     return (
         <>

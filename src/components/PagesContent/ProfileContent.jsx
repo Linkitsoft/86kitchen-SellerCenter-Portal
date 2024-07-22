@@ -1,21 +1,19 @@
-import React, { useRef, useState } from 'react'
-import arrow from "../../assets/images/Admin-20 (25).png"
+import React, { useState } from 'react'
 // import user from "../../assets/images/Admin-20 (86).png"
 import loc from "../../assets/images/Admin-20 (90).png"
-import uploadImg from "../../assets/images/Admin-20 (20).png"
 // import { toast } from 'react-toastify'
-import UploadImg from '../UploadImage'
 import { useUserDetails } from '../../context/profileContext'
 // import RoleAccess from '../../hoc/RoleAccess';
 // import useUserRole from '../../hooks/useUserRole'
 
-const ProfileContent = () => {
+const ProfileContent = () =>
+{
     const [img, setImg] = useState("")
-    const Ref = useRef()
     const { userDetails } = useUserDetails()
 
     // const roles = useUserRole()
-    function generateStars(num) {
+    function generateStars(num)
+    {
         const starsArray = Array.from({ length: num }, (_, index) => (
             <i key={index} className="fa-solid fa-star"></i>
         ));
@@ -23,24 +21,14 @@ const ProfileContent = () => {
         return <div>{starsArray}</div>;
     }
 
-    const handleImg = (e) => {
-        UploadImg(e, setImg)
-        // const file = e?.target?.files[0]
-        // if (file?.size <= 10 * 1024 * 1024) {
-        //     setImg(URL.createObjectURL(file))
-        //     Ref.current.value = null
-        // } else {
-        //     toast.warning("File size should be less than 10mb")
-        // }
-    }
-
-
     return (
         <div className="profile">
             <p className="profile_title">Profile</p>
             <div className="profile_banner">
                 <img src={userDetails?.businessImage} alt='' />
-               {userDetails?.status === 2 && <div className="profile_verify"><i className="fa-solid fa-check"></i>Verified</div>}
+                {userDetails?.status !== 2 ? <div className="profile_verify"><i className="fa-solid fa-times"></i>Not Verified</div> :
+                    <div className="profile_verify"><i className="fa-solid fa-check"></i>Verified</div>
+                }
             </div>
             <div className="profile_inner">
                 <div className="profile_dp">
