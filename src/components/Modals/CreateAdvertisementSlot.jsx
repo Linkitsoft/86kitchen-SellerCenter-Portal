@@ -10,13 +10,18 @@ import DropdownField from '../InputField/DropdownField';
 import UploadImg from '../UploadImage';
 import { useDateSelector } from '../../hooks/useDateSelector';
 import CustomDatePicker from '../ReusableComponent/CustomDatePicker';
+import CalenderAvailability from '../CalenderAvailability';
 
 const CreateAdvertisementSlot = ({ setModal }) => {
     const [img, setImg] = useState("")
     const Ref = useRef()
     const Ref2 = useRef();
     const today = new Date().toISOString().split('T')[0];
-    const { handleDateChange, selectedRange } = useDateSelector()
+    const [fromMonth, setFromMonth] = useState(new Date())
+    const [toMonth, setToMonth] = useState(new Date())
+    const [fromDate, setFromDate] = useState()
+    const [toDate, setToDate] = useState()
+
 
     const {
         control,
@@ -27,6 +32,7 @@ const CreateAdvertisementSlot = ({ setModal }) => {
     } = useForm({
         defaultValues: {
             slotType: null,
+            product: null,
         },
         mode: "onBlur",
         resolver: yupResolver(advertisementValidation),
@@ -48,6 +54,22 @@ const CreateAdvertisementSlot = ({ setModal }) => {
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const handleMonthChangeFrom = (increment) => {
+        setFromMonth(prevMonth => {
+            const newMonth = new Date(prevMonth);
+            newMonth.setMonth(prevMonth.getMonth() + increment);
+            return newMonth;
+        });
+    };
+
+    const handleMonthChangeTo = (increment) => {
+        setToMonth(prevMonth => {
+            const newMonth = new Date(prevMonth);
+            newMonth.setMonth(prevMonth.getMonth() + increment);
+            return newMonth;
+        });
     };
 
     useEffect(() => {
@@ -75,10 +97,26 @@ const CreateAdvertisementSlot = ({ setModal }) => {
                     </div>
                 </div>
 
-                <div style={{ margin: "20px 0" }}>
-                    <label>Start & End Date</label>
-                    <CustomDatePicker value={selectedRange} handleChange={handleDateChange} />
-                    {/* {errors ? <div className="verify_err">{errors?.message}</div> : null} */}
+                <div className='createAdvertisement_calenderGrid'>
+                    <div>
+                        <label>From</label>
+                        <CalenderAvailability
+                            handleMonthChange={handleMonthChangeFrom}
+                            currentMonth={fromMonth}
+                            selectedDate={fromDate}
+                            setSelectedDate={setFromDate}
+                        />
+                    </div>
+                    <div>
+                        <label>To</label>
+                        <CalenderAvailability
+                            handleMonthChange={handleMonthChangeTo}
+                            currentMonth={toMonth}
+                            selectedDate={toDate}
+                            setSelectedDate={setToDate}
+                        />
+                    </div>
+
                 </div>
 
                 <div className='createAdvertisement_grid'>
@@ -92,28 +130,6 @@ const CreateAdvertisementSlot = ({ setModal }) => {
                         register={register}
                     />
 
-                    {/* <InputField
-                        label='Bid Start Date'
-                        placeholder='Bid Start Date'
-                        name='bidStartDate'
-                        errors={errors?.bidStartDate}
-                        control={control}
-                        handleBlur={handleBlur}
-                        register={register}
-                        type="date"
-                    /> */}
-
-                    {/* <InputField
-                        label='Bid End Date'
-                        placeholder='Bid End Date'
-                        name='bidEndDate'
-                        errors={errors?.bidEndDate}
-                        control={control}
-                        handleBlur={handleBlur}
-                        register={register}
-                        type="date"
-                        min={today}
-                    /> */}
 
                     <InputField
                         label='Bid Amount'
@@ -136,6 +152,18 @@ const CreateAdvertisementSlot = ({ setModal }) => {
                         handleBlur={handleBlur}
                         register={register}
                         options={[{ label: "Adverisement Top Section", value: "Adverisement Top Section" }, { label: "Advertisement Middle Section", value: "Advertisement Middle Section" }, { label: "Both", value: "Both" }]}
+                    />
+
+
+                    <DropdownField
+                        label='Select Product'
+                        placeholder='Select Product'
+                        name='product'
+                        errors={errors?.product}
+                        control={control}
+                        handleBlur={handleBlur}
+                        register={register}
+                        options={[{ label: "Cleaning", value: "Cleaning" }, { label: "Internet", value: "Internet" }]}
                     />
                 </div>
 

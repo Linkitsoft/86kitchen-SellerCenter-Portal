@@ -19,7 +19,17 @@
         position: relative;
         display: flex;
         flex-direction: column;
-  
+        overflow-y: auto;
+        height: 650px;
+
+    }
+
+
+    &_calenderGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 10px 0;
     }
 
     &_topHead {

@@ -107,4 +107,5 @@ export const advertisementValidation = Yup.object({
     // bidEndDate: Yup.string().required('Bid End Date is required'),
     slotType: Yup.string().required('Slot Type is required'),
     bitAmount: Yup.string().required('Bit Amount is required'),
+    product: Yup.string().required('Product is required'),
 });
