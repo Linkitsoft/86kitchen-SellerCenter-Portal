@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from '../../assets/images/Marketplace-Assets-40.png'
 
 const AdSlotManagementHistoryTable = ({ status, setModal, data }) => {
-    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', 'Approval Status', '']
+    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', 'Approval Status', 'Rebid']
 
     return (
         <div className='eventTable'>

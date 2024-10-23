@@ -70,10 +70,10 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                         min={today}
                         type="date"
-                        className='!border-[1px] border-black pl-3  p-2 !rounded-md !w-full outline-none'
+                        className='!border-[1px] border-black pl-3 !pr-1   p-2 !rounded-md !w-full outline-none'
                     />
                 </div>
-                <div className='!flex !flex-col !w-full mb-4'>
+                <div className='flex flex-col w-full mb-4'>
                     <label className='text-black font-semibold mb-2'>End Date</label>
                     <InputField
                         labelClass={'text-black font-semibold mb-2'}
@@ -85,8 +85,9 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                         min={today}
                         type="date"
-                        className='!border-[1px] border-black pl-3  p-2 !rounded-md !w-full outline-none'
+                        className='!border-[1px] border-black pl-3  !pr-1  p-2 !rounded-md !w-full outline-none'
                     />
+
                 </div>
 
                 <div className='rebidAdvertisement_grid'>
@@ -102,7 +103,7 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                         min={today}
                         type="number"
-                        className='!border-[1px] border-black pl-3 !flex !pr-0  items-center p-2 !rounded-md !w-full outline-none'
+                        className='!border-[1px] border-black pl-3  p-2 !rounded-md !w-full outline-none'
                     />
                 </div>
                 <div className='flex gap-1'>
