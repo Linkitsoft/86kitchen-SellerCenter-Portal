@@ -42,7 +42,7 @@ export const adSlotData = [
         end: "18/11/2024",
         type: "Middle Advertisement Slot",
         amount: "234",
-        status: "Accepted"
+        status: "Rejected"
     },
 
 ]

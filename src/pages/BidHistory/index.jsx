@@ -1,8 +1,11 @@
 import React from 'react'
+import AdSlotManagementHistoryComponent from '../../components/PagesContent/AdSlotManagementHistoryComponent'
 
 const BidHistory = () => {
     return (
-        <div>BidHistory</div>
+        <>
+        <AdSlotManagementHistoryComponent/>
+        </>
     )
 }
 

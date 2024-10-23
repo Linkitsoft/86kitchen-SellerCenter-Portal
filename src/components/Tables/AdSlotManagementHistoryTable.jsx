@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Image from '../../assets/images/Marketplace-Assets-40.png'
 
-const AdSlotManagementTable = ({ status, setModal,data }) => {
-    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', "Click (CTR)", 'Approval Status']
+const AdSlotManagementHistoryTable = ({ status, setModal,data }) => {
+    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', 'Approval Status']
 
     return (
         <div className='eventTable'>
@@ -31,8 +31,7 @@ const AdSlotManagementTable = ({ status, setModal,data }) => {
                                 <td>{item?.end} </td>
                                 <td>{item?.type}</td>
                                 <td>$ {item?.amount}</td>
-                                <td>4%</td>
-                                <td style={{ color: "green", fontWeight: "bold" }}>{item?.status}</td>
+                                <td style={{ color: "red", fontWeight: "bold" }}>{item?.status}</td>
                             </tr >
                         );
                     })}
@@ -42,4 +41,4 @@ const AdSlotManagementTable = ({ status, setModal,data }) => {
     )
 }
 
-export default AdSlotManagementTable
+export default AdSlotManagementHistoryTable

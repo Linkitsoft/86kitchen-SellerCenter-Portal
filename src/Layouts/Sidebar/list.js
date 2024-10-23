@@ -129,8 +129,8 @@ export const list = [
                 index: "13a",
             },
             {
-                name: "Bid History",
-                url: "/",
+                name: "Outbid History",
+                url: "/bidHistory",
                 index: "13b",
                 id: "slotManagement",
             },

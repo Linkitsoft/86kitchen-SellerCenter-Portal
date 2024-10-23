@@ -238,6 +238,10 @@ const MyRoutes = () => {
             element: <AdSlotManagement />
         },
         {
+            path: 'bidHistory',
+            element: <BidHistory />
+        },
+        {
             path: 'logs',
             element: <Logs />
         },

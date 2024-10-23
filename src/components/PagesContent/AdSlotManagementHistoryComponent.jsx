@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import AdSlotManagementTable from "../Tables/AdSlotManagementTable";
 import CreateAdvertisementSlot from "../Modals/CreateAdvertisementSlot";
 import { adSlotData } from '../../utils/adSlotData'
+import AdSlotManagementHistoryTable from "../Tables/AdSlotManagementHistoryTable";
 
-const AdSlotManagementComponent = ({ }) => {
-    const [status, setStatus] = useState("All")
+const AdSlotManagementHistoryComponent = ({ }) => {
+    const [status, setStatus] = useState("Rejected")
     const [modal, setModal] = useState("")
 
     useEffect(() => {
@@ -28,22 +29,13 @@ const AdSlotManagementComponent = ({ }) => {
                     <div>
                         <p className='dashboard_title'>{status} Advertisement Slots </p>
                     </div>
-                    <div style={{ display: "flex", gap: "20px" }}>
-                        <select onChange={(e) => setStatus(e.target.value)} value={status} style={{ borderRadius: "4px", width: "270px", fontWeight: "normal", padding: "10px" }}>
-                            <option disabled>Select Status</option>
-                            <option value="All">All</option>
-                            <option value="Accepted">Accepted</option>
-                            <option value="Ongoing">Ongoing</option>
-                        </select>
-                        <button onClick={() => { setModal("create") }}>Create Advertisement</button>
-                    </div>
                 </div>
                 <div className="dashboard_queries">
-                    <AdSlotManagementTable status={status} setModal={setModal} data={adSlotData}/>
+                    <AdSlotManagementHistoryTable status={status} setModal={setModal} data={adSlotData}/>
                 </div>
             </div>
         </>
     );
 };
 
-export default AdSlotManagementComponent
+export default AdSlotManagementHistoryComponent
