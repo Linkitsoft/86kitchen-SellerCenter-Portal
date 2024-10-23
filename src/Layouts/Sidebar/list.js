@@ -115,6 +115,15 @@ export const list = [
         id: "commission"
     },
     {
+        name: "Ad Slot Management",
+        light: service,
+        dark: servicel,
+        url: "/slot-management",
+        index: "10",
+        parentRoute: null,
+        id: "commission"
+    },
+    {
         name: "Queries",
         light: qs,
         dark: qsl,

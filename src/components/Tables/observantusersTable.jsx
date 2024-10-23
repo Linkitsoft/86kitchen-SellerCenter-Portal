@@ -4,7 +4,7 @@ import { usersData } from '../../utils/usersData'
 const ObservantUsersTable = () =>
 {
     const header = ['No', 'Name', 'Email', 'Phone No', 'Enable/Disable']
-   
+     
     return (
         <div className='eventTable'>
             <table id="table-to-xls">

@@ -188,6 +188,13 @@ const MyRoutes = () =>
             setTimeout(() => resolve(import("../pages/Commission")), 800);
         });
     });
+    const AdSlotManagement = lazy(() =>
+    {
+        return new Promise((resolve) =>
+        {
+            setTimeout(() => resolve(import("../pages/AdSlotManagement")), 800);
+        });
+    });
 
     // const AllAdminUsers = lazy(() =>
     // {
@@ -264,6 +271,10 @@ const MyRoutes = () =>
         {
             path: 'generateSales',
             element: <GenerateSales />
+        },
+        {
+            path: 'slot-management',
+            element: <AdSlotManagement />
         },
         {
             path: 'logs',
