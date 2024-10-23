@@ -103,8 +103,8 @@ export const observantUsersValidation = Yup.object({
 
 export const advertisementValidation = Yup.object({
     name: Yup.string().required('Advertisement Name is required'),
-    bidStartDate: Yup.string().required('Bid Start Date is required'),
-    bidEndDate: Yup.string().required('Bid End Date is required'),
+    // bidStartDate: Yup.string().required('Bid Start Date is required'),
+    // bidEndDate: Yup.string().required('Bid End Date is required'),
     slotType: Yup.string().required('Slot Type is required'),
     bitAmount: Yup.string().required('Bit Amount is required'),
 });

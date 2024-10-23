@@ -12,71 +12,73 @@ const CustomDatePicker = ({ handleChange, value }) => {
                 return [today, today];
             }
         },
-        {
-            label: 'Yesterday',
-            value: () => {
-                const yesterday = addDays(new Date(), -1);
-                return [yesterday, yesterday];
-            }
-        },
-        {
-            label: 'This Week',
-            value: () => {
-                const start = startOfWeek(new Date());
-                const end = endOfWeek(new Date());
-                return [start, end];
-            }
-        },
-        {
-            label: 'Last Week',
-            value: () => {
-                const end = new Date();
-                const start = addDays(end, -7);
-                return [start, end];
-            }
-        },
-        {
-            label: 'This Month',
-            value: () => {
-                const start = startOfMonth(new Date());
-                const end = endOfMonth(new Date());
-                return [start, end];
-            }
-        },
-        {
-            label: 'Last Month',
-            value: () => {
-                const start = startOfMonth(addDays(new Date(), -30));
-                const end = endOfMonth(addDays(new Date(), -30));
-                return [start, end];
-            }
-        },
-        {
-            label: 'This Year',
-            value: () => {
-                const start = startOfYear(new Date());
-                const end = endOfYear(new Date());
-                return [start, end];
-            }
-        },
-        {
-            label: 'Last Year',
-            value: () => {
-                const start = startOfYear(addDays(new Date(), -365));
-                const end = endOfYear(addDays(new Date(), -365));
-                return [start, end];
-            }
-        },
+        // {
+        //     label: 'Yesterday',
+        //     value: () => {
+        //         const yesterday = addDays(new Date(), -1);
+        //         return [yesterday, yesterday];
+        //     }
+        // },
+        // {
+        //     label: 'This Week',
+        //     value: () => {
+        //         const start = startOfWeek(new Date());
+        //         const end = endOfWeek(new Date());
+        //         return [start, end];
+        //     }
+        // },
+        // {
+        //     label: 'Last Week',
+        //     value: () => {
+        //         const end = new Date();
+        //         const start = addDays(end, -7);
+        //         return [start, end];
+        //     }
+        // },
+        // {
+        //     label: 'This Month',
+        //     value: () => {
+        //         const start = startOfMonth(new Date());
+        //         const end = endOfMonth(new Date());
+        //         return [start, end];
+        //     }
+        // },
+        // {
+        //     label: 'Last Month',
+        //     value: () => {
+        //         const start = startOfMonth(addDays(new Date(), -30));
+        //         const end = endOfMonth(addDays(new Date(), -30));
+        //         return [start, end];
+        //     }
+        // },
+        // {
+        //     label: 'This Year',
+        //     value: () => {
+        //         const start = startOfYear(new Date());
+        //         const end = endOfYear(new Date());
+        //         return [start, end];
+        //     }
+        // },
+        // {
+        //     label: 'Last Year',
+        //     value: () => {
+        //         const start = startOfYear(addDays(new Date(), -365));
+        //         const end = endOfYear(addDays(new Date(), -365));
+        //         return [start, end];
+        //     }
+        // },
     ];
 
     return (
         <>
             <DateRangePicker
-                style={{ width: "100%", zIndex: "9999" }}
-                showOneCalendar
+                style={{ width: "100%" }}
+                // showOneCalendar
                 ranges={shortcuts}
                 value={[value[0].startDate, value[0].endDate]} // Set default value
-                onChange={handleChange} />
+                onChange={handleChange}
+                menuStyle={{ zIndex: 1050 }} // Higher z-index
+            />
         </>
     )
 }

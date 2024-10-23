@@ -10,77 +10,58 @@ import useUserRole from '../hooks/useUserRole';
 import AllCampaigns from '../pages/AllCampaigns';
 import CreateCampaign from '../pages/CreateCampaign';
 
-const MyRoutes = () =>
-{
+const MyRoutes = () => {
     const token = localStorage?.getItem("token");
     const roles = useUserRole()
-    const Dashboard = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Dashboard = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Dashboard")), 800);
         });
     });
 
-    const Login = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Login = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Login")), 800);
         });
     });
 
-    const Signup = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Signup = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Signup")), 800);
         });
     });
 
-    const Services = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Services = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Services")), 800);
         });
     });
 
-    const Orders = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Orders = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Orders")), 800);
         });
     });
-    const SalesAnalysis = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const SalesAnalysis = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/SalesAnalysis")), 800);
         });
     });
 
-    const ChangePassword = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const ChangePassword = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/ChangePassword")), 800);
         });
     });
 
-    const Queries = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Queries = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Queries")), 800);
         });
     });
 
-    const Review = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Review = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Reviews")), 800);
         });
     });
@@ -93,106 +74,86 @@ const MyRoutes = () =>
     //     });
     // });
 
-    const Profile = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Profile = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Profile")), 800);
         });
     });
 
-    const VerifyAccount = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const VerifyAccount = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/VerifyAccount")), 800);
         });
     });
 
-    const OrderDetails = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const OrderDetails = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/OrderDetails")), 800);
         });
     });
 
-    const AddService = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const AddService = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/AddService")), 800);
         });
     });
 
-    const EditService = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const EditService = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/EditService")), 800);
         });
     });
 
-    const GenerateSales = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const GenerateSales = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/GenerateSales")), 800);
         });
     });
 
-    const Home = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Home = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Home")), 800);
         });
     });
 
-    const Verification = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Verification = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Verification")), 800);
         });
     });
 
-    const Logs = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Logs = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Logs")), 800);
         });
     });
 
-    const AddObservantUsers = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const AddObservantUsers = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/AddObservantUsers")), 800);
         });
     });
 
-    const AllObservantUsers = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const AllObservantUsers = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/AllObservantUsers")), 800);
         });
     });
 
-    const Commission = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const Commission = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/Commission")), 800);
         });
     });
-    const AdSlotManagement = lazy(() =>
-    {
-        return new Promise((resolve) =>
-        {
+    const AdSlotManagement = lazy(() => {
+        return new Promise((resolve) => {
             setTimeout(() => resolve(import("../pages/AdSlotManagement")), 800);
+        });
+    });
+
+    const BidHistory = lazy(() => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(import("../pages/BidHistory")), 800);
         });
     });
 
@@ -325,7 +286,7 @@ const MyRoutes = () =>
                         <Route element={<PrivateRoute token={token} />}>
                             <Route element={<Mainlayout />}>
                                 {filteredRoutes.map((item) => (
-                                    <Route key={item.path} path={`/${ item.path }`} element={item.element} />
+                                    <Route key={item.path} path={`/${item.path}`} element={item.element} />
                                 ))}
                                 {/* <Route path="/dashboard" element={<Dashboard />}></Route>
                                 <Route path="/services" element={<Services />} ></Route>

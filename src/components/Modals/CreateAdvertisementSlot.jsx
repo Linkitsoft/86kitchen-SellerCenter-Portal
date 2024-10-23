@@ -38,6 +38,7 @@ const CreateAdvertisementSlot = ({ setModal }) => {
     const handleCreate = (value) => {
         if (img) {
             toast.success("Advertisement Request Sent Succesfully")
+            setModal("")
         }
     }
 
@@ -74,7 +75,7 @@ const CreateAdvertisementSlot = ({ setModal }) => {
                     </div>
                 </div>
 
-                <div>
+                <div style={{ margin: "20px 0" }}>
                     <label>Start & End Date</label>
                     <CustomDatePicker value={selectedRange} handleChange={handleDateChange} />
                     {/* {errors ? <div className="verify_err">{errors?.message}</div> : null} */}

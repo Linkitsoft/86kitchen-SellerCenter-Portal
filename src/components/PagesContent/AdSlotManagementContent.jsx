@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdSlotManagementTable from "../Tables/AdSlotManagementTable";
 import CreateAdvertisementSlot from "../Modals/CreateAdvertisementSlot";
 
@@ -6,6 +6,20 @@ import CreateAdvertisementSlot from "../Modals/CreateAdvertisementSlot";
 const AdSlotManagementComponent = ({ }) => {
     const [status, setStatus] = useState("All")
     const [modal, setModal] = useState("")
+
+    useEffect(() => {
+        if (modal) {
+            document.body.style.overflow = "hidden"; // Disable scrolling
+        } else {
+            document.body.style.overflow = ""; // Re-enable scrolling
+        }
+
+        // Cleanup to ensure no side effects
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [modal]);
+
     return (
         <>
             {modal === "create" && <CreateAdvertisementSlot setModal={setModal} />}
