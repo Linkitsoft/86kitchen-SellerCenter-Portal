@@ -14,7 +14,7 @@ const InputField = ({ placeholder, labelClass, className, label, control, name, 
                 placeholder={label || placeholder}
                 disabled={disabled}
                 value={value && value}
-                style={{ paddingRight: type === 'date' ? "12px" : "" }}
+                style={{ paddingRight: type === 'date' ? "12px !important" : "" }}
                 min={min}
                 className={className && className}
             />

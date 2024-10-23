@@ -12,7 +12,7 @@ const RebidAdvertisement = ({ setModal }) => {
     const Ref = useRef()
     const Ref2 = useRef();
     const today = new Date().toISOString().split('T')[0];
-    
+
     const { handleDateChange, selectedRange } = useDateSelector()
 
 
@@ -31,7 +31,7 @@ const RebidAdvertisement = ({ setModal }) => {
         mode: "onBlur",
         resolver: yupResolver(rebidValidation),
     });
-   
+
     const handleCreate = (value) => {
         toast.success("Rebid Request Sent Succesfully")
         setModal("")
@@ -45,8 +45,8 @@ const RebidAdvertisement = ({ setModal }) => {
         }
     };
 
- 
- 
+
+
 
     useEffect(() => {
         Clickoutside(Ref, Ref2, setModal)
@@ -70,10 +70,10 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                         min={today}
                         type="date"
-                        className='!border-[1px] border-black pl-3 !flex !pr-0  items-center p-2 !rounded-md !w-full outline-none'
+                        className='!border-[1px] border-black pl-3  p-2 !rounded-md !w-full outline-none'
                     />
                 </div>
-                <div className='flex flex-col w-full mb-4'>
+                <div className='!flex !flex-col !w-full mb-4'>
                     <label className='text-black font-semibold mb-2'>End Date</label>
                     <InputField
                         labelClass={'text-black font-semibold mb-2'}
@@ -85,9 +85,8 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                         min={today}
                         type="date"
-                        className='!border-[1px] border-black pl-3 !flex !pr-0  items-center p-2 !rounded-md !w-full outline-none'
+                        className='!border-[1px] border-black pl-3  p-2 !rounded-md !w-full outline-none'
                     />
-
                 </div>
 
                 <div className='rebidAdvertisement_grid'>
