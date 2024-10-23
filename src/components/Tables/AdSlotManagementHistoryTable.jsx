@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Image from '../../assets/images/Marketplace-Assets-40.png'
 
-const AdSlotManagementHistoryTable = ({ status, setModal,data }) => {
-    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', 'Approval Status']
+const AdSlotManagementHistoryTable = ({ status, setModal, data }) => {
+    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', 'Approval Status', '']
 
     return (
         <div className='eventTable'>
@@ -11,7 +11,7 @@ const AdSlotManagementHistoryTable = ({ status, setModal,data }) => {
                     <tr>
                         {header?.map((item, index) => <th key={index}>{item}</th>)}
                     </tr>
-                    {data?.filter(res => status === "All" || res.status === status)?.map((item, index) => {
+                    {data?.filter(res => res.status === status)?.map((item, index) => {
                         return (
                             <tr key={index}>
                                 <td>{item?.no}</td>
@@ -32,6 +32,9 @@ const AdSlotManagementHistoryTable = ({ status, setModal,data }) => {
                                 <td>{item?.type}</td>
                                 <td>$ {item?.amount}</td>
                                 <td style={{ color: "red", fontWeight: "bold" }}>{item?.status}</td>
+                                <td className='eventTable_viewBtn'>
+                                    <button className='generateBtn' onClick={() => setModal('create')}>Rebid Now</button>
+                                </td>
                             </tr >
                         );
                     })}

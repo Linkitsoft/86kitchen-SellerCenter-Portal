@@ -3,6 +3,7 @@ import AdSlotManagementTable from "../Tables/AdSlotManagementTable";
 import CreateAdvertisementSlot from "../Modals/CreateAdvertisementSlot";
 import { adSlotData } from '../../utils/adSlotData'
 import AdSlotManagementHistoryTable from "../Tables/AdSlotManagementHistoryTable";
+import RebidAdvertisement from "../Modals/RebidAdvertisement";
 
 const AdSlotManagementHistoryComponent = ({ }) => {
     const [status, setStatus] = useState("Rejected")
@@ -23,7 +24,7 @@ const AdSlotManagementHistoryComponent = ({ }) => {
 
     return (
         <>
-            {modal === "create" && <CreateAdvertisementSlot setModal={setModal} />}
+            {modal === "create" && <RebidAdvertisement setModal={setModal} />}
             <div className="dashboard">
                 <div className="dashboard_header">
                     <div>
@@ -31,7 +32,7 @@ const AdSlotManagementHistoryComponent = ({ }) => {
                     </div>
                 </div>
                 <div className="dashboard_queries">
-                    <AdSlotManagementHistoryTable status={status} setModal={setModal} data={adSlotData}/>
+                    <AdSlotManagementHistoryTable status={status} setModal={setModal} data={adSlotData} />
                 </div>
             </div>
         </>
