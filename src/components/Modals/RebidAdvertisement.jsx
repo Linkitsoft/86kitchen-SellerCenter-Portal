@@ -56,7 +56,7 @@ const RebidAdvertisement = ({ setModal }) => {
     return (
         <div ref={Ref} className='rebidAdvertisement'>
             <div ref={Ref2} className='rebidAdvertisement_inner'>
-                <p className='rebidAdvertisement_topHead'>Rebid Advertisement</p>
+                <p className='font-semibold text-xl self-center text-[#262A69] my-2.5'>Rebid Advertisement</p>
 
                 <div style={{ margin: "20px 0" }}>
                     <label className='text-black font-semibold mb-2'>Start Date</label>

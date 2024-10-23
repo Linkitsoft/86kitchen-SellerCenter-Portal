@@ -28,7 +28,7 @@ const AdSlotManagementHistoryComponent = ({ }) => {
             <div className="dashboard">
                 <div className="dashboard_header">
                     <div>
-                        <p className='dashboard_title'>{status} Advertisement Slots </p>
+                        <p className='dashboard_title'>Outbid History</p>
                     </div>
                 </div>
                 <div className="dashboard_queries">
