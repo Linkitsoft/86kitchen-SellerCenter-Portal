@@ -10,13 +10,21 @@ import DropdownField from '../InputField/DropdownField';
 import UploadImg from '../UploadImage';
 import { useDateSelector } from '../../hooks/useDateSelector';
 import CustomDatePicker from '../ReusableComponent/CustomDatePicker';
+import CalenderAvailability from '../CalenderAvailability';
+import Ad from '../../assets/images/Ad.png'
 
 const RebidAdvertisement = ({ setModal }) => {
-    const [img, setImg] = useState("")
+    const [img, setImg] = useState(Ad)
     const Ref = useRef()
     const Ref2 = useRef();
     const today = new Date().toISOString().split('T')[0];
+    const [fromMonth, setFromMonth] = useState(new Date())
+    const [toMonth, setToMonth] = useState(new Date())
+    const [fromDate, setFromDate] = useState()
+    const [toDate, setToDate] = useState()
     const { handleDateChange, selectedRange } = useDateSelector()
+
+
 
     const {
         control,
@@ -27,6 +35,7 @@ const RebidAdvertisement = ({ setModal }) => {
     } = useForm({
         defaultValues: {
             slotType: null,
+            product: null,
         },
         mode: "onBlur",
         resolver: yupResolver(advertisementValidation),
@@ -50,38 +59,38 @@ const RebidAdvertisement = ({ setModal }) => {
         }
     };
 
+    const handleMonthChangeFrom = (increment) => {
+        setFromMonth(prevMonth => {
+            const newMonth = new Date(prevMonth);
+            newMonth.setMonth(prevMonth.getMonth() + increment);
+            return newMonth;
+        });
+    };
+
+    const handleMonthChangeTo = (increment) => {
+        setToMonth(prevMonth => {
+            const newMonth = new Date(prevMonth);
+            newMonth.setMonth(prevMonth.getMonth() + increment);
+            return newMonth;
+        });
+    };
+
     useEffect(() => {
         Clickoutside(Ref, Ref2, setModal)
         // eslint-disable-next-line
     }, []);
 
     return (
-        <div ref={Ref} className='createAdvertisement'>
-            <div ref={Ref2} className='createAdvertisement_inner'>
-                <p className='createAdvertisement_topHead'>Rebid Advertisement</p>
-
-                <div className='createAdvertisement_lableSec'>
-                    <p >Advertisement Image</p>
-                    <div className='createAdvertisement_uploader'>
-                        {img && <i onClick={() => setImg("")} class="fa-solid fa-trash"></i>}
-                        <img className={img ? "fullImg" : "uploadImg"} src={img ? img : uploadImg} alt="uploadImg" />
-                        <input type="file" accept="image/*" ref={Ref} onChange={(e) => handleImg(e)} />
-                    </div>
-                    <div>
-                        {!img && <p className="createAdvertisement_error">Image is required</p>}
-                        <p style={{ fontSize: "12px", }}>Recommended Image type : <span style={{ fontWeight: "700" }}>JPG , JPEG , PNG</span></p>
-                        <p style={{ fontSize: "12px" }}>Recomended resolution : <span style={{ fontWeight: "700" }}>1024 * 1024</span></p>
-                        <p style={{ fontSize: "12px" }}>Image Size limit : <span style={{ fontWeight: "700" }}>10 MB</span></p>
-                    </div>
-                </div>
+        <div ref={Ref} className='rebidAdvertisement'>
+            <div ref={Ref2} className='rebidAdvertisement_inner'>
+                <p className='rebidAdvertisement_topHead'>Rebid Advertisement</p>
 
                 <div style={{ margin: "20px 0" }}>
                     <label>Start & End Date</label>
                     <CustomDatePicker value={selectedRange} handleChange={handleDateChange} />
-                    {/* {errors ? <div className="verify_err">{errors?.message}</div> : null} */}
                 </div>
 
-                <div className='createAdvertisement_grid'>
+                <div className='rebidAdvertisement_grid'>
                     <InputField
                         label='Advertisement Name'
                         placeholder='Advertisement Name'
@@ -92,28 +101,6 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                     />
 
-                    {/* <InputField
-                        label='Bid Start Date'
-                        placeholder='Bid Start Date'
-                        name='bidStartDate'
-                        errors={errors?.bidStartDate}
-                        control={control}
-                        handleBlur={handleBlur}
-                        register={register}
-                        type="date"
-                    /> */}
-
-                    {/* <InputField
-                        label='Bid End Date'
-                        placeholder='Bid End Date'
-                        name='bidEndDate'
-                        errors={errors?.bidEndDate}
-                        control={control}
-                        handleBlur={handleBlur}
-                        register={register}
-                        type="date"
-                        min={today}
-                    /> */}
 
                     <InputField
                         label='Bid Amount'
@@ -137,9 +124,21 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                         options={[{ label: "Adverisement Top Section", value: "Adverisement Top Section" }, { label: "Advertisement Middle Section", value: "Advertisement Middle Section" }, { label: "Both", value: "Both" }]}
                     />
+
+
+                    <DropdownField
+                        label='Select Product'
+                        placeholder='Select Product'
+                        name='product'
+                        errors={errors?.product}
+                        control={control}
+                        handleBlur={handleBlur}
+                        register={register}
+                        options={[{ label: "Cleaning", value: "Cleaning" }, { label: "Internet", value: "Internet" }]}
+                    />
                 </div>
 
-                <div className='createAdvertisement_advertisementBtn'>
+                <div className='rebidAdvertisement_advertisementBtn'>
                     <button className='generateBtn' onClick={handleSubmit(handleCreate)}>Rebid</button>
                 </div>
 
