@@ -32,7 +32,7 @@ const ClicksByCampaignChart = () => {
 
   return (
     <div className="bg-white shadow-lg rounded p-4 !overflow-auto ">
-      <h2 className="text-lg font-semibold mb-4">Clicks by Advertisement</h2>
+      <h2 className="text-lg font-semibold mb-4 pb-2 ">Clicks by Advertisement</h2>
       <Chart options={chartData.options} series={chartData.series} type="bar" height={280} />
     </div>
   );
