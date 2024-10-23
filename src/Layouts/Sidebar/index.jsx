@@ -28,8 +28,7 @@ import { list } from "./list";
 import { useUser } from "../../context/userContext";
 import { useSidebarClickOutside } from "../../hooks/useSidebarClickOutside";
 
-const Sidebar = () =>
-{
+const Sidebar = () => {
     const { sidebarState } = useSelector((state) => state.tooltipInfo);
     const [open, setOpen] = useState(true);
     const [showSidebar, setShowSidebar] = useState(false);
@@ -62,67 +61,54 @@ const Sidebar = () =>
     //     }
     // }
 
-    const handleRoute = (route) =>
-    {
-        if (route === "logout")
-        {
+    const handleRoute = (route) => {
+        if (route === "logout") {
             window.localStorage.clear();
             window.location.reload();
-        } else
-        {
-            navigate(`/${ route }`);
+        } else {
+            navigate(`/${route}`);
         }
     };
 
-    const handleSubMenu = (item) =>
-    {
+    const handleSubMenu = (item) => {
         navigate(item?.url)
     }
 
-    const handleLogout = () =>
-    {
+    const handleLogout = () => {
         localStorage.clear();
         window.location.reload();
     };
 
-    const handleRouteClick = (item) =>
-    {
-        if (item?.subMenu)
-        {
+    const handleRouteClick = (item) => {
+        if (item?.subMenu) {
             setEvent(item?.index !== event ? item?.index : null);
             disptach(toggleSidebar({ event: item?.index !== event ? item?.index : null }));
-        } else
-        {
+        } else {
             navigate(item?.url);
         }
     };
 
 
-    useEffect(() =>
-    {
-        const handleResize = () =>
-        {
+    useEffect(() => {
+        const handleResize = () => {
             setOpen(window.innerWidth >= 700);
         };
 
-        const resizeTimeout = setTimeout(() =>
-        {
+        const resizeTimeout = setTimeout(() => {
             handleResize();
             setShowSidebar(true);
         }, 100);
 
         window.addEventListener('resize', handleResize);
 
-        return () =>
-        {
+        return () => {
             clearTimeout(resizeTimeout);
             window.removeEventListener('resize', handleResize);
         };
         // eslint-disable-next-lin
     }, []);
 
-    useSidebarClickOutside(componentRef, componentRef2, () =>
-    {
+    useSidebarClickOutside(componentRef, componentRef2, () => {
         setOpen(false);
     });
     return (
@@ -153,9 +139,9 @@ const Sidebar = () =>
                 showSidebar &&
                 <div className={!open ? "sideBar" : "sideBar sideBar_sidebarActive"} ref={componentRef2}>
                     <div className={open ? "sideBar_inner" : "sideBar_innersmall"}>
-                    {userType === 'admin' && <p className="navBar_roleInfo">Partner Center</p>}
-                    {userType === 'user' && <p className="navBar_roleInfo">Partner Center</p>}
-                    {userType === 'user' && <p className="navBar_roleInfo1">Observant User</p>}
+                        {userType === 'admin' && <p className="navBar_roleInfo">Partner Center</p>}
+                        {userType === 'user' && <p className="navBar_roleInfo">Partner Center</p>}
+                        {userType === 'user' && <p className="navBar_roleInfo1">Observant User</p>}
                         <div className="sideBar_eventInfo">
                             <img src={circleImg} alt="eventInfo" />
                             <div className="sideBar_eventText">
@@ -165,13 +151,12 @@ const Sidebar = () =>
                         </div>
                         <br />
                         <ul>
-                            {list?.map(item =>
-                            {
+                            {list?.map(item => {
                                 return (
                                     <div key={item?.index}>
                                         <RoleAccess role={!roles?.hide?.includes(item?.id)}>
-                                            <li key={item?.index} onClick={() => handleRouteClick(item)} 
-                                            className={`${(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active !flex" : "sideBar_title !flex"}`}>
+                                            <li key={item?.index} onClick={() => handleRouteClick(item)}
+                                                className={`${(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active !flex" : "sideBar_title !flex"}`}>
                                                 <img alt="logo" src={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? item?.light : item?.dark} />
                                                 {item?.name}
                                                 {item?.subMenu && (
@@ -200,7 +185,7 @@ const Sidebar = () =>
                             })}
 
 
-                            <li className="sideBar_title" onClick={() => handleLogout("")} >
+                            <li className="sideBar_title !flex items-center" onClick={() => handleLogout("")} >
                                 <img src={logout} alt="logo" />
                                 Logout
                             </li>

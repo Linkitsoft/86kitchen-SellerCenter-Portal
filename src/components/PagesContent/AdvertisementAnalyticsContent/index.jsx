@@ -5,7 +5,7 @@ import ClicksByCampaignChart from './ClicksByCampaignChart'
 
 export default function AdvertisementAnalyticsContent() {
   return (
-    <div className="!flex  !flex-col !w-full p-4 mt-20 !ml-0 ">
+    <div className="!flex !overflow-auto !flex-col !w-full p-4 mt-20 !ml-0 ">
       <AnalyticsCards />
       <div className='mt-[150px] grid grid-cols-12 gap-6'>
         <div className='col-span-4'>
