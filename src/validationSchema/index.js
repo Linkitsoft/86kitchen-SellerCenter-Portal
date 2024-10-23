@@ -106,6 +106,15 @@ export const advertisementValidation = Yup.object({
     // bidStartDate: Yup.string().required('Bid Start Date is required'),
     // bidEndDate: Yup.string().required('Bid End Date is required'),
     slotType: Yup.string().required('Slot Type is required'),
-    bitAmount: Yup.string().required('Bit Amount is required'),
+    bitAmount: Yup.string().required('Bid Amount is required'),
     product: Yup.string().required('Product is required'),
+    startDate: Yup.string().required('Start Date is required'),
+    endDate: Yup.string().required('End Date is required'),
+
+});
+export const rebidValidation = Yup.object({
+    bitAmount: Yup.string().required('Bid Amount is required'),
+    startDate: Yup.string().required('Start Date is required'),
+    endDate: Yup.string().required('End Date is required'),
+
 });

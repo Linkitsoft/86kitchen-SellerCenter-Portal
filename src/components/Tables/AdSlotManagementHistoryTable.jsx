@@ -18,13 +18,10 @@ const AdSlotManagementHistoryTable = ({ status, setModal, data }) => {
                                 <td>{item?.name}</td>
                                 <td >
                                     <img
-                                        onClick={() => setModal("view")}
                                         alt=""
                                         src={Image}
-                                        className='w-12'
-                                        height={"48px"}
-                                        width={"56px"}
-                                        style={{ borderRadius: "10px", overflow: "hidden", cursor: "pointer" }}
+                                        className='w-[70px] h-[40px]'
+                                        style={{ borderRadius: "10px", overflow: "hidden", }}
                                     />
                                 </td>
                                 <td>{item?.start} </td>

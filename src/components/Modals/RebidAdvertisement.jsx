@@ -4,24 +4,15 @@ import { toast } from 'react-toastify';
 import InputField from '../InputField/InputField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { advertisementValidation } from '../../validationSchema';
-import uploadImg from "../../assets/images/Admin-20 (20).png"
-import DropdownField from '../InputField/DropdownField';
-import UploadImg from '../UploadImage';
+import { advertisementValidation, rebidValidation } from '../../validationSchema';
 import { useDateSelector } from '../../hooks/useDateSelector';
-import CustomDatePicker from '../ReusableComponent/CustomDatePicker';
-import CalenderAvailability from '../CalenderAvailability';
-import Ad from '../../assets/images/Ad.png'
+
 
 const RebidAdvertisement = ({ setModal }) => {
-    const [img, setImg] = useState(Ad)
     const Ref = useRef()
     const Ref2 = useRef();
     const today = new Date().toISOString().split('T')[0];
-    const [fromMonth, setFromMonth] = useState(new Date())
-    const [toMonth, setToMonth] = useState(new Date())
-    const [fromDate, setFromDate] = useState()
-    const [toDate, setToDate] = useState()
+    
     const { handleDateChange, selectedRange } = useDateSelector()
 
 
@@ -38,17 +29,12 @@ const RebidAdvertisement = ({ setModal }) => {
             product: null,
         },
         mode: "onBlur",
-        resolver: yupResolver(advertisementValidation),
+        resolver: yupResolver(rebidValidation),
     });
-    const handleImg = (e) => {
-        UploadImg(e, setImg)
-
-    }
+   
     const handleCreate = (value) => {
-        if (img) {
-            toast.success("Advertisement Request Sent Succesfully")
-            setModal("")
-        }
+        toast.success("Rebid Request Sent Succesfully")
+        setModal("")
     }
 
     const handleBlur = async (fieldName) => {
@@ -59,21 +45,8 @@ const RebidAdvertisement = ({ setModal }) => {
         }
     };
 
-    const handleMonthChangeFrom = (increment) => {
-        setFromMonth(prevMonth => {
-            const newMonth = new Date(prevMonth);
-            newMonth.setMonth(prevMonth.getMonth() + increment);
-            return newMonth;
-        });
-    };
-
-    const handleMonthChangeTo = (increment) => {
-        setToMonth(prevMonth => {
-            const newMonth = new Date(prevMonth);
-            newMonth.setMonth(prevMonth.getMonth() + increment);
-            return newMonth;
-        });
-    };
+ 
+ 
 
     useEffect(() => {
         Clickoutside(Ref, Ref2, setModal)
@@ -86,17 +59,42 @@ const RebidAdvertisement = ({ setModal }) => {
                 <p className='rebidAdvertisement_topHead'>Rebid Advertisement</p>
 
                 <div style={{ margin: "20px 0" }}>
-                    <label>Start Date</label>
-                    <CustomDatePicker value={selectedRange} handleChange={handleDateChange} />
+                    <label className='text-black font-semibold mb-2'>Start Date</label>
+                    <InputField
+                        labelClass={'text-black font-semibold mb-2'}
+                        placeholder='Start Date'
+                        name='startDate'
+                        errors={errors?.startDate}
+                        control={control}
+                        handleBlur={handleDateChange}
+                        register={register}
+                        min={today}
+                        type="date"
+                        className='!border-[1px] border-black pl-3 !flex !pr-0  items-center p-2 !rounded-md !w-full outline-none'
+                    />
                 </div>
-                <div >
-                    <label>End Date</label>
-                    <CustomDatePicker value={selectedRange} handleChange={handleDateChange} />
+                <div className='flex flex-col w-full mb-4'>
+                    <label className='text-black font-semibold mb-2'>End Date</label>
+                    <InputField
+                        labelClass={'text-black font-semibold mb-2'}
+                        placeholder='End Date'
+                        name='endDate'
+                        errors={errors?.endDate}
+                        control={control}
+                        handleBlur={handleDateChange}
+                        register={register}
+                        min={today}
+                        type="date"
+                        className='!border-[1px] border-black pl-3 !flex !pr-0  items-center p-2 !rounded-md !w-full outline-none'
+                    />
+
                 </div>
 
                 <div className='rebidAdvertisement_grid'>
+
+                    <label className='text-black font-semibold mb-2'>Bid Amount</label>
                     <InputField
-                        label='Bid Amount'
+                        labelClass={'text-black font-semibold mb-2'}
                         placeholder='Bid Amount'
                         name='bitAmount'
                         errors={errors?.bitAmount}
@@ -105,14 +103,15 @@ const RebidAdvertisement = ({ setModal }) => {
                         register={register}
                         min={today}
                         type="number"
+                        className='!border-[1px] border-black pl-3 !flex !pr-0  items-center p-2 !rounded-md !w-full outline-none'
                     />
                 </div>
-                <div className='flex gap-2 bg-red-600'>
+                <div className='flex gap-1'>
                     <div className='rebidAdvertisement_advertisementBtn'>
                         <button className='generateBtn' onClick={handleSubmit(handleCreate)}>Rebid</button>
                     </div>
-                    <div className='rebidAdvertisement_advertisementBtn'>
-                        <button className='generateBtn' onClick={handleSubmit(handleCreate)}>Rebid</button>
+                    <div className='rebidAdvertisement_CancelBtn'>
+                        <button className='generateBtn' onClick={() => setModal(false)}>Cancel</button>
                     </div>
                 </div>
             </div>
