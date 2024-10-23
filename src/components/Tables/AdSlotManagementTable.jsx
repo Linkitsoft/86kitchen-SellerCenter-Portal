@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { adSlotData } from '../../utils/adSlotData'
 import Image from '../../assets/images/Marketplace-Assets-40.png'
 
-const AdSlotManagementTable = ({status,setModal}) => {
-    const header = ['S.No','Name', 'Image', 'Bit Start Date', 'Bit End Date', 'Slot Type', 'Bit Amount', 'Approval Status']
-   
+const AdSlotManagementTable = ({ status, setModal }) => {
+    const header = ['S.No', 'Name', 'Image', 'Bit Start Date', 'Bit End Date', 'Slot Type', 'Bit Amount', "Click (CTR)", 'Approval Status']
+
     return (
         <div className='eventTable'>
             <table id="table-to-xls">
@@ -16,7 +16,7 @@ const AdSlotManagementTable = ({status,setModal}) => {
                         return (
                             <tr key={index}>
                                 <td>{item?.no}</td>
-                                    <td>{item?.name}</td>
+                                <td>{item?.name}</td>
                                 <td >
                                     <img
                                         onClick={() => setModal("view")}
@@ -32,7 +32,8 @@ const AdSlotManagementTable = ({status,setModal}) => {
                                 <td>{item?.end} </td>
                                 <td>{item?.type}</td>
                                 <td>$ {item?.amount}</td>
-                                <td style={{color:item?.status =="Accepted" ? "green":"red",fontWeight:"bold"}}>{item?.status == "Accepted"? "Accepted" :"Rejected"}</td>
+                                <td>4%</td>
+                                <td style={{ color: "green", fontWeight: "bold" }}>{item?.status}</td>
                             </tr >
                         );
                     })}

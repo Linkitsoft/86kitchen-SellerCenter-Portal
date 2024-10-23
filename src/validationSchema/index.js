@@ -11,19 +11,19 @@ export const campaignValidation = Yup.object({
     title: Yup.string().required('Title is required'),
     type: Yup.string().required('Type is required'),
     startDate: Yup.date()
-        .nullable() 
-        .transform((value, originalValue) => originalValue === '' ? null : value)  
+        .nullable()
+        .transform((value, originalValue) => originalValue === '' ? null : value)
         .required('Start Date is required')
         .min(today, 'Start Date cannot be in the past'),
     endDate: Yup.date()
-        .nullable()  
-        .transform((value, originalValue) => originalValue === '' ? null : value) 
+        .nullable()
+        .transform((value, originalValue) => originalValue === '' ? null : value)
         .required('End Date is required')
         .test('is-greater', 'End Date should be at least one day after Start Date', function (value) {
             const { startDate } = this.parent;
             if (startDate) {
                 const startDateCopy = new Date(startDate);
-                startDateCopy.setDate(startDateCopy.getDate()); 
+                startDateCopy.setDate(startDateCopy.getDate());
                 return new Date(value) >= startDateCopy;
             }
             return true;
@@ -98,4 +98,13 @@ export const observantUsersValidation = Yup.object({
     confirmPassword: Yup.string().required('Confirm password is required').oneOf([Yup.ref('password'), null], 'Passwords must match'),
     phoneNo: Yup.string().required('Phone No is required'),
 
+});
+
+
+export const advertisementValidation = Yup.object({
+    name: Yup.string().required('Advertisement Name is required'),
+    bidStartDate: Yup.string().required('Bid Start Date is required'),
+    bidEndDate: Yup.string().required('Bid End Date is required'),
+    slotType: Yup.string().required('Slot Type is required'),
+    bitAmount: Yup.string().required('Bit Amount is required'),
 });

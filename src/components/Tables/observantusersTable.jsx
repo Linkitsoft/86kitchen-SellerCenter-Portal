@@ -1,7 +1,7 @@
 import React from 'react'
 import { usersData } from '../../utils/usersData'
 
-const ObservantUsersTable = () =>
+const ObservantusersTable = () =>
 {
     const header = ['No', 'Name', 'Email', 'Phone No', 'Enable/Disable']
      
@@ -39,4 +39,4 @@ const ObservantUsersTable = () =>
     )
 }
 
-export default ObservantUsersTable
+export default ObservantusersTable

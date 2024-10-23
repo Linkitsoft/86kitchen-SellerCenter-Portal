@@ -118,10 +118,23 @@ export const list = [
         name: "Ad Slot Management",
         light: service,
         dark: servicel,
-        url: "/slot-management",
-        index: "10",
+        index: "13",
         parentRoute: null,
-        id: "commission"
+        id: "slotManagement",
+        subMenu: [
+            {
+                name: "Advertisement",
+                url: "/slotManagement",
+                id: "slotManagement",
+                index: "13a",
+            },
+            {
+                name: "Bid History",
+                url: "/",
+                index: "13b",
+                id: "slotManagement",
+            },
+        ]
     },
     {
         name: "Queries",

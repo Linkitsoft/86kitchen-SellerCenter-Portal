@@ -6,7 +6,7 @@ export const adSlotData = [
         end: "12/9/2024",
         type: "Top Advertisement Slot",
         amount: "234",
-        status:"Accepted"
+        status: "Accepted"
     },
     {
         no: "2",
@@ -15,7 +15,7 @@ export const adSlotData = [
         end: "21/9/2024",
         type: "Middle Advertisement Slot",
         amount: "67",
-        status:"Accepted"
+        status: "Ongoing"
     },
     {
         no: "3",
@@ -24,7 +24,7 @@ export const adSlotData = [
         end: "12/10/2024",
         type: "Top Advertisement Slot",
         amount: "1034",
-        status:"Rejected"
+        status: "Accepted"
     },
     {
         no: "4",
@@ -33,7 +33,7 @@ export const adSlotData = [
         end: "25/10/2024",
         type: "Top Advertisement Slot",
         amount: "1240",
-        status:"Accepted"
+        status: "Ongoing"
     },
     {
         no: "5",
@@ -42,7 +42,7 @@ export const adSlotData = [
         end: "18/11/2024",
         type: "Middle Advertisement Slot",
         amount: "234",
-        status:"Rejected"
+        status: "Accepted"
     },
-    
+
 ]

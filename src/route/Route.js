@@ -273,7 +273,7 @@ const MyRoutes = () =>
             element: <GenerateSales />
         },
         {
-            path: 'slot-management',
+            path: 'slotManagement',
             element: <AdSlotManagement />
         },
         {
