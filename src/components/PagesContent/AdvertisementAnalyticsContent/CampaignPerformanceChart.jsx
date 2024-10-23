@@ -30,7 +30,7 @@ const CampaignPerformanceChart = () => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded p-4">
+    <div className="bg-white shadow-lg rounded p-4 overflow-auto">
       <h2 className="text-lg font-semibold mb-4">Advertisement Performance</h2>
       <Chart options={chartData.options} series={chartData.series} type="area" height={280} />
     </div>
