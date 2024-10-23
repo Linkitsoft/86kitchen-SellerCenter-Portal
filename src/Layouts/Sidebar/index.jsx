@@ -170,11 +170,12 @@ const Sidebar = () =>
                                 return (
                                     <div key={item?.index}>
                                         <RoleAccess role={!roles?.hide?.includes(item?.id)}>
-                                            <li key={item?.index} onClick={() => handleRouteClick(item)} className={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active" : "sideBar_title"}>
+                                            <li key={item?.index} onClick={() => handleRouteClick(item)} 
+                                            className={`${(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_title sideBar_active !flex" : "sideBar_title !flex"}`}>
                                                 <img alt="logo" src={(location?.pathname === item?.url || item?.parentRoute?.includes(location?.pathname)) ? item?.light : item?.dark} />
                                                 {item?.name}
                                                 {item?.subMenu && (
-                                                    <i className={event === item?.index ? "fas fa-chevron-down" : "fas fa-chevron-right"}></i>
+                                                    <i className={`${event === item?.index ? "fas fa-chevron-down" : "fas fa-chevron-right"}`}></i>
                                                 )}
                                             </li>
                                         </RoleAccess>
@@ -185,7 +186,7 @@ const Sidebar = () =>
                                                         <RoleAccess key={res.index} role={!roles?.hide?.includes(res?.id)}>
                                                             <li
                                                                 key={res.index}
-                                                                className={(location?.pathname === res?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}
+                                                                className={`${(location?.pathname === res?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}`}
                                                                 onClick={() => handleSubMenu(res)}>
                                                                 {res.name}
                                                             </li>
