@@ -86,22 +86,15 @@ const RebidAdvertisement = ({ setModal }) => {
                 <p className='rebidAdvertisement_topHead'>Rebid Advertisement</p>
 
                 <div style={{ margin: "20px 0" }}>
-                    <label>Start & End Date</label>
+                    <label>Start Date</label>
+                    <CustomDatePicker value={selectedRange} handleChange={handleDateChange} />
+                </div>
+                <div >
+                    <label>End Date</label>
                     <CustomDatePicker value={selectedRange} handleChange={handleDateChange} />
                 </div>
 
                 <div className='rebidAdvertisement_grid'>
-                    <InputField
-                        label='Advertisement Name'
-                        placeholder='Advertisement Name'
-                        name='name'
-                        errors={errors?.name}
-                        control={control}
-                        handleBlur={handleBlur}
-                        register={register}
-                    />
-
-
                     <InputField
                         label='Bid Amount'
                         placeholder='Bid Amount'
@@ -113,35 +106,15 @@ const RebidAdvertisement = ({ setModal }) => {
                         min={today}
                         type="number"
                     />
-
-                    <DropdownField
-                        label='Select Slot Type'
-                        placeholder='Select Slot Type'
-                        name='slotType'
-                        errors={errors?.slotType}
-                        control={control}
-                        handleBlur={handleBlur}
-                        register={register}
-                        options={[{ label: "Adverisement Top Section", value: "Adverisement Top Section" }, { label: "Advertisement Middle Section", value: "Advertisement Middle Section" }, { label: "Both", value: "Both" }]}
-                    />
-
-
-                    <DropdownField
-                        label='Select Product'
-                        placeholder='Select Product'
-                        name='product'
-                        errors={errors?.product}
-                        control={control}
-                        handleBlur={handleBlur}
-                        register={register}
-                        options={[{ label: "Cleaning", value: "Cleaning" }, { label: "Internet", value: "Internet" }]}
-                    />
                 </div>
-
-                <div className='rebidAdvertisement_advertisementBtn'>
-                    <button className='generateBtn' onClick={handleSubmit(handleCreate)}>Rebid</button>
+                <div className='flex gap-2 bg-red-600'>
+                    <div className='rebidAdvertisement_advertisementBtn'>
+                        <button className='generateBtn' onClick={handleSubmit(handleCreate)}>Rebid</button>
+                    </div>
+                    <div className='rebidAdvertisement_advertisementBtn'>
+                        <button className='generateBtn' onClick={handleSubmit(handleCreate)}>Rebid</button>
+                    </div>
                 </div>
-
             </div>
         </div>
     )
