@@ -156,6 +156,11 @@ const MyRoutes = () => {
             setTimeout(() => resolve(import("../pages/BidHistory")), 800);
         });
     });
+    const AdvertisementAnalytics = lazy(() => {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(import("../pages/AdvertisementAnalytics")), 800);
+        });
+    });
 
     // const AllAdminUsers = lazy(() =>
     // {
@@ -240,6 +245,10 @@ const MyRoutes = () => {
         {
             path: 'bidHistory',
             element: <BidHistory />
+        },
+        {
+            path: 'advertisementAnalytics',
+            element: <AdvertisementAnalytics />
         },
         {
             path: 'logs',

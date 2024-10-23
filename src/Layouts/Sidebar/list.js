@@ -134,6 +134,12 @@ export const list = [
                 index: "13b",
                 id: "slotManagement",
             },
+            {
+                name: "Advertisement Analytics",
+                url: "/advertisementAnalytics",
+                index: "13b",
+                id: "slotManagement",
+            },
         ]
     },
     {
