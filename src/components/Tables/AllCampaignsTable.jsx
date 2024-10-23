@@ -109,9 +109,7 @@ const AllCampaignsTable = ({ setModal, status, setViewModal, setItem }) => {
                                         onClick={() => setModal("view")}
                                         alt=""
                                         src={Image}
-                                        className='w-12'
-                                        height={"48px"}
-                                        width={"56px"}
+                                        className='w-[70px] h-[40px]'
                                         style={{ borderRadius: "10px", overflow: "hidden", cursor: "pointer" }}
                                     />
                                 </td>

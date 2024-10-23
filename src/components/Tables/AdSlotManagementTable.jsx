@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Image from '../../assets/images/Marketplace-Assets-40.png'
 
-const AdSlotManagementTable = ({ status, setModal,data }) => {
-    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', "Click (CTR)", 'Approval Status']
+const AdSlotManagementTable = ({ status, setModal, data }) => {
+    const header = ['S.No', 'Name', 'Image', 'Bid Start Date', 'Bid End Date', 'Slot Type', 'Bid Amount', 'Approval Status']
 
     return (
         <div className='eventTable'>
@@ -18,20 +18,16 @@ const AdSlotManagementTable = ({ status, setModal,data }) => {
                                 <td>{item?.name}</td>
                                 <td >
                                     <img
-                                        onClick={() => setModal("view")}
                                         alt=""
                                         src={Image}
-                                        className='w-12'
-                                        height={"48px"}
-                                        width={"56px"}
-                                        style={{ borderRadius: "10px", overflow: "hidden", cursor: "pointer" }}
+                                        className='w-[70px] h-[40px]'
+                                        style={{ borderRadius: "10px", overflow: "hidden", }}
                                     />
                                 </td>
                                 <td>{item?.start} </td>
                                 <td>{item?.end} </td>
                                 <td>{item?.type}</td>
                                 <td>$ {item?.amount}</td>
-                                <td>4%</td>
                                 <td style={{ color: "green", fontWeight: "bold" }}>{item?.status}</td>
                             </tr >
                         );
