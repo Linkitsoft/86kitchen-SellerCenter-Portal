@@ -21,7 +21,10 @@ const ClicksByCampaignChart = () => {
         }
       },
       xaxis: {
-        categories: ['Cleaning', 'Internet', 'Holiday', 'Cricket', 'Campaign 5'],
+        categories: ['Cleaning', 'Internet', 'Holiday', 'Super Sale Splash', 'Campaign 5',"Limited Time Bonanza",'Exclusive Offer Express','Super Sale Splash'],
+        labels: {
+            show: false,  // Hide the X-axis labels
+          }
       },
       colors: ['#FF1654']
     }

@@ -186,7 +186,7 @@ const Sidebar = () =>
                                                         <RoleAccess key={res.index} role={!roles?.hide?.includes(res?.id)}>
                                                             <li
                                                                 key={res.index}
-                                                                className={`${(location?.pathname === res?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active" : "sideBar_subMenu"}`}
+                                                                className={`${(location?.pathname === res?.url || item?.parentRoute?.includes(location?.pathname)) ? "sideBar_subMenu sideBar_active !mr-0" : "sideBar_subMenu !mr-0"}`}
                                                                 onClick={() => handleSubMenu(res)}>
                                                                 {res.name}
                                                             </li>
