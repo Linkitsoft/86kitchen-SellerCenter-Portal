@@ -84,7 +84,7 @@ const CreateAdvertisementSlot = ({ setModal }) => {
 
                 <div className='createAdvertisement_lableSec'>
                     <p >Advertisement Image</p>
-                    <div className='createAdvertisement_uploader'>
+                    <div className='createAdvertisement_uploader !cursor-pointer'>
                         {img && <i onClick={() => setImg("")} class="fa-solid fa-trash"></i>}
                         <img className={img ? "fullImg" : "uploadImg"} src={img ? img : uploadImg} alt="uploadImg" />
                         <input type="file" accept="image/*" ref={Ref} onChange={(e) => handleImg(e)} />
